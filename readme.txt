@@ -24,6 +24,8 @@ Provides standardised updates as part of BAKKBONE-managed floristry websites:
 * ADD - "Page Title" and "Site Title" shortcodes ([bkf_page_title] and [bkf_site_title])
 * MODIFY - rename checkout fields to match Australian standards
 * ADD - creates input masks for the Gravity Forms "Telephone" field for Australian phone number formats
+* ADD - option to show Short Descriptions on products in archives
+* ADD - option to change heading on Cart Cross-Sells section
 
 == Installation ==
 1. Unzip the plugin archive on your computer
@@ -31,9 +33,6 @@ Provides standardised updates as part of BAKKBONE-managed floristry websites:
 3. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==
-**What is BAKKBONE Florist Companion?**
-BAKKBONE Florist Companion provides standardised updates as part of [BAKKBONE](https://www.bakkbone.com.au)-managed floristry websites.
-
 **What plugins do I need?**
 Required:
 <ul><li>WooCommerce</li>
@@ -52,7 +51,9 @@ Recommended:
 = 1.0.2 =
 * fix Woo Address Book integration
 * backwards compatibility for GF phone mask for existing customers
+= 1.0.3 =
+* Bugfixes
+* Adds native option to show Short Description of products in archives
+* Option to change cross-sell header on cart page
 
 == Upgrade Notice ==
-
-

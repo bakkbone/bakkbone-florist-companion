@@ -23,6 +23,9 @@ class BkfFields{
 		add_action( "woocommerce_admin_order_data_after_shipping_address", array($this, "bkf_checkout_field_display_admin_order_meta"), 10, 1 );
 		add_filter( "woocommerce_checkout_fields" , array($this, "bkf_override_checkout_fields") );
 		add_filter( "gform_phone_formats" , array($this, "bkf_au_phone_format") );
+		$bkfoptions = get_option("bkf_options_setting");
+		if($bkfoptions["bkf_excerpt_pa"] == "1") {add_action( 'woocommerce_after_shop_loop_item_title', array($this, 'bkf_add_excerpt_pa') );};
+		add_filter( "woocommerce_product_cross_sells_products_heading", array($this, "bkf_add_cs_heading"), 10, 1 );
 	}
  
 	function bkf_shipping_to_delivery($package_name, $i, $package){
@@ -80,13 +83,17 @@ class BkfFields{
 	function bkf_checkout_field_display_admin_order_meta($order){
 	    echo '<p><strong>'.__('Delivery Notes').':</strong> ' . get_post_meta( $order->id, '_shipping_notes', true ) . '</p>';
 	}
+	
+	
 
 	function bkf_override_checkout_fields( $fields ) {
-	     $fields['order']['order_comments']['description'] = 'We\'ll include this with your gift';
+	$bkfoptions = get_option("bkf_options_setting");
+	if ( !empty( $bkfoptions["bkf_card_length"] ) ) { $bkfcardlength = $bkfoptions["bkf_card_length"];} else { $bkfcardlength = "250" ;};
+	     $fields['order']['order_comments']['description'] = 'We\'ll include this with your gift. Maximum '.$bkfcardlength.' characters.' ;
 		 $fields['order']['order_comments']['placeholder'] = '';
 		 $fields['order']['order_comments']['label'] = 'Card Message';
 		 $fields['order']['order_comments']['required'] = true;
-		 $fields['order']['order_comments']['maxlength'] = get_option( 'bkf_card_length' );
+		 $fields['order']['order_comments']['maxlength'] = $bkfcardlength;
 	     return $fields;
 	}
 	
@@ -106,4 +113,12 @@ class BkfFields{
 	    return $phone_formats;
 	}
 	
+	function bkf_add_excerpt_pa() {    the_excerpt(); }
+	
+	function bkf_add_cs_heading( $string ) {
+	$bkfoptions = get_option("bkf_options_setting");
+	if( ! empty ($bkfoptions["bkf_cs_heading"] ) ) {$headingtext = $bkfoptions["bkf_cs_heading"];} else {$headingtext = "How about adding...";};
+	$string = __( $headingtext, 'woocommerce' );
+	return $string;
+}
 }

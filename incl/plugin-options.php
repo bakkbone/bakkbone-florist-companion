@@ -106,8 +106,26 @@ class BkfPluginOptions{
 		// card-length
 		add_settings_field(
 			"bkf_card_length", //id
-			__("Card Message maximum length:","bakkbone-florist-companion"), //title
+			__("Card Message Length","bakkbone-florist-companion"), //title
 			array($this,"bkfCardLengthCallback"), //callback
+			"bkf-options", //page
+			"bkf_options_section" //section
+		);
+		
+		// excerpt-pa
+		add_settings_field(
+			"bkf_excerpt_pa", //id
+			__("Product Archives","bakkbone-florist-companion"), //title
+			array($this,"bkfExcerptPaCallback"), //callback
+			"bkf-options", //page
+			"bkf_options_section" //section
+		);
+		
+		// cs-heading
+		add_settings_field(
+			"bkf_cs_heading", //id
+			__("Cross-Sell Cart Heading","bakkbone-florist-companion"), //title
+			array($this,"bkfCsHeadingCallback"), //callback
 			"bkf-options", //page
 			"bkf_options_section" //section
 		);
@@ -125,6 +143,20 @@ class BkfPluginOptions{
 		// card-length
 		if(isset($input["bkf_card_length"]))
 			$new_input["bkf_card_length"] = sanitize_text_field($input["bkf_card_length"]);
+		
+		
+		
+		// excerpt-pa
+		if(isset($input["bkf_excerpt_pa"])){
+			$new_input["bkf_excerpt_pa"] = true;
+		}else{
+			$new_input["bkf_excerpt_pa"] = false;
+		}
+		
+		
+		// cs-heading
+		if(isset($input["bkf_cs_heading"]))
+			$new_input["bkf_cs_heading"] = sanitize_text_field($input["bkf_cs_heading"]);
 		
 		return $new_input;
 	}
@@ -147,11 +179,47 @@ class BkfPluginOptions{
 		if(isset($this->bkf_options_setting["bkf_card_length"])){
 			$value = esc_attr($this->bkf_options_setting["bkf_card_length"]);
 		}else{
-			$value = "250";
+			$value = "";
 		}
 		?>
 		<input class="small-text" id="bkf-card-length" type="number" name="bkf_options_setting[bkf_card_length]" placeholder="250" value="<?php echo $value; ?>" />
 		<p class="description"><?php _e("Maximum number of characters (including spaces/punctuation) a customer will be able to enter in the Card Message field.","bakkbone-florist-companion") ?></p>
+		<?php
+	}
+	
+	
+	/**
+	 * BkfPluginOptions:bkfExcerptPaCallback()
+	**/
+	function bkfExcerptPaCallback(){
+	
+		if(!isset($this->bkf_options_setting["bkf_excerpt_pa"])){
+			$this->bkf_options_setting["bkf_excerpt_pa"] = false;
+		}
+		if($this->bkf_options_setting["bkf_excerpt_pa"] == true){
+			$checked = "checked";
+		}else{
+			$checked = "";
+		}
+		?>
+		<p><input id="bkf-excerpt-pa" <?php echo $checked ?> type="checkbox" name="bkf_options_setting[bkf_excerpt_pa]" /> <?php _e("Display Short Description in product archives","bakkbone-florist-companion") ?></p>
+		<?php
+	}
+	
+	
+	/**
+	 * BkfPluginOptions:bkfCsHeadingCallback()
+	**/
+	function bkfCsHeadingCallback(){
+	
+		if(isset($this->bkf_options_setting["bkf_cs_heading"])){
+			$value = esc_attr($this->bkf_options_setting["bkf_cs_heading"]);
+		}else{
+			$value = "";
+		}
+		?>
+		<input class="regular-text" id="bkf-cs-heading" type="text" name="bkf_options_setting[bkf_cs_heading]" placeholder="How about adding..." value="<?php echo $value; ?>" />
+		<p class="description"><?php _e("Replaces the heading of the Cross-Sells section of the Cart page","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 	
@@ -168,6 +236,10 @@ class BkfPluginOptions{
 		{
 			//card-length
 			
+			//excerpt-pa
+			
+			//cs-heading
+			
 		}
 	}
 	
@@ -181,6 +253,10 @@ class BkfPluginOptions{
 		if($screen->id == "settings_page_bkf_options")
 		{
 			//card-length
+			
+			//excerpt-pa
+			
+			//cs-heading
 			
 		}
 	}
