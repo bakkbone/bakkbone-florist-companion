@@ -45,6 +45,8 @@ class BkfFields{
 	}
 
 	function bkf_override_shipping_fields( $fields ) {
+		$fields['shipping_address_nickname']['priority'] = 1;
+		$fields['shipping_address_nickname']['label'] = 'Address nickname';
 		$fields['shipping_address_nickname']['description'] = 'Send to someone regularly? An address nickname will help you find this address easily next time. Example: Jessica\'s Work';
 	    	$fields['shipping_company']['label'] = 'Business/Hospital/Hotel Name';
 		$fields['shipping_company']['description'] = 'For hospitals/hotels/etc., please include ward/room information if known';
@@ -84,7 +86,7 @@ class BkfFields{
 		 $fields['order']['order_comments']['placeholder'] = '';
 		 $fields['order']['order_comments']['label'] = 'Card Message';
 		 $fields['order']['order_comments']['required'] = true;
-		 $fields['order']['order_comments']['maxlength'] = get_option( "bkf_card_length" );
+		 $fields['order']['order_comments']['maxlength'] = get_option( 'bkf_card_length' );
 	     return $fields;
 	}
 	
