@@ -23,6 +23,7 @@ Provides standardised updates as part of BAKKBONE-managed floristry websites:
 * ADD - "Delivery Suburb" post type, for creating SEO-friendly pages for your delivery areas
 * ADD - "Page Title" and "Site Title" shortcodes ([bkf_page_title] and [bkf_site_title])
 * MODIFY - rename checkout fields to match Australian standards
+* ADD - creates input masks for the Gravity Forms "Telephone" field for Australian phone number formats
 
 == Installation ==
 1. Unzip the plugin archive on your computer
@@ -48,6 +49,9 @@ Recommended:
 == Changelog ==
 = 1.0.1 =
 * Initial release.
+= 1.0.2 =
+* fix Woo Address Book integration
+* backwards compatibility for GF phone mask for existing customers
 
 == Upgrade Notice ==
 
