@@ -45,7 +45,8 @@ class BkfFields{
 	}
 
 	function bkf_override_shipping_fields( $fields ) {
-	    $fields['shipping_company']['label'] = 'Business/Hospital/Hotel Name';
+		$fields['shipping_address_nickname']['description'] = 'Send to someone regularly? An address nickname will help you find this address easily next time. Example: Jessica\'s Work';
+	    	$fields['shipping_company']['label'] = 'Business/Hospital/Hotel Name';
 		$fields['shipping_company']['description'] = 'For hospitals/hotels/etc., please include ward/room information if known';
 		$fields['shipping_state']['label'] = 'State/Territory';
 		$fields['shipping_postcode']['label'] = 'Postcode';
@@ -57,7 +58,6 @@ class BkfFields{
 	    'class'     => array('form-row-wide'),
 	    'clear'     => true
 	     );
-		$fields['shipping_address_nickname']['description'] = 'Send to someone regularly? An address nickname will help you find this address easily next time. Example: Jessica\'s Work';
 		$fields['shipping_notes'] = array(
 	    'label'     => __('Anything we need to know about the address?', 'woocommerce'),
 	    'required'  => false,
@@ -84,12 +84,12 @@ class BkfFields{
 		 $fields['order']['order_comments']['placeholder'] = '';
 		 $fields['order']['order_comments']['label'] = 'Card Message';
 		 $fields['order']['order_comments']['required'] = true;
-		 $fields['order']['order_comments']['maxlength'] = get_option( 'bkf_card_length' );
+		 $fields['order']['order_comments']['maxlength'] = get_option( "bkf_card_length" );
 	     return $fields;
 	}
 	
 	function bkf_au_phone_format( $phone_formats ) {
-	    $phone_formats['aum'] = array(
+	    $phone_formats['au'] = array(
 	        'label'       => 'Australia Mobile',
 	        'mask'        => '9999 999 999',
 	        'regex'       => '/^\d{4} \d{3} \d{3}$/',
