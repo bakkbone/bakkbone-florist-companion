@@ -182,7 +182,7 @@ class BkfPluginOptions{
 			$value = "";
 		}
 		?>
-		<input class="small-text" id="bkf-card-length" type="number" name="bkf_options_setting[bkf_card_length]" placeholder="250" value="<?php echo $value; ?>" />
+		<input class="small-text" id="bkf-card-length" type="number" name="bkf_options_setting[bkf_card_length]" placeholder="250" value="<?php echo esc_attr( $value; ) ?>" />
 		<p class="description"><?php _e("Maximum number of characters (including spaces/punctuation) a customer will be able to enter in the Card Message field.","bakkbone-florist-companion") ?></p>
 		<?php
 	}
@@ -218,7 +218,7 @@ class BkfPluginOptions{
 			$value = "";
 		}
 		?>
-		<input class="regular-text" id="bkf-cs-heading" type="text" name="bkf_options_setting[bkf_cs_heading]" placeholder="How about adding..." value="<?php echo $value; ?>" />
+		<input class="regular-text" id="bkf-cs-heading" type="text" name="bkf_options_setting[bkf_cs_heading]" placeholder="How about adding..." value="<?php echo esc_attr( $value; ) ?>" />
 		<p class="description"><?php _e("Replaces the heading of the Cross-Sells section of the Cart page","bakkbone-florist-companion") ?></p>
 		<?php
 	}
