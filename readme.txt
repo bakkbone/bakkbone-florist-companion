@@ -9,10 +9,10 @@ Stable tag: 1.0.4
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
-Provides standardised updates as part of BAKKBONE-managed floristry websites
+Provides standardised features for floristry websites
 
 == Description ==
-Provides standardised updates as part of BAKKBONE-managed floristry websites:
+Provides standardised updates for floristry websites:
 
 * MODIFY - repurpose "Order Notes" field as "Card Message" field, and rename it as such throughout WooCommerce
 * ADD - setting on Florist Options page to limit the number of characters in a Card Message
