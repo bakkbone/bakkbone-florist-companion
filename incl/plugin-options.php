@@ -218,7 +218,7 @@ class BkfPluginOptions{
 			$value = "";
 		}
 		?>
-		<input class="regular-text" id="bkf-cs-heading" type="text" name="bkf_options_setting[bkf_cs_heading]" placeholder="How about adding..." value="<?php echo esc_attr( $value; ) ?>" />
+		<input class="regular-text" id="bkf-cs-heading" type="text" name="bkf_options_setting[bkf_cs_heading]" placeholder="How about adding..." value="<?php echo esc_attr( $value ); ?>" />
 		<p class="description"><?php _e("Replaces the heading of the Cross-Sells section of the Cart page","bakkbone-florist-companion") ?></p>
 		<?php
 	}
