@@ -5,7 +5,7 @@ Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 5.0
 Tested up to: 6.0.1
 Requires PHP: 7.3
-Stable tag: 6.0.1
+Stable tag: 1.0.4
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -55,5 +55,8 @@ Recommended:
 * Bugfixes
 * Adds native option to show Short Description of products in archives
 * Option to change cross-sell header on cart page
+= 1.0.4 =
+* Fix stable tag listing
+* Escape syntax patching
 
 == Upgrade Notice ==
