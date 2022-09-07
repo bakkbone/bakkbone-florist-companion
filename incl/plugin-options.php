@@ -182,7 +182,7 @@ class BkfPluginOptions{
 			$value = "";
 		}
 		?>
-		<input class="small-text" id="bkf-card-length" type="number" name="bkf_options_setting[bkf_card_length]" placeholder="250" value="<?php echo esc_attr( $value; ) ?>" />
+		<input class="small-text" id="bkf-card-length" type="number" name="bkf_options_setting[bkf_card_length]" placeholder="250" value="<?php echo esc_attr( $value ); ?>" />
 		<p class="description"><?php _e("Maximum number of characters (including spaces/punctuation) a customer will be able to enter in the Card Message field.","bakkbone-florist-companion") ?></p>
 		<?php
 	}
