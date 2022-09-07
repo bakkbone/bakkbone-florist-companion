@@ -81,7 +81,7 @@ class BkfFields{
 	}
 
 	function bkf_checkout_field_display_admin_order_meta($order){
-	    echo '<p><strong>'.__('Delivery Notes').':</strong> ' . get_post_meta( $order->id, '_shipping_notes', true ) . '</p>';
+	    echo esc_attr( '<p><strong>'.__('Delivery Notes').':</strong> ' . get_post_meta( $order->id, '_shipping_notes', true ) . '</p>' );
 	}
 	
 	
