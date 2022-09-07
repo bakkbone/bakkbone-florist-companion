@@ -3,8 +3,8 @@
 /**
  * Plugin Name: BAKKBONE Florist Companion
  * Plugin URI: https://www.floristwebsites.au
- * Description: Provides standardised updates as part of BAKKBONE-managed floristry websites
- * Version: 1.0.3
+ * Description: Provides standardised features for floristry websites
+ * Version: 1.0.4
  * Author: BAKKBONE Australia
  * Author URI: https://www.bakkbone.com.au
  * License: GNU General Public License (GPL) 3.0
