@@ -43,6 +43,9 @@ Required:
 Recommended:
 <ul><li>Gravity Forms</li>
 <li>Booster Plus for WooCommerce</li></ul>
+**Why don't all my delivery dates show in WCFM?**
+The delivery date column calls on the "Field Label" for delivery dates in Order Delivery Date Pro. If you change the label, only orders placed where the label exactly matches the current label will display correctly.
+We recommend contacting BAKKBONE Support before making such a change (if you're a BAKKBONE customer).
 
 == Screenshots ==
 
