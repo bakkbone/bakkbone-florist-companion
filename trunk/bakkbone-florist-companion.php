@@ -5,12 +5,13 @@
  * Plugin URI: https://www.floristwebsites.au/
  * Description: Provides standardised features for floristry websites.
  * Version: 1.0.5
+ * Requires at least: 5.0
+ * Requires PHP: 7.3
  * Author: BAKKBONE Australia
  * Author URI: https://www.bakkbone.com.au/
- * License: GNU General Public License (GPL) 3.0
+ * License: GNU General Public License (GPL) 3.0 or later
  * License URI: https://www.gnu.org/licenses/gpl.html
  * Text Domain: bakkbone-florist-companion
- * Domain Path: /l10n
 **/
 
 
