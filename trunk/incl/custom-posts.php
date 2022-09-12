@@ -73,7 +73,7 @@ class BkfCustomPosts{
 			"show_in_nav_menus"		=> true,
 			"show_in_admin_bar"		=> false,
 			"show_in_rest"			=> true,
-			"rewrite"				=> array("slug" => "bkf_delivery_suburb"),
+			"rewrite"				=> array("slug" => get_option('bkf_suburb_slug', $default = "suburb")),
 			"capability_type"		=> $capability_type,
 			"capabilities"			=> $capabilities,
 			"hierarchical"			=> false,
