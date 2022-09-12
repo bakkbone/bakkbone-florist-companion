@@ -1,0 +1,18 @@
+#ship-to-different-address {
+					pointer-events: none!important;
+				}
+#ship-to-different-address-checkbox {
+					display: none;
+				}
+.woocommerce-shipping-fields .shipping_address {
+				height: auto !important;
+				display: block !important;
+				}
+.woocommerce-shipping-fields h3 label {
+	font-size: 24px !important;
+	line-height: 34.8px !important;
+	color: #131315 !important;
+}
+#ship-to-different-address .woocommerce-form__label span::before {
+	display: none;
+}
