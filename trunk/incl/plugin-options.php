@@ -131,15 +131,6 @@ class BkfPluginOptions{
 			"bkf-options", //page
 			"bkf_options_section" //section
 		);
-		
-		// suburb-slug
-		add_settings_field(
-			"bkf_suburb_slug", //id
-			__("Delivery Suburb Slug","bakkbone-florist-companion"), //title
-			array($this,"bkfSuburbSlugCallback"), //callback
-			"bkf-options", //page
-			"bkf_options_section" //section
-		);
 	}
 
 
@@ -168,12 +159,6 @@ class BkfPluginOptions{
 		// cs-heading
 		if(isset($input["bkf_cs_heading"]))
 			$new_input["bkf_cs_heading"] = sanitize_text_field($input["bkf_cs_heading"]);
-		
-		
-		
-		// suburb-slug
-		if(isset($input["bkf_suburb_slug"]))
-			$new_input["bkf_suburb_slug"] = sanitize_text_field($input["bkf_suburb_slug"]);
 		
 		return $new_input;
 	}
@@ -239,24 +224,6 @@ class BkfPluginOptions{
 		<p class="description"><?php _e("Replaces the heading of the Cross-Sells section of the Cart page","bakkbone-florist-companion") ?></p>
 		<?php
 	}
-	
-	
-	/**
-	 * BkfPluginOptions:bkfSuburbSlugCallback()
-	**/
-	function bkfSuburbSlugCallback(){
-	
-		if(isset($this->bkf_options_setting["bkf_suburb_slug"])){
-			$value = esc_attr($this->bkf_options_setting["bkf_suburb_slug"]);
-		}else{
-			$value = "";
-		}
-		?>
-		<input class="regular-text" id="bkf-suburb-slug" type="text" name="bkf_options_setting[bkf_suburb_slug]" placeholder="" value="<?php echo $value; ?>" />
-		<p class="description"><?php _e("Forms part of the link for delivery suburbs, eg. example.com/suburb_slug/melbourne","bakkbone-florist-companion") ?></p>
-		<?php
-	}
-	
 	
 	
 	
