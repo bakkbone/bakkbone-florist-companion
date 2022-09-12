@@ -86,9 +86,4 @@ class BkfCustomPosts{
 		flush_rewrite_rules();
 	}
 	
-	
-		
-		
-		
 }
-
