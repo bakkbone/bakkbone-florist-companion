@@ -5,7 +5,7 @@ Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 5.0
 Tested up to: 6.0.2
 Requires PHP: 7.3
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -51,20 +51,26 @@ We recommend contacting BAKKBONE Support before making such a change (if you're 
 
 
 == Changelog ==
-= 1.0.1 =
-* Initial release.
-= 1.0.2 =
-* fix Woo Address Book integration
-* backwards compatibility for GF phone mask for existing customers
+= 1.0.6 =
+* Tidies up admin menu
+* Delivery Suburb post type now supports custom text per suburb directly entered on the Suburb entry
+= 1.0.5 =
+* Improve compatibility directly with WCFM
+* Add "Delivery Date" column to WCFM Orders List
+= 1.0.4 =
+First release hosted on WordPress Plugin Repository
+* Fix stable tag listing
+* Escape syntax patching
 = 1.0.3 =
 * Bugfixes
 * Adds native option to show Short Description of products in archives
 * Option to change cross-sell header on cart page
-= 1.0.4 =
-* Fix stable tag listing
-* Escape syntax patching
-= 1.0.5 =
-* Improve compatibility directly with WCFM
-* Add "Delivery Date" column to WCFM Orders List
+= 1.0.2 =
+* fix Woo Address Book integration
+* backwards compatibility for GF phone mask for existing customers
+= 1.0.1 =
+* Initial release.
 
 == Upgrade Notice ==
+= 1.0.4 =
+Contains XSS protections, upgrade immediately if using 1.0.3 or lower.
