@@ -57,7 +57,7 @@ class BkfCustomPosts{
 		$capabilities = array();
 		
 		// support or features
-		$supports = array("title");
+		$supports = array("title", "editor");
 		
 		// arg
 		$args = array(
@@ -71,7 +71,7 @@ class BkfCustomPosts{
 			"show_in_menu"			=> true,
 			"query_var"				=> true,
 			"show_in_nav_menus"		=> true,
-			"show_in_admin_bar"		=> false,
+			"show_in_admin_bar"		=> true,
 			"show_in_rest"			=> true,
 			"rewrite"				=> array("slug" => "suburb"),
 			"capability_type"		=> $capability_type,
@@ -85,5 +85,4 @@ class BkfCustomPosts{
 		register_post_type("bkf_delivery_suburb", $args);
 		flush_rewrite_rules();
 	}
-	
 }
