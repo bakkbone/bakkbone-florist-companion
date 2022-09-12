@@ -54,7 +54,9 @@ class BkfPluginOptions{
 			__("Florist Options","bakkbone-florist-companion"), //$menu_title
 			"manage_options", //$capability
 			"bkf_options",//$menu_slug
-			array($this,"bkfOptionsPageContent")//$function
+			array($this,"bkfOptionsPageContent"),//$function
+			'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuMi4wIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIyIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNNTEyIDY0YzAgMTEzLjYtODQuNiAyMDcuNS0xOTQuMiAyMjJjLTcuMS01My40LTMwLjYtMTAxLjYtNjUuMy0xMzkuM0MyOTAuOCA3OC4zIDM2NCAzMiA0NDggMzJoMzJjMTcuNyAwIDMyIDE0LjMgMzIgMzJ6TTAgMTI4YzAtMTcuNyAxNC4zLTMyIDMyLTMySDY0YzEyMy43IDAgMjI0IDEwMC4zIDIyNCAyMjR2MzIgOTZjMCAxNy43LTE0LjMgMzItMzIgMzJzLTMyLTE0LjMtMzItMzJWMzUyQzEwMC4zIDM1MiAwIDI1MS43IDAgMTI4eiIvPjwvc3ZnPg==',//icon
+			58.1//position
 		);
 	}
 
@@ -129,6 +131,15 @@ class BkfPluginOptions{
 			"bkf-options", //page
 			"bkf_options_section" //section
 		);
+		
+		// suburb-slug
+		add_settings_field(
+			"bkf_suburb_slug", //id
+			__("Delivery Suburb Slug","bakkbone-florist-companion"), //title
+			array($this,"bkfSuburbSlugCallback"), //callback
+			"bkf-options", //page
+			"bkf_options_section" //section
+		);
 	}
 
 
@@ -158,6 +169,12 @@ class BkfPluginOptions{
 		if(isset($input["bkf_cs_heading"]))
 			$new_input["bkf_cs_heading"] = sanitize_text_field($input["bkf_cs_heading"]);
 		
+		
+		
+		// suburb-slug
+		if(isset($input["bkf_suburb_slug"]))
+			$new_input["bkf_suburb_slug"] = sanitize_text_field($input["bkf_suburb_slug"]);
+		
 		return $new_input;
 	}
 
@@ -182,7 +199,7 @@ class BkfPluginOptions{
 			$value = "";
 		}
 		?>
-		<input class="small-text" id="bkf-card-length" type="number" name="bkf_options_setting[bkf_card_length]" placeholder="250" value="<?php echo esc_attr( $value ); ?>" />
+		<input class="small-text" id="bkf-card-length" type="number" name="bkf_options_setting[bkf_card_length]" placeholder="250" value="<?php echo $value; ?>" />
 		<p class="description"><?php _e("Maximum number of characters (including spaces/punctuation) a customer will be able to enter in the Card Message field.","bakkbone-florist-companion") ?></p>
 		<?php
 	}
@@ -218,8 +235,25 @@ class BkfPluginOptions{
 			$value = "";
 		}
 		?>
-		<input class="regular-text" id="bkf-cs-heading" type="text" name="bkf_options_setting[bkf_cs_heading]" placeholder="How about adding..." value="<?php echo esc_attr( $value ); ?>" />
+		<input class="regular-text" id="bkf-cs-heading" type="text" name="bkf_options_setting[bkf_cs_heading]" placeholder="How about adding..." value="<?php echo $value; ?>" />
 		<p class="description"><?php _e("Replaces the heading of the Cross-Sells section of the Cart page","bakkbone-florist-companion") ?></p>
+		<?php
+	}
+	
+	
+	/**
+	 * BkfPluginOptions:bkfSuburbSlugCallback()
+	**/
+	function bkfSuburbSlugCallback(){
+	
+		if(isset($this->bkf_options_setting["bkf_suburb_slug"])){
+			$value = esc_attr($this->bkf_options_setting["bkf_suburb_slug"]);
+		}else{
+			$value = "";
+		}
+		?>
+		<input class="regular-text" id="bkf-suburb-slug" type="text" name="bkf_options_setting[bkf_suburb_slug]" placeholder="" value="<?php echo $value; ?>" />
+		<p class="description"><?php _e("Forms part of the link for delivery suburbs, eg. example.com/suburb_slug/melbourne","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 	
@@ -240,6 +274,8 @@ class BkfPluginOptions{
 			
 			//cs-heading
 			
+			//suburb-slug
+			
 		}
 	}
 	
@@ -257,6 +293,8 @@ class BkfPluginOptions{
 			//excerpt-pa
 			
 			//cs-heading
+			
+			//suburb-slug
 			
 		}
 	}
