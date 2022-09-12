@@ -26,6 +26,9 @@ class BkfFields{
 		$bkfoptions = get_option("bkf_options_setting");
 		if($bkfoptions["bkf_excerpt_pa"] == "1") {add_action( 'woocommerce_after_shop_loop_item_title', array($this, 'bkf_add_excerpt_pa') );};
 		add_filter( "woocommerce_product_cross_sells_products_heading", array($this, "bkf_add_cs_heading"), 10, 1 );
+		add_filter( 'wcfm_orders_additional_info_column_label', function( $orddd_column_label ) { $orddd_column_label = 'Delivery Date'; return $orddd_column_label;});
+		add_filter( 'wcfm_orders_additonal_data_hidden', '__return_false' );
+		add_filter( 'wcfm_orders_additonal_data', function( $orddd_column_data, $order_id ) { $orddd_column_data = get_post_meta( $order_id, 'Delivery Date', true ); return $orddd_column_data; }, 50, 2);
 	}
  
 	function bkf_shipping_to_delivery($package_name, $i, $package){
