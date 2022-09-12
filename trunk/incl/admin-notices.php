@@ -20,8 +20,8 @@ class BkfAdminNotices{
 	**/
 	function __construct()
 	{
-		if (!in_array("gravityforms/gravityforms.php", apply_filters("active_plugins", get_option("active_plugins")))){
-			add_action("admin_notices",array($this,"bkfGravityformsNotice"));
+		if (!in_array("order-delivery-date/order_delivery_date.php", apply_filters("active_plugins", get_option("active_plugins")))){
+			add_action("admin_notices",array($this,"bkfOrdddNotice"));
 		}
 		if (!in_array("woo-address-book/woocommerce-address-book.php", apply_filters("active_plugins", get_option("active_plugins")))){
 			add_action("admin_notices",array($this,"bkfWooAddressBookNotice"));
@@ -33,12 +33,12 @@ class BkfAdminNotices{
 	
 	
 	/**
-	 * BkfAdminNotices:bkfGravityformsNotice( $admin_notice)
+	 * BkfAdminNotices:bkfOrdddNotice( $admin_notice)
 	**/
-	function bkfGravityformsNotice( $admin_notice){
+	function bkfOrdddNotice( $admin_notice){
 		$plugin_data = get_plugin_data(BKF_FILE);
-		echo '<div id="message-gravityforms" class="updated notice is-dismissible">
-			<p>'. sprintf(__('<strong>%s</strong> recommends Gravity Forms be installed and activated on your site.','bakkbone-florist-companion'), $plugin_data["Name"]).'</p>
+		echo '<div id="message-orddd" class="error notice is-dismissible">
+			<p>'. sprintf(__('<strong>%s</strong> requires Gravity Forms be installed and activated.','bakkbone-florist-companion'), $plugin_data["Name"]).'</p>
 		</div>';
 		
 	}
