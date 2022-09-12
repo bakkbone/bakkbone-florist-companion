@@ -5,11 +5,11 @@ Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 5.0
 Tested up to: 6.0.1
 Requires PHP: 7.3
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
-Provides standardised features for floristry websites
+Provides standardised features for floristry websites.
 
 == Description ==
 Provides standardised updates for floristry websites:
@@ -26,6 +26,7 @@ Provides standardised updates for floristry websites:
 * ADD - creates input masks for the Gravity Forms "Telephone" field for Australian phone number formats
 * ADD - option to show Short Descriptions on products in archives
 * ADD - option to change heading on Cart Cross-Sells section
+* ADD - Delivery Date column on WCFM Orders List
 
 == Installation ==
 1. Unzip the plugin archive on your computer
@@ -36,7 +37,8 @@ Provides standardised updates for floristry websites:
 **What plugins do I need?**
 Required:
 <ul><li>WooCommerce</li>
-<li>WooCommerce Address Book</li></ul>
+<li>WooCommerce Address Book</li>
+<li>Order Delivery Date Pro</li></ul>
 
 Recommended:
 <ul><li>Gravity Forms</li>
@@ -58,5 +60,8 @@ Recommended:
 = 1.0.4 =
 * Fix stable tag listing
 * Escape syntax patching
+= 1.0.5 =
+* Improve compatibility directly with WCFM
+* Add "Delivery Date" column to WCFM Orders List
 
 == Upgrade Notice ==
