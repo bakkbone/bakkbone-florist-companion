@@ -39,6 +39,7 @@ class BkfFields{
 	$translated = str_ireplace('Shipping', 'Delivery', $translated);
 	$translated = str_ireplace('Ship to a different address?', 'Delivery details', $translated);
 	$translated = str_ireplace('Customer provided note:', 'Card Message:', $translated);
+	$translated = str_ireplace('Note:', 'Card Message:', $translated);
 	return $translated;
 	}
 	
@@ -72,7 +73,7 @@ class BkfFields{
 	    'class'     => array('form-row-wide'),
 	    'clear'     => true,
 		'type'		=> 'textarea',
-		'description' => 'eg. gate code, etc.'
+		'description' => 'eg. gate code, fence, dog, etc.'
 	     );
 	     return $fields;
 	}
