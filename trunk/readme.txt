@@ -54,6 +54,8 @@ We recommend contacting BAKKBONE Support before making such a change (if you're 
 = 1.0.6 =
 * Tidies up admin menu
 * Delivery Suburb post type now supports custom text per suburb directly entered on the Suburb entry
+* Re-worded "delivery notes" field description in checkout
+* Tweak card message display
 = 1.0.5 =
 * Improve compatibility directly with WCFM
 * Add "Delivery Date" column to WCFM Orders List
