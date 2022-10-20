@@ -19,7 +19,7 @@ class BkfFields{
 		add_filter( "ngettext" , array($this, "bkf_translate_reply"));
 		add_filter( "woocommerce_billing_fields" , array($this, "bkf_override_billing_fields") );
 		add_filter( "woocommerce_shipping_fields" , array($this, "bkf_override_shipping_fields"));
-		add_filter( 'woocommerce_email_order_meta_fields', array($this, "bkf_notes_email"));
+		add_filter( "woocommerce_email_order_meta_fields", array($this, "bkf_notes_email"), 10, 3);
 		add_action( "woocommerce_checkout_update_order_meta" , array($this, "bkf_checkout_field_update_order_meta") );
 		add_action( "woocommerce_admin_order_data_after_shipping_address", array($this, "bkf_checkout_field_display_admin_order_meta"), 10, 1 );
 		add_filter( "woocommerce_checkout_fields" , array($this, "bkf_override_checkout_fields") );
