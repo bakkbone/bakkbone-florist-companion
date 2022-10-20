@@ -5,7 +5,7 @@ Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 5.0
 Tested up to: 6.0.3
 Requires PHP: 7.3
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -51,6 +51,8 @@ We recommend contacting BAKKBONE Support before making such a change (if you're 
 
 
 == Changelog ==
+= 1.0.7 =
+* Add delivery notes to order emails
 = 1.0.6 =
 * Tidies up admin menu
 * Delivery Suburb post type now supports custom text per suburb directly entered on the Suburb entry
