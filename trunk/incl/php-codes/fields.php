@@ -19,6 +19,7 @@ class BkfFields{
 		add_filter( "ngettext" , array($this, "bkf_translate_reply"));
 		add_filter( "woocommerce_billing_fields" , array($this, "bkf_override_billing_fields") );
 		add_filter( "woocommerce_shipping_fields" , array($this, "bkf_override_shipping_fields"));
+		add_filter( 'woocommerce_email_order_meta_fields', array($this, "bkf_notes_email"));
 		add_action( "woocommerce_checkout_update_order_meta" , array($this, "bkf_checkout_field_update_order_meta") );
 		add_action( "woocommerce_admin_order_data_after_shipping_address", array($this, "bkf_checkout_field_display_admin_order_meta"), 10, 1 );
 		add_filter( "woocommerce_checkout_fields" , array($this, "bkf_override_checkout_fields") );
@@ -76,6 +77,14 @@ class BkfFields{
 		'description' => 'eg. gate code, fence, dog, etc.'
 	     );
 	     return $fields;
+	}
+	
+	function bkf_notes_email( $fields, $sent_to_admin, $order ) {
+		$fields['_shipping_notes'] = array(
+			'label' => __( 'Delivery Notes' ),
+			'value' => get_post_meta( $order->id, '_shipping_notes', true ),
+		);
+		return $fields;
 	}
 
 	function bkf_checkout_field_update_order_meta( $order_id ) {
