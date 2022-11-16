@@ -49,6 +49,7 @@ class BkfFields{
 		$fields['billing_state']['label'] = 'State/Territory';
 		$fields['billing_postcode']['label'] = 'Postcode';
 		$fields['billing_country']['label'] = 'Country';
+		$fields['billing_phone']['custom_attributes'] = array( "pattern" => "^\+?[0-9]{8,11}$" );
 		     return $fields;
 	}
 
@@ -66,7 +67,8 @@ class BkfFields{
 	    'placeholder'   => _x('Phone', 'placeholder', 'woocommerce'),
 	    'required'  => true,
 	    'class'     => array('form-row-wide'),
-	    'clear'     => true
+	    'clear'     => true,
+		'custom_attributes' => array("pattern" => "^\+?[0-9]{8,11}$")
 	     );
 		$fields['shipping_notes'] = array(
 	    'label'     => __('Anything we need to know about the address?', 'woocommerce'),
