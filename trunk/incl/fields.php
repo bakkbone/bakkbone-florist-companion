@@ -30,6 +30,7 @@ class BkfFields{
 		add_filter( 'wcfm_orders_additional_info_column_label', function( $orddd_column_label ) { $orddd_column_label = 'Delivery Date'; return $orddd_column_label;});
 		add_filter( 'wcfm_orders_additonal_data_hidden', '__return_false' );
 		add_filter( 'wcfm_orders_additonal_data', function( $orddd_column_data, $order_id ) { $orddd_column_data = get_post_meta( $order_id, get_option("orddd_delivery_date_field_label"), true ); return $orddd_column_data; }, 50, 2);
+		add_action( 'woocommerce_checkout_process', 'bkf_checkout_fields_custom_validation' );
 	}
  
 	function bkf_shipping_to_delivery($package_name, $i, $package){
@@ -49,7 +50,6 @@ class BkfFields{
 		$fields['billing_state']['label'] = 'State/Territory';
 		$fields['billing_postcode']['label'] = 'Postcode';
 		$fields['billing_country']['label'] = 'Country';
-		$fields['billing_phone']['custom_attributes'] = array( "pattern" => "^\+?[0-9]{8,11}$" );
 		     return $fields;
 	}
 
@@ -66,9 +66,10 @@ class BkfFields{
 	    'label'     => __('Recipient\'s Phone', 'woocommerce'),
 	    'placeholder'   => _x('Phone', 'placeholder', 'woocommerce'),
 	    'required'  => true,
-	    'class'     => array('form-row-wide'),
+	    'class'     => array("form-row-wide"),
 	    'clear'     => true,
-		'custom_attributes' => array("pattern" => "^\+?[0-9]{8,11}$")
+		'type'      => 'tel',
+		'validate'  => array( 'phone' ),
 	     );
 		$fields['shipping_notes'] = array(
 	    'label'     => __('Anything we need to know about the address?', 'woocommerce'),
