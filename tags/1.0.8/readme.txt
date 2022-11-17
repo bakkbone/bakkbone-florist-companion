@@ -41,7 +41,7 @@ Provides standardised updates for floristry websites:
 Required:
 <ul><li><a href="https://wordpress.org/plugins/woocommerce/">WooCommerce</a></li>
 <li><a href="https://wordpress.org/plugins/woo-address-book/">WooCommerce Address Book</a></li>
-<li><a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21">Order Delivery Date Pro</a></li></ul>
+<li><a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?ref=329&campaign=bkf">Order Delivery Date Pro</a></li></ul>
 
 Recommended:
 <ul><li><a href="https://www.gravityforms.com">Gravity Forms</a></li>

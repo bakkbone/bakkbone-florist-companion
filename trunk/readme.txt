@@ -5,7 +5,7 @@ Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 5.0
 Tested up to: 6.1.1
 Requires PHP: 7.3
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -41,7 +41,7 @@ Provides standardised updates for floristry websites:
 Required:
 <ul><li><a href="https://wordpress.org/plugins/woocommerce/">WooCommerce</a></li>
 <li><a href="https://wordpress.org/plugins/woo-address-book/">WooCommerce Address Book</a></li>
-<li><a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21">Order Delivery Date Pro</a></li></ul>
+<li><a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?ref=329&campaign=bkf">Order Delivery Date Pro</a></li></ul>
 
 Recommended:
 <ul><li><a href="https://www.gravityforms.com">Gravity Forms</a></li>
