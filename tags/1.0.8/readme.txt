@@ -44,7 +44,7 @@ Required:
 <li><a href="https://www.tychesoftwares.com/store/premium-plugins/order-delivery-date-for-woocommerce-pro-21/?ref=329&campaign=bkf">Order Delivery Date Pro</a></li></ul>
 
 Recommended:
-<ul><li><a href="https://www.gravityforms.com">Gravity Forms</a></li>
+<ul><li><a href="https://rocketgenius.pxf.io/bakkbone">Gravity Forms</a></li>
 <li><a href="https://booster.io/buy-booster?campaign=bkf&btr=bakkbone">Booster Elite for WooCommerce</a></li></ul>
 **Why don't all my delivery dates show in WCFM?**
 The delivery date column calls on the "Field Label" for delivery dates in Order Delivery Date Pro. If you change the label, only orders placed where the label exactly matches the current label will display correctly.
