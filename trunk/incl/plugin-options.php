@@ -75,6 +75,7 @@ class BkfPluginOptions{
 					<form method="post" action="options.php">
 						<?php settings_fields("bkf_options_group"); ?>
 						<?php do_settings_sections("bkf-options"); ?>
+						<?php do_settings_sections("bkf-petals"); ?>
 						<?php submit_button(); ?>
 					</form>
 				</div>
@@ -97,7 +98,7 @@ class BkfPluginOptions{
 			array($this,"bkfAddOptionsSanitize") //sanitize_callback
 		);
 		
-		
+		// add General section
 		add_settings_section(
 			"bkf_options_section", //id
 			__("General Settings","bakkbone-florist-companion"), //title
@@ -105,6 +106,14 @@ class BkfPluginOptions{
 			"bkf-options" //page
 		);
 		
+		// add Petals section
+		add_settings_section(
+			"bkf_petals_section", //id
+			__("Petals Network Integration","bakkbone-florist-companion"), //title
+			array($this,"bkfPetalsOptionsInfo"), //callback
+			"bkf-options" //page
+		);
+			
 		// card-length
 		add_settings_field(
 			"bkf_card_length", //id
@@ -140,6 +149,25 @@ class BkfPluginOptions{
 			"bkf-options", //page
 			"bkf_options_section" //section
 		);
+		
+		// petals
+		add_settings_field(
+			"bkf_petals", //id
+			__("Enable Petals Network Integration","bakkbone-florist-companion"), //title
+			array($this,"bkfPetalsCallback"), //callback
+			"bkf-options", //page
+			"bkf_petals_section" //section
+		);
+		
+		// petals_member_number
+		add_settings_field(
+			"bkf_petals_member_number", //id
+			__("No-Ship Message","bakkbone-florist-companion"), //title
+			array($this,"bkfPetalsMemberNumberCallback"), //callback
+			"bkf-options", //page
+			"bkf_petals_section" //section
+		);
+		
 	}
 
 
@@ -164,7 +192,6 @@ class BkfPluginOptions{
 			$new_input["bkf_excerpt_pa"] = false;
 		}
 		
-		
 		// cs-heading
 		if(isset($input["bkf_cs_heading"]))
 			$new_input["bkf_cs_heading"] = sanitize_text_field($input["bkf_cs_heading"]);
@@ -173,9 +200,19 @@ class BkfPluginOptions{
 		if(isset($input["bkf_noship"]))
 			$new_input["bkf_noship"] = sanitize_text_field($input["bkf_noship"]);
 		
+		// petals
+		if(isset($input["bkf_petals"])){
+			$new_input["bkf_petals"] = true;
+		}else{
+			$new_input["bkf_petals"] = false;
+		}
+		
+		// petals_member_number
+		if(isset($input["bkf_petals_member_number"]))
+			$new_input["bkf_petals_member_number"] = sanitize_text_field($input["bkf_petals_member_number"]);
+		
 		return $new_input;
 	}
-
 
 	/**
 	 * BkfPluginOptions:bkfAddOptionsInfo()
@@ -185,6 +222,13 @@ class BkfPluginOptions{
 		_e("Enter your settings below:","bakkbone-florist-companion");
 	}
 	
+	/**
+	 * BkfPluginOptions:bkfPetalsOptionsInfo()
+	**/
+	function bkfPetalsOptionsInfo()
+	{
+		_e("We don't recommend touching the below settings without consulting the BAKKBONE team - this integration requires a plan that includes the BAKKBONE API.","bakkbone-florist-companion");
+	}
 	
 	/**
 	 * BkfPluginOptions:bkfCardLengthCallback()
@@ -201,7 +245,6 @@ class BkfPluginOptions{
 		<p class="description"><?php _e("Maximum number of characters (including spaces/punctuation) a customer will be able to enter in the Card Message field.","bakkbone-florist-companion") ?></p>
 		<?php
 	}
-	
 	
 	/**
 	 * BkfPluginOptions:bkfExcerptPaCallback()
@@ -221,7 +264,6 @@ class BkfPluginOptions{
 		<?php
 	}
 	
-	
 	/**
 	 * BkfPluginOptions:bkfCsHeadingCallback()
 	**/
@@ -237,7 +279,6 @@ class BkfPluginOptions{
 		<p class="description"><?php _e("Replaces the heading of the Cross-Sells section of the Cart page","bakkbone-florist-companion") ?></p>
 		<?php
 	}
-	
 	
 	/**
 	 * BkfPluginOptions:bkfNoshipCallback()
@@ -255,6 +296,39 @@ class BkfPluginOptions{
 		<?php
 	}
 	
+	/**
+	 * BkfPluginOptions:bkfPetalsCallback()
+	**/
+	function bkfPetalsCallback(){
+	
+		if(!isset($this->bkf_options_setting["bkf_petals"])){
+			$this->bkf_options_setting["bkf_petals"] = false;
+		}
+		if($this->bkf_options_setting["bkf_petals"] == true){
+			$checked = "checked";
+		}else{
+			$checked = "";
+		}
+		?>
+		<p><input id="bkf-petals" <?php echo $checked ?> type="checkbox" name="bkf_options_setting[bkf_petals]" /> <?php _e("Enable Petals Network Integration","bakkbone-florist-companion") ?></p>
+		<?php
+	}
+	
+	/**
+	 * BkfPluginOptions:bkfMemberNumberCallback()
+	**/
+	function bkfPetalsMemberNumberCallback(){
+	
+		if(isset($this->bkf_options_setting["bkf_petals_member_number"])){
+			$value = esc_attr($this->bkf_options_setting["bkf_petals_member_number"]);
+		}else{
+			$value = "";
+		}
+		?>
+		<input class="small-text" id="bkf-petals-member-number" type="number" name="bkf_options_setting[bkf_petals_member_number]" placeholder="1234" value="<?php echo $value; ?>" />
+		<p class="description"><?php _e("Your Petals Exchange member number.","bakkbone-florist-companion") ?></p>
+		<?php
+	}
 	
 	/**
 	 * BkfPluginOptions:bkfOptionsAdminFooter($hook)
