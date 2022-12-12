@@ -157,7 +157,7 @@ class BkfFields{
 	// No-ship message
 	function bkf_noship_message() {
 		$bkfoptions = get_option("bkf_options_setting");
-		print '<span class="woocommerce-no-shipping-available-html e-checkout-message">' . esc_html( $bkf_options["bkf_noship"] ) . 'You have selected a suburb/region we do not deliver to.</span>';
+		print '<span class="woocommerce-no-shipping-available-html e-checkout-message">' . esc_html( $bkf_options["bkf_noship"] ) . '</span>';
 	}
 	
 	// Hide reject action
