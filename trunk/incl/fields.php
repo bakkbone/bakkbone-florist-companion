@@ -26,7 +26,7 @@ class BkfFields{
 		add_filter( "gform_phone_formats" , array($this, "bkf_au_phone_format") );
 		$bkfoptions = get_option("bkf_options_setting");
 		if($bkfoptions["bkf_excerpt_pa"] == "1") {add_action( 'woocommerce_after_shop_loop_item_title', array($this, 'bkf_add_excerpt_pa') );};
-		if bkfoptions["bkf_petals"] == "1") { add_filter( 'manage_edit-shop_order_columns', 'bkf_petals_col_init', 10, 1 ); add_action( 'manage_shop_order_posts_custom_column' , 'bkf_petals_col', 10, 2 ); };
+		if($bkfoptions["bkf_petals"] == "1") { add_filter( 'manage_edit-shop_order_columns', 'bkf_petals_col_init', 10, 1 ); add_action( 'manage_shop_order_posts_custom_column' , 'bkf_petals_col', 10, 2 ); };
 		add_filter( "woocommerce_product_cross_sells_products_heading", array($this, "bkf_add_cs_heading"), 10, 1 );
 		add_filter( 'wcfm_orders_additional_info_column_label', function( $orddd_column_label ) { $orddd_column_label = 'Delivery Date'; return $orddd_column_label;});
 		add_filter( 'wcfm_orders_additonal_data_hidden', '__return_false' );
