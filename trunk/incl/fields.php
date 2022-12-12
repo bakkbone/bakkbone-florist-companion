@@ -33,6 +33,8 @@ class BkfFields{
 		add_action( 'woocommerce_checkout_process', 'bkf_checkout_fields_custom_validation' );
 		add_filter( 'woocommerce_cart_no_shipping_available_html', 'bkf_noship_message' );
 		add_filter( 'woocommerce_no_shipping_available_html', 'bkf_noship_message' );
+		add_action( 'admin_head', 'bkf_hide_reject' );
+		add_action( 'woocommerce_after_checkout_form', 'bkf_disable_shipping_local_pickup' );
 	}
  
 	
@@ -154,5 +156,35 @@ class BkfFields{
 	function bkf_noship_message() {
 		$bkfoptions = get_option("bkf_options_setting");
 		print '<span class="woocommerce-no-shipping-available-html e-checkout-message">' . esc_html( $bkf_options["bkf_noship"] ) . 'You have selected a suburb/region we do not deliver to.</span>';
+	}
+	
+	// Hide reject action
+	function bkf_hide_reject() {
+	echo "<style type='text/css'>a.wc-action-button.reject,a.wc-action-button.new,a.wc-action-button.accept { display:none !important; }</style>";
+	}
+	
+	// Hide delivery address on pickup
+	function bkf_disable_shipping_local_pickup( $available_gateways ) {
+		$chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+		$chosen_shipping = $chosen_methods[0];
+		if ( 0 === strpos( $chosen_shipping, 'local_pickup' ) ) {
+	?>
+	<script type="text/javascript">
+	jQuery('#customer_details .col-2').fadeOut();
+	</script>
+	<?php
+		}
+	?>
+	<script type="text/javascript">
+	jQuery('form.checkout').on('change','input[name^="shipping_method"]',function() {
+		var val = jQuery( this ).val();
+		if (val.match("^local_pickup")) {
+			jQuery('#customer_details .col-2').fadeOut();
+		} else {
+			jQuery('#customer_details .col-2').fadeIn();
+		}
+	});
+</script>
+<?php
 	}
 }
