@@ -33,6 +33,8 @@ class BkfFields{
 		add_action( 'woocommerce_checkout_process', 'bkf_checkout_fields_custom_validation' );
 	}
  
+	
+	// Change "Shipping" to "Delivery"
 	function bkf_shipping_to_delivery($package_name, $i, $package){
 	    return sprintf( _nx( 'Delivery', 'Delivery %d', ( $i + 1 ), 'shipping packages', 'shipping-i18n' ), ( $i + 1 ) );
 	}
@@ -45,6 +47,7 @@ class BkfFields{
 	return $translated;
 	}
 	
+	// Tidy billing
 	function bkf_override_billing_fields( $fields ) {
 		$fields['billing_company']['label'] = 'Business Name';
 		$fields['billing_state']['label'] = 'State/Territory';
@@ -52,7 +55,8 @@ class BkfFields{
 		$fields['billing_country']['label'] = 'Country';
 		     return $fields;
 	}
-
+	
+	// Tidy shipping
 	function bkf_override_shipping_fields( $fields ) {
 		$fields['shipping_address_nickname']['priority'] = 1;
 		$fields['shipping_address_nickname']['label'] = 'Address nickname';
@@ -82,6 +86,7 @@ class BkfFields{
 	     return $fields;
 	}
 	
+	// Add delivery notes to email
 	function bkf_notes_email( $fields, $sent_to_admin, $order ) {
 		$fields['_shipping_notes'] = array(
 			'label' => __( 'Delivery Notes' ),
@@ -89,19 +94,21 @@ class BkfFields{
 		);
 		return $fields;
 	}
-
+	
+	// Add delivery notes to order meta
 	function bkf_checkout_field_update_order_meta( $order_id ) {
 	    if ( ! empty( $_POST['_shipping_notes'] ) ) {
 	        update_post_meta( $order_id, 'Delivery Notes', sanitize_text_field( $_POST['_shipping_notes'] ) );
 	    }
 	}
-
+	
+	// Display delivery notes in order meta
 	function bkf_checkout_field_display_admin_order_meta($order){
 	    echo '<p><strong>'.__('Delivery Notes').':</strong> ' . esc_html( get_post_meta( $order->id, '_shipping_notes', true ) ) . '</p>';
 	}
 	
 	
-
+	// Card message
 	function bkf_override_checkout_fields( $fields ) {
 	$bkfoptions = get_option("bkf_options_setting");
 	if ( !empty( $bkfoptions["bkf_card_length"] ) ) { $bkfcardlength = $bkfoptions["bkf_card_length"];} else { $bkfcardlength = "250" ;};
@@ -113,6 +120,7 @@ class BkfFields{
 	     return $fields;
 	}
 	
+	// GF phone formats
 	function bkf_au_phone_format( $phone_formats ) {
 	    $phone_formats['au'] = array(
 	        'label'       => 'Australia Mobile',
@@ -129,8 +137,10 @@ class BkfFields{
 	    return $phone_formats;
 	}
 	
+	// Add short description on product archive if selected in options
 	function bkf_add_excerpt_pa() {    the_excerpt(); }
 	
+	// Cross-sell headings
 	function bkf_add_cs_heading( $string ) {
 	$bkfoptions = get_option("bkf_options_setting");
 	if( ! empty ($bkfoptions["bkf_cs_heading"] ) ) {$headingtext = $bkfoptions["bkf_cs_heading"];} else {$headingtext = "How about adding...";};
