@@ -131,6 +131,15 @@ class BkfPluginOptions{
 			"bkf-options", //page
 			"bkf_options_section" //section
 		);
+		
+		// noship
+		add_settings_field(
+			"bkf_noship", //id
+			__("No-Ship Message","bakkbone-florist-companion"), //title
+			array($this,"bkfCsHeadingCallback"), //callback
+			"bkf-options", //page
+			"bkf_options_section" //section
+		);
 	}
 
 
@@ -159,6 +168,10 @@ class BkfPluginOptions{
 		// cs-heading
 		if(isset($input["bkf_cs_heading"]))
 			$new_input["bkf_cs_heading"] = sanitize_text_field($input["bkf_cs_heading"]);
+		
+		// noship
+		if(isset($input["bkf_noship"]))
+			$new_input["bkf_noship"] = sanitize_text_field($input["bkf_noship"]);
 		
 		return $new_input;
 	}
@@ -225,6 +238,22 @@ class BkfPluginOptions{
 		<?php
 	}
 	
+	
+	/**
+	 * BkfPluginOptions:bkfNoshipCallback()
+	**/
+	function bkfNoshipCallback(){
+	
+		if(isset($this->bkf_options_setting["bkf_noship"])){
+			$value = esc_attr($this->bkf_options_setting["bkf_noship"]);
+		}else{
+			$value = "";
+		}
+		?>
+		<input class="regular-text" id="bkf-cs-heading" type="text" name="bkf_options_setting[bkf_noship]" placeholder="You have selected a suburbor region we do not deliver to." value="<?php echo $value; ?>" />
+		<p class="description"><?php _e("Displays at checkout if the delivery address' suburb is not serviced.","bakkbone-florist-companion") ?></p>
+		<?php
+	}
 	
 	
 	/**
