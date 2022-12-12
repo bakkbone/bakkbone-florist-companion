@@ -162,7 +162,7 @@ class BkfPluginOptions{
 		// petals_member_number
 		add_settings_field(
 			"bkf_petals_member_number", //id
-			__("No-Ship Message","bakkbone-florist-companion"), //title
+			__("Member Number","bakkbone-florist-companion"), //title
 			array($this,"bkfPetalsMemberNumberCallback"), //callback
 			"bkf-options", //page
 			"bkf_petals_section" //section
