@@ -194,7 +194,7 @@ class BkfPluginOptions{
 		if(isset($this->bkf_options_setting["bkf_card_length"])){
 			$value = esc_attr($this->bkf_options_setting["bkf_card_length"]);
 		}else{
-			$value = "";
+			$value = "250";
 		}
 		?>
 		<input class="small-text" id="bkf-card-length" type="number" name="bkf_options_setting[bkf_card_length]" placeholder="250" value="<?php echo $value; ?>" />
@@ -230,7 +230,7 @@ class BkfPluginOptions{
 		if(isset($this->bkf_options_setting["bkf_cs_heading"])){
 			$value = esc_attr($this->bkf_options_setting["bkf_cs_heading"]);
 		}else{
-			$value = "";
+			$value = "How about adding...";
 		}
 		?>
 		<input class="regular-text" id="bkf-cs-heading" type="text" name="bkf_options_setting[bkf_cs_heading]" placeholder="How about adding..." value="<?php echo $value; ?>" />
@@ -247,7 +247,7 @@ class BkfPluginOptions{
 		if(isset($this->bkf_options_setting["bkf_noship"])){
 			$value = esc_attr($this->bkf_options_setting["bkf_noship"]);
 		}else{
-			$value = "";
+			$value = "You have selected a suburbor region we do not deliver to.";
 		}
 		?>
 		<input class="regular-text" id="bkf-cs-heading" type="text" name="bkf_options_setting[bkf_noship]" placeholder="You have selected a suburbor region we do not deliver to." value="<?php echo $value; ?>" />
