@@ -31,6 +31,8 @@ class BkfFields{
 		add_filter( 'wcfm_orders_additonal_data_hidden', '__return_false' );
 		add_filter( 'wcfm_orders_additonal_data', function( $orddd_column_data, $order_id ) { $orddd_column_data = get_post_meta( $order_id, get_option("orddd_delivery_date_field_label"), true ); return $orddd_column_data; }, 50, 2);
 		add_action( 'woocommerce_checkout_process', 'bkf_checkout_fields_custom_validation' );
+		add_filter( 'woocommerce_cart_no_shipping_available_html', 'bkf_noship_message' );
+		add_filter( 'woocommerce_no_shipping_available_html', 'bkf_noship_message' );
 	}
  
 	
@@ -146,5 +148,11 @@ class BkfFields{
 	if( ! empty ($bkfoptions["bkf_cs_heading"] ) ) {$headingtext = $bkfoptions["bkf_cs_heading"];} else {$headingtext = "How about adding...";};
 	$string = __( $headingtext, 'woocommerce' );
 	return $string;
-}
+	}
+	
+	// No-ship message
+	function bkf_noship_message() {
+		$bkfoptions = get_option("bkf_options_setting");
+		print '<span class="woocommerce-no-shipping-available-html e-checkout-message">' . esc_html( $bkf_options["bkf_noship"] ) . 'You have selected a suburb/region we do not deliver to.</span>';
+	}
 }
