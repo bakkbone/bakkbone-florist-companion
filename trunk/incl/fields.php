@@ -26,6 +26,7 @@ class BkfFields{
 		add_filter( "gform_phone_formats" , array($this, "bkf_au_phone_format") );
 		$bkfoptions = get_option("bkf_options_setting");
 		if($bkfoptions["bkf_excerpt_pa"] == "1") {add_action( 'woocommerce_after_shop_loop_item_title', array($this, 'bkf_add_excerpt_pa') );};
+		if bkfoptions["bkf_petals"] == "1") { add_filter( 'manage_edit-shop_order_columns', 'bkf_petals_col_init', 10, 1 ); add_action( 'manage_shop_order_posts_custom_column' , 'bkf_petals_col', 10, 2 ); };
 		add_filter( "woocommerce_product_cross_sells_products_heading", array($this, "bkf_add_cs_heading"), 10, 1 );
 		add_filter( 'wcfm_orders_additional_info_column_label', function( $orddd_column_label ) { $orddd_column_label = 'Delivery Date'; return $orddd_column_label;});
 		add_filter( 'wcfm_orders_additonal_data_hidden', '__return_false' );
@@ -187,4 +188,24 @@ class BkfFields{
 </script>
 <?php
 	}
+	
+	// Petals Column
+	function bkf_petals_col_init( $columns ) {
+		$bkfoptions = get_option("bkf_options_setting");
+		if bkfoptions["bkf_petals"] == "1") {
+			$columns['petals'] = __( 'Petals Actions', 'woocommerce' );
+			return $columns; }
+	}
+	function bkf_petals_col( $column, $post_id ) {
+		$bkfoptions = get_option("bkf_options_setting");
+		if bkfoptions["bkf_petals"] == "1") {
+			if ( $column == 'petals' ) {
+				$order = wc_get_order( $post_id );
+				if ( $order->has_status( 'new' ) ) {
+					echo '<a href="https://api.bakkbone.au/webhook/' . esc_html($bkfoptions["bkf_petals_member_number"]) . '/accept?id=' . esc_html( $post_id ) . '"><img src="/wp-content/plugins/bakkbone-florist-companion/incl/img/Accept.png" width="30px" title="Accept" /></a>&nbsp;<a href="https://www.pinktulip.com.au/reject?id=' . $post_id . '"><img src="/wp-content/plugins/bakkbone-florist-companion/incl/img/Reject.png" width="30px" title="Reject" /></a>';
+				}
+			}
+		}
+	}
+	
 }
