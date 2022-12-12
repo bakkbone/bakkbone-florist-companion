@@ -291,7 +291,7 @@ class BkfPluginOptions{
 			$value = "You have selected a suburbor region we do not deliver to.";
 		}
 		?>
-		<input class="regular-text" id="bkf-cs-heading" type="text" name="bkf_options_setting[bkf_noship]" placeholder="You have selected a suburbor region we do not deliver to." value="<?php echo $value; ?>" />
+		<input class="regular-text" id="bkf-noship" type="text" name="bkf_options_setting[bkf_noship]" placeholder="You have selected a suburbor region we do not deliver to." value="<?php echo $value; ?>" />
 		<p class="description"><?php _e("Displays at checkout if the delivery address' suburb is not serviced.","bakkbone-florist-companion") ?></p>
 		<?php
 	}
