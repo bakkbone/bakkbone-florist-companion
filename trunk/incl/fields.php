@@ -37,6 +37,7 @@ class BkfFields{
 		add_filter( 'woocommerce_no_shipping_available_html', array($this, 'bkf_noship_message') );
 		add_action( 'admin_head', array($this, 'bkf_hide_reject') );
 		add_action( 'woocommerce_after_checkout_form', array($this, 'bkf_disable_shipping_local_pickup') );
+		add_filter( 'woocommerce_checkout_fields', array($this, 'bkf_remove_shipping_checkout_fields') );
 	}
  
 	
@@ -186,8 +187,30 @@ class BkfFields{
 			jQuery('#customer_details .col-2').fadeIn();
 		}
 	});
-</script>
-<?php
+	</script>
+	<?php
+	}
+	
+	function bkf_remove_shipping_checkout_fields($fields) {
+		global $woocommerce;
+		$chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+		$chosen_shipping = $chosen_methods[0];
+		if ( 0 === strpos( $chosen_shipping, 'local_pickup' ) ) {
+			unset($fields['shipping']['shipping_address_nickname']);
+        		unset($fields['shipping']['shipping_company']);
+		        unset($fields['shipping']['shipping_address_1']);
+        		unset($fields['shipping']['shipping_address_2']);
+			unset($fields['shipping']['shipping_city']);
+        		unset($fields['shipping']['shipping_postcode']);
+       			unset($fields['shipping']['shipping_country']);
+        		unset($fields['shipping']['shipping_first_name']);
+        		unset($fields['shipping']['shipping_last_name']);
+        		unset($fields['shipping']['shipping_phone']);
+        		unset($fields['shipping']['shipping_state']);
+        		unset($fields['shipping']['shipping_notes']);
+        		unset($fields['order']['order_comments']);
+		}
+		return $fields;
 	}
 	
 	// Petals Column
