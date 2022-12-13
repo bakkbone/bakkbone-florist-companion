@@ -145,7 +145,7 @@ class BkfPluginOptions{
 		add_settings_field(
 			"bkf_noship", //id
 			__("No-Ship Message","bakkbone-florist-companion"), //title
-			array($this,"bkfCsHeadingCallback"), //callback
+			array($this,"bkfNoshipCallback"), //callback
 			"bkf-options", //page
 			"bkf_options_section" //section
 		);
@@ -288,10 +288,10 @@ class BkfPluginOptions{
 		if(isset($this->bkf_options_setting["bkf_noship"])){
 			$value = esc_attr($this->bkf_options_setting["bkf_noship"]);
 		}else{
-			$value = "You have selected a suburbor region we do not deliver to.";
+			$value = "You have selected a suburb or region we do not deliver to.";
 		}
 		?>
-		<input class="regular-text" id="bkf-noship" type="text" name="bkf_options_setting[bkf_noship]" placeholder="You have selected a suburbor region we do not deliver to." value="<?php echo $value; ?>" />
+		<input class="regular-text" id="bkf-noship" type="text" name="bkf_options_setting[bkf_noship]" placeholder="You have selected a suburb or region we do not deliver to." value="<?php echo $value; ?>" />
 		<p class="description"><?php _e("Displays at checkout if the delivery address' suburb is not serviced.","bakkbone-florist-companion") ?></p>
 		<?php
 	}
