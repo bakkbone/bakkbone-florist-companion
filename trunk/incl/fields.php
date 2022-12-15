@@ -38,6 +38,8 @@ class BkfFields{
 		add_action( 'admin_head', array($this, 'bkf_hide_reject') );
 		add_action( 'woocommerce_after_checkout_form', array($this, 'bkf_disable_shipping_local_pickup') );
 		add_filter( 'woocommerce_checkout_fields', array($this, 'bkf_remove_shipping_checkout_fields') );
+		add_action( 'woocommerce_new_order', array($this, 'bkf_action_woocommerce_new_order', 10, 1 ) );
+
 	}
  
 	
@@ -229,5 +231,26 @@ class BkfFields{
 			}
 		}
 	}
+	
+	// Assign guest order to matching user
+	
+	function bkf_action_woocommerce_new_order( $order_id ) {
+	$order = new WC_Order($order_id);
+	$user = $order->get_user();
+	
+	if( !$user ){
+		//guest order
+		$userdata = get_user_by( 'email', $order->get_billing_email() );
+		if(isset( $userdata->ID )){
+			//registered
+			update_post_meta($order_id, '_customer_user', $userdata->ID );
+		}else{
+			//Guest
+		}
+	}
+}
+
+	
+	
 	
 }
