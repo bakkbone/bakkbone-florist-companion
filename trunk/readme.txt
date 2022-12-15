@@ -28,6 +28,7 @@ Provides standardised updates for floristry websites:
 * ADD - option to change heading on Cart Cross-Sells section
 * ADD - Delivery Date column on WCFM Orders List
 * ADD - Integration with Petals Network
+* ADD - Automatically assign guest orders placed by registered customer to the matching user (so it appears in their order history when logged in)
 
 == Installation ==
 = Automatic installation =
@@ -60,6 +61,7 @@ This requires configuration on the backend, and a plan that includes the BAKKBON
 * ADD: Option to customise text displayed when customer enters a suburb for delivery that you do not service
 * TWEAK: Improve display of delivery date in WCFM
 * TWEAK: Set default values for freetext-based plugin options
+* ADD: Automatically assign guest orders placed by registered customer to the matching user (so it appears in their order history when logged in)
 = 1.0.8 =
 * TWEAK: Force valid recipient phone number on checkout
 = 1.0.7 =
