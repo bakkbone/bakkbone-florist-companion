@@ -28,6 +28,8 @@ class BakkboneFloristCompanion{
 		$bkffields = new BkfFields();
 		$bkforderstatus = new BkfOrderStatus();
 		$bkfpetals = new BkfPetals();
+		$bkfwcdeliveredemail = new Bkf_Delivered_WC_Email();
+
 	}
 	
 	
