@@ -26,6 +26,7 @@ class BakkboneFloristCompanion{
 		$admin_notices = new BkfAdminNotices();  
 		$rest_api  = new BkfRestApi();  
 		$bkffields = new BkfFields();
+		$bkforderstatus = new BkfOrderStatus();
 	}
 	
 	
