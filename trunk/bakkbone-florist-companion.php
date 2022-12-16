@@ -50,31 +50,16 @@ define("BKF_PATH",dirname(__FILE__));
 **/
 define("BKF_URL",plugins_url("/",__FILE__));
 
-
-/**
- * RAW PHP Codes
-**/
-require BKF_PATH . "/incl/fields.php";
-
-/**
- * The plugin class.
-**/
 require BKF_PATH . "/incl/setup.php";
-
-/** Custom Posts Type **/
 require BKF_PATH . "/incl/custom-posts.php";
-
-/** Styles **/
 require BKF_PATH . "/incl/enqueue-styles.php";
-/** plugin options **/
 require BKF_PATH . "/incl/plugin-options.php";
-/** short-codes **/
 require BKF_PATH . "/incl/short-codes.php";
-/** admin-notices **/
 require BKF_PATH . "/incl/admin-notices.php";
-
-/** REST-API **/
 require BKF_PATH . "/incl/rest-api.php";
+require BKF_PATH . "/incl/fields.php";
+require BKF_PATH . "/incl/order-status.php";
+require BKF_PATH . "/incl/petals.php";
 
 
 /**
