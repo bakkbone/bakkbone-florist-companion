@@ -27,6 +27,7 @@ class BakkboneFloristCompanion{
 		$rest_api  = new BkfRestApi();  
 		$bkffields = new BkfFields();
 		$bkforderstatus = new BkfOrderStatus();
+		$bkfpetals = new BkfPetals();
 	}
 	
 	
