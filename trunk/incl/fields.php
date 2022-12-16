@@ -26,19 +26,15 @@ class BkfFields{
 		add_filter( "gform_phone_formats" , array($this, "bkf_au_phone_format") );
 		$bkfoptions = get_option("bkf_options_setting");
 		if($bkfoptions["bkf_excerpt_pa"] == "1") {add_action( 'woocommerce_after_shop_loop_item_title', array($this, 'bkf_add_excerpt_pa') );};
-		if($bkfoptions["bkf_petals"] == "1") {add_filter('manage_edit-shop_order_columns', array($this, 'bkf_petals_col_init'), 10, 1 );};
-		if($bkfoptions["bkf_petals"] == "1") {add_action( 'manage_shop_order_posts_custom_column' , array($this, 'bkf_petals_col'), 10, 2 ); };
 		add_filter( "woocommerce_product_cross_sells_products_heading", array($this, "bkf_add_cs_heading"), 10, 1 );
 		add_filter( 'wcfm_orders_additional_info_column_label', function( $orddd_column_label ) { $orddd_column_label = 'Delivery Date'; return $orddd_column_label;});
 		add_filter( 'wcfm_orders_additonal_data_hidden', '__return_false' );
 		add_filter( 'wcfm_orders_additonal_data', function( $orddd_column_data, $order_id ) { $orddd_column_data = get_post_meta( $order_id, "orddd_delivery_date", true ); return $orddd_column_data; }, 50, 2);
-		add_action( 'woocommerce_checkout_process', array($this, 'bkf_checkout_fields_custom_validation') );
 		add_filter( 'woocommerce_cart_no_shipping_available_html', array($this, 'bkf_noship_message') );
 		add_filter( 'woocommerce_no_shipping_available_html', array($this, 'bkf_noship_message') );
-		add_action( 'admin_head', array($this, 'bkf_hide_reject') );
 		add_action( 'woocommerce_after_checkout_form', array($this, 'bkf_disable_shipping_local_pickup') );
 		add_filter( 'woocommerce_checkout_fields', array($this, 'bkf_remove_shipping_checkout_fields') );
-		add_action( 'woocommerce_new_order', array($this, 'bkf_action_woocommerce_new_order', 10, 1 ) );
+		add_action( 'woocommerce_new_order', array($this, 'bkf_link_guest_order', 10, 1 ) );
 
 	}
  
@@ -214,27 +210,10 @@ class BkfFields{
 		}
 		return $fields;
 	}
-	
-	// Petals Column
 		
-	function bkf_petals_col_init( $columns ) {
-			$columns['petals'] = __( 'Petals Actions', 'woocommerce' );
-			return $columns;
-	}
-
-	function bkf_petals_col( $column, $post_id ) {
-		$bkfoptions = get_option("bkf_options_setting");
-			if ( $column == 'petals' ) {
-				$order = wc_get_order( $post_id );
-				if ( $order->has_status( 'new' ) ) {
-					echo '<a href="https://api.bakkbone.au/webhook/' . esc_html($bkfoptions["bkf_petals_member_number"]) . '/accept?id=' . esc_html( $post_id ) . '"><img src="/wp-content/plugins/bakkbone-florist-companion/incl/img/Accept.png" width="30px" title="Accept" /></a>&nbsp;<a href="https://www.pinktulip.com.au/reject?id=' . $post_id . '"><img src="/wp-content/plugins/bakkbone-florist-companion/incl/img/Reject.png" width="30px" title="Reject" /></a>';
-			}
-		}
-	}
-	
 	// Assign guest order to matching user
 	
-	function bkf_action_woocommerce_new_order( $order_id ) {
+	function bkf_link_guest_order( $order_id ) {
 	$order = new WC_Order($order_id);
 	$user = $order->get_user();
 	
