@@ -45,9 +45,10 @@ class BkfOrderStatus{
       }
       return $new_order_statuses;
     }
+  }
 
-    function include_custom_order_status_to_reports($statuses)
-    {
+  function include_custom_order_status_to_reports($statuses)
+  {
       if ($statuses)
         $statuses[] = 'delivered';
       return $statuses;
