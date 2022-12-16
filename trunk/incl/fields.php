@@ -159,11 +159,6 @@ class BkfFields{
 		print '<span class="woocommerce-no-shipping-available-html e-checkout-message">' . esc_html( $bkf_options["bkf_noship"] ) . '</span>';
 	}
 	
-	// Hide reject action
-	function bkf_hide_reject() {
-	echo '<style type="text/css" id="bkf_hide_reject">a.wc-action-button.reject,a.wc-action-button.new,a.wc-action-button.accept { display:none !important; }</style>';
-	}
-	
 	// Hide delivery address on pickup
 	function bkf_disable_shipping_local_pickup( $available_gateways ) {
 		$chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
