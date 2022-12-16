@@ -23,15 +23,14 @@
 								title: "About",
 								type: "form",
 								items:[
-									{type: "panel",html:"<h4 style='font-size:24px;font-weight:600;'>Site Title v.1.0.1</h4><br/><p style='font-size:12px;'>Created by <a style='font-size:12px;cursor:pointer;font-weight:600;' href='https://www.bakkbone.com.au'>BAKKBONE Australia</a></p><p style='font-size:12px;cursor:pointer;font-weight:600;'>Powered by <a style='cursor:pointer;font-weight:600;' href='https://codecanyon.net/item/iwp-devtoolz/13581496'>iWP-DevToolz</a></p>"},
+									{type: "panel",html:"<h4 style='font-size:24px;font-weight:600;'>Site Title v.1.0.1</h4><br/><p style='font-size:12px;'>Created by <a style='font-size:12px;cursor:pointer;font-weight:600;' href='https://www.bakkbone.com.au'>BAKKBONE Australia</a></p>"},
 								]
 							}
 						],
 						onsubmit: function(e){
 							var shortcode = "";
 							shortcode += "[bkf_site_title ";
-							shortcode += "]";
-							shortcode += "[/bkf_site_title]";
+							shortcode += "/]";
 							editor.insertContent(shortcode);
 						}
 					});
@@ -45,8 +44,8 @@
 			return {
 				longname: "BKF - Site Title",
 				author: "BAKKBONE Australia",
-				authorurl: "https://www.bakkbone.com.au",
-				infourl: "https://www.floristwebsites.au",
+				authorurl: "https://www.bakkbone.com.au/",
+				infourl: "https://www.floristwebsites.au/",
 				version: "1.0.1"
 			};
 		}
