@@ -15,8 +15,8 @@ class BkfPetals{
   
   function __construct() {
 		$bkfoptions = get_option("bkf_options_setting");
-		if($bkfoptions["bkf_petals"] == "1") {add_filter('manage_edit-shop_order_columns', array($this, 'bkf_petals_col_init'), 10, 1 );};
-		if($bkfoptions["bkf_petals"] == "1") {add_action( 'manage_shop_order_posts_custom_column' , array($this, 'bkf_petals_col'), 10, 2 ); };
+		if(isset(($bkfoptions["bkf_petals"])) {add_filter('manage_edit-shop_order_columns', array($this, 'bkf_petals_col_init'), 10, 1 );};
+		if(isset($bkfoptions["bkf_petals"])) {add_action( 'manage_shop_order_posts_custom_column' , array($this, 'bkf_petals_col'), 10, 2 ); };
     add_action( 'admin_head', array($this, 'bkf_hide_reject') );
   }
   
