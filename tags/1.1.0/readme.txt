@@ -52,6 +52,7 @@ This requires configuration on the backend, and a plan that includes the BAKKBON
 
 == Screenshots ==
 
+1. Florist Options page
 
 == Changelog ==
 = 1.1.0 =
