@@ -60,7 +60,7 @@ require BKF_PATH . "/incl/rest-api.php";
 require BKF_PATH . "/incl/fields.php";
 require BKF_PATH . "/incl/order-status.php";
 require BKF_PATH . "/incl/petals.php";
-require BKF_PATH . "/incl/order-statuses/delivered-email.php";
+require BKF_PATH . "/incl/status-email.php";
 
 
 /**

@@ -1,6 +1,6 @@
 <?php
 /**
- * Completed Order sent to Customer.
+ * Scheduled Order sent to Customer.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
-<p><?php printf( __( 'The order #%d has been delivered. Order Details:', 'woocommerce' ), $order->get_order_number() ); ?></p>
+<p><?php printf( __( 'The order #%d has been scheduled for delivery on the nominated date. Order Details:', 'woocommerce' ), $order->get_order_number() ); ?></p>
 
 <?php
 

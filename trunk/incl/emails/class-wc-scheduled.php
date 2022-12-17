@@ -8,9 +8,9 @@ if ( ! class_exists( 'WC_Email' ) ) {
 }
 
 /**
- * Class WC_Custom_Completed_Order
+ * Class WC_Scheduled_status_Order
  */
-class WC_Delivered_status_Order extends WC_Email {
+class WC_Scheduled_status_Order extends WC_Email {
 
 	/**
 	 * Create an instance of the class.
@@ -22,22 +22,22 @@ class WC_Delivered_status_Order extends WC_Email {
     		// Email slug we can use to filter other data.
 		// Replace 'my-custom-status' with your custom order status slug
     		// Replace 'My Custom Status' with your custom order status name
-		$this->id          = 'wc_customer_delivered_status_order';
-		$this->title       = __( 'Delivered Order to Customer', 'text-domain' );
-		$this->description = __( 'An email sent to the customer when an order status change to Delivered.', 'text-domain' );
+		$this->id          = 'wc_customer_scheduled_status_order';
+		$this->title       = __( 'Order Scheduled', 'bakkbone-florist-companion' );
+		$this->description = __( 'An email sent to the customer when an order status changes to Scheduled.', 'bakkbone-florist-companion' );
     		// For admin area to let the user know we are sending this email to customers.
 		$this->customer_email = true;
-		$this->heading     = __( 'Delivered Status', 'text-domain' );
+		$this->heading     = __( 'Order Scheduled', 'bakkbone-florist-companion' );
 		// translators: placeholder is {blogname}, a variable that will be substituted when email is sent out
-		$this->subject     = sprintf( _x( '[%s] Delivered Status', 'default email subject for delivered status emails sent to the customer', 'text-domain' ), '{blogname}' );
+		$this->subject     = sprintf( _x( '[%s] Scheduled Status', 'default email subject for scheduled status emails sent to the customer', 'bakkbone-florist-companion' ), '{blogname}' );
     
     // Template paths.
-		$this->template_html  = 'emails/wc-customer-delivered-status-order.php';
-		$this->template_plain = 'emails/plain/wc-customer-delivered-status-order.php';
-		$this->template_base  = DELIVERED_WC_EMAIL_PATH . 'templates/';
+		$this->template_html  = '/wc-customer-scheduled-status-order.php';
+		$this->template_plain = '/plain/wc-customer-scheduled-status-order.php';
+		$this->template_base  = plugins_url() . '/bakkbone-florist-companion/incl/emails/templates';
     
     // Action to which we hook onto to send the email.
-		add_action( 'woocommerce_order_status_delivered', array( $this, 'trigger' ) );		
+		add_action( 'woocommerce_order_status_scheduled', array( $this, 'trigger' ) );		
 
 		parent::__construct();
 	}
