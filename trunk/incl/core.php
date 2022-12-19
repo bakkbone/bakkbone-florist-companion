@@ -2,7 +2,7 @@
 
 /**
  * @author BAKKBONE Australia
- * @package BkfFields
+ * @package BkfCore
  * @license GNU General Public License (GPL) 3.0
 **/
 
@@ -10,9 +10,9 @@
 defined("BKF_EXEC") or die("Silence is golden");
 
 /**
- * BkfFields
+ * BkfCore
 **/
-class BkfFields{
+class BkfCore{
 	function __construct() {
 		add_filter( "woocommerce_shipping_package_name" , array($this, "bkf_shipping_to_delivery"), 10, 3);
 		add_filter( "gettext" , array($this, "bkf_translate_reply"));
@@ -193,7 +193,7 @@ class BkfFields{
         		unset($fields['shipping']['shipping_company']);
 		        unset($fields['shipping']['shipping_address_1']);
         		unset($fields['shipping']['shipping_address_2']);
-			unset($fields['shipping']['shipping_city']);
+		    	unset($fields['shipping']['shipping_city']);
         		unset($fields['shipping']['shipping_postcode']);
        			unset($fields['shipping']['shipping_country']);
         		unset($fields['shipping']['shipping_first_name']);

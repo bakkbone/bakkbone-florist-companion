@@ -25,7 +25,7 @@ class BakkboneFloristCompanion{
 		$plugin_options = new BkfShortCodes();  
 		$admin_notices = new BkfAdminNotices();  
 		$rest_api  = new BkfRestApi();  
-		$bkffields = new BkfFields();
+		$bkfcore = new BkfCore();
 		$bkforderstatus = new BkfOrderStatus();
 		$bkfpetals = new BkfPetals();
 		$bkfwcemail = new Bkf_WC_Email();

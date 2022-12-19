@@ -8,9 +8,9 @@ if ( ! class_exists( 'WC_Email' ) ) {
 }
 
 /**
- * Class WC_Scheduled_status_Order
+ * Class WC_Email_Customer_Scheduled_Order
  */
-class WC_Scheduled_status_Order extends WC_Email {
+class WC_Email_Customer_Scheduled_Order extends WC_Email {
 
 	/**
 	 * Create an instance of the class.
@@ -19,30 +19,24 @@ class WC_Scheduled_status_Order extends WC_Email {
 	 * @return void
 	 */
 	function __construct() {
-    		// Email slug we can use to filter other data.
-		// Replace 'my-custom-status' with your custom order status slug
-    		// Replace 'My Custom Status' with your custom order status name
-		$this->id          = 'wc_customer_scheduled_status_order';
-		$this->title       = __( 'Order Scheduled', 'bakkbone-florist-companion' );
-		$this->description = __( 'An email sent to the customer when an order status changes to Scheduled.', 'bakkbone-florist-companion' );
-    		// For admin area to let the user know we are sending this email to customers.
+
+		$this->id          = 'customer_scheduled_order';
+		$this->title       = __( 'Order Scheduled', 'woocommerce' );
+		$this->description = __( 'An email sent to the customer when an order is scheduled.', 'woocommerce' );
 		$this->customer_email = true;
-		$this->heading     = __( 'Order Scheduled', 'bakkbone-florist-companion' );
-		// translators: placeholder is {blogname}, a variable that will be substituted when email is sent out
-		$this->subject     = sprintf( _x( '[%s] Scheduled Status', 'default email subject for scheduled status emails sent to the customer', 'bakkbone-florist-companion' ), '{blogname}' );
-    
-    // Template paths.
-		$this->template_html  = '/wc-customer-scheduled-status-order.php';
-		$this->template_plain = '/plain/wc-customer-scheduled-status-order.php';
-		$this->template_base  = plugins_url() . '/bakkbone-florist-companion/incl/emails/templates';
-    
-    // Action to which we hook onto to send the email.
-		add_action( 'woocommerce_order_status_scheduled', array( $this, 'trigger' ) );		
+		$this->heading     = __( 'Order Scheduled', 'woocommerce' );
+		$this->subject     = sprintf( _x( '[%s] Order Scheduled', 'default email subject for scheduled emails', 'woocommerce' ), '{blogname}' );
+
+		$this->template_html  = 'emails/customer-scheduled-order.php';
+		$this->template_plain = 'emails/plain/customer-scheduled-order.php';
+		$this->template_base  = CUSTOM_WC_EMAIL_PATH . 'templates/';
+
+		add_action( 'woocommerce_order_status_scheduled', array( $this, 'trigger' ) );
 
 		parent::__construct();
 	}
-	
-	 /**
+
+	/**
 	 * Trigger Function that will send this email to the customer.
 	 *
 	 * @access public
@@ -66,7 +60,7 @@ class WC_Scheduled_status_Order extends WC_Email {
 
 		$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
 	}
-	
+
 	/**
 	 * Get content html.
 	 *
@@ -77,6 +71,7 @@ class WC_Scheduled_status_Order extends WC_Email {
 		return wc_get_template_html( $this->template_html, array(
 			'order'         => $this->object,
 			'email_heading' => $this->get_heading(),
+			'additional_content' => $this->get_additional_content(),
 			'sent_to_admin' => false,
 			'plain_text'    => false,
 			'email'			=> $this
@@ -92,9 +87,13 @@ class WC_Scheduled_status_Order extends WC_Email {
 		return wc_get_template_html( $this->template_plain, array(
 			'order'         => $this->object,
 			'email_heading' => $this->get_heading(),
+			'additional_content' => $this->get_additional_content(),
 			'sent_to_admin' => false,
 			'plain_text'    => true,
 			'email'			=> $this
 		), '', $this->template_base );
 	}
+
 }
+
+return new WC_Email_Customer_Scheduled_Order();

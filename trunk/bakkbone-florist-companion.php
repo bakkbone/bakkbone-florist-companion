@@ -14,58 +14,32 @@
  * Text Domain: bakkbone-florist-companion
 **/
 
-
-// If this file is called directly, abort.
 if (!defined("WPINC")){
 	die;
 }
 
-
-/**
- * Silent is golden
-**/
 define("BKF_EXEC",true);
 
-
-/**
- * Debug
-**/
 define("BKF_DEBUG",false);
 
-
-/**
- * Plugin File
-**/
 define("BKF_FILE",__FILE__);
 
-
-/**
- * Plugin Path
-**/
 define("BKF_PATH",dirname(__FILE__));
 
-
-/**
- * Plugin Base URL
-**/
 define("BKF_URL",plugins_url("/",__FILE__));
 
 require BKF_PATH . "/incl/setup.php";
 require BKF_PATH . "/incl/custom-posts.php";
 require BKF_PATH . "/incl/enqueue-styles.php";
 require BKF_PATH . "/incl/plugin-options.php";
-require BKF_PATH . "/incl/short-codes.php";
+require BKF_PATH . "/incl/shortcodes.php";
 require BKF_PATH . "/incl/admin-notices.php";
 require BKF_PATH . "/incl/rest-api.php";
-require BKF_PATH . "/incl/fields.php";
+require BKF_PATH . "/incl/core.php";
 require BKF_PATH . "/incl/order-status.php";
-require BKF_PATH . "/incl/petals.php";
-require BKF_PATH . "/incl/status-email.php";
+require BKF_PATH . "/incl/petals/petals.php";
+require BKF_PATH . "/incl/emails/status-email.php";
 
-
-/**
- * Begins execution of the plugin.
-**/
 function run_bakkbone_florist_companion()
 {
 	$plugin = new BakkboneFloristCompanion();  

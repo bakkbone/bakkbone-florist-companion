@@ -14,10 +14,10 @@ defined("BKF_EXEC") or die("Silence is golden");
 class BkfPetals{
   
   function __construct() {
-      		$bkfoptions = get_option("bkf_options_setting");
-		if($bkfoptions["bkf_petals"] == "1") {add_filter('manage_edit-shop_order_columns', array($this, 'bkf_petals_col_init'), 10, 1 ); };
-		if($bkfoptions["bkf_petals"] == "1") {add_action( 'manage_shop_order_posts_custom_column' , array($this, 'bkf_petals_col'), 10, 2 ); };
-        if($bkfoptions["bkf_petals"] == "1") {add_action( 'admin_head', array($this, 'bkf_hide_reject') ); };
+      $bkfoptions = get_option("bkf_options_setting");
+      if($bkfoptions["bkf_petals"] == "1") {add_filter('manage_edit-shop_order_columns', array($this, 'bkf_petals_col_init'), 10, 1 ); };
+      if($bkfoptions["bkf_petals"] == "1") {add_action( 'manage_shop_order_posts_custom_column' , array($this, 'bkf_petals_col'), 10, 2 ); };
+      // if($bkfoptions["bkf_petals"] == "1") {add_action( 'admin_head', array($this, 'bkf_hide_reject') ); };
   }
   
   // Add actions column to orders list
@@ -38,10 +38,10 @@ class BkfPetals{
 			}
 		}
 	}
-  
+ /** 
   	function bkf_hide_reject() {
 	echo '<style type="text/css" id="bkf_hide_reject">a.wc-action-button.reject,a.wc-action-button.new,a.wc-action-button.accept { display:none !important; }</style>';
 	}
-  
+  **/
   
 }
