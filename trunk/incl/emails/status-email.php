@@ -19,8 +19,9 @@ class Bkf_WC_Email {
 	 */
 	public function __construct() {
 		add_action( 'woocommerce_email_classes', array( $this, 'bkf_register_email' ), 90, 1 );
-//		add_filter( 'wc_get_template', array( $this, 'bkf_replace_template' ), 90, 1 );
 		define( 'CUSTOM_WC_EMAIL_PATH', plugin_dir_path( __FILE__ ) );
+		add_filter('woocommerce_email_actions', array($this, 'bkf_woocommerce_email_actions'), 10, 1);
+		add_filter('woocommerce_locate_template', array($this, 'bkf_customer_completed_order_template'), PHP_INT_MAX, 4);
 	}
 
 	/**
@@ -29,24 +30,114 @@ class Bkf_WC_Email {
 	 * @return array
 	 */
 	public function bkf_register_email( $emails ) {
-		require_once 'emails/class-wc-customer-scheduled-order.php';
-		require_once 'emails/class-wc-customer-made-order.php';
-		require_once 'emails/class-wc-customer-out-order.php';
-
-		$emails['WC_Email_Customer_Scheduled_Order'] = new WC_Email_Customer_Scheduled_Order();
-		$emails['WC_Email_Customer_Prepared_Order'] = new WC_Email_Customer_Prepared_Order();
-		$emails['WC_Email_Customer_Out_for_Delivery_Order'] = new WC_Email_Customer_Out_for_Delivery_Order();
+		$emails['WC_Email_Customer_Scheduled_Order'] = include __DIR__ . 'emails/class-wc-customer-scheduled-order.php';
+		$emails['WC_Email_Customer_Prepared_Order'] = include __DIR__ . 'emails/class-wc-customer-made-order.php';
+		$emails['WC_Email_Customer_Out_for_Delivery_Order'] = include __DIR__ . 'emails/class-wc-customer-out-order.php';
 
 		return $emails;
 	}
 
-/**    public function bkf_replace_template( $located, $template_name, $args, $template_path, $default_path ) {
-    if( $template_name == 'emails/customer-completed-order.php'){
-        $located = CUSTOM_WC_EMAIL_PATH . '/templates/' . $template_name ;
+    public function filter_woocommerce_email_actions($actions)
+    {
+$actions[] = 'woocommerce_order_status_scheduled';
+$actions[] = 'woocommerce_order_status_made';
+$actions[] = 'woocommerce_order_status_out';
+$actions[] = 'woocommerce_order_status_relay';
+$actions[] = 'woocommerce_order_status_processing';
+$actions[] = 'woocommerce_order_status_completed';
+$actions[] = 'woocommerce_order_status_scheduled_to_made';
+$actions[] = 'woocommerce_order_status_scheduled_to_out';
+$actions[] = 'woocommerce_order_status_scheduled_to_relay';
+$actions[] = 'woocommerce_order_status_scheduled_to_processing';
+$actions[] = 'woocommerce_order_status_scheduled_to_completed';
+$actions[] = 'woocommerce_order_status_made_to_scheduled';
+$actions[] = 'woocommerce_order_status_made_to_out';
+$actions[] = 'woocommerce_order_status_made_to_relay';
+$actions[] = 'woocommerce_order_status_made_to_processing';
+$actions[] = 'woocommerce_order_status_made_to_completed';
+$actions[] = 'woocommerce_order_status_out_to_scheduled';
+$actions[] = 'woocommerce_order_status_out_to_made';
+$actions[] = 'woocommerce_order_status_out_to_relay';
+$actions[] = 'woocommerce_order_status_out_to_processing';
+$actions[] = 'woocommerce_order_status_out_to_completed';
+$actions[] = 'woocommerce_order_status_relay_to_scheduled';
+$actions[] = 'woocommerce_order_status_relay_to_made';
+$actions[] = 'woocommerce_order_status_relay_to_out';
+$actions[] = 'woocommerce_order_status_relay_to_processing';
+$actions[] = 'woocommerce_order_status_relay_to_completed';
+$actions[] = 'woocommerce_order_status_processing_to_scheduled';
+$actions[] = 'woocommerce_order_status_processing_to_made';
+$actions[] = 'woocommerce_order_status_processing_to_out';
+$actions[] = 'woocommerce_order_status_processing_to_relay';
+$actions[] = 'woocommerce_order_status_processing_to_completed';
+$actions[] = 'woocommerce_order_status_completed_to_scheduled';
+$actions[] = 'woocommerce_order_status_completed_to_made';
+$actions[] = 'woocommerce_order_status_completed_to_out';
+$actions[] = 'woocommerce_order_status_completed_to_relay';
+$actions[] = 'woocommerce_order_status_completed_to_processing';
+        $bkfoptions = get_option("bkf_options_setting");
+        if($bkfoptions["bkf_petals"] == "1") {
+$actions[] = 'woocommerce_order_status_new';
+$actions[] = 'woocommerce_order_status_accept';
+$actions[] = 'woocommerce_order_status_reject';
+$actions[] = 'woocommerce_order_status_scheduled_to_new';
+$actions[] = 'woocommerce_order_status_scheduled_to_accept';
+$actions[] = 'woocommerce_order_status_scheduled_to_reject';
+$actions[] = 'woocommerce_order_status_made_to_new';
+$actions[] = 'woocommerce_order_status_made_to_accept';
+$actions[] = 'woocommerce_order_status_made_to_reject';
+$actions[] = 'woocommerce_order_status_out_to_new';
+$actions[] = 'woocommerce_order_status_out_to_accept';
+$actions[] = 'woocommerce_order_status_out_to_reject';
+$actions[] = 'woocommerce_order_status_relay_to_new';
+$actions[] = 'woocommerce_order_status_relay_to_accept';
+$actions[] = 'woocommerce_order_status_relay_to_reject';
+$actions[] = 'woocommerce_order_status_processing_to_new';
+$actions[] = 'woocommerce_order_status_processing_to_accept';
+$actions[] = 'woocommerce_order_status_processing_to_reject';
+$actions[] = 'woocommerce_order_status_completed_to_new';
+$actions[] = 'woocommerce_order_status_completed_to_accept';
+$actions[] = 'woocommerce_order_status_completed_to_reject';
+$actions[] = 'woocommerce_order_status_new_to_scheduled';
+$actions[] = 'woocommerce_order_status_new_to_made';
+$actions[] = 'woocommerce_order_status_new_to_out';
+$actions[] = 'woocommerce_order_status_new_to_relay';
+$actions[] = 'woocommerce_order_status_new_to_processing';
+$actions[] = 'woocommerce_order_status_new_to_completed';
+$actions[] = 'woocommerce_order_status_new_to_accept';
+$actions[] = 'woocommerce_order_status_new_to_reject';
+$actions[] = 'woocommerce_order_status_accept_to_scheduled';
+$actions[] = 'woocommerce_order_status_accept_to_made';
+$actions[] = 'woocommerce_order_status_accept_to_out';
+$actions[] = 'woocommerce_order_status_accept_to_relay';
+$actions[] = 'woocommerce_order_status_accept_to_processing';
+$actions[] = 'woocommerce_order_status_accept_to_completed';
+$actions[] = 'woocommerce_order_status_accept_to_new';
+$actions[] = 'woocommerce_order_status_accept_to_reject';
+$actions[] = 'woocommerce_order_status_reject_to_scheduled';
+$actions[] = 'woocommerce_order_status_reject_to_made';
+$actions[] = 'woocommerce_order_status_reject_to_out';
+$actions[] = 'woocommerce_order_status_reject_to_relay';
+$actions[] = 'woocommerce_order_status_reject_to_processing';
+$actions[] = 'woocommerce_order_status_reject_to_completed';
+$actions[] = 'woocommerce_order_status_reject_to_new';
+$actions[] = 'woocommerce_order_status_reject_to_accept';
+        }
+        return $actions;
     }
-    return $located;
-    }**/
   
+
+
+    public function bkf_customer_completed_order_template($template, $template_name, $template_path)
+    {
+        if ('customer-completed-order.php' === basename($template)){
+       $template = trailingslashit(CUSTOM_WC_EMAIL_PATH) . 'templates/emails/customer-completed-order.php';
+        }
+        return $template;
+    }
+    
+    
+    
 }
 
 new Bkf_WC_Email();
