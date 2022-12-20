@@ -37,7 +37,7 @@ class Bkf_WC_Email {
 		return $emails;
 	}
 
-    public function filter_woocommerce_email_actions($actions)
+    public function bkf_woocommerce_email_actions($actions)
     {
         $actions[] = 'woocommerce_order_status_scheduled';
         $actions[] = 'woocommerce_order_status_made';
