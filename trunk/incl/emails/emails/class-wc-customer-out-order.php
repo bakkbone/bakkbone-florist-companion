@@ -1,65 +1,92 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
-
-if ( ! class_exists( 'WC_Email' ) ) {
-	return;
-}
-
 /**
- * Class WC_Email_Customer_Out_for_Delivery_Order
+ * Class WC_Email_Customer_Out_for_Delivery_Order file.
+ *
+ * @package WooCommerce\Emails
  */
-class WC_Email_Customer_Out_for_Delivery_Order extends WC_Email {
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 	/**
-	 * Create an instance of the class.
+	 * Customer Out for Delivery Order Email.
 	 *
-	 * @access public
-	 * @return void
-	 */
-	function __construct() {
-
-		$this->id          = 'customer_out_order';
-		$this->title       = __( 'Order Out for Delivery', 'woocommerce' );
-		$this->description = __( 'An email sent to the customer when an order is out for delivery.', 'woocommerce' );
-		$this->customer_email = true;
-		$this->heading     = __( 'Order Out for Delivery', 'woocommerce' );
-		$this->subject     = sprintf( _x( '[%s] Order Out for Delivery', 'default email subject for out for delivery emails', 'woocommerce' ), '{blogname}' );
-
-		$this->template_html  = 'emails/customer-out-order.php';
-		$this->template_plain = 'emails/plain/customer-out-order.php';
-		$this->template_base  = CUSTOM_WC_EMAIL_PATH . 'templates/';
-
-		add_action( 'woocommerce_order_status_out', array( $this, 'trigger' ) );
-
-		parent::__construct();
-	}
-
-	/**
-	 * Trigger Function that will send this email to the customer.
+	 * Order complete emails are sent to the customer when the order is marked complete and usual indicates that the order has been shipped.
 	 *
-	 * @access public
-	 * @return void
+	 * @class       WC_Email_Customer_Out_for_Delivery_Order
+	 * @version     2.0.0
+	 * @package     WooCommerce\Classes\Emails
+	 * @extends     WC_Email
 	 */
-	function trigger( $order_id ) {
-		$this->object = wc_get_order( $order_id );
+	class WC_Email_Customer_Out_for_Delivery_Order extends WC_Email {
 
-		if ( version_compare( '3.0.0', WC()->version, '>' ) ) {
-			$order_email = $this->object->billing_email;
-		} else {
-			$order_email = $this->object->get_billing_email();
+		/**
+		 * Constructor.
+		 */
+		public function __construct() {
+			$this->id             = 'customer_out_order';
+			$this->customer_email = true;
+			$this->title          = __( 'Order Out for Delivery', 'woocommerce' );
+			$this->description    = __( 'An email sent to the customer when an order is out for delivery.', 'woocommerce' );
+			$this->template_html  = 'emails/customer-out-order.php';
+			$this->template_plain = 'emails/plain/customer-out-order.php';
+			$this->template_base = CUSTOM_WC_EMAIL_PATH . 'templates/';
+			$this->placeholders   = array(
+				'{order_date}'   => '',
+				'{order_number}' => '',
+			);
+
+			// Call parent constructor.
+			parent::__construct();
 		}
 
-		$this->recipient = $order_email;
+		/**
+		 * Trigger the sending of this email.
+		 *
+		 * @param int            $order_id The order ID.
+		 * @param WC_Order|false $order Order object.
+		 */
+		public function trigger( $order_id, $order = false ) {
+			$this->setup_locale();
 
+			if ( $order_id && ! is_a( $order, 'WC_Order' ) ) {
+				$order = wc_get_order( $order_id );
+			}
 
-		if ( ! $this->is_enabled() || ! $this->get_recipient() ) {
-			return;
+			if ( is_a( $order, 'WC_Order' ) ) {
+				$this->object                         = $order;
+				$this->recipient                      = $this->object->get_billing_email();
+				$this->placeholders['{order_date}']   = wc_format_datetime( $this->object->get_date_created() );
+				$this->placeholders['{order_number}'] = $this->object->get_order_number();
+			}
+
+			if ( $this->is_enabled() && $this->get_recipient() ) {
+				$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
+			}
+
+			$this->restore_locale();
 		}
 
-		$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
-	}
+		/**
+		 * Get email subject.
+		 *
+		 * @since  3.1.0
+		 * @return string
+		 */
+		public function get_default_subject() {
+			return __( 'Your {site_title} order is on the road!', 'woocommerce' );
+		}
+
+		/**
+		 * Get email heading.
+		 *
+		 * @since  3.1.0
+		 * @return string
+		 */
+		public function get_default_heading() {
+			return __( 'It\'s on the way!', 'woocommerce' );
+		}
 
 	/**
 	 * Get content html.
@@ -95,5 +122,3 @@ class WC_Email_Customer_Out_for_Delivery_Order extends WC_Email {
 	}
 
 }
-
-return new WC_Email_Customer_Out_for_Delivery_Order();
