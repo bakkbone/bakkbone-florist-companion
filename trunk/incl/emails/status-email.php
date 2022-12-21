@@ -52,14 +52,17 @@ class Bkf_WC_Email {
     
     
     function bkf_woocommerce_order_status_changed( $order_id, $from, $to, $order ) {
-
     $wc_emails = WC()->mailer()->get_emails();
-
-    if( $to == 'processing' ) {
-        $wc_emails['WC_Email_Customer_Processing_Order']->trigger( $order_id );
+    $bkfstatuses = array('scheduled', 'made', 'out', 'new', 'accept', 'reject', 'relay')
+    if(in_array($to, $bkfstatuses)) {
+	    if( $to == 'processing' ) {
+		    $wc_emails['WC_Email_Customer_Processing_Order']->trigger( $order_id );
+	    }
     }
-    if( $to == 'completed' ) {
-        $wc_emails['WC_Email_Customer_Completed_Order']->trigger( $order_id );
+    if(in_array($to, $bkfstatuses)) {
+	    if( $to == 'completed' ) {
+		    $wc_emails['WC_Email_Customer_Completed_Order']->trigger( $order_id );
+	    }
     }
     if( $to == 'scheduled' ) {
         $wc_emails['WC_Email_Customer_Scheduled_Order']->trigger( $order_id );
