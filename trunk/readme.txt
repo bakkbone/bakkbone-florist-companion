@@ -5,7 +5,7 @@ Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 5.0
 Tested up to: 6.1.1
 Requires PHP: 7.3
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -27,15 +27,19 @@ Provides standardised updates for floristry websites:
 * ADD - option to show Short Descriptions on products in archives
 * ADD - option to change heading on Cart Cross-Sells section
 * ADD - Delivery Date column on WCFM Orders List
+* MODIFY - delivery address is not requested at checkout if shipping method selected is pickup
 * ADD - Integration with Petals Network
 * ADD - Automatically assign guest orders placed by registered customer to the matching user (so it appears in their order history when logged in)
+* ADD - Order statuses "Scheduled", "Prepared", "Out for Delivery", "Relayed" (plus "New" "Accepted" and "Rejected" if Petals Network integration is enabled)
+* ADD - Emails to customer for "Scheduled", "Prepared", "Out for Delivery" orders
+* MODIFY - rename "Completed" order status to "Delivered" and modify email to customer accordingly
 
 == Installation ==
 = Automatic installation =
 <ol><li>Search for "BAKKBONE" in the Plugin Repository from the Plugins > Add New screen</li></ol>
 = Manual installation =
 <ol><li>Unzip the plugin archive on your computer</li>
-<li>Upload `bakkbone-florist-companion` directory to your `/wp-content/plugins/` directory</li>
+<li>Upload 'bakkbone-florist-companion' directory to your '/wp-content/plugins/' directory</li>
 <li>Activate the plugin through the 'Plugins' menu in WordPress</li></ol>
 
 == Frequently Asked Questions ==
@@ -56,6 +60,11 @@ This requires configuration on the backend, and a plan that includes the BAKKBON
 1. Florist Options page
 
 == Changelog ==
+= 1.2.0 =
+* ADD: Order statuses "Scheduled", "Prepared", "Out for Delivery", "Relayed" (plus "New" "Accepted" and "Rejected" if Petals Network integration is enabled)
+* ADD: Emails to customer for "Scheduled", "Prepared", "Out for Delivery" orders
+* TWEAK: rename "Completed" order status to "Delivered" and modify email to customer accordingly
+* DEV: Settings and support links added to plugins list
 = 1.1.0 =
 * ADD: Ability to integrate Petals Network to receive/accept/reject orders in same format as your own orders
 * ADD: Hide delivery address fields in checkout when pickup is selected
@@ -90,6 +99,8 @@ First release hosted on WordPress Plugin Repository
 * Initial release.
 
 == Upgrade Notice ==
+= 1.2.0 =
+Contains functionality previously manually added to BAKKBONE-managed sites, do not upgrade without BAKKBONE assistance.
 = 1.1.0 =
 Contains native Petals Network integration - if already using BAKKBONE-Petals integration, do not upgrade without BAKKBONE assistance.
 = 1.0.4 =

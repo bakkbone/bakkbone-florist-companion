@@ -1,6 +1,6 @@
 <?php
 /**
- * Class WC_Email_Customer_Prepared_Order file.
+ * Class WC_Email_Customer_Out_for_Delivery_Order file.
  *
  * @package WooCommerce\Emails
  */
@@ -10,28 +10,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 	/**
-	 * Customer Prepared Order Email.
+	 * Customer Out for Delivery Order Email.
 	 *
-	 * Order prepared emails are sent to the customer when the order is marked prepared.
+<<<<<<< Updated upstream
+	 * Order complete emails are sent to the customer when the order is marked complete and usual indicates that the order has been shipped.
+=======
+	 * Order out for delivery emails are sent to the customer when the order is marked out for delivery.
+>>>>>>> Stashed changes
 	 *
-	 * @class       WC_Email_Customer_Prepared_Order
+	 * @class       WC_Email_Customer_Out_for_Delivery_Order
 	 * @version     2.0.0
 	 * @package     WooCommerce\Classes\Emails
 	 * @extends     WC_Email
 	 */
-	class WC_Email_Customer_Prepared_Order extends WC_Email {
+	class WC_Email_Customer_Out_for_Delivery_Order extends WC_Email {
 
 		/**
 		 * Constructor.
 		 */
 		public function __construct() {
-			$this->id             = 'customer_made_order';
+			$this->id             = 'customer_out_order';
 			$this->customer_email = true;
-			$this->title          = __( 'Order Prepared', 'woocommerce' );
-			$this->description    = __( 'An email sent to the customer when an order is prepared.', 'woocommerce' );
-			$this->template_html  = 'emails/customer-made-order.php';
-			$this->template_plain = 'emails/plain/customer-made-order.php';
+			$this->title          = __( 'Order Out for Delivery', 'woocommerce' );
+			$this->description    = __( 'An email sent to the customer when an order is out for delivery.', 'woocommerce' );
+			$this->template_html  = 'emails/customer-out-order.php';
+			$this->template_plain = 'emails/plain/customer-out-order.php';
+<<<<<<< Updated upstream
+			$this->template_base = CUSTOM_WC_EMAIL_PATH . 'templates/';
+=======
 			$this->template_base = BKF_WC_EMAIL_PATH . 'templates/';
+>>>>>>> Stashed changes
 			$this->placeholders   = array(
 				'{order_date}'   => '',
 				'{order_number}' => '',
@@ -75,7 +83,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( 'Your {site_title} order has been prepared', 'woocommerce' );
+<<<<<<< Updated upstream
+			return __( 'Your {site_title} order is on the road!', 'woocommerce' );
+=======
+			return __( 'Your {site_title} order is on the road', 'woocommerce' );
+>>>>>>> Stashed changes
 		}
 
 		/**
@@ -85,7 +97,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'It\'s ready!', 'woocommerce' );
+			return __( 'It\'s on the way!', 'woocommerce' );
 		}
 
 	/**
@@ -121,4 +133,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		), '', $this->template_base );
 	}
 
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
