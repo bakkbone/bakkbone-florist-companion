@@ -12,7 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	/**
 	 * Customer Scheduled Order Email.
 	 *
+<<<<<<< Updated upstream
 	 * Order complete emails are sent to the customer when the order is marked complete and usual indicates that the order has been shipped.
+=======
+	 * Order scheduled emails are sent to the customer when the order is marked scheduled.
+>>>>>>> Stashed changes
 	 *
 	 * @class       WC_Email_Customer_Scheduled_Order
 	 * @version     2.0.0
@@ -31,7 +35,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$this->description    = __( 'An email sent to the customer when an order is scheduled.', 'woocommerce' );
 			$this->template_html  = 'emails/customer-scheduled-order.php';
 			$this->template_plain = 'emails/plain/customer-scheduled-order.php';
+<<<<<<< Updated upstream
 			$this->template_base = CUSTOM_WC_EMAIL_PATH . 'templates/';
+=======
+			$this->template_base = BKF_WC_EMAIL_PATH . 'templates/';
+>>>>>>> Stashed changes
 			$this->placeholders   = array(
 				'{order_date}'   => '',
 				'{order_number}' => '',
@@ -121,4 +129,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		), '', $this->template_base );
 	}
 
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

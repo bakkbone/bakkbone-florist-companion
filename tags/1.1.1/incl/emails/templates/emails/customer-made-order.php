@@ -1,8 +1,8 @@
 <?php
 /**
- * Customer completed order email (plain text)
+ * Customer prepared order email
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/emails/plain/customer-completed-order.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/emails/customer-made-order.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -11,20 +11,23 @@
  * the readme will list any important changes.
  *
  * @see https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce\Templates\Emails\Plain
+ * @package WooCommerce\Templates\Emails
  * @version 3.7.0
  */
 
-defined( 'ABSPATH' ) || exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
-echo esc_html( wp_strip_all_tags( $email_heading ) );
-echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
+/*
+ * @hooked WC_Emails::email_header() Output the email header
+ */
+do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
-/* translators: %s: Customer first name */
-echo sprintf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
-/* translators: %s: Site title */
-echo esc_html__( 'Your order has been marked as delivered.', 'woocommerce' ) . "\n\n";
+<?php /* translators: %s: Customer first name */ ?>
+<p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
+<p><?php esc_html_e( 'We have prepared your order, and are ready to send it out for delivery.', 'woocommerce' ); ?></p>
+<?php
 
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.
@@ -33,8 +36,6 @@ echo esc_html__( 'Your order has been marked as delivered.', 'woocommerce' ) . "
  * @since 2.5.0
  */
 do_action( 'woocommerce_email_order_details', $order, $sent_to_admin, $plain_text, $email );
-
-echo "\n----------------------------------------\n\n";
 
 /*
  * @hooked WC_Emails::order_meta() Shows order meta data.
@@ -47,14 +48,14 @@ do_action( 'woocommerce_email_order_meta', $order, $sent_to_admin, $plain_text, 
  */
 do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_text, $email );
 
-echo "\n\n----------------------------------------\n\n";
-
 /**
  * Show user-defined additional content - this is set in each email's settings.
  */
 if ( $additional_content ) {
-	echo esc_html( wp_strip_all_tags( wptexturize( $additional_content ) ) );
-	echo "\n\n----------------------------------------\n\n";
+	echo wp_kses_post( wpautop( wptexturize( $additional_content ) ) );
 }
 
-echo wp_kses_post( apply_filters( 'woocommerce_email_footer_text', get_option( 'woocommerce_email_footer_text' ) ) );
+/*
+ * @hooked WC_Emails::email_footer() Output the email footer
+ */
+do_action( 'woocommerce_email_footer', $email );

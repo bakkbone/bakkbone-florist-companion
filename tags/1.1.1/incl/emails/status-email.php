@@ -19,11 +19,7 @@ class Bkf_WC_Email {
 	 */
 	public function __construct() {
 		add_action('woocommerce_email_classes', array( $this, 'bkf_register_email' ), 90, 1 );
-<<<<<<< Updated upstream
-		define( 'CUSTOM_WC_EMAIL_PATH', plugin_dir_path( __FILE__ ) );
-=======
 		define( 'BKF_WC_EMAIL_PATH', plugin_dir_path( __FILE__ ) );
->>>>>>> Stashed changes
 		add_filter('woocommerce_locate_template', array($this, 'bkf_customer_completed_order_template'), PHP_INT_MAX, 3);
 		add_action('woocommerce_order_status_changed', array($this, 'bkf_woocommerce_order_status_changed'), PHP_INT_MAX, 4 );
 	}
@@ -77,14 +73,6 @@ class Bkf_WC_Email {
         $wc_emails['WC_Email_Customer_Out_for_Delivery_Order']->trigger( $order_id );
     }
     }
-<<<<<<< Updated upstream
     
     
 }
-
-new Bkf_WC_Email();
-=======
-    
-    
-}
->>>>>>> Stashed changes

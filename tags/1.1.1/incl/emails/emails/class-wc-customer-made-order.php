@@ -121,8 +121,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 		), '', $this->template_base );
 	}
 
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes

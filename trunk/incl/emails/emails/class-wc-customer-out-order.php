@@ -12,7 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	/**
 	 * Customer Out for Delivery Order Email.
 	 *
+<<<<<<< Updated upstream
 	 * Order complete emails are sent to the customer when the order is marked complete and usual indicates that the order has been shipped.
+=======
+	 * Order out for delivery emails are sent to the customer when the order is marked out for delivery.
+>>>>>>> Stashed changes
 	 *
 	 * @class       WC_Email_Customer_Out_for_Delivery_Order
 	 * @version     2.0.0
@@ -31,7 +35,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$this->description    = __( 'An email sent to the customer when an order is out for delivery.', 'woocommerce' );
 			$this->template_html  = 'emails/customer-out-order.php';
 			$this->template_plain = 'emails/plain/customer-out-order.php';
+<<<<<<< Updated upstream
 			$this->template_base = CUSTOM_WC_EMAIL_PATH . 'templates/';
+=======
+			$this->template_base = BKF_WC_EMAIL_PATH . 'templates/';
+>>>>>>> Stashed changes
 			$this->placeholders   = array(
 				'{order_date}'   => '',
 				'{order_number}' => '',
@@ -75,7 +83,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 * @return string
 		 */
 		public function get_default_subject() {
+<<<<<<< Updated upstream
 			return __( 'Your {site_title} order is on the road!', 'woocommerce' );
+=======
+			return __( 'Your {site_title} order is on the road', 'woocommerce' );
+>>>>>>> Stashed changes
 		}
 
 		/**
@@ -121,4 +133,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		), '', $this->template_base );
 	}
 
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

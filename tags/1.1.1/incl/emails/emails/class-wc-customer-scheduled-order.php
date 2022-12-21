@@ -1,6 +1,6 @@
 <?php
 /**
- * Class WC_Email_Customer_Prepared_Order file.
+ * Class WC_Email_Customer_Scheduled_Order file.
  *
  * @package WooCommerce\Emails
  */
@@ -10,27 +10,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 	/**
-	 * Customer Prepared Order Email.
+	 * Customer Scheduled Order Email.
 	 *
-	 * Order prepared emails are sent to the customer when the order is marked prepared.
+	 * Order scheduled emails are sent to the customer when the order is marked scheduled.
 	 *
-	 * @class       WC_Email_Customer_Prepared_Order
+	 * @class       WC_Email_Customer_Scheduled_Order
 	 * @version     2.0.0
 	 * @package     WooCommerce\Classes\Emails
 	 * @extends     WC_Email
 	 */
-	class WC_Email_Customer_Prepared_Order extends WC_Email {
+	class WC_Email_Customer_Scheduled_Order extends WC_Email {
 
 		/**
 		 * Constructor.
 		 */
 		public function __construct() {
-			$this->id             = 'customer_made_order';
+			$this->id             = 'customer_scheduled_order';
 			$this->customer_email = true;
-			$this->title          = __( 'Order Prepared', 'woocommerce' );
-			$this->description    = __( 'An email sent to the customer when an order is prepared.', 'woocommerce' );
-			$this->template_html  = 'emails/customer-made-order.php';
-			$this->template_plain = 'emails/plain/customer-made-order.php';
+			$this->title          = __( 'Order Scheduled', 'woocommerce' );
+			$this->description    = __( 'An email sent to the customer when an order is scheduled.', 'woocommerce' );
+			$this->template_html  = 'emails/customer-scheduled-order.php';
+			$this->template_plain = 'emails/plain/customer-scheduled-order.php';
 			$this->template_base = BKF_WC_EMAIL_PATH . 'templates/';
 			$this->placeholders   = array(
 				'{order_date}'   => '',
@@ -75,7 +75,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( 'Your {site_title} order has been prepared', 'woocommerce' );
+			return __( 'Your {site_title} order has been scheduled for delivery', 'woocommerce' );
 		}
 
 		/**
@@ -85,7 +85,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'It\'s ready!', 'woocommerce' );
+			return __( 'We\'ve got it.', 'woocommerce' );
 		}
 
 	/**
@@ -121,8 +121,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 		), '', $this->template_base );
 	}
 
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
