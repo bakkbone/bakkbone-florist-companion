@@ -20,7 +20,6 @@ class Bkf_WC_Email {
 	public function __construct() {
 		add_action('woocommerce_email_classes', array( $this, 'bkf_register_email' ), 90, 1 );
 		define( 'CUSTOM_WC_EMAIL_PATH', plugin_dir_path( __FILE__ ) );
-		add_filter('woocommerce_email_actions', array($this, 'bkf_woocommerce_email_actions'), 10, 1);
 		add_filter('woocommerce_locate_template', array($this, 'bkf_customer_completed_order_template'), PHP_INT_MAX, 3);
 		add_action('woocommerce_order_status_changed', array($this, 'bkf_woocommerce_order_status_changed'), PHP_INT_MAX, 4 );
 	}
