@@ -37,9 +37,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'{order_number}' => '',
 			);
 
-			// Triggers for this email.
-			add_action( 'woocommerce_order_status_made', array( $this, 'trigger' ), 10, 2 );
-
 			// Call parent constructor.
 			parent::__construct();
 		}
@@ -125,5 +122,3 @@ if ( ! defined( 'ABSPATH' ) ) {
 	}
 
 }
-
-return new WC_Email_Customer_Prepared_Order();
