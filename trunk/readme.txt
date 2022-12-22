@@ -5,7 +5,7 @@ Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 5.0
 Tested up to: 6.1.1
 Requires PHP: 7.3
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -60,6 +60,8 @@ This requires configuration on the backend, and a plan that includes the BAKKBON
 1. Florist Options page
 
 == Changelog ==
+= 1.2.1 =
+* TWEAK: Fix display of "Delivery details" header at checkout
 = 1.2.0 =
 * ADD: Order statuses "Scheduled", "Prepared", "Out for Delivery", "Relayed" (plus "New" "Accepted" and "Rejected" if Petals Network integration is enabled)
 * ADD: Emails to customer for "Scheduled", "Prepared", "Out for Delivery" orders
