@@ -16,8 +16,8 @@ class BkfCore{
 	function __construct() {
         add_filter( 'plugin_action_links_bakkbone-florist-companion/bakkbone-florist-companion.php', array($this, 'bkf_settings_link') );
 		add_filter( "woocommerce_shipping_package_name" , array($this, "bkf_shipping_to_delivery"), 10, 3);
-		add_filter( "gettext" , array($this, "bkf_translate_reply"));
-		add_filter( "ngettext" , array($this, "bkf_translate_reply"));
+		add_filter( "gettext" , array($this, "bkf_translate_reply"), PHP_INT_MAX, 1 );
+		add_filter( "ngettext" , array($this, "bkf_translate_reply"), PHP_INT_MAX, 1 );
 		add_filter( "woocommerce_billing_fields" , array($this, "bkf_override_billing_fields") );
 		add_filter( "woocommerce_shipping_fields" , array($this, "bkf_override_shipping_fields"));
 		add_filter( "woocommerce_email_order_meta_fields", array($this, "bkf_notes_email"), 10, 3);
@@ -57,6 +57,7 @@ class BkfCore{
 	function bkf_translate_reply($translated) {
 	$translated = str_ireplace('Shipping', 'Delivery', $translated);
 	$translated = str_ireplace('Ship to a different address?', 'Delivery details', $translated);
+	$translated = str_ireplace('Deliver to a different address?', 'Delivery details', $translated);
 	$translated = str_ireplace('Customer provided note:', 'Card Message:', $translated);
 	$translated = str_ireplace('Note:', 'Card Message:', $translated);
 	return $translated;
