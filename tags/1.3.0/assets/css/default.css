@@ -1,0 +1,21 @@
+.bkf-form{
+	border: 1px solid #ddd;
+	padding: 12px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+.bkf-form-control{
+	padding: 12px;
+	display: block !important;
+	width: 100% !important;
+	border-radius: 0 !important;
+	border: 1px solid #ddd !important;
+	background: #fff !important;
+}
+input[type="color"].bkf-form-control{
+	padding: 0 !important;
+}
+.bkf-help-block{
+	font-size:75% !important;
+	margin-top: 0 !important;
+}
