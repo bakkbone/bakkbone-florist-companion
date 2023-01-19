@@ -124,6 +124,8 @@ First release hosted on WordPress Plugin Repository
 * Initial release.
 
 == Upgrade Notice ==
+= 2.0.0 =
+This version is not backwards-compatible in a lot of respects as it is a full overhaul of the plugin. Do not upgrade without BAKKBONE assistance unless you have advanced understanding of WP databases.
 = 1.2.0 =
 Contains functionality previously manually added to BAKKBONE-managed sites, do not upgrade without BAKKBONE assistance.
 = 1.1.0 =
