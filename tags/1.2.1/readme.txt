@@ -1,5 +1,5 @@
 === BAKKBONE Florist Companion ===
-Contributors: leggroup
+Contributors: bakkbone
 Donate link: 
 Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 5.0
