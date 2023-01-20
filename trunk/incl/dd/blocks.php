@@ -87,7 +87,7 @@ class BkfDdBlocks{
 					<h2 style="margin-top:0;"><?php _e('Closure Dates', 'bakkbone-florist-companion') ?></h2>
 					<div class="bkf-form" style="max-width:200px;text-align:center;margin: 12px auto;">
 						<form id="add-closed" action="<?php echo $ajaxurl; ?>" />
-							<h4 style="margin:0;">Add Closure Date</h4>
+							<h4 style="margin:0;"><?php _e('Add Closure Date', 'bakkbone-florist-companion'); ?></h4>
 							<input type="hidden" name="nonce" value="<?php echo $closednonce; ?>" />
 							<input type="hidden" name="action" value="bkf_dd_add_closed" />
 							<p style="margin:5px 0;"><input style="margin-left:0;" type="text" name="date" class="closure-date input-text bkf-form-control" required autocomplete="off" /></p>
@@ -103,7 +103,7 @@ class BkfDdBlocks{
 					<h2 style="margin-top:0;"><?php _e('Fully Booked Dates', 'bakkbone-florist-companion') ?></h2>
 					<div class="bkf-form" style="max-width:200px;text-align:center;margin: 12px auto;">
 						<form id="add-full" action="<?php echo $ajaxurl; ?>" />
-							<h4 style="margin:0;">Add Closure Date</h4>
+							<h4 style="margin:0;"><?php _e('Add Fully Booked Date', 'bakkbone-florist-companion'); ?></h4>
 							<input type="hidden" name="nonce" value="<?php echo $fullnonce; ?>" />
 							<input type="hidden" name="action" value="bkf_dd_add_full" />
 							<p style="margin:5px 0;"><input style="margin-left:0;" type="text" name="date" class="closure-date input-text bkf-form-control" required autocomplete="off" /></p>

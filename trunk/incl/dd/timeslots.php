@@ -206,7 +206,7 @@ class BkfDdTsOptions{
 							<input type="hidden" name="nonce" value="<?php echo $addnonce; ?>" />
 							<label><?php _e('Start: ', 'bakkbone-florist-companion'); ?><input type="time" class="bkf-form-control" id="<?php echo $day.'-'.$smethod['instanceid']; ?>-start" name="start" /></label>
 							<label><?php _e('End: ', 'bakkbone-florist-companion'); ?><input type="time" class="bkf-form-control" id="<?php echo $day.'-'.$smethod['instanceid']; ?>-end" name="end" /></label>
-							<input type="submit" value="<?php _e('Add Timeslot','bakkbone-florist-companion'); ?>" id="<?php echo $day.'-'.$smethod['instanceid']; ?>-submit" class="button button-primary" disabled />
+							<input type="submit" value="<?php _e('Add Timeslot','bakkbone-florist-companion'); ?>" id="<?php echo $day.'-'.$smethod['instanceid']; ?>-submit" class="button button-primary" />
 							<div style="max-width:350px;" id="<?php echo $day.'-addts-'.$smethod['instanceid']; ?>-error" class="bkf-error bkf-hidden"><p><?php _e('End time must be greater than start time.','bakkbone-florist-companion'); ?></p></div>
 						</form>
 						<script>
@@ -221,16 +221,13 @@ class BkfDdTsOptions{
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>").addClass( 'bkf-invalid' );
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>").removeClass( 'bkf-validated' );
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>-error").removeClass( 'bkf-hidden' );
-										document.getElementById("<?php echo $day.'-'.$smethod['rateid']; ?>-submit").disabled = true;
 									} else if(start == '' || end == '') {
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>").removeClass( 'bkf-invalid' );
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>").removeClass( 'bkf-validated' );                  
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>-error").addClass( 'bkf-hidden' );
-										document.getElementById("<?php echo $day.'-'.$smethod['rateid']; ?>-submit").disabled = true;
 				                  } else {
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>").addClass( 'bkf-validated' );
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>-error").addClass( 'bkf-hidden' );
-										document.getElementById("<?php echo $day.'-'.$smethod['rateid']; ?>-submit").disabled = false;
 									}
 								});
 								
@@ -241,16 +238,13 @@ class BkfDdTsOptions{
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>").addClass( 'bkf-invalid' );
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>").removeClass( 'bkf-validated' );
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>-error").removeClass( 'bkf-hidden' );
-										document.getElementById("<?php echo $day.'-'.$smethod['instanceid']; ?>-submit").disabled = true;
 									} else if(start == '' || end == '') {
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>").removeClass( 'bkf-invalid' );
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>").removeClass( 'bkf-validated' );                  
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>-error").addClass( 'bkf-hidden' );
-										document.getElementById("<?php echo $day.'-'.$smethod['instanceid']; ?>-submit").disabled = true;
 				                  } else {
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>").addClass( 'bkf-validated' );
 										$("#<?php echo $day.'-addts-'.$smethod['instanceid']; ?>-error").addClass( 'bkf-hidden' );
-										document.getElementById("<?php echo $day.'-'.$smethod['instanceid']; ?>-submit").disabled = false;
 									}
 								});
 							});
@@ -262,11 +256,11 @@ class BkfDdTsOptions{
 							}else{}
 						}
 						?></div><?php
-					}?>
+					}
+			}?>
 				</div><?php
-			}
 		}
-		?></div><?php
+		?></div></div><?php
     }
     
 	function bkfAddDdTsInit()
@@ -349,6 +343,5 @@ class BkfDdTsOptions{
    }
    die();		
 	}
-
 	
 }
