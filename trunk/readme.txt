@@ -43,7 +43,7 @@ Why? You can view/print your orders all in one place, and in one consistent form
 * Collect delivery/collection date at checkout
 * Set which weekdays you deliver and your same-day delivery cutoff
 * Manage closure days (eg. public holidays) and fully booked dates in your dashboard
-* Optionally set timeslots (eg. 9am-12pm) for customers to choose from per delivery method and per day
+* Optionally set timeslots (eg. 9am-12pm) for customers to choose from per delivery method and per day, and optionally set a fee for a timeslot
 * Restrict delivery methods per weekday
 * Block specific delivery dates per product category (eg. certain ranges not available at Valentine's Day, etc.)
 
