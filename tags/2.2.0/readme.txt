@@ -124,6 +124,7 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 9. Product Category Blocks page
 10. Delivery Timeslots Settings page
 11. Petals Network Integration Settings Page
+12. Delivery Suburbs Settings page
 
 == Changelog ==
 = 2.2.0 =
