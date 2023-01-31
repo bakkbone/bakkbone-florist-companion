@@ -20,12 +20,12 @@
             'dev_requirement' => false,
         ),
         'dompdf/dompdf' => array(
-            'pretty_version' => 'v2.0.1',
-            'version' => '2.0.1.0',
+            'pretty_version' => 'v2.0.2',
+            'version' => '2.0.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../dompdf/dompdf',
             'aliases' => array(),
-            'reference' => 'c5310df0e22c758c85ea5288175fc6cd777bc085',
+            'reference' => 'ad4c631bf8897fc1ca7b566468a969cfd71a558a',
             'dev_requirement' => false,
         ),
         'masterminds/html5' => array(

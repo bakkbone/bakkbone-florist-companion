@@ -130,6 +130,7 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 = 2.2.6 =
 * TWEAK: Add category blocks to nightly purge of past delivery date blocks
 * DEV: Fix reported bug where Petals orders crash on receipt
+* DEV: Update Dompdf to v2.0.2
 = 2.2.5 =
 * DEV: Fix reported bug where timeslots field stuck on checkout page if no time slots configured in backend, preventing checkout
 = 2.2.4 =
