@@ -5,7 +5,7 @@ Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 6.0
 Tested up to: 6.1.1
 Requires PHP: 7.4
-Stable tag: 2.2.6
+Stable tag: 2.2.7
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -127,6 +127,8 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 12. Delivery Suburbs Settings page
 
 == Changelog ==
+= 2.2.7 =
+* DEV: Reapply patch for previously reported Petals bug in v2.2.6
 = 2.2.6 =
 * TWEAK: Add category blocks to nightly purge of past delivery date blocks
 * DEV: Fix reported bug where Petals orders crash on receipt
