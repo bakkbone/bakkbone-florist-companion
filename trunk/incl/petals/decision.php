@@ -45,7 +45,7 @@ class BkfPetalsDecision{
         if($outcome == 'reject'){
             $code       = $_REQUEST['code'];
         }
-        $url        = 'https://pin.petals.com.au/wconnect/wc.isa?pbo~&ctype=45'
+        $url        = 'https://pin.petals.com.au/wconnect/wc.isa?pbo~&ctype=45';
         if($outcome == 'accept'){
             $body       = '<?xml version="1.0" encoding="UTF-8"?>
 <message>
