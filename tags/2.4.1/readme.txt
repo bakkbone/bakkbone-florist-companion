@@ -130,6 +130,7 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 
 == Changelog ==
 = 2.4.1 =
+* TWEAK: Fix CSS for "Order Type" field
 * DEV: Fix POST URL for Petals decision
 * DEV: Amend date() to wp_date() to resolve timezone issue
 = 2.4.0 =

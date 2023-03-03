@@ -18,6 +18,7 @@
 }
 .ship-type-field .woocommerce-input-wrapper label {
 	margin-right: 15px;
+	margin-left: 10px;
 }
 .ship-type-field > label {
 	font-size: 1.5em;
