@@ -209,7 +209,7 @@ class BkfSameDay{
 							} else {
 								if(!empty($co[$smethod['rateid'].'-'.$day])){
 									$thisco = $co[$smethod['rateid'].'-'.$day];
-									echo '<p><strong>'.ucwords($thisco['day']).':</strong> '.wp_date("g:i a", strtotime($thisco['cutoff'])).' <em><a href="'.admin_url('admin-ajax.php?action=bkf_sd_del&nonce='.$delnonce.'&id='.$thisco['id']).'">'.__('Delete','bakkbone-florist-companion').'</a></em></p>';
+									echo '<p><strong>'.ucwords($thisco['day']).':</strong> '.date("g:i a", strtotime($thisco['cutoff'])).' <em><a href="'.admin_url('admin-ajax.php?action=bkf_sd_del&nonce='.$delnonce.'&id='.$thisco['id']).'">'.__('Delete','bakkbone-florist-companion').'</a></em></p>';
 								} else {
 								echo '<form class="bkf-form" id="addsd-'.$smethod['rateid'].'-'.$day.'" action="'.admin_url('admin-ajax.php').'">
 									<p style="margin:0"><strong>'.ucwords($day).'</strong></p><input type="hidden" name="action" value="bkf_sd_add" />
