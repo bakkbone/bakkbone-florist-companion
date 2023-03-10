@@ -322,7 +322,7 @@ class BkfDdTsOptions{
 						echo '<div class="bkf-form" id="'.$day.'-'.$smethod['instanceid'].'"><p style="margin:0;"><strong>'.$smethod['title'].' #'.$smethod['instanceid'].': </strong>'.$smethod['usertitle'].'</p>';
 						foreach($ts as $tslot){
 							if($tslot['day'] == $day && $tslot['method'] == $smethod['rateid']){
-									echo '<p>'.wp_date("g:i a", strtotime($tslot['start'])).' - '.wp_date("g:i a", strtotime($tslot['end'])).' <em><a href="'.admin_url('admin-ajax.php?action=bkf_ts_del&nonce='.$delnonce.'&id='.$tslot['id']).'">'.__('Delete','bakkbone-florist-companion').'</a></em>';
+									echo '<p>'.date("g:i a", strtotime($tslot['start'])).' - '.date("g:i a", strtotime($tslot['end'])).' <em><a href="'.admin_url('admin-ajax.php?action=bkf_ts_del&nonce='.$delnonce.'&id='.$tslot['id']).'">'.__('Delete','bakkbone-florist-companion').'</a></em>';
 									if($tslot['fee'] !== '' && $tslot['fee'] !== null){
 										echo '<br><strong>'.__('Fee: ', 'bakkbone-florist-companion').'</strong>'.get_woocommerce_currency_symbol(get_woocommerce_currency()).$tslot['fee'];
 									}
