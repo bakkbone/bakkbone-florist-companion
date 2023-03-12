@@ -63,10 +63,10 @@ class BkfCore{
 	}
 	
 	function bkf_override_billing_fields( $fields ) {
-		$fields['billing_company']['label'] = __('Business Name', 'bakkbone-florist-companion');
-		$fields['billing_state']['label'] = __('State/Territory', 'bakkbone-florist-companion');
-		$fields['billing_postcode']['label'] = __('Postcode', 'bakkbone-florist-companion');
-		$fields['billing_country']['label'] = __('Country', 'bakkbone-florist-companion');
+		$fields['billing_company']['label'] = get_option('bkf_localisation_setting')['billing_label_business'];
+		$fields['billing_state']['label'] = get_option('bkf_localisation_setting')['global_label_state'];
+		$fields['billing_postcode']['label'] = get_option('bkf_localisation_setting')['global_label_postcode'];
+		$fields['billing_country']['label'] = get_option('bkf_localisation_setting')['global_label_country'];
 		return $fields;
 	}
 	
@@ -78,12 +78,12 @@ class BkfCore{
 		}
 	    $fields['shipping_company']['label'] = __('Business/Hospital/Hotel Name', 'bakkbone-florist-companion');
 		$fields['shipping_company']['description'] = __('For hospitals/hotels/etc., please include ward/room information if known', 'bakkbone-florist-companion');
-		$fields['shipping_state']['label'] = __('State/Territory', 'bakkbone-florist-companion');
-		$fields['shipping_postcode']['label'] = __('Postcode', 'bakkbone-florist-companion');
-		$fields['shipping_country']['label'] = __('Country', 'bakkbone-florist-companion');
+		$fields['shipping_state']['label'] = get_option('bkf_localisation_setting')['global_label_state'];
+		$fields['shipping_postcode']['label'] = get_option('bkf_localisation_setting')['global_label_postcode'];
+		$fields['shipping_country']['label'] = get_option('bkf_localisation_setting')['global_label_country'];
 		$fields['shipping_phone'] = array(
-	    'label'     => __('Phone', 'bakkbone-florist-companion'),
-	    'placeholder'   => _x('Phone', 'placeholder', 'bakkbone-florist-companion'),
+	    'label'     => get_option('bkf_localisation_setting')['global_label_telephone'],
+	    'placeholder'   => get_option('bkf_localisation_setting')['global_label_telephone'],
 	    'required'  => true,
 	    'class'     => array("form-row-wide"),
 	    'clear'     => true,
@@ -91,12 +91,12 @@ class BkfCore{
 		'validate'  => array( 'phone' ),
 	     );
 		$fields['shipping_notes'] = array(
-	    'label'     => __('Anything we need to know about the address?', 'bakkbone-florist-companion'),
+	    'label'     => get_option('bkf_localisation_setting')['delivery_label_notes'],
 	    'required'  => false,
 	    'class'     => array('form-row-wide'),
 	    'clear'     => true,
 		'type'		=> 'textarea',
-		'description' => __('eg. gate code, fence, dog, etc.', 'bakkbone-florist-companion')
+		'description' => get_option('bkf_localisation_setting')['delivery_description_notes']
 	     );
 	     return $fields;
 	}
@@ -190,7 +190,7 @@ class BkfCore{
 					'class' => 'input-text',
 					'style' => 'width:100%',
 					'value' => $shippingnotes,
-					'description' => __('Gate code, fence, dog, etc.', 'bakkbone-florist-companion')
+					'description' => get_option('bkf_localisation_setting')['delivery_description_notes']
 				) );
 			?>
 		</div>
@@ -220,7 +220,7 @@ class BkfCore{
 	    'class'     => array('form-row-wide'),
 	    'clear'     => true,
 		'type'		=> 'textarea',
-		'description' => sprintf( __( "We'll include this with your gift. Maximum %s characters.", 'bakkbone-florist-companion' ), $bkfcardlength ),
+		'description' => sprintf( get_option('bkf_localisation_setting')['additional_description_cardmessage'], $bkfcardlength ),
 		'maxlength' => $bkfcardlength
 		     );
     }
@@ -232,14 +232,14 @@ class BkfCore{
 	}
 	
 	function bkf_add_cs_heading( $string ) {
-	$bkfoptions = get_option("bkf_options_setting");
-	$string = $bkfoptions["cs_heading"];
+	$bkflocalisation = get_option("bkf_localisation_setting");
+	$string = $bkflocalisation["csheading"];
 	return $string;
 	}
 	
 	function noship_message() {
-		$bkfoptions = get_option("bkf_options_setting");
-		print '<span class="woocommerce-no-shipping-available-html e-checkout-message">' . esc_html( $bkfoptions["noship"] ) . '</span>';
+		$bkflocalisation = get_option("bkf_localisation_setting");
+		print '<span class="woocommerce-no-shipping-available-html e-checkout-message">' . esc_html( $bkflocalisation["noship"] ) . '</span>';
 	}
 		
 	function bkf_link_guest_order( $order_id ) {

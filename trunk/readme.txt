@@ -5,7 +5,7 @@ Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 6.0
 Tested up to: 6.1.1
 Requires PHP: 7.4
-Stable tag: 2.4.5
+Stable tag: 2.5.0
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -129,8 +129,10 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 12. Delivery Suburbs Settings page
 
 == Changelog ==
-= 2.4.5 =
+= 2.5.0 =
 * ADD: Options page for localisation
+* TWEAK: Massive localisation overhaul
+* TWEAK: Move CS Heading and No-Ship to Localisation settings
 * TWEAK: Universal localisation of "Download" for PDFs
 * TWEAK: Change default pre-ordering period to 8 weeks
 = 2.4.4 =

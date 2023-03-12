@@ -4,7 +4,7 @@
  * Plugin Name: BAKKBONE Florist Companion
  * Plugin URI: https://docs.bkbn.au/v/bkf/
  * Description: Provides standardised features for floristry websites.
- * Version: 2.4.5
+ * Version: 2.5.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: BAKKBONE Australia
@@ -145,6 +145,7 @@ function bkf_active(){
 	$wf = '';
 	$dm = '';
 	$advanced = '';
+	$localisation = '';
 	
 	$options = get_option('bkf_options_setting');
 	$features = get_option('bkf_features_setting');
@@ -158,16 +159,17 @@ function bkf_active(){
 	$wf = get_option('bkf_wf_setting');
 	$dm = get_option('bkf_dm_setting');
 	$advanced = get_option('bkf_advanced_setting');
+	$localisation = get_option('bkf_localisation_setting');
 	
 	if($options == ''){
-		update_option('bkf_options_setting',array(
+		update_option('bkf_options_setting', array(
 			'card_length'	=>	'250',
 			'cs_heading'	=>	default_csheading,
 			'noship'		=>	default_noship,
 		));
 	}
 	if($features == ''){
-		update_option('bkf_features_setting',array(
+		update_option('bkf_features_setting', array(
 			'excerpt_pa'	=>	false,
 			'suburbs_on'	=>	true,
 			'petals_on'		=>	false,
@@ -187,7 +189,7 @@ function bkf_active(){
 		));
 	}
 	if($dd == ''){
-		update_option('bkf_dd_setting',array(
+		update_option('bkf_dd_setting', array(
 			'monday'	=>	false,
 			'tuesday'	=>	false,
 			'wednesday'	=>	false,
@@ -205,21 +207,37 @@ function bkf_active(){
 		));
 	}
 	if($dsf == ''){
-		update_option('bkf_dd_ds_fees',array());
+		update_option('bkf_dd_ds_fees', array());
 	}
 	if($sd == ''){
-		update_option('bkf_sd_setting',array());
+		update_option('bkf_sd_setting', array());
 	}
 	if($wf == ''){
-		update_option('bkf_wf_setting',array(
+		update_option('bkf_wf_setting', array(
 		));
 	}
 	if($dm == ''){
-		update_option('bkf_dm_setting',array());
+		update_option('bkf_dm_setting', array());
 	}
 	if($advanced == ''){
-		update_option('bkf_advanced_setting',array(
+		update_option('bkf_advanced_setting', array(
 			'deactivation_purge'	=>	false
+		));
+	}
+	if($localisation == ''){
+		update_option('bkf_localisation_setting', array(
+			'billing_label_business' => default_billing_label_business,
+			'global_label_state' => default_global_label_state,
+			'global_label_postcode' => default_global_label_postcode,
+			'global_label_country' => default_global_label_country,
+			'global_label_phone' => default_global_label_phone,
+			'delivery_label_business' => default_delivery_label_business,
+			'delivery_description_business' => default_delivery_description_business,
+			'delivery_label_notes' => default_delivery_label_notes,
+			'delivery_description_notes' => default_delivery_description_notes,
+			'additional_description_cardmessage' => default_additional_description_cardmessage,
+			'csheading' => default_csheading,
+			'noship' => default_noship
 		));
 	}
 }

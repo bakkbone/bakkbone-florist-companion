@@ -130,22 +130,6 @@ class BkfPluginOptions{
 			"bkf-options",
 			"bkf_options_section"
 		);
-
-		add_settings_field(
-			"cs_heading",
-			__("Cross-Sell Cart Heading","bakkbone-florist-companion"),
-			array($this,"bkfCsHeadingCallback"),
-			"bkf-options",
-			"bkf_options_section"
-		);
-		
-		add_settings_field(
-			"noship",
-			__("No-Ship Message","bakkbone-florist-companion"),
-			array($this,"bkfNoshipCallback"),
-			"bkf-options",
-			"bkf_options_section"
-		);
 		
 		add_settings_field(
 			"excerpt_pa",
@@ -195,12 +179,6 @@ class BkfPluginOptions{
 		
 		if(isset($input["card_length"]))
 			$new_input["card_length"] = sanitize_text_field($input["card_length"]);
-		
-		if(isset($input["cs_heading"]))
-			$new_input["cs_heading"] = sanitize_text_field($input["cs_heading"]);
-		
-		if(isset($input["noship"]))
-			$new_input["noship"] = sanitize_text_field($input["noship"]);
 		
 		return $new_input;
 	}
@@ -280,32 +258,6 @@ class BkfPluginOptions{
 		?>
 		<input class="bkf-form-control small-text" id="bkf-card-length" type="number" name="bkf_options_setting[card_length]" placeholder="250" value="<?php echo $value; ?>" />
 		<p class="description"><?php _e("Maximum number of characters (including spaces/punctuation) a customer will be able to enter in the Card Message field.","bakkbone-florist-companion") ?></p>
-		<?php
-	}
-	
-	function bkfCsHeadingCallback(){
-	
-		if(isset($this->bkf_options_setting["cs_heading"])){
-			$value = esc_attr($this->bkf_options_setting["cs_heading"]);
-		}else{
-			$value = default_csheading;
-		}
-		?>
-		<input class="bkf-form-control regular-text" id="bkf-cs-heading" type="text" name="bkf_options_setting[cs_heading]" placeholder="<?php echo $placeholder; ?>" value="<?php echo $value; ?>" />
-		<p class="description"><?php _e("Replaces the heading of the Cross-Sells section of the Cart page","bakkbone-florist-companion") ?></p>
-		<?php
-	}
-
-	function bkfNoshipCallback(){
-		
-		if(isset($this->bkf_options_setting["noship"])){
-			$value = esc_attr($this->bkf_options_setting["noship"]);
-		}else{
-			$value = default_noship;
-		}
-		?>
-		<input class="bkf-form-control large-text" id="bkf-noship" type="text" name="bkf_options_setting[noship]" placeholder="<?php echo $placeholder; ?>" value="<?php echo $value; ?>" />
-		<p class="description"><?php _e("Displays at checkout if the delivery address' suburb is not serviced.","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 

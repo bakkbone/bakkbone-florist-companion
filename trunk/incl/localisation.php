@@ -13,6 +13,9 @@ class BkfLocalisation{
 	private $bkf_localisation_setting = array();
 		
 	function __construct() {
+		global $bkf_localisation_version;
+		$bkf_localisation_version = 2;
+		add_action("plugins_loaded",array($this,"bkf_update_localisation_check"));
         $this->bkf_localisation_setting = get_option("bkf_localisation_setting");
         add_action("admin_menu", array($this,"bkf_localisation_menu"),60);
         add_action("admin_init",array($this,"bkfAddLocalisationPageInit"));
@@ -20,6 +23,36 @@ class BkfLocalisation{
 		add_action("admin_enqueue_scripts",array($this,"bkfLocalisationAdminEnqueueScripts"));
         if (in_array("gravityforms/gravityforms.php", apply_filters("active_plugins", get_option("active_plugins")))){
             add_filter( "gform_phone_formats" , array($this, "bkf_au_phone_format") );
+		}
+	}
+	
+	function bkf_update_localisation_check() {
+	    global $bkf_localisation_version;
+		$current_local = get_option( 'bkf_localisation_version' );
+	    if ( $current_local != $bkf_localisation_version ) {
+			if($current_local == '' || $current_local == null || $current_local < 2){
+				$bkfoptions = get_option("bkf_options_setting");
+				$csheading = $bkfoptions['cs_heading'];
+				$noship = $bkfoptions['noship'];
+				update_option('bkf_localisation_setting', array(
+					'billing_label_business' => default_billing_label_business,
+					'global_label_state' => default_global_label_state,
+					'global_label_postcode' => default_global_label_postcode,
+					'global_label_country' => default_global_label_country,
+					'global_label_phone' => default_global_label_phone,
+					'delivery_label_business' => default_delivery_label_business,
+					'delivery_description_business' => default_delivery_description_business,
+					'delivery_label_notes' => default_delivery_label_notes,
+					'delivery_description_notes' => default_delivery_description_notes,
+					'additional_description_cardmessage' => default_additional_description_cardmessage,
+					'csheading' => default_csheading,
+					'noship' => default_noship
+				));
+				$bkfoptions = get_option("bkf_options_setting");
+				unset($bkfoptions['cs_heading'],$bkfoptions['noship']);
+				update_option('bkf_options_setting',$bkfoptions);
+				update_option('bkf_localisation_version', $bkf_localisation_version);
+			}
 		}
 	}
 	
@@ -113,8 +146,8 @@ class BkfLocalisation{
 		);
 		
 		add_settings_section(
-			"bkf_localisation_backend_section",
-			__("Backend","bakkbone-florist-companion"),
+			"bkf_localisation_flow_section",
+			__("Customer Experience Flow","bakkbone-florist-companion"),
 			null,
 			"bkf-localisation"
 		);
@@ -197,6 +230,22 @@ class BkfLocalisation{
 			array($this,"bkfAdcCallback"),
 			"bkf-localisation",
 			"bkf_localisation_additional_section"
+		);
+		
+		add_settings_field(
+			"csheading",
+			__("Heading: Cart Cross-Sells","bakkbone-florist-companion"),
+			array($this,"bkfCsHeadingCallback"),
+			"bkf-localisation",
+			"bkf_localisation_flow_section"
+		);
+		
+		add_settings_field(
+			"noship",
+			__("Error: No-Ship","bakkbone-florist-companion"),
+			array($this,"bkfNoshipCallback"),
+			"bkf-localisation",
+			"bkf_localisation_flow_section"
 		);
 
 	}
@@ -366,6 +415,32 @@ class BkfLocalisation{
 		?>
 		<input type="text" class="bkf-form-control large-text" id="additional-description-cardmessage" name="bkf_localisation_setting[additional_description_cardmessage]" value="<?php echo $value; ?>" required />
 		<p class="description"><?php _e('Insert <strong>%s</strong> where your maximum characters will appear.<br><em>eg. Entering "Maximum %s characters" will display "Maximum 250 characters" at checkout.</em>',"bakkbone-florist-companion") ?></p>
+		<?php
+	}
+	
+	function bkfCsHeadingCallback(){
+	
+		if(isset($this->bkf_localisation_setting["csheading"])){
+			$value = esc_attr($this->bkf_localisation_setting["csheading"]);
+		}else{
+			$value = default_csheading;
+		}
+		?>
+		<input class="bkf-form-control large-text" id="csheading" type="text" name="bkf_localisation_setting[csheading]" placeholder="<?php echo $placeholder; ?>" value="<?php echo $value; ?>" />
+		<p class="description"><?php _e("Replaces the heading of the Cross-Sells section of the Cart page","bakkbone-florist-companion") ?></p>
+		<?php
+	}
+
+	function bkfNoshipCallback(){
+		
+		if(isset($this->bkf_localisation_setting["noship"])){
+			$value = esc_attr($this->bkf_localisation_setting["noship"]);
+		}else{
+			$value = default_noship;
+		}
+		?>
+		<input class="bkf-form-control large-text" id="noship" type="text" name="bkf_localisation_setting[noship]" placeholder="<?php echo $placeholder; ?>" value="<?php echo $value; ?>" />
+		<p class="description"><?php _e("Displays at checkout if the delivery address' suburb is not serviced.","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 	
