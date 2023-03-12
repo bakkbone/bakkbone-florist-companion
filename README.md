@@ -25,12 +25,13 @@ Why? You can view/print your orders all in one place, and in one consistent form
 * Add "Recipient Phone" field as a required field
 * Delivery address not requested at checkout if order method is pickup
 * Add "Card Message" as a required field, and limit the maximum length of a message
-* Rename fields on frontend to match Australian/Commonwealth address standards (eg. "Suburb" instead of "City", "Postcode" instead of "Zip")
 
 ### Delivery Dates
 
 * Collect delivery/collection date at checkout
-* Set which weekdays you deliver and your same-day delivery cutoff
+* Set which weekdays you deliver
+* Set your same-day delivery cutoff globally
+* Set separate same-day cutoffs for specific delivery methods (ie. delivery areas)
 * Manage closure days (eg. public holidays) and fully booked dates in your dashboard
 * Optionally set timeslots (eg. 9am-12pm) for customers to choose from per delivery method and per day, and optionally set a fee for a timeslot
 * Restrict delivery methods per weekday
@@ -55,11 +56,16 @@ Why? You can view/print your orders all in one place, and in one consistent form
 * Creates input masks for the [Gravity Forms](https://rocketgenius.pxf.io/bakkbone) "Telephone" field for Australian phone number formats _(affiliate link)_
 * Re-words the descriptions of fields on [WooCommerce Address Book](https://wordpress.org/plugins/woo-address-book/) features
 
+### Localisation
+
+* Rename fields on frontend to match Australian/Commonwealth address standards (eg. "Suburb" instead of "City", "Postcode" instead of "Zip")
+* Or, rename the same fields however suits your business
+* Option to change heading on Cart Cross-sells section
+* Option to change the text displayed when no valid delivery method is available based on recipient address
+
 ### Tweaks
 
 * Rename "shipping" to "delivery"
 * Automatically assign guest orders placed by registered customer to the matching user (so it appears in their order history when logged in)
 * Option to display product "short description" in archive listings
-* Option to change heading on Cart Cross-sells section
-* Option to change the text displayed when no valid delivery method is available based on recipient address
 * Option to disable the "Order Comments" freetext field at checkout
