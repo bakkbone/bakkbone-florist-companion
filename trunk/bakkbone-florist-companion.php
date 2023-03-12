@@ -4,7 +4,7 @@
  * Plugin Name: BAKKBONE Florist Companion
  * Plugin URI: https://docs.bkbn.au/v/bkf/
  * Description: Provides standardised features for floristry websites.
- * Version: 2.4.4
+ * Version: 2.4.5
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: BAKKBONE Australia
@@ -55,6 +55,8 @@ define("default_delivery_description_business",__('For hospitals/hotels/etc., pl
 define("default_delivery_label_notes",__('Anything we need to know about the address?', 'bakkbone-florist-companion'));
 define("default_delivery_description_notes",__('eg. gate code, fence, dog, etc.', 'bakkbone-florist-companion'));
 define("default_additional_description_cardmessage",__("We'll include this with your gift. Maximum %s characters.", 'bakkbone-florist-companion'));
+define("default_csheading",__('How about adding...','bakkbone-florist-companion'));
+define("default_noship",__('You have selected a suburb or region we do not deliver to.','bakkbone-florist-companion'));
 
 require BKF_PATH . "/incl/lib/action-scheduler/action-scheduler.php";
 require BKF_PATH . "/incl/lib/dompdf/autoload.inc.php";
@@ -160,8 +162,8 @@ function bkf_active(){
 	if($options == ''){
 		update_option('bkf_options_setting',array(
 			'card_length'	=>	'250',
-			'cs_heading'	=>	__('How about adding...','bakkbone-florist-companion'),
-			'noship'		=>	__('You have selected a suburb or region we do not deliver to.','bakkbone-florist-companion'),
+			'cs_heading'	=>	default_csheading,
+			'noship'		=>	default_noship,
 		));
 	}
 	if($features == ''){

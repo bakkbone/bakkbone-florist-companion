@@ -285,11 +285,10 @@ class BkfPluginOptions{
 	
 	function bkfCsHeadingCallback(){
 	
-		$placeholder = __('How about adding...');
 		if(isset($this->bkf_options_setting["cs_heading"])){
 			$value = esc_attr($this->bkf_options_setting["cs_heading"]);
 		}else{
-			$value = $placeholder;
+			$value = default_csheading;
 		}
 		?>
 		<input class="bkf-form-control regular-text" id="bkf-cs-heading" type="text" name="bkf_options_setting[cs_heading]" placeholder="<?php echo $placeholder; ?>" value="<?php echo $value; ?>" />
@@ -299,11 +298,10 @@ class BkfPluginOptions{
 
 	function bkfNoshipCallback(){
 		
-		$placeholder = __('You have selected a suburb or region we do not deliver to.','bakkbone-florist-companion');
 		if(isset($this->bkf_options_setting["noship"])){
 			$value = esc_attr($this->bkf_options_setting["noship"]);
 		}else{
-			$value = $placeholder;
+			$value = default_noship;
 		}
 		?>
 		<input class="bkf-form-control large-text" id="bkf-noship" type="text" name="bkf_options_setting[noship]" placeholder="<?php echo $placeholder; ?>" value="<?php echo $value; ?>" />
