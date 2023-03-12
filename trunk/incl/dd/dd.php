@@ -926,7 +926,7 @@ class BkfDd{
 
 	function bkf_dd_col_init( $columns ) {
 			$ddtitle = get_option('bkf_ddi_setting')['ddt'];
-			$columns['bkf_dd'] = __("Delivery Date", "bakkbone-florist-companion");
+			$columns['bkf_dd'] = BKF_DELIVERY4;
 			return $columns;
 	}
 	

@@ -33,6 +33,28 @@ define("BKF_HELP_SUBTITLE",__('View documentation for this page at: ','bakkbone-
 define("BKF_DELIVERY1",__('Delivery', 'bakkbone-florist-companion'));
 define("BKF_DELIVERY2",__('delivery', 'bakkbone-florist-companion'));
 define("BKF_DELIVERY3",__('Delivery details', 'bakkbone-florist-companion'));
+define("BKF_DELIVERY4",__('Delivery Date', 'bakkbone-florist-companion'));
+define("DOWNLOADTEXT",__('Download', 'bakkbone-florist-companion'));
+define("DELIVERYNOTESTEXT",__('Delivery Notes', 'bakkbone-florist-companion'));
+define("CARDMESSAGETEXT",__('Card Message', 'bakkbone-florist-companion'));
+define("SAVEALLCHANGESTEXT",__('Save All Changes', 'bakkbone-florist-companion'));
+define("MONTEXT",__('Monday', 'bakkbone-florist-companion'));
+define("TUETEXT",__('Tuesday', 'bakkbone-florist-companion'));
+define("WEDTEXT",__('Wednesday', 'bakkbone-florist-companion'));
+define("THUTEXT",__('Thursday', 'bakkbone-florist-companion'));
+define("FRITEXT",__('Friday', 'bakkbone-florist-companion'));
+define("SATTEXT",__('Saturday', 'bakkbone-florist-companion'));
+define("SUNTEXT",__('Sunday', 'bakkbone-florist-companion'));
+define("default_billing_label_business",__('Business Name', 'bakkbone-florist-companion'));
+define("default_global_label_state",__('State/Territory', 'bakkbone-florist-companion'));
+define("default_global_label_postcode",__('Postcode', 'bakkbone-florist-companion'));
+define("default_global_label_country",__('Country', 'bakkbone-florist-companion'));
+define("default_global_label_telephone",__('Phone', 'bakkbone-florist-companion'));
+define("default_delivery_label_business",__('Business/Hospital/Hotel Name', 'bakkbone-florist-companion'));
+define("default_delivery_description_business",__('For hospitals/hotels/etc., please include ward/room information if known', 'bakkbone-florist-companion'));
+define("default_delivery_label_notes",__('Anything we need to know about the address?', 'bakkbone-florist-companion'));
+define("default_delivery_description_notes",__('eg. gate code, fence, dog, etc.', 'bakkbone-florist-companion'));
+define("default_additional_description_cardmessage",__("We'll include this with your gift. Maximum %s characters.", 'bakkbone-florist-companion'));
 
 require BKF_PATH . "/incl/lib/action-scheduler/action-scheduler.php";
 require BKF_PATH . "/incl/lib/dompdf/autoload.inc.php";
@@ -57,6 +79,7 @@ require BKF_PATH . "/incl/dd/blocks.php";
 require BKF_PATH . "/incl/dd/catblocks.php";
 require BKF_PATH . "/incl/dd/calendar.php";
 require BKF_PATH . "/incl/dd/timeslots.php";
+require BKF_PATH . "/incl/localisation.php";
 require BKF_PATH . "/incl/order-status.php";
 require BKF_PATH . "/incl/petals/petals-options.php";
 require BKF_PATH . "/incl/petals/petals.php";
@@ -100,6 +123,7 @@ function run_bakkbone_florist_companion()
 	$bkfpetalsemail = new Bkf_WC_Petals_Email();
 	$bkfsuburbs = new BkfSuburbs();
 	$bkfsuburbsoptions = new BkfSuburbsOptions();
+	$bkflocalisation = new BkfLocalisation();
 }
 add_filter( 'woocommerce_ship_to_different_address_checked', '__return_true' );
 
@@ -156,8 +180,8 @@ function bkf_active(){
 	}
 	if($ddi == ''){
 		update_option('bkf_ddi_setting', array(
-			'ddi'	=>	'52',
-			'ddt'	=>	__("Delivery Date","bakkbone-florist-companion")
+			'ddi'	=>	'8',
+			'ddt'	=>	BKF_DELIVERY4
 		));
 	}
 	if($dd == ''){
@@ -201,7 +225,7 @@ function bkf_active(){
 function bkf_inactive(){
 	$setting = get_option('bkf_advanced_setting')['deactivation_purge'];
 	if($setting == true){
-		$settings = array( 'bkf_options_setting', 'bkf_features_setting', 'bkf_petals_setting', 'bkf_petals_product_setting', 'bkf_dd_closed', 'bkf_dd_full', 'bkf_pdf_setting', 'bkf_ddi_setting', 'bkf_dd_setting', 'bkf_ddf_setting', 'bkf_dd_ds_fees', 'bkf_sd_setting', 'bkf_wf_setting', 'bkf_dd_ts_db_version', 'bkf_suburbs_db_version', 'bkf_advanced_setting');
+		$settings = array( 'bkf_options_setting', 'bkf_features_setting', 'bkf_petals_setting', 'bkf_petals_product_setting', 'bkf_dd_closed', 'bkf_dd_full', 'bkf_pdf_setting', 'bkf_ddi_setting', 'bkf_dd_setting', 'bkf_ddf_setting', 'bkf_dd_ds_fees', 'bkf_sd_setting', 'bkf_wf_setting', 'bkf_dd_ts_db_version', 'bkf_suburbs_db_version', 'bkf_advanced_setting', 'bkf_localisation_setting');
 		foreach($settings as $setting){
 			delete_option($setting);
 		}

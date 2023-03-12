@@ -94,56 +94,56 @@ class BkfPetalsOptions{
 		);
 		
 		add_settings_section(
-			"bkf_petals_section", //id
-			__("Petals Network Integration","bakkbone-florist-companion"), //title
-			array($this,"bkfPetalsOptionsInfo"), //callback
-			"bkf-petals" //page
+			"bkf_petals_section",
+			__("Petals Network Integration","bakkbone-florist-companion"),
+			array($this,"bkfPetalsOptionsInfo"),
+			"bkf-petals"
 		);
 		add_settings_section(
-			"bkf_petals_product_section", //id
-			__("Outbound Order Product","bakkbone-florist-companion"), //title
-			array($this,"bkfPetalsProductOptionsInfo"), //callback
-			"bkf-petals" //page
+			"bkf_petals_product_section",
+			__("Outbound Order Product","bakkbone-florist-companion"),
+			array($this,"bkfPetalsProductOptionsInfo"),
+			"bkf-petals"
 		);		
 		
 		add_settings_field(
-			"mn", //id
-			__("Member Number","bakkbone-florist-companion"), //title
-			array($this,"bkfPetalsMemberNumberCallback"), //callback
-			"bkf-petals", //page
-			"bkf_petals_section" //section
+			"mn",
+			__("Member Number","bakkbone-florist-companion"),
+			array($this,"bkfPetalsMemberNumberCallback"),
+			"bkf-petals",
+			"bkf_petals_section"
 		);
 
 		add_settings_field(
-			"ppw", //id
-			__("Password","bakkbone-florist-companion"), //title
-			array($this,"bkfPetalsPasswordCallback"), //callback
-			"bkf-petals", //page
-			"bkf_petals_section" //section
+			"ppw",
+			__("Password","bakkbone-florist-companion"),
+			array($this,"bkfPetalsPasswordCallback"),
+			"bkf-petals",
+			"bkf_petals_section"
 		);
 
 		add_settings_field(
-			"bkf_petals_link", //id
-			__("URL","bakkbone-florist-companion"), //title
-			array($this,"bkfPetalsURLCallback"), //callback
-			"bkf-petals", //page
-			"bkf_petals_section" //section
+			"bkf_petals_link",
+			__("URL","bakkbone-florist-companion"),
+			array($this,"bkfPetalsURLCallback"),
+			"bkf-petals",
+			"bkf_petals_section"
 		);
 		
 		add_settings_field(
-			"cat", //id
-			__("Product Category","bakkbone-florist-companion"), //title
-			array($this,"bkfPetalsCatCallback"), //callback
-			"bkf-petals", //page
-			"bkf_petals_product_section" //section
+			"cat",
+			__("Product Category","bakkbone-florist-companion"),
+			array($this,"bkfPetalsCatCallback"),
+			"bkf-petals",
+			"bkf_petals_product_section"
 		);
 
 		add_settings_field(
-			"product", //id
-			__("Product","bakkbone-florist-companion"), //title
-			array($this,"bkfPetalsProductCallback"), //callback
-			"bkf-petals", //page
-			"bkf_petals_product_section" //section
+			"product",
+			__("Product","bakkbone-florist-companion"),
+			array($this,"bkfPetalsProductCallback"),
+			"bkf-petals",
+			"bkf_petals_product_section"
 		);
 		
 	}

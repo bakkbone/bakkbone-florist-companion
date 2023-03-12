@@ -116,7 +116,7 @@ class BkfPdfOptions{
                     <form method="post" action="options.php">
                         <?php settings_fields("bkf_pdf_options_group"); ?>
                         <?php do_settings_sections("bkf-pdf"); ?>
-                        <?php submit_button(__('Save All Changes', 'bakkbone-florist-companion'), 'primary large', 'submit', true, array('id' => 'pdf_submit') ); ?>
+                        <?php submit_button(SAVEALLCHANGESTEXT, 'primary large', 'submit', true, array('id' => 'pdf_submit') ); ?>
                     </form>
                 </div>
             </div>
@@ -134,122 +134,122 @@ class BkfPdfOptions{
 		);
 
 		add_settings_section(
-			"bkf_pdf_global_section", //id
-			__("Defaults","bakkbone-florist-companion"), //title
-			array($this,"bkfPdfGlobalInfo"), //callback
-			"bkf-pdf" //page
+			"bkf_pdf_global_section",
+			__("Defaults","bakkbone-florist-companion"),
+			array($this,"bkfPdfGlobalInfo"),
+			"bkf-pdf"
 		);
 		
 		add_settings_field(
-			"inv_title", //id
-			__("Invoice Title","bakkbone-florist-companion"), //title
-			array($this,"bkfInvTitleCallback"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"inv_title",
+			__("Invoice Title","bakkbone-florist-companion"),
+			array($this,"bkfInvTitleCallback"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 		
 		add_settings_field(
-			"inv_text", //id
-			__("Invoice Text","bakkbone-florist-companion"), //title
-			array($this,"bkfInvTextCallback"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"inv_text",
+			__("Invoice Text","bakkbone-florist-companion"),
+			array($this,"bkfInvTextCallback"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 		
 		add_settings_field(
-			"ws_title", //id
-			__("Worksheet Title","bakkbone-florist-companion"), //title
-			array($this,"bkfWsTitleCallback"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"ws_title",
+			__("Worksheet Title","bakkbone-florist-companion"),
+			array($this,"bkfWsTitleCallback"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 		
 		add_settings_field(
-			"inv_sn", //id
-			__("Store Name","bakkbone-florist-companion"), //title
-			array($this,"StoreName"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"inv_sn",
+			__("Store Name","bakkbone-florist-companion"),
+			array($this,"StoreName"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 
 		add_settings_field(
-			"inv_a1", //id
-			__("Address Line 1","bakkbone-florist-companion"), //title
-			array($this,"Address1"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"inv_a1",
+			__("Address Line 1","bakkbone-florist-companion"),
+			array($this,"Address1"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 
 		add_settings_field(
-			"inv_a2", //id
-			__("Address Line 2","bakkbone-florist-companion"), //title
-			array($this,"Address2"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"inv_a2",
+			__("Address Line 2","bakkbone-florist-companion"),
+			array($this,"Address2"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 		
 		add_settings_field(
-			"inv_sub", //id
-			__("Suburb","bakkbone-florist-companion"), //title
-			array($this,"Suburb"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"inv_sub",
+			__("Suburb","bakkbone-florist-companion"),
+			array($this,"Suburb"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 		
 		add_settings_field(
-			"inv_state", //id
-			__("State/Territory","bakkbone-florist-companion"), //title
-			array($this,"State"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"inv_state",
+			__("State/Territory","bakkbone-florist-companion"),
+			array($this,"State"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 
 		add_settings_field(
-			"inv_pc", //id
-			__("Postcode","bakkbone-florist-companion"), //title
-			array($this,"Postcode"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"inv_pc",
+			__("Postcode","bakkbone-florist-companion"),
+			array($this,"Postcode"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 
 		add_settings_field(
-			"inv_phone", //id
-			__("Phone","bakkbone-florist-companion"), //title
-			array($this,"Phone"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"inv_phone",
+			__("Phone","bakkbone-florist-companion"),
+			array($this,"Phone"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 
 		add_settings_field(
-			"inv_eml", //id
-			__("Email Address","bakkbone-florist-companion"), //title
-			array($this,"Email"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"inv_eml",
+			__("Email Address","bakkbone-florist-companion"),
+			array($this,"Email"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 
 		add_settings_field(
-			"inv_web", //id
-			__("Website Address","bakkbone-florist-companion"), //title
-			array($this,"Website"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"inv_web",
+			__("Website Address","bakkbone-florist-companion"),
+			array($this,"Website"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 		
 		add_settings_field(
-			"inv_tax_label", //id
-			__("Tax ID Label","bakkbone-florist-companion"), //title
-			array($this,"TaxIDLabel"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"inv_tax_label",
+			__("Tax ID Label","bakkbone-florist-companion"),
+			array($this,"TaxIDLabel"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 		
 		add_settings_field(
-			"inv_tax_value", //id
-			__("Tax ID","bakkbone-florist-companion"), //title
-			array($this,"TaxIDValue"), //callback
-			"bkf-pdf", //page
-			"bkf_pdf_global_section" //section
+			"inv_tax_value",
+			__("Tax ID","bakkbone-florist-companion"),
+			array($this,"TaxIDValue"),
+			"bkf-pdf",
+			"bkf_pdf_global_section"
 		);
 
 	}
@@ -532,9 +532,9 @@ class BkfPdfOptions{
 		$wsnonce = wp_create_nonce("bkf_worksheet_pdf");
 		$wsurl = admin_url( 'admin-ajax.php?action=bkf_worksheet_pdf_download&order_id=' . $order_id . '&nonce=' . $wsnonce );
 		if($petalson == null){
-			echo '<p class="form-field form-field-wide wc-customer-user"><a href="'.$invurl.'">Download '.$invtitle.'</a></p>';
+			echo '<p class="form-field form-field-wide wc-customer-user"><a href="'.$invurl.'">'.DOWNLOADTEXT.' '.$invtitle.'</a></p>';
 		}
-		echo '<p class="form-field form-field-wide wc-customer-user"><a href="'.$wsurl.'">Download '.$wstitle.'</a></p>';
+		echo '<p class="form-field form-field-wide wc-customer-user"><a href="'.$wsurl.'">'.DOWNLOADTEXT.' '.$wstitle.'</a></p>';
 	}
 	
     function pdf_thankyou ( $order ) {
@@ -542,7 +542,7 @@ class BkfPdfOptions{
 		$invtitle = get_option('bkf_pdf_setting')['inv_title'];
 		$invnonce = wp_create_nonce("bkf_invoice_pdf");
 		$invurl = admin_url( 'admin-ajax.php?action=bkf_invoice_pdf_download&order_id=' . $order_id . '&nonce=' . $invnonce );
-		echo '<p class="form-field form-field-wide wc-customer-user"><a href="'.$invurl.'">Download '.$invtitle.'</a></p>';
+		echo '<p class="form-field form-field-wide wc-customer-user"><a href="'.$invurl.'">'.DOWNLOADTEXT.' '.$invtitle.'</a></p>';
 		
     }
     

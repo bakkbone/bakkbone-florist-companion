@@ -164,7 +164,7 @@ class BkfDdOptions{
                     <form method="post" action="options.php">
                         <?php settings_fields("bkf_ddi_options_group"); ?>
                         <?php do_settings_sections("bkf-ddi"); ?>
-                        <?php submit_button(__('Save All Changes', 'bakkbone-florist-companion'), 'primary large', 'submit', true, array('id' => 'ddi_submit') ); ?>
+                        <?php submit_button(SAVEALLCHANGESTEXT, 'primary large', 'submit', true, array('id' => 'ddi_submit') ); ?>
                     </form>
                 </div>
             </div>
@@ -183,7 +183,7 @@ class BkfDdOptions{
                     <form method="post" action="options.php">
                         <?php settings_fields("bkf_dd_options_group"); ?>
                         <?php do_settings_sections("bkf-dd"); ?>
-                        <?php submit_button(__('Save All Changes', 'bakkbone-florist-companion'), 'primary large', 'submit', true, array('id' => 'dd_submit') ); ?>
+                        <?php submit_button(SAVEALLCHANGESTEXT, 'primary large', 'submit', true, array('id' => 'dd_submit') ); ?>
                     </form>
                 </div>
             </div>
@@ -202,7 +202,7 @@ class BkfDdOptions{
                     <form method="post" action="options.php">
                         <?php settings_fields("bkf_sd_options_group"); ?>
                         <?php do_settings_sections("bkf-sd"); ?>
-                        <?php submit_button(__('Save All Changes', 'bakkbone-florist-companion'), 'primary large', 'submit', true, array('id' => 'sd_submit') ); ?>
+                        <?php submit_button(SAVEALLCHANGESTEXT, 'primary large', 'submit', true, array('id' => 'sd_submit') ); ?>
                     </form>
                 </div>
             </div>
@@ -221,7 +221,7 @@ class BkfDdOptions{
                     <form method="post" action="options.php">
                         <?php settings_fields("bkf_dm_options_group"); ?>
                         <?php do_settings_sections("bkf-dm"); ?>
-                        <?php submit_button(__('Save All Changes', 'bakkbone-florist-companion'), 'primary large', 'submit', true, array('id' => 'dm_submit') ); ?>
+                        <?php submit_button(SAVEALLCHANGESTEXT, 'primary large', 'submit', true, array('id' => 'dm_submit') ); ?>
                     </form>
                 </div>
             </div>
@@ -254,207 +254,207 @@ class BkfDdOptions{
 		);
 
 		add_settings_section(
-			"bkf_ddi_section", //id
-			__("Options","bakkbone-florist-companion"), //title
-			array($this,"bkfDdiInfo"), //callback
-			"bkf-ddi" //page
+			"bkf_ddi_section",
+			__("Options","bakkbone-florist-companion"),
+			array($this,"bkfDdiInfo"),
+			"bkf-ddi"
 		);
 		
 		add_settings_section(
-			"bkf_dd_section", //id
-			__("Delivery Weekdays","bakkbone-florist-companion"), //title
-			array($this,"bkfDdOptionsInfo"), //callback
-			"bkf-dd" //page
+			"bkf_dd_section",
+			__("Delivery Weekdays","bakkbone-florist-companion"),
+			array($this,"bkfDdOptionsInfo"),
+			"bkf-dd"
 		);
 		
 		add_settings_section(
-			"bkf_sd_section", //id
-			__("Same Day Cutoffs","bakkbone-florist-companion"), //title
-			array($this,"bkfSdOptionsInfo"), //callback
-			"bkf-sd" //page
+			"bkf_sd_section",
+			__("Same Day Cutoffs","bakkbone-florist-companion"),
+			array($this,"bkfSdOptionsInfo"),
+			"bkf-sd"
 		);
 
 		add_settings_section(
-			"bkf_dm_section", //id
-			__("Delivery Methods","bakkbone-florist-companion"), //title
-			array($this,"bkfDmOptionsInfo"), //callback
-			"bkf-dm" //page
+			"bkf_dm_section",
+			__("Delivery Methods","bakkbone-florist-companion"),
+			array($this,"bkfDmOptionsInfo"),
+			"bkf-dm"
 		);
 
 		add_settings_field(
-			"bkf_ddi", //id
-			__("Pre-ordering","bakkbone-florist-companion"), //title
-			array($this,"bkfDdiCallback"), //callback
-			"bkf-ddi", //page
-			"bkf_ddi_section" //section
+			"bkf_ddi",
+			__("Pre-ordering","bakkbone-florist-companion"),
+			array($this,"bkfDdiCallback"),
+			"bkf-ddi",
+			"bkf_ddi_section"
 		);
 		add_settings_field(
-			"bkf_ddt", //id
-			__("Title","bakkbone-florist-companion"), //title
-			array($this,"bkfDdtCallback"), //callback
-			"bkf-ddi", //page
-			"bkf_ddi_section" //section
+			"bkf_ddt",
+			__("Title","bakkbone-florist-companion"),
+			array($this,"bkfDdtCallback"),
+			"bkf-ddi",
+			"bkf_ddi_section"
 		);
 				
 		// monday
 		add_settings_field(
-			"bkf_dd_monday", //id
-			__("Monday","bakkbone-florist-companion"), //title
-			array($this,"bkfMondayCallback"), //callback
-			"bkf-dd", //page
-			"bkf_dd_section" //section
+			"bkf_dd_monday",
+			MONTEXT,
+			array($this,"bkfMondayCallback"),
+			"bkf-dd",
+			"bkf_dd_section"
 		);
 		add_settings_field(
-			"bkf_sd_monday", //id
-			__("Monday","bakkbone-florist-companion"), //title
-			array($this,"bkfSdMondayCallback"), //callback
-			"bkf-sd", //page
-			"bkf_sd_section" //section
+			"bkf_sd_monday",
+			MONTEXT,
+			array($this,"bkfSdMondayCallback"),
+			"bkf-sd",
+			"bkf_sd_section"
 		);
 		add_settings_field(
-			"bkf_dm_monday", //id
-			__("Monday","bakkbone-florist-companion"), //title
-			array($this,"bkfDmMondayCallback"), //callback
-			"bkf-dm", //page
-			"bkf_dm_section" //section
+			"bkf_dm_monday",
+			MONTEXT,
+			array($this,"bkfDmMondayCallback"),
+			"bkf-dm",
+			"bkf_dm_section"
 		);
 
 		// tuesday
 		add_settings_field(
-			"bkf_dd_tuesday", //id
-			__("Tuesday","bakkbone-florist-companion"), //title
-			array($this,"bkfTuesdayCallback"), //callback
-			"bkf-dd", //page
-			"bkf_dd_section" //section
+			"bkf_dd_tuesday",
+			TUETEXT,
+			array($this,"bkfTuesdayCallback"),
+			"bkf-dd",
+			"bkf_dd_section"
 		);
 		add_settings_field(
-			"bkf_sd_tuesday", //id
-			__("Tuesday","bakkbone-florist-companion"), //title
-			array($this,"bkfSdTuesdayCallback"), //callback
-			"bkf-sd", //page
-			"bkf_sd_section" //section
+			"bkf_sd_tuesday",
+			TUETEXT,
+			array($this,"bkfSdTuesdayCallback"),
+			"bkf-sd",
+			"bkf_sd_section"
 		);
 		add_settings_field(
-			"bkf_dm_tuesday", //id
-			__("Tuesday","bakkbone-florist-companion"), //title
-			array($this,"bkfDmTuesdayCallback"), //callback
-			"bkf-dm", //page
-			"bkf_dm_section" //section
+			"bkf_dm_tuesday",
+			TUETEXT,
+			array($this,"bkfDmTuesdayCallback"),
+			"bkf-dm",
+			"bkf_dm_section"
 		);
 		
 		// wednesday
 		add_settings_field(
-			"bkf_dd_wednesday", //id
-			__("Wednesday","bakkbone-florist-companion"), //title
-			array($this,"bkfWednesdayCallback"), //callback
-			"bkf-dd", //page
-			"bkf_dd_section" //section
+			"bkf_dd_wednesday",
+			WEDTEXT,
+			array($this,"bkfWednesdayCallback"),
+			"bkf-dd",
+			"bkf_dd_section"
 		);
 		add_settings_field(
-			"bkf_sd_wednesday", //id
-			__("Wednesday","bakkbone-florist-companion"), //title
-			array($this,"bkfSdWednesdayCallback"), //callback
-			"bkf-sd", //page
-			"bkf_sd_section" //section
+			"bkf_sd_wednesday",
+			WEDTEXT,
+			array($this,"bkfSdWednesdayCallback"),
+			"bkf-sd",
+			"bkf_sd_section"
 		);
 		add_settings_field(
-			"bkf_dm_wednesday", //id
-			__("Wednesday","bakkbone-florist-companion"), //title
-			array($this,"bkfDmWednesdayCallback"), //callback
-			"bkf-dm", //page
-			"bkf_dm_section" //section
+			"bkf_dm_wednesday",
+			WEDTEXT,
+			array($this,"bkfDmWednesdayCallback"),
+			"bkf-dm",
+			"bkf_dm_section"
 		);
 		
 		// thursday
 		add_settings_field(
-			"bkf_dd_thursday", //id
-			__("Thursday","bakkbone-florist-companion"), //title
-			array($this,"bkfThursdayCallback"), //callback
-			"bkf-dd", //page
-			"bkf_dd_section" //section
+			"bkf_dd_thursday",
+			THUTEXT,
+			array($this,"bkfThursdayCallback"),
+			"bkf-dd",
+			"bkf_dd_section"
 		);
 		add_settings_field(
-			"bkf_sd_thursday", //id
-			__("Thursday","bakkbone-florist-companion"), //title
-			array($this,"bkfSdThursdayCallback"), //callback
-			"bkf-sd", //page
-			"bkf_sd_section" //section
+			"bkf_sd_thursday",
+			THUTEXT,
+			array($this,"bkfSdThursdayCallback"),
+			"bkf-sd",
+			"bkf_sd_section"
 		);
 		add_settings_field(
-			"bkf_dm_thursday", //id
-			__("Thursday","bakkbone-florist-companion"), //title
-			array($this,"bkfDmThursdayCallback"), //callback
-			"bkf-dm", //page
-			"bkf_dm_section" //section
+			"bkf_dm_thursday",
+			THUTEXT,
+			array($this,"bkfDmThursdayCallback"),
+			"bkf-dm",
+			"bkf_dm_section"
 		);
 		
 		// friday
 		add_settings_field(
-			"bkf_dd_friday", //id
-			__("Friday","bakkbone-florist-companion"), //title
-			array($this,"bkfFridayCallback"), //callback
-			"bkf-dd", //page
-			"bkf_dd_section" //section
+			"bkf_dd_friday",
+			FRITEXT,
+			array($this,"bkfFridayCallback"),
+			"bkf-dd",
+			"bkf_dd_section"
 		);
 		add_settings_field(
-			"bkf_sd_friday", //id
-			__("Friday","bakkbone-florist-companion"), //title
-			array($this,"bkfSdFridayCallback"), //callback
-			"bkf-sd", //page
-			"bkf_sd_section" //section
+			"bkf_sd_friday",
+			FRITEXT,
+			array($this,"bkfSdFridayCallback"),
+			"bkf-sd",
+			"bkf_sd_section"
 		);
 		add_settings_field(
-			"bkf_dm_friday", //id
-			__("Friday","bakkbone-florist-companion"), //title
-			array($this,"bkfDmFridayCallback"), //callback
-			"bkf-dm", //page
-			"bkf_dm_section" //section
+			"bkf_dm_friday",
+			FRITEXT,
+			array($this,"bkfDmFridayCallback"),
+			"bkf-dm",
+			"bkf_dm_section"
 		);
 		
 		// saturday
 		add_settings_field(
-			"bkf_dd_saturday", //id
-			__("Saturday","bakkbone-florist-companion"), //title
-			array($this,"bkfSaturdayCallback"), //callback
-			"bkf-dd", //page
-			"bkf_dd_section" //section
+			"bkf_dd_saturday",
+			SATTEXT,
+			array($this,"bkfSaturdayCallback"),
+			"bkf-dd",
+			"bkf_dd_section"
 		);
 		add_settings_field(
-			"bkf_sd_saturday", //id
-			__("Saturday","bakkbone-florist-companion"), //title
-			array($this,"bkfSdSaturdayCallback"), //callback
-			"bkf-sd", //page
-			"bkf_sd_section" //section
+			"bkf_sd_saturday",
+			SATTEXT,
+			array($this,"bkfSdSaturdayCallback"),
+			"bkf-sd",
+			"bkf_sd_section"
 		);
 		add_settings_field(
-			"bkf_dm_saturday", //id
-			__("Saturday","bakkbone-florist-companion"), //title
-			array($this,"bkfDmSaturdayCallback"), //callback
-			"bkf-dm", //page
-			"bkf_dm_section" //section
+			"bkf_dm_saturday",
+			SATTEXT,
+			array($this,"bkfDmSaturdayCallback"),
+			"bkf-dm",
+			"bkf_dm_section"
 		);
 
 		// sunday
 		add_settings_field(
-			"bkf_dd_sunday", //id
-			__("Sunday","bakkbone-florist-companion"), //title
-			array($this,"bkfSundayCallback"), //callback
-			"bkf-dd", //page
-			"bkf_dd_section" //section
+			"bkf_dd_sunday",
+			SUNTEXT,
+			array($this,"bkfSundayCallback"),
+			"bkf-dd",
+			"bkf_dd_section"
 		);
 		add_settings_field(
-			"bkf_sd_sunday", //id
-			__("Sunday","bakkbone-florist-companion"), //title
-			array($this,"bkfSdSundayCallback"), //callback
-			"bkf-sd", //page
-			"bkf_sd_section" //section
+			"bkf_sd_sunday",
+			SUNTEXT,
+			array($this,"bkfSdSundayCallback"),
+			"bkf-sd",
+			"bkf_sd_section"
 		);
 		add_settings_field(
-			"bkf_dm_sunday", //id
-			__("Sunday","bakkbone-florist-companion"), //title
-			array($this,"bkfDmSundayCallback"), //callback
-			"bkf-dm", //page
-			"bkf_dm_section" //section
+			"bkf_dm_sunday",
+			SUNTEXT,
+			array($this,"bkfDmSundayCallback"),
+			"bkf-dm",
+			"bkf_dm_section"
 		);
 
 	}
@@ -628,16 +628,16 @@ class BkfDdOptions{
 		if(isset($this->bkf_ddi_setting["ddi"])){
 			$value = esc_attr($this->bkf_ddi_setting["ddi"]);
 		}else{
-			$value = "52";
+			$value = "8";
 		}
 		?>
-		<input class="bkf-form-control small-text" id="bkf-ddi" type="number" name="bkf_ddi_setting[ddi]" placeholder="52" value="<?php echo $value; ?>" />
+		<input class="bkf-form-control small-text" id="bkf-ddi" type="number" name="bkf_ddi_setting[ddi]" placeholder="8" value="<?php echo $value; ?>" />
 		<p class="description"><?php _e("Maximum number of weeks in the future to enable at checkout.","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
 	function bkfDdtCallback(){
-		$opt1 = __("Delivery Date", "bakkbone-florist-companion");
+		$opt1 = BKF_DELIVERY4;
 		$opt2 = __("Delivery/Collection Date", "bakkbone-florist-companion");
 		$opt3 = __("Order Date", "bakkbone-florist-companion");
 		
@@ -1315,7 +1315,7 @@ class BkfDdOptions{
 	}
 	
     public function bkf_dd_metabox_init(){
-        add_meta_box('bkf_dd', __('Delivery Date', 'bakkbone-florist-companion'),array($this, 'bkf_dd_metabox_callback'),'shop_order','side','core');
+        add_meta_box('bkf_dd', BKF_DELIVERY4,array($this, 'bkf_dd_metabox_callback'),'shop_order','side','core');
     }
     
     public function bkf_dd_metabox_callback( $post ){

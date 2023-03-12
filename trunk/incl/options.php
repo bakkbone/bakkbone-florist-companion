@@ -105,86 +105,86 @@ class BkfPluginOptions{
 		);
 		
 		add_settings_section(
-			"bkf_options_section", //id
-			__("General Settings","bakkbone-florist-companion"), //title
-			array($this,"bkfAddOptionsInfo"), //callback
-			"bkf-options" //page
+			"bkf_options_section",
+			__("General Settings","bakkbone-florist-companion"),
+			array($this,"bkfAddOptionsInfo"),
+			"bkf-options"
 		);
 		add_settings_section(
-			"bkf_features_section", //id
-			__("Other Features","bakkbone-florist-companion"), //title
-			array($this,"bkfAddFeaturesInfo"), //callback
-			"bkf-options" //page
+			"bkf_features_section",
+			__("Other Features","bakkbone-florist-companion"),
+			array($this,"bkfAddFeaturesInfo"),
+			"bkf-options"
 		);
 		add_settings_section(
-			"bkf_advanced_section", //id
-			__("Advanced Settings","bakkbone-florist-companion"), //title
-			array($this,"bkfAddAdvancedInfo"), //callback
-			"bkf-options" //page
+			"bkf_advanced_section",
+			__("Advanced Settings","bakkbone-florist-companion"),
+			array($this,"bkfAddAdvancedInfo"),
+			"bkf-options"
 		);
 			
 		add_settings_field(
-			"card_length", //id
-			__("Card Message Length","bakkbone-florist-companion"), //title
-			array($this,"bkfCardLengthCallback"), //callback
-			"bkf-options", //page
-			"bkf_options_section" //section
+			"card_length",
+			__("Card Message Length","bakkbone-florist-companion"),
+			array($this,"bkfCardLengthCallback"),
+			"bkf-options",
+			"bkf_options_section"
 		);
 
 		add_settings_field(
-			"cs_heading", //id
-			__("Cross-Sell Cart Heading","bakkbone-florist-companion"), //title
-			array($this,"bkfCsHeadingCallback"), //callback
-			"bkf-options", //page
-			"bkf_options_section" //section
+			"cs_heading",
+			__("Cross-Sell Cart Heading","bakkbone-florist-companion"),
+			array($this,"bkfCsHeadingCallback"),
+			"bkf-options",
+			"bkf_options_section"
 		);
 		
 		add_settings_field(
-			"noship", //id
-			__("No-Ship Message","bakkbone-florist-companion"), //title
-			array($this,"bkfNoshipCallback"), //callback
-			"bkf-options", //page
-			"bkf_options_section" //section
+			"noship",
+			__("No-Ship Message","bakkbone-florist-companion"),
+			array($this,"bkfNoshipCallback"),
+			"bkf-options",
+			"bkf_options_section"
 		);
 		
 		add_settings_field(
-			"excerpt_pa", //id
-			__("Product Archives","bakkbone-florist-companion"), //title
-			array($this,"bkfExcerptPaCallback"), //callback
-			"bkf-options", //page
-			"bkf_features_section" //section
+			"excerpt_pa",
+			__("Product Archives","bakkbone-florist-companion"),
+			array($this,"bkfExcerptPaCallback"),
+			"bkf-options",
+			"bkf_features_section"
 		);
 		
 		add_settings_field(
-			"suburbs_on", //id
-			__("Delivery Suburbs","bakkbone-florist-companion"), //title
-			array($this,"bkfSuburbsOnCallback"), //callback
-			"bkf-options", //page
-			"bkf_features_section" //section
+			"suburbs_on",
+			__("Delivery Suburbs","bakkbone-florist-companion"),
+			array($this,"bkfSuburbsOnCallback"),
+			"bkf-options",
+			"bkf_features_section"
 		);
 		
 		add_settings_field(
-			"petals_on", //id
-			__("Petals Network","bakkbone-florist-companion"), //title
-			array($this,"bkfPetalsOnCallback"), //callback
-			"bkf-options", //page
-			"bkf_features_section" //section
+			"petals_on",
+			__("Petals Network","bakkbone-florist-companion"),
+			array($this,"bkfPetalsOnCallback"),
+			"bkf-options",
+			"bkf_features_section"
 		);
 		
 		add_settings_field(
-			"disable_order_comments", //id
-			__("Disable Order Comments","bakkbone-florist-companion"), //title
-			array($this,"bkfDOCCallback"), //callback
-			"bkf-options", //page
-			"bkf_features_section" //section
+			"disable_order_comments",
+			__("Disable Order Comments","bakkbone-florist-companion"),
+			array($this,"bkfDOCCallback"),
+			"bkf-options",
+			"bkf_features_section"
 		);
 		
 		add_settings_field(
-			"deactivation_purge", //id
-			__("Purge on Deactivation","bakkbone-florist-companion"), //title
-			array($this,"bkfPurgeCallback"), //callback
-			"bkf-options", //page
-			"bkf_advanced_section" //section
+			"deactivation_purge",
+			__("Purge on Deactivation","bakkbone-florist-companion"),
+			array($this,"bkfPurgeCallback"),
+			"bkf-options",
+			"bkf_advanced_section"
 		);
 		
 	}

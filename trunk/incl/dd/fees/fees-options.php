@@ -65,7 +65,7 @@ class BkfDdFeesOptions{
                     <form method="post" action="options.php">
                         <?php settings_fields("bkf_ddf_options_group"); ?>
                         <?php do_settings_sections("bkf-fees"); ?>
-                        <?php submit_button(__('Save All Changes', 'bakkbone-florist-companion'), 'primary large', 'submit', true, array('id' => 'ddf_submit') ); ?>
+                        <?php submit_button(SAVEALLCHANGESTEXT, 'primary large', 'submit', true, array('id' => 'ddf_submit') ); ?>
                     </form>
                 </div>
             </div>
@@ -88,102 +88,102 @@ class BkfDdFeesOptions{
 		);
 
 		add_settings_section(
-			"bkf_ddf_section", //id
-			__("Taxable Status","bakkbone-florist-companion"), //title
-			array($this,"bkfDdfInfo"), //callback
-			"bkf-fees" //page
+			"bkf_ddf_section",
+			__("Taxable Status","bakkbone-florist-companion"),
+			array($this,"bkfDdfInfo"),
+			"bkf-fees"
 		);
 
 		add_settings_section(
-			"bkf_wf_section", //id
-			__("Weekday Fees","bakkbone-florist-companion"), //title
-			array($this,"bkfWfOptionsInfo"), //callback
-			"bkf-fees" //page
+			"bkf_wf_section",
+			__("Weekday Fees","bakkbone-florist-companion"),
+			array($this,"bkfWfOptionsInfo"),
+			"bkf-fees"
 		);
 
 		add_settings_field(
-			"bkf_ddtst", //id
-			__("Time Slot Fees","bakkbone-florist-companion"), //title
-			array($this,"bkfDdtstCallback"), //callback
-			"bkf-fees", //page
-			"bkf_ddf_section" //section
+			"bkf_ddtst",
+			__("Time Slot Fees","bakkbone-florist-companion"),
+			array($this,"bkfDdtstCallback"),
+			"bkf-fees",
+			"bkf_ddf_section"
 		);
 		add_settings_field(
-			"bkf_ddwft", //id
-			__("Weekday Fees","bakkbone-florist-companion"), //title
-			array($this,"bkfDdwftCallback"), //callback
-			"bkf-fees", //page
-			"bkf_ddf_section" //section
+			"bkf_ddwft",
+			__("Weekday Fees","bakkbone-florist-companion"),
+			array($this,"bkfDdwftCallback"),
+			"bkf-fees",
+			"bkf_ddf_section"
 		);
 		add_settings_field(
-			"bkf_dddft", //id
-			__("Date Fees","bakkbone-florist-companion"), //title
-			array($this,"bkfDddftCallback"), //callback
-			"bkf-fees", //page
-			"bkf_ddf_section" //section
+			"bkf_dddft",
+			__("Date Fees","bakkbone-florist-companion"),
+			array($this,"bkfDddftCallback"),
+			"bkf-fees",
+			"bkf_ddf_section"
 		);
 				
 		// monday
 		add_settings_field(
-			"bkf_wf_monday", //id
-			__("Monday","bakkbone-florist-companion"), //title
-			array($this,"bkfWfMondayCallback"), //callback
-			"bkf-fees", //page
-			"bkf_wf_section" //section
+			"bkf_wf_monday",
+			MONTEXT,
+			array($this,"bkfWfMondayCallback"),
+			"bkf-fees",
+			"bkf_wf_section"
 		);
 
 		// tuesday
 		add_settings_field(
-			"bkf_wf_tuesday", //id
-			__("Tuesday","bakkbone-florist-companion"), //title
-			array($this,"bkfWfTuesdayCallback"), //callback
-			"bkf-fees", //page
-			"bkf_wf_section" //section
+			"bkf_wf_tuesday",
+			TUETEXT,
+			array($this,"bkfWfTuesdayCallback"),
+			"bkf-fees",
+			"bkf_wf_section"
 		);
 		
 		// wednesday
 		add_settings_field(
-			"bkf_wf_wednesday", //id
-			__("Wednesday","bakkbone-florist-companion"), //title
-			array($this,"bkfWfWednesdayCallback"), //callback
-			"bkf-fees", //page
-			"bkf_wf_section" //section
+			"bkf_wf_wednesday",
+			WEDTEXT,
+			array($this,"bkfWfWednesdayCallback"),
+			"bkf-fees",
+			"bkf_wf_section"
 		);
 		
 		// thursday
 		add_settings_field(
-			"bkf_wf_thursday", //id
-			__("Thursday","bakkbone-florist-companion"), //title
-			array($this,"bkfWfThursdayCallback"), //callback
-			"bkf-fees", //page
-			"bkf_wf_section" //section
+			"bkf_wf_thursday",
+			THUTEXT,
+			array($this,"bkfWfThursdayCallback"),
+			"bkf-fees",
+			"bkf_wf_section"
 		);
 		
 		// friday
 		add_settings_field(
-			"bkf_wf_friday", //id
-			__("Friday","bakkbone-florist-companion"), //title
-			array($this,"bkfWfFridayCallback"), //callback
-			"bkf-fees", //page
-			"bkf_wf_section" //section
+			"bkf_wf_friday",
+			FRITEXT,
+			array($this,"bkfWfFridayCallback"),
+			"bkf-fees",
+			"bkf_wf_section"
 		);
 		
 		// saturday
 		add_settings_field(
-			"bkf_wf_saturday", //id
-			__("Saturday","bakkbone-florist-companion"), //title
-			array($this,"bkfWfSaturdayCallback"), //callback
-			"bkf-fees", //page
-			"bkf_wf_section" //section
+			"bkf_wf_saturday",
+			SATTEXT,
+			array($this,"bkfWfSaturdayCallback"),
+			"bkf-fees",
+			"bkf_wf_section"
 		);
 		
 		// sunday
 		add_settings_field(
-			"bkf_wf_sunday", //id
-			__("Sunday","bakkbone-florist-companion"), //title
-			array($this,"bkfWfSundayCallback"), //callback
-			"bkf-fees", //page
-			"bkf_wf_section" //section
+			"bkf_wf_sunday",
+			SUNTEXT,
+			array($this,"bkfWfSundayCallback"),
+			"bkf-fees",
+			"bkf_wf_section"
 		);
 	}
 	

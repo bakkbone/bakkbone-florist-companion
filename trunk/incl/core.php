@@ -30,8 +30,6 @@ class BkfCore{
 		add_action( 'woocommerce_admin_order_data_after_shipping_address', array($this, 'bkf_editable_order_meta_shipping') );
 		add_action( 'woocommerce_process_shop_order_meta', array($this, 'bkf_save_general_details') );
 		add_filter( "woocommerce_checkout_fields" , array($this, "bkf_override_checkout_fields") );
-        if (in_array("gravityforms/gravityforms.php", apply_filters("active_plugins", get_option("active_plugins")))){
-            add_filter( "gform_phone_formats" , array($this, "bkf_au_phone_format") ); }
 		add_filter( "woocommerce_product_cross_sells_products_heading", array($this, "bkf_add_cs_heading"), 10, 1 );
 		add_filter( 'woocommerce_cart_no_shipping_available_html', array($this, 'noship_message') );
 		add_filter( 'woocommerce_no_shipping_available_html', array($this, 'noship_message') );
@@ -46,7 +44,7 @@ class BkfCore{
     function bkf_settings_link( $links ) {
     	$url = esc_url( add_query_arg( array( 'page' => 'bkf_options' ), get_admin_url() . 'admin.php' ) );
     	$settings_link = "<a href='$url'>" . __( 'Settings','bakkbone-florist-companion' ) . '</a>';
-    	$docs_link = "<a href='https://docs.bkbn.au/v/bkf/'>" . __( 'Documentation','bakkbone-florist-companion' ) . '</a>';
+    	$docs_link = "<a href='https://docs.bkbn.au/v/bkf/'>" . BKF_HELP_TITLE . '</a>';
     	$bkf_support_link = "<a href='https://wordpress.org/support/plugin/bakkbone-florist-companion/'>" . __( 'Support','bakkbone-florist-companion' ) . '</a>';
     	array_push( $links, $settings_link, $docs_link, $bkf_support_link );
     	return $links;
@@ -105,11 +103,11 @@ class BkfCore{
 	
 	function bkf_notes_email( $fields, $sent_to_admin, $order ) {
 		$fields['_shipping_notes'] = array(
-			'label' => __( 'Delivery Notes', 'bakkbone-floriost-companion' ),
+			'label' => DELIVERYNOTESTEXT,
 			'value' => get_post_meta( $order->get_id(), '_shipping_notes', true ),
 		);
 		$fields['_card_message'] = array(
-			'label' => __( 'Card Message', 'bakkbone-floriost-companion' ),
+			'label' => cardmessagetext,
 			'value' => get_post_meta( $order->get_id(), '_card_message', true ),
 		);
 		return $fields;
@@ -118,10 +116,9 @@ class BkfCore{
     function bkf_ot_thankyou ( $order ) {
 		$order_id = $order->get_id();
         $cm = get_post_meta( $order_id, '_card_message', true );
-		$cmtitle = __('Card Message', 'bakkbone-florist-companion');
 
         if ( '' !== $cm ) {
-        	echo '<p><strong>' . $cmtitle . ':</strong><br>' . $cm . '</p>';
+        	echo '<p><strong>' . CARDMESSAGETEXT . ':</strong><br>' . $cm . '</p>';
     	}
 		
     }
@@ -129,10 +126,9 @@ class BkfCore{
     function bkf_cd_thankyou ( $order ) {
 		$order_id = $order->get_id();
         $sn = get_post_meta( $order_id, '_shipping_notes', true );
-		$sntitle = __('Delivery Notes', 'bakkbone-florist-companion');
         
         if ( '' !== $sn ) {
-        	echo '<p><strong>' . $sntitle . ':</strong><br>' . $sn . '</p>';
+        	echo '<p><strong>' . DELIVERYNOTESTEXT . ':</strong><br>' . $sn . '</p>';
     	}
 		
     }
@@ -147,13 +143,13 @@ class BkfCore{
 	}
 	
     function bkf_cm_metabox_init(){
-        add_meta_box('bkf_cm', __('Card Message', 'bakkbone-florist-companion'),array($this, 'bkf_cm_metabox_callback'),'shop_order','side','core');
+        add_meta_box('bkf_cm', CARDMESSAGETEXT,array($this, 'bkf_cm_metabox_callback'),'shop_order','side','core');
     }
     
     public function bkf_cm_metabox_callback( $post ){
         $cardmessage = get_post_meta( get_the_id(), '_card_message', true );
         echo '<input type="hidden" name="bkf_cm_nonce" value="' . wp_create_nonce() . '">';
-        ?><textarea style="font-family:monospace;width:100%;" name="card_message" rows="6" class="card_message input-text form-control" id="card_message" maxlength="<?php echo get_option('bkf_options_setting')['card_length'] ?>" placeholder="Card Message"><?php echo esc_html( $cardmessage ) ?></textarea>
+        ?><textarea style="font-family:monospace;width:100%;" name="card_message" rows="6" class="card_message input-text form-control" id="card_message" maxlength="<?php echo get_option('bkf_options_setting')['card_length'] ?>" placeholder="<?php echo CARDMESSAGETEXT; ?>"><?php echo esc_html( $cardmessage ) ?></textarea>
     	<?php  
     }
     
@@ -181,7 +177,7 @@ class BkfCore{
 	?>
 		<div class="address">
 			<p<?php if( empty( $shippingnotes ) ) { echo ' class="none_set"'; } ?>>
-	 			<strong>Delivery Notes:</strong>
+	 			<strong><?php echo DELIVERYNOTESTEXT; ?>:</strong>
 				<?php echo ! empty( $shippingnotes ) ? $shippingnotes : '' ?>
 			</p>
 		</div>
@@ -189,12 +185,12 @@ class BkfCore{
 			<?php
 				woocommerce_wp_textarea_input( array(
 					'id' => '_shipping_notes',
-					'label' => __('Delivery Notes', 'bakkbone-florist-companion'),
+					'label' => DELIVERYNOTESTEXT,
 					'wrapper_class' => 'form-field-wide',
 					'class' => 'input-text',
 					'style' => 'width:100%',
 					'value' => $shippingnotes,
-					'description' => __('Gate code, dog, etc.', 'bakkbone-florist-companion')
+					'description' => __('Gate code, fence, dog, etc.', 'bakkbone-florist-companion')
 				) );
 			?>
 		</div>
@@ -219,7 +215,7 @@ class BkfCore{
     }
     if( $has_physical ) {
 		 $fields['order']['card_message'] = array(
-	    'label'     => __('Card Message', 'bakkbone-florist-companion'),
+	    'label'     => CARDMESSAGETEXT,
 	    'required'  => true,
 	    'class'     => array('form-row-wide'),
 	    'clear'     => true,
@@ -229,22 +225,6 @@ class BkfCore{
 		     );
     }
 	     return $fields;
-	}
-	
-	function bkf_au_phone_format( $phone_formats ) {
-	    $phone_formats['au'] = array(
-	        'label'       => __('Australia Mobile', 'bakkbone-florist-companion'),
-	        'mask'        => '9999 999 999',
-	        'regex'       => '/^\d{4} \d{3} \d{3}$/',
-	        'instruction' => '#### ### ###',
-	    );
-	    $phone_formats['aul'] = array(
-	        'label'       => __('Australia Landline', 'bakkbone-florist-companion'),
-	        'mask'        => '99 9999 9999',
-	        'regex'       => '/^\d{2} \d{4} \d{4}$/',
-	        'instruction' => '## #### ####',
-	    );
-	    return $phone_formats;
 	}
 	
 	function bkf_add_excerpt_pa() {
