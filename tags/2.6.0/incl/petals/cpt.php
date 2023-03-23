@@ -78,12 +78,37 @@ class BkfPOPosts{
 	                );
 	        if($xml->type == '300'){
                 $note = '<strong>'.BKF_PETALS_MESSAGE_SUCCESS.' </strong><br>' . $msgbody . '<br><br><strong>'.BKF_PETALS_RESPONSE.'</strong> <br><strong>' . $implosion;
-                $ordernote = $order->add_order_note($note);
+                $note = __('<strong>Order sent.<br>Response from Petals: </strong><br>', 'bakkbone-florist-companion') . '<strong>' . $implosion;
+				$comment_author_email  = 'bkf@';
+				$comment_author_email .= isset( $_SERVER['HTTP_HOST'] ) ? str_replace( 'www.', '', sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) ) : 'noreply.com';
+				$comment_author_email  = sanitize_email( $comment_author_email );
+				$commentargs = array(
+					'comment_agent'		=> __('Petals API', 'bakkbone-florist-companion'),
+					'comment_type'		=> 'petals_order_note',
+					'comment_author'	=> __('Petals Exchange', 'bakkbone-florist-companion'),
+					'comment_author_email'	=> $comment_author_email,
+					'comment_content'	=> $note . '<br><br>' . $fullnote,
+					'comment_post_ID'	=> $orderid,
+					'comment_approved'	=> 1
+				);
+				$comment = wp_insert_comment($commentargs, true);
 	            $wc_emails = WC()->mailer()->get_emails();
 	            $wc_emails['WC_Email_Petals_Outcome']->trigger( $order->get_id(), $comment );			
 			}else{
                 $note = '<strong>'.BKF_PETALS_MESSAGE_FAIL.' </strong><br>' . $msgbody . '<br><br>'.BKF_PETALS_RESPONSE.' <br><strong>' . $implosion;
-                $ordernote = $order->add_order_note($note);
+				$comment_author_email  = 'bkf@';
+				$comment_author_email .= isset( $_SERVER['HTTP_HOST'] ) ? str_replace( 'www.', '', sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) ) : 'noreply.com';
+				$comment_author_email  = sanitize_email( $comment_author_email );
+				$commentargs = array(
+					'comment_agent'		=> __('Petals API', 'bakkbone-florist-companion'),
+					'comment_type'		=> 'petals_order_note',
+					'comment_author'	=> __('Petals Exchange', 'bakkbone-florist-companion'),
+					'comment_author_email'	=> $comment_author_email,
+					'comment_content'	=> $note . '<br><br>' . $fullnote,
+					'comment_post_ID'	=> $orderid,
+					'comment_approved'	=> 1
+				);
+				$comment = wp_insert_comment($commentargs, true);
 	            $wc_emails = WC()->mailer()->get_emails();
 	            $wc_emails['WC_Email_Petals_Outcome']->trigger( $order->get_id(), $comment );		
 			}
