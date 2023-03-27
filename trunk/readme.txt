@@ -5,7 +5,7 @@ Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 6.0
 Tested up to: 6.1.1
 Requires PHP: 7.4
-Stable tag: 2.6.0
+Stable tag: 2.6.1
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -77,6 +77,7 @@ Why? You can view/print your orders all in one place, and in one consistent form
 
 = Tweaks =
 
+* Optional feature to play a sound when new orders arrive
 * Rename "shipping" to "delivery"
 * Automatically assign guest orders placed by registered customer to the matching user (so it appears in their order history when logged in)
 * Option to display product "short description" in archive listings
@@ -112,6 +113,8 @@ Not required but we recommend for optimal workflow:
 3. Select a category for the product that will be used for Petals orders and click 'Save Changes', before clicking the link below the product selection box to automatically create a product.
 4. Provide the link listed on the Petals Network page to the Petals <a href="mailto:eflorist@petalsnetwork.com?subject=XML Opt-In&body=Shop Name: %0D%0AMy Full Name: %0D%0APhone: %0D%0AEmail: %0D%0AMember Number: %0D%0AXML Link: %0D%0A%0D%0APlease opt my store into XML orders alongside the Exchange, using the details above.">eFlorist Team</a>, requesting to _opt in to XML orders alongside the Exchange to the link provided_.
 
+Please note that the integration is not functional until Petals advises they have processed your request.
+
 ** What about XYZ feature? **
 If there's a feature missing, please let us know in the support forum here on the WordPress Plugin Repository - we'd love to hear your feedback and know what you want to see added next!
 
@@ -134,6 +137,13 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 12. Delivery Suburbs Settings page
 
 == Changelog ==
+= 2.6.1 =
+* ADD: Order Notifier feature
+* DEV: Fix font consistency
+* DEV: Change required capability for settings pages from `manage_options` to `manage_woocommerce`
+* DEV: Localisation inside inline js
+* TWEAK: Display "Delivered" action in Actions column for wc-collect status
+* TWEAK: Rename columns on order list
 = 2.6.0 =
 * ADD: Petals inbound orders
 * DEV: Fix timeslot validation at checkout

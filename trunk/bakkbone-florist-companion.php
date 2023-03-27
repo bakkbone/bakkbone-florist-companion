@@ -4,7 +4,7 @@
  * Plugin Name: BAKKBONE Florist Companion
  * Plugin URI: https://docs.bkbn.au/v/bkf/
  * Description: Provides standardised features for floristry websites.
- * Version: 2.6.0
+ * Version: 2.6.1
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: BAKKBONE Australia
@@ -63,6 +63,8 @@ require BKF_PATH . "/incl/petals/cpt.php";
 require BKF_PATH . "/incl/emails/status-email.php";
 require BKF_PATH . "/incl/suburbs/suburbs.php";
 require BKF_PATH . "/incl/suburbs/suburbs-options.php";
+require BKF_PATH . "/incl/notifier.php";
+require BKF_PATH . "/incl/svg.php";
 
 define( 'BKF_ACF_PATH', BKF_PATH . '/incl/lib/acf/' );
 define( 'BKF_ACF_URL', BKF_URL . '/incl/lib/acf/' );
@@ -71,8 +73,10 @@ add_filter('acf/settings/url', 'bkf_acf_settings_url');
 function bkf_acf_settings_url( $url ) {
     return BKF_ACF_URL;
 }
-add_filter('acf/settings/show_admin', '__return_false');
-// add_filter('acf/settings/show_updates', '__return_false', 100);
+if(!in_array('advanced-custom-fields/acf.php', apply_filters('active_plugins', get_option('active_plugins')))){ 
+	add_filter('acf/settings/show_admin', '__return_false');
+	add_filter('acf/settings/show_updates', '__return_false', 100);
+}
 
 function run_bkf()
 {
@@ -108,6 +112,7 @@ function run_bkf()
 	$suburbs = new BkfSuburbs();
 	$suburbsoptions = new BkfSuburbsOptions();
 	$localisation = new BkfLocalisation();
+	$notifier = new BkfNotifier();
 }
 
 add_filter( 'woocommerce_ship_to_different_address_checked', '__return_true' );
@@ -156,7 +161,8 @@ function bkf_active(){
 			'excerpt_pa'	=>	false,
 			'suburbs_on'	=>	true,
 			'petals_on'		=>	false,
-			'disable_order_comments'	=>	true
+			'disable_order_comments'	=>	true,
+			'order_notifier'	=>	false
 		));
 	}
 	if($closed == ''){
