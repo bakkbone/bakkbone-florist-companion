@@ -4,7 +4,7 @@
  * Plugin Name: BAKKBONE Florist Companion
  * Plugin URI: https://docs.bkbn.au/v/bkf/
  * Description: Provides standardized features for floristry websites.
- * Version: 2.6.4
+ * Version: 2.6.5
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: BAKKBONE Australia
@@ -14,19 +14,17 @@
  * Text Domain: bakkbone-florist-companion
 **/
 
-if (!defined("WPINC")){
+if(!defined("WPINC")){
 	die;
 }
 
-define("BKF_EXEC",true);
+if(!defined("BKF_EXEC"){
+	define("BKF_EXEC", true);
+}
 
-define("BKF_DEBUG",false);
-
-define("BKF_FILE",__FILE__);
-
-define("BKF_PATH",dirname(__FILE__));
-
-define("BKF_URL",plugins_url("/",__FILE__));
+define("BKF_FILE", __FILE__);
+define("BKF_PATH", dirname(__FILE__));
+define("BKF_URL", plugins_url("/",__FILE__));
 
 require BKF_PATH . "/incl/functions.php";
 require BKF_PATH . "/incl/lib/action-scheduler/action-scheduler.php";

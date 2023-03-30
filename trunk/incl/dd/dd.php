@@ -630,15 +630,21 @@ class BkfDd{
 				    {
 	  				    const wrapper = document.querySelector('#delivery_timeslot_field');
 			            var ele = document.getElementsByName('shipping_method[0]');
-			            for(i = 0; i < ele.length; i++) {
-			                if(ele[i].checked)
-								var currentShippingMethod = ele[i].value;
+			            if(ele.length == 1){
+			                var currentShippingMethod = ele[0].value
+			            } else {
+    			            for(i = 0; i < ele.length; i++) {
+    			                if(ele[i].checked)
+    								var currentShippingMethod = ele[i].value;
+    			            }
 			            }
+
 						var days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 						var aDate = document.querySelector('#delivery_date').value;
 						var theDate = Date.parse(aDate);
 						var theDateObject = new Date(theDate);
 						var delDay = days[theDateObject.getDay() - 1];
+						console.log('day = ' + value.day + ' ' + delDay + ' and method = ' + value.method + currentShippingMethod);
 						if( value.day == delDay && value.method == currentShippingMethod ){
 							const select = document.querySelector('#delivery_timeslot');
 							let newOption = new Option(value.text, value.slot);
@@ -677,9 +683,13 @@ class BkfDd{
 				    {
 	  				    const wrapper = document.querySelector('#delivery_timeslot_field');
 			            var ele = document.getElementsByName('shipping_method[0]');
-			            for(i = 0; i < ele.length; i++) {
-			                if(ele[i].checked)
-								var currentShippingMethod = ele[i].value;
+			            if(ele.length == 1){
+			                var currentShippingMethod = ele[0].value
+			            } else {
+    			            for(i = 0; i < ele.length; i++) {
+    			                if(ele[i].checked)
+    								var currentShippingMethod = ele[i].value;
+    			            }
 			            }
 						var days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 						var aDate = document.querySelector('#delivery_date').value;
