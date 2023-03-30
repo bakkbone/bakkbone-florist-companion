@@ -144,6 +144,7 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 
 == Changelog ==
 = 2.6.4 =
+* DEV: WP 6.2 tested
 * DEV: Re-squash timeslot checkout validation bug
 = 2.6.3 =
 * ADD: Admin dashboard widget with most recent orders
