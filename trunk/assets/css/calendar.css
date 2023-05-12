@@ -1,19 +1,19 @@
-.closed span.ui-state-default {
+.closed span.ui-state-default,.closed a.ui-state-default {
 	color: white;
 	background: none;
 	background-color: black !important;
 }
-.booked span.ui-state-default {
+.booked span.ui-state-default,.booked a.ui-state-default {
 	color: white;
 	background: none;
 	background-color: #900 !important;
 }
-.unavailable span.ui-state-default {
+.unavailable span.ui-state-default,.unavailable a.ui-state-default {
 	color: white;
 	background: none;
 	background-color: orange !important;
 }
-.sdc span.ui-state-default {
+.sdc span.ui-state-default,.sdc a.ui-state-default {
 	color: white;
 	background: none;
 	background-color: blue !important;

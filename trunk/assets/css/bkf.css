@@ -1,3 +1,66 @@
+.notice-bkf {
+    border-left-color: #000099;
+}
+
+.bkf-input-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.bkf-input-icon > i {
+  position: absolute;
+  display: block;
+  transform: translate(0, -50%);
+  top: 50%;
+  pointer-events: none;
+  width: 25px;
+  text-align: center;
+  font-style: normal;
+}
+
+.bkf-input-icon > input {
+  padding-left: 25px;
+  padding-right: 0;
+}
+
+.bkf-input-icon-right > i {
+  right: 0;
+}
+
+.bkf-input-icon-right > input {
+  padding-left: 0;
+  padding-right: 25px;
+  text-align: right;
+}
+
+input.bkf_secret_input,input.bkf_secret_input:focus{
+	background-color: #00000000;
+	border: 0;
+	box-shadow: none;
+	font-size: 1.25em;
+	font-weight: bold;
+	color: black;
+}
+
+.bkf-loading-spin{
+	width: 200px;
+	height: 200px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin: -100px -100px 0 0;
+	z-index: 9999;
+}
+.bkf-loading-bg{
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #ffffff95;
+	z-index: 9998;
+	width: 100vw;
+	height: 100vh;
+}
+
 #ship-to-different-address {
 					pointer-events: none !important;
 					display: none !important;
@@ -397,6 +460,7 @@ enclose in label with class bkf-radio-container, put span with class bkf-radio-c
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-size: 16px;
 }
 
 /* Hide the browser's default radio button */

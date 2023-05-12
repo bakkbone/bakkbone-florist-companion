@@ -4,7 +4,7 @@
  * Plugin Name: BAKKBONE Florist Companion
  * Plugin URI: https://docs.bkbn.au/v/bkf/
  * Description: Provides standardized features for floristry websites.
- * Version: 2.6.4
+ * Version: 2.7.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: BAKKBONE Australia
@@ -14,61 +14,66 @@
  * Text Domain: bakkbone-florist-companion
 **/
 
-if (!defined("WPINC")){
+// TODO Pickup orders display issue in calendar/pdf
+// TODO Card message report ??
+// TODO Payment integration for phone orders
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+if(!defined("WPINC")){
 	die;
 }
 
-define("BKF_EXEC",true);
+define("BKF_EXEC", true);
 
-define("BKF_DEBUG",false);
+define("BKF_FILE", __FILE__);
+define("BKF_PATH", dirname(__FILE__));
+define("BKF_URL", plugins_url("/",__FILE__));
 
-define("BKF_FILE",__FILE__);
+require BKF_PATH . "/src/functions.php";
+require BKF_PATH . "/lib/action-scheduler/action-scheduler.php";
+require BKF_PATH . "/lib/dompdf/autoload.inc.php";
+require BKF_PATH . "/src/cpt/dsposts.php";
+require BKF_PATH . "/src/enqueue.php";
+require BKF_PATH . "/src/options.php";
+require BKF_PATH . "/src/shortcodes.php";
+require BKF_PATH . "/src/admin-notices.php";
+require BKF_PATH . "/src/core.php";
+require BKF_PATH . "/src/pickup.php";
+require BKF_PATH . "/src/pdf/pdf.php";
+require BKF_PATH . "/src/pdf/pdf-options.php";
+require BKF_PATH . "/src/pdf/actions.php";
+require BKF_PATH . "/src/dd/dd.php";
+require BKF_PATH . "/src/dd/filter.php";
+require BKF_PATH . "/src/dd/sameday.php";
+require BKF_PATH . "/src/dd/fees/fees.php";
+require BKF_PATH . "/src/dd/fees/date-specific.php";
+require BKF_PATH . "/src/dd/fees/fees-options.php";
+require BKF_PATH . "/src/dd/dd-options.php";
+require BKF_PATH . "/src/dd/blocks.php";
+require BKF_PATH . "/src/dd/catblocks.php";
+require BKF_PATH . "/src/dd/calendar.php";
+require BKF_PATH . "/src/dd/timeslots.php";
+require BKF_PATH . "/src/localisation.php";
+require BKF_PATH . "/src/order-status.php";
+require BKF_PATH . "/src/petals/petals-options.php";
+require BKF_PATH . "/src/petals/petals.php";
+require BKF_PATH . "/src/petals/email.php";
+require BKF_PATH . "/src/petals/outbound.php";
+require BKF_PATH . "/src/petals/messaging.php";
+require BKF_PATH . "/src/petals/cpt.php";
+require BKF_PATH . "/src/emails/status-email.php";
+require BKF_PATH . "/src/suburbs/suburbs.php";
+require BKF_PATH . "/src/suburbs/suburbs-options.php";
+require BKF_PATH . "/src/notifier.php";
+require BKF_PATH . "/src/svg.php";
+require BKF_PATH . "/src/pos/phone.php";
+require BKF_PATH . "/src/ajax.php";
 
-define("BKF_PATH",dirname(__FILE__));
-
-define("BKF_URL",plugins_url("/",__FILE__));
-
-require BKF_PATH . "/incl/functions.php";
-require BKF_PATH . "/incl/lib/action-scheduler/action-scheduler.php";
-require BKF_PATH . "/incl/lib/dompdf/autoload.inc.php";
-require BKF_PATH . "/incl/cpt/dsposts.php";
-require BKF_PATH . "/incl/enqueue.php";
-require BKF_PATH . "/incl/options.php";
-require BKF_PATH . "/incl/shortcodes.php";
-require BKF_PATH . "/incl/admin-notices.php";
-require BKF_PATH . "/incl/core.php";
-require BKF_PATH . "/incl/pickup.php";
-require BKF_PATH . "/incl/pdf/pdf.php";
-require BKF_PATH . "/incl/pdf/pdf-options.php";
-require BKF_PATH . "/incl/pdf/actions.php";
-require BKF_PATH . "/incl/dd/dd.php";
-require BKF_PATH . "/incl/dd/filter.php";
-require BKF_PATH . "/incl/dd/sameday.php";
-require BKF_PATH . "/incl/dd/fees/fees.php";
-require BKF_PATH . "/incl/dd/fees/date-specific.php";
-require BKF_PATH . "/incl/dd/fees/fees-options.php";
-require BKF_PATH . "/incl/dd/dd-options.php";
-require BKF_PATH . "/incl/dd/blocks.php";
-require BKF_PATH . "/incl/dd/catblocks.php";
-require BKF_PATH . "/incl/dd/calendar.php";
-require BKF_PATH . "/incl/dd/timeslots.php";
-require BKF_PATH . "/incl/localisation.php";
-require BKF_PATH . "/incl/order-status.php";
-require BKF_PATH . "/incl/petals/petals-options.php";
-require BKF_PATH . "/incl/petals/petals.php";
-require BKF_PATH . "/incl/petals/email.php";
-require BKF_PATH . "/incl/petals/outbound.php";
-require BKF_PATH . "/incl/petals/decision.php";
-require BKF_PATH . "/incl/petals/messaging.php";
-require BKF_PATH . "/incl/petals/cpt.php";
-require BKF_PATH . "/incl/emails/status-email.php";
-require BKF_PATH . "/incl/suburbs/suburbs.php";
-require BKF_PATH . "/incl/suburbs/suburbs-options.php";
-require BKF_PATH . "/incl/notifier.php";
-require BKF_PATH . "/incl/svg.php";
-
-define( 'BKF_ACF_PATH', BKF_PATH . '/incl/lib/acf/' );
-define( 'BKF_ACF_URL', BKF_URL . '/incl/lib/acf/' );
+define( 'BKF_ACF_PATH', BKF_PATH . '/lib/acf/' );
+define( 'BKF_ACF_URL', BKF_URL . '/lib/acf/' );
 include_once( BKF_ACF_PATH . 'acf.php' );
 add_filter('acf/settings/url', 'bkf_acf_settings_url');
 function bkf_acf_settings_url( $url ) {
@@ -105,7 +110,6 @@ function run_bkf()
 	$petalsoptions = new BkfPetalsOptions();
 	$petals = new BkfPetals();
 	$petalsout = new BkfPetalsOutbound();
-	$petalsdec = new BkfPetalsDecision();
 	$petalsmsg = new BkfPetalsMsg();
 	$petalsCPT = new BkfPOPosts();
 	$wcemail = new Bkf_WC_Email();
@@ -114,12 +118,14 @@ function run_bkf()
 	$suburbsoptions = new BkfSuburbsOptions();
 	$localisation = new BkfLocalisation();
 	$notifier = new BkfNotifier();
+	$pho = new BkfPho();
+	$ajax = new BkfAjax();
 }
 
 add_filter( 'woocommerce_ship_to_different_address_checked', '__return_true' );
 
 register_activation_hook( __FILE__, 'bkf_active' );
-register_deactivation_hook( __FILE__, 'bkf_inactive' );
+register_deactivation_hook(__FILE__, 'bkf_inactive');
 
 function bkf_active(){
 	$options = '';
@@ -160,7 +166,6 @@ function bkf_active(){
 	if($features == ''){
 		update_option('bkf_features_setting', array(
 			'excerpt_pa'	=>	false,
-			'suburbs_on'	=>	true,
 			'petals_on'		=>	false,
 			'disable_order_comments'	=>	true,
 			'order_notifier'	=>	false
@@ -218,6 +223,7 @@ function bkf_active(){
 		update_option('bkf_localisation_setting', array(
 			'billing_label_business' => default_billing_label_business,
 			'global_label_state' => default_global_label_state,
+			'global_label_suburb' => default_global_label_suburb,
 			'global_label_postcode' => default_global_label_postcode,
 			'global_label_country' => default_global_label_country,
 			'global_label_phone' => default_global_label_phone,
