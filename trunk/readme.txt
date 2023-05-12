@@ -5,7 +5,7 @@ Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 6.0
 Tested up to: 6.2
 Requires PHP: 7.4
-Stable tag: 2.6.5
+Stable tag: 2.6.4
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -143,9 +143,6 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 14. Order Notifier Toggle
 
 == Changelog ==
-= 2.6.5 =
-* DEV: Patch bug where timeslots field may not correctly display when only one delivery method is available
-* DEV: Remove unnecessary `check()` function in `BkfSuburbs` class
 = 2.6.4 =
 * DEV: WP 6.2 tested
 * DEV: Re-squash timeslot checkout validation bug
@@ -155,7 +152,7 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 * DEV: Add `payment_complete()` to outbound Petals order processing
 * DEV: Fix consistency of order statuses for "Active" filter
 * DEV: Fix display of order notes on inbound Petals orders
-* DEV: Optimize admin order list for inbound Petals orders
+* DEV: Optimise admin order list for inbound Petals orders
 * TWEAK: Move some functions to a callable class (`BakkboneFloristCompanion`) to allow sharing - `get_rss_feed($url)`, `full_count()`, `all_count()`
 = 2.6.2 =
 * ADD: Admin dashboard widget with today's deliveries
