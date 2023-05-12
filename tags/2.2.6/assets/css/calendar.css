@@ -1,0 +1,76 @@
+.closed span.ui-state-default {
+	color: white;
+	background: none;
+	background-color: black !important;
+}
+.booked span.ui-state-default {
+	color: white;
+	background: none;
+	background-color: #900 !important;
+}
+.unavailable span.ui-state-default {
+	color: white;
+	background: none;
+	background-color: orange !important;
+}
+.sdc span.ui-state-default {
+	color: white;
+	background: none;
+	background-color: blue !important;
+}
+
+
+.fc * {
+	font-family: 'Poppins', sans-serif;
+}
+.fc-event.fc-bg-event.closedbg,.closedbg {
+	color: white;
+	background: none;
+	background-color: black;
+}
+.fc-h-event.closedbg {
+	color: white;
+	background: none;
+	background-color: black;
+	border: 1px solid black;	
+}
+.fc-h-event.fullbg {
+	color: white;
+	background: none;
+	background-color: #900;
+	border: 1px solid #900;	
+}
+.fc-event.fc-bg-event.fullbg,.fullbg {
+	color: white;
+	background: none;
+	background-color: #900;
+}
+.fc-h-event.uabg {
+	color: white;
+	background: none;
+	background-color: #b35300;
+	border: 1px solid #b35300;	
+}
+.fc-event.fc-bg-event.uabg,.ualbg {
+	color: white;
+	background: none;
+	background-color: #b35300;
+}
+.fc-daygrid-day-number {
+	font-size: 22px;
+	color: black;
+}
+.fc-daygrid-block-event div.fc-event-title {
+	font-size: 12px;
+}
+.fc .fc-bg-event div.fc-event-title {
+	font-size: 14px;
+	font-weight: 500;
+	margin: 4px;
+}
+.fc .fc-col-header-cell-cushion {
+	font-size: 20px;
+	color: black;
+	font-weight: 400;
+	margin: 4px 0;
+}

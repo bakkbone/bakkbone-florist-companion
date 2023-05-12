@@ -1,0 +1,1 @@
+This folder is for custom PHP code and the files will not be overwritten.

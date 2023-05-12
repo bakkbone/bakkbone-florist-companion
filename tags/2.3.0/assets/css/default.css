@@ -1,0 +1,133 @@
+#toplevel_page_bkf_options > a > div.wp-menu-image.dashicons-before > img {
+	width: 20px;
+	height: 20px;
+}
+.bkf-box h2 {
+	margin-bottom: 0.2em;
+}
+.bkf-box p.bkf-pageinfo {
+	margin-top: 0.2em;
+}
+.bkf-box * {
+	font-family: 'Poppins', sans-serif;
+}
+.bkf-box p {
+	font-size: 14px;
+}
+.bkf-form{
+	border: 1px solid #ddd;
+	padding: 12px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+.bkf-form-control{
+	padding: 12px;
+	border-radius: 0 !important;
+	border: 1px solid #ddd !important;
+	background: white !important;
+}
+.bkf-invalid {
+	border-left: 3px solid red;
+}
+.bkf-validated {
+	border-left: 3px solid green;
+}
+.bkf-hidden {
+	display: none !important;
+}
+.bkf-error {
+	padding: 10px;
+	margin: 5px 0 5px 0;
+	border-radius: 10px;
+	box-shadow: 5px 10px 10px #888888;
+	background-color: PeachPuff;
+	color: black;
+}
+.bkf-info {
+	padding: 10px;
+	margin: 5px 0 5px 0;
+	border-radius: 10px;
+	box-shadow: 5px 10px 10px #888888;
+	background-color: DarkSeaGreen;
+	color: black;
+}
+.bkf-error p,.bkf-info p {
+	margin: 0;
+}
+.bkf-margin0 {
+	margin: 0;
+}
+ul.bkf-list {
+	list-style: inside;
+}
+
+
+input[type="color"].bkf-form-control{
+	padding: 0 !important;
+}
+.bkf-help-block{
+	font-size:75% !important;
+	margin-top: 0 !important;
+}
+.bkf-list-group {
+	padding: 10px;
+	background-color: #ddd;
+	border: 1px solid #aaa;
+	font-size: 18px;
+}
+.bkf-inside {
+	border: 1px solid #ddd;
+	padding: 10px;
+	margin: 5px;
+}
+.bkf-close {
+    background: black;
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+.bkf-close:after {
+    content: '';
+    height: 20px;
+    border-left: 2px solid #fff;
+    position: absolute;
+    transform: rotate(45deg);
+    left: 9px;
+}
+
+.bkf-close:before {
+    content: '';
+    height: 20px;
+    border-left: 2px solid #fff;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 9px;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
