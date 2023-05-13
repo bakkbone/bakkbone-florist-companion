@@ -1,2 +1,2 @@
 <?php
-defined("BKF_EXEC") or die("Silence is golden");
+defined("BKF_EXEC") or die("Ah, sweet silence.");
