@@ -1269,7 +1269,6 @@ class BkfAjax{
 	        $order->add_meta_data('_delivery_date',$deliveryDate);
 	        $order->add_meta_data('_delivery_timestamp',strtotime($deliveryDate));
 			
-			
 			$shippingMethod = $_REQUEST['shipping_method'];
 			$shippingMethodDetails = bkf_get_shipping_rates_associative()[$shippingMethod];
 			
@@ -1331,6 +1330,14 @@ class BkfAjax{
 	        	'phone'      => $cus['phone'],
 				'company'    => $cus['company']
 	        );
+			if($_REQUEST['create_customer']){
+				$customeraccount = wc_create_new_customer($cus['email']);
+				update_user_meta($customeraccount, "billing_first_name", $cus['first']);
+				update_user_meta($customeraccount, "billing_last_name", $cus['last']);
+				update_user_meta($customeraccount, "billing_company", $cus['company']);
+				update_user_meta($customeraccount, "billing_email", $cus['email']);
+				update_user_meta($customeraccount, "billing_phone", $cus['phone']);
+			}
 		}
         $order->set_address( $billing, 'billing');
 		

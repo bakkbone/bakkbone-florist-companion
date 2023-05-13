@@ -117,6 +117,10 @@ class BkfPho{
 										<th scope="row"><label for="billing_phone"><?php echo get_option('bkf_localisation_setting')['global_label_telephone']; ?> <abbr class="required" title="required">*</abbr></label></th>
 										<td><input class="bkf-form-control regular-text" type="tel" autocomplete="off" name="billing[phone]" id="billing_phone" placeholder="<?php echo get_option('bkf_localisation_setting')['global_label_telephone']; ?>" /></td>
 									</tr>
+									<tr class="create_customer_form">
+										<th scope="row"><label for="create_customer"><?php _e('Create account for customer', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<td><label class="bkf-radio-container"><input checked class="bkf-form-control" type="radio" name="create_customer" id="create_customer-yes" value="1" checked /><span class="bkf-radio-checkmark"></span><?php _e('Yes', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="create_customer" id="create_customer-no" value="0" /><span class="bkf-radio-checkmark"></span><?php _e('No', 'bakkbone-florist-companion'); ?></label></td>
+									</tr>
 								</tbody>
 							</table>
 						</fieldset>
@@ -1148,8 +1152,8 @@ loading.fadeOut();
 		<script type="text/javascript" id="customer_form_script">
 			jQuery(document).ready(function( $ ) {
 			    jQuery('.select2').select2();
-		        jQuery('input[name="customer_type[]"]').change(function(){
-					customerType = jQuery("input[name='customer_type[]']:checked").val();
+		        jQuery('input[name="customer_type"]').change(function(){
+					customerType = jQuery("input[name='customer_type']:checked").val();
 					var newRequiredFields = [jQuery("#billing_first"), jQuery("#billing_last"), jQuery("#billing_email"), jQuery("#billing_phone")];
 					var existingRequiredFields = [jQuery("#customer_id")];
 					if(customerType == 'new'){
