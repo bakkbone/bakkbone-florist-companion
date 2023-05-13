@@ -27,15 +27,15 @@ class BkfNotifier{
 	
 	function bkf_notifier_js() {
 		$files = array(
-			'01-reveal.wav' => BKF_URL . '/assets/audio/' . '01-reveal.wav',
-			'02-bells.wav' => BKF_URL . '/assets/audio/' . '02-bells.wav',
-			'03-alert.wav' => BKF_URL . '/assets/audio/' . '03-alert.wav',
-			'04-phone.mp3' => BKF_URL . '/assets/audio/' . '04-phone.mp3',
-			'05-chime.mp3' => BKF_URL . '/assets/audio/' . '05-chime.mp3',
-			'06-message.mp3' => BKF_URL . '/assets/audio/' . '06-message.mp3',
-			'07-cute.mp3' => BKF_URL . '/assets/audio/' . '07-cute.mp3',
-			'08-roll.mp3' => BKF_URL . '/assets/audio/' . '08-roll.mp3',
-			'09-nit.mp3' => BKF_URL . '/assets/audio/' . '09-nit.mp3'
+			'01-reveal.wav' => BKF_URL . 'assets/audio/' . '01-reveal.wav',
+			'02-bells.wav' => BKF_URL . 'assets/audio/' . '02-bells.wav',
+			'03-alert.wav' => BKF_URL . 'assets/audio/' . '03-alert.wav',
+			'04-phone.mp3' => BKF_URL . 'assets/audio/' . '04-phone.mp3',
+			'05-chime.mp3' => BKF_URL . 'assets/audio/' . '05-chime.mp3',
+			'06-message.mp3' => BKF_URL . 'assets/audio/' . '06-message.mp3',
+			'07-cute.mp3' => BKF_URL . 'assets/audio/' . '07-cute.mp3',
+			'08-roll.mp3' => BKF_URL . 'assets/audio/' . '08-roll.mp3',
+			'09-nit.mp3' => BKF_URL . 'assets/audio/' . '09-nit.mp3'
 		);
 		global $pagenow;
 	    if ( $pagenow == 'edit.php' && $_GET['post_type'] == 'shop_order' ) {
@@ -97,7 +97,7 @@ class BkfNotifier{
 						}
 						if(JSON.parse(result).length !== 0){
 							var audio = document.createElement("audio");
-							audio.src = '<?php echo BKF_URL . '/assets/audio/' . get_option('bkf_audio_setting')['notifier_audio']; ?>';
+							audio.src = '<?php echo BKF_URL . 'assets/audio/' . get_option('bkf_audio_setting')['notifier_audio']; ?>';
 							audio.loop = false;
 							audio.play();
 						} else {

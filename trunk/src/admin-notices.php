@@ -125,7 +125,7 @@ class BkfAdminNotices{
 		$guid = array_column($feed, 'guid');
 		array_multisort($guid, SORT_DESC, SORT_STRING, $feed);
 		array_slice($feed, 0, 3, true);
-		echo '<div style="text-align:center"><img src="'.BKF_URL.'/assets/img/B22_landscape_250.png" style="max-width:200px;"/><h3>'.__('News and updates from Team BAKKBONE', 'bakkbone-florist-companion').'</h3></div>';
+		echo '<div style="text-align:center"><img src="'.BKF_URL.'assets/img/B22_landscape_250.png" style="max-width:200px;"/><h3>'.__('News and updates from Team BAKKBONE', 'bakkbone-florist-companion').'</h3></div>';
 		echo '<ul>';
 		foreach($feed as $item){
 			$ts = strtotime($item->pubDate);
