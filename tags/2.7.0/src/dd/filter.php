@@ -77,7 +77,7 @@ class BkfDdFilter{
 		$fullquery = get_posts($fullargs);
 		$fullcount = count($fullquery);
 		
-		$allstatus = array("wc-processing","wc-made","wc-collect","wc-out","wc-scheduled","wc-new","wc-accept");
+		$allstatus = array("wc-processing","wc-made","wc-collect","wc-out","wc-scheduled","wc-new","wc-accept","wc-invoiced","wc-phone-draft");
 		
 		$url_to_redirect_full = add_query_arg(array('post_type' => 'shop_order', 'show_all' => 'true'), admin_url('edit.php'));
 		$url_to_redirect_all = add_query_arg(array('post_type' => 'shop_order'), admin_url('edit.php'));
