@@ -184,6 +184,7 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 * DEV: Switch to minified version of FullCalendar script
 * DEV: Fix display of pickups on delivery calendar
 * DEV: Fix display of delivery calendar PDF export
+* DEV: Fix number of products in list on Petals Options page
 ### 2.6.4
 * DEV: WP 6.2 tested
 * DEV: Re-squash timeslot checkout validation bug

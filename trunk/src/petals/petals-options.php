@@ -268,9 +268,10 @@ class BkfPetalsOptions{
     	$category = get_terms('product_cat', array("include" => $this->bkf_petals_product_setting["cat"]));
     	$cat = $category[0]->slug;
     	$args = array(
-    	    'category'   => array($cat),
-    	    'orderby'    => $orderby,
-    	    'order'      => $order,
+    	    'category'	=> array($cat),
+    	    'orderby'	=> $orderby,
+    	    'order'		=> $order,
+			'limit'		=> '-1'
     	    );
     	$products = wc_get_products( $args );
     	if(empty($value)) {
