@@ -72,7 +72,7 @@ require BKF_PATH . "/src/svg.php";
 require BKF_PATH . "/src/pos/phone.php";
 require BKF_PATH . "/src/ajax.php";
 
-define( 'BKF_ACF_PATH', BKF_PATH . 'lib/acf/' );
+define( 'BKF_ACF_PATH', BKF_PATH . '/lib/acf/' );
 define( 'BKF_ACF_URL', BKF_URL . 'lib/acf/' );
 include_once( BKF_ACF_PATH . 'acf.php' );
 add_filter('acf/settings/url', 'bkf_acf_settings_url');
