@@ -157,7 +157,7 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 * DEV: Improve display of pickup orders in admin dashboard widgets
 * DEV: Move order type field to `woocommerce_checkout_fields` hook
 * DEV: Override most core emails to wrap them in WooCommerce template
-* DEV: Squash bug causing some localisation fields to not save
+* DEV: Squash bug causing some localization fields to not save
 * DEV: Fix HTML signature causing PHP error when being inserted
 * DEV: Add 'Generator' meta tag in frontend
 * DEV: Squash bug with blocked dates in delivery date metabox on order edit page
