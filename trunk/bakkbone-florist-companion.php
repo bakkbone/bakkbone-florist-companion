@@ -4,7 +4,7 @@
  * Plugin Name: BAKKBONE Florist Companion
  * Plugin URI: https://plugins.bkbn.au/docs/bkf/
  * Description: Provides standardized features for floristry websites.
- * Version: 2.7.3
+ * Version: 3.0.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: BAKKBONE Australia

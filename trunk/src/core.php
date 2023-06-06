@@ -255,7 +255,7 @@ class BkfCore{
     public function bkf_cm_metabox_callback( $post ){
         $cardmessage = get_post_meta( get_the_id(), '_card_message', true );
         echo '<input type="hidden" name="bkf_cm_nonce" value="' . wp_create_nonce() . '">';
-        ?><textarea style="font-family:monospace;width:100%;" name="card_message" rows="6" class="card_message input-text form-control" id="card_message" maxlength="<?php echo get_option('bkf_options_setting')['card_length'] ?>" placeholder="<?php echo esc_html__('Card Message', 'bakkbone-florist-companion'); ?>"><?php echo esc_html( $cardmessage ) ?></textarea>
+        ?><textarea style="font-family:monospace;width:100%;" name="card_message" rows="6" class="card_message input-text form-control" id="card_message" maxlength="<?php echo get_option('bkf_options_setting')['card_length'] ?>" placeholder="<?php esc_html_e('Card Message', 'bakkbone-florist-companion'); ?>"><?php echo esc_html( $cardmessage ) ?></textarea>
     	<?php  
     }
     
@@ -287,7 +287,7 @@ class BkfCore{
 		?>
 			<div class="address">
 				<p<?php if( empty( $shippingnotes ) ) { echo ' class="none_set"'; } ?>>
-		 			<strong><?php echo esc_html__('Delivery Notes', 'bakkbone-florist-companion'); ?>:</strong>
+		 			<strong><?php esc_html_e('Delivery Notes', 'bakkbone-florist-companion'); ?>:</strong>
 					<?php echo ! empty( $shippingnotes ) ? $shippingnotes : '' ?>
 				</p>
 			</div>

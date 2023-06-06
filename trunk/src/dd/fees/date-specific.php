@@ -44,7 +44,7 @@ class BkfDdFeesDS{
 	
 	function bkf_dsf_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/dd/date-specific/" target="_blank">https://plugins.bkbn.au/docs/bkf/dd/date-specific/</a>
 		<?php
 	}
@@ -70,18 +70,18 @@ class BkfDdFeesDS{
 
         <div class="wrap">
             <div class="bkf-box">
-            <h1><?php echo esc_html__("Date-Specific Fees","bakkbone-florist-companion") ?></h1>
+            <h1><?php esc_html_e("Date-Specific Fees","bakkbone-florist-companion") ?></h1>
                 <div class="inside">
 					<p><em><?php echo sprintf(__('If taxable status is enabled on the %1sFees Options page%2s, fees below must be entered <strong>exclusive</strong> of tax.','bakkbone-florist-companion'), '<a href="'.admin_url('admin.php?page=bkf_fees').'" target="_blank">', '</a>'); ?></em></p>
 					<div class="bkf-form" style="max-width:200px;text-align:center;margin: 12px auto;">
 						<form id="add-closed" action="<?php echo $ajaxurl; ?>" />
-							<h4 style="margin:0;"><?php echo esc_html__('Add Fee', 'bakkbone-florist-companion'); ?></h4>
+							<h4 style="margin:0;"><?php esc_html_e('Add Fee', 'bakkbone-florist-companion'); ?></h4>
 							<input type="hidden" name="nonce" value="<?php echo $nonce; ?>" />
 							<input type="hidden" name="action" value="bkf_dd_add_fee" />
-							<p style="margin:5px 0;"><input type="text" name="date" class="fee-date input-text bkf-form-control" required autocomplete="off" placeholder="<?php echo esc_html__("Date", "bakkbone-florist-companion"); ?>" style="max-width:170px;" /></p>
-							<p class="bkf-input-icon" style="margin:5px 0;"><input class="input-text bkf-form-control" type="text" name="fee" placeholder="***.**" pattern="\d+\.\d{2,}" style="padding-right:8px;max-width:170px;" required /><i><?php echo bkf_currency_symbol(); ?></i></p>
-							<p style="margin:5px 0;"><input class="input-text bkf-form-control" type="text" name="title" placeholder="<?php echo esc_html__('Fee Title', 'bakkbone-florist-companion'); ?>" required style="max-width:170px;" /></p>
-							<p style="margin:5px 0;"><input type="submit" class="button button-primary button-large" value="<?php echo esc_html__('Add Fee', 'bakkbone-florist-companion'); ?>"></p>
+							<p style="margin:5px 0;"><input type="text" name="date" class="fee-date input-text bkf-form-control" required autocomplete="off" placeholder="<?php esc_html_e("Date", "bakkbone-florist-companion"); ?>" style="max-width:170px;" /></p>
+							<p class="bkf-input-icon" style="margin:5px 0;"><input class="input-text bkf-form-control" type="text" name="fee" placeholder="***.**" pattern="\d+\.\d{2,}" style="padding-right:8px;max-width:170px;" required /><i><?php bkf_currency_symbol(true); ?></i></p>
+							<p style="margin:5px 0;"><input class="input-text bkf-form-control" type="text" name="title" placeholder="<?php esc_html_e('Fee Title', 'bakkbone-florist-companion'); ?>" required style="max-width:170px;" /></p>
+							<p style="margin:5px 0;"><input type="submit" class="button button-primary button-large" value="<?php esc_html_e('Add Fee', 'bakkbone-florist-companion'); ?>"></p>
 						</form>
 					</div>
 					<?php if(!empty(get_option('bkf_dd_ds_fees'))){ ?>
@@ -271,7 +271,7 @@ class BkfDdFeesDS{
 	     for (i = 0; i < feeDatesList.length; i++) {
 	       if ((m == feeDatesList[i][0] - 1) && (d == feeDatesList[i][1]) && (y == feeDatesList[i][2]))
 	       {
-	         return [false,"closed","<?php echo esc_html__('Fee Applied', 'bakkbone-florist-companion'); ?>"];
+	         return [false,"closed","<?php esc_html_e('Fee Applied', 'bakkbone-florist-companion'); ?>"];
 	       }
 	     }
 		 return [true];

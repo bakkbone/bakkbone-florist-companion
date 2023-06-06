@@ -78,7 +78,7 @@ class BkfDdBlocks{
 	
 	function bkf_ddb_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/dd/blocked-dates/" target="_blank">https://plugins.bkbn.au/docs/bkf/dd/blocked-dates/</a>
 		<?php
 	}
@@ -102,16 +102,16 @@ class BkfDdBlocks{
 
         <div class="wrap">
             <div class="bkf-box">
-            <h1><?php echo esc_html__("Delivery Date Blocks","bakkbone-florist-companion") ?></h1><div style="width:100%;display:flex;">
+            <h1><?php esc_html_e("Delivery Date Blocks","bakkbone-florist-companion") ?></h1><div style="width:100%;display:flex;">
                 <div class="inside bkf-inside" style="width:50%;">
-					<h2 style="margin-top:0;"><?php echo esc_html__('Closure Dates', 'bakkbone-florist-companion') ?></h2>
+					<h2 style="margin-top:0;"><?php esc_html_e('Closure Dates', 'bakkbone-florist-companion') ?></h2>
 					<div class="bkf-form" style="max-width:200px;text-align:center;margin: 12px auto;">
 						<form id="add-closed" action="<?php echo $ajaxurl; ?>" />
-							<h4 style="margin:0;"><?php echo esc_html__('Add Closure Date', 'bakkbone-florist-companion'); ?></h4>
+							<h4 style="margin:0;"><?php esc_html_e('Add Closure Date', 'bakkbone-florist-companion'); ?></h4>
 							<input type="hidden" name="nonce" value="<?php echo $closednonce; ?>" />
 							<input type="hidden" name="action" value="bkf_dd_add_closed" />
 							<p style="margin:5px 0;"><input style="margin-left:0;" type="text" name="date" class="closure-date input-text bkf-form-control" required placeholder="<?php echo $phtext; ?>" autocomplete="off" /></p>
-							<p style="margin:5px 0;"><input type="submit" class="button button-primary button-large" value="<?php echo esc_html__('Add Date as Closed', 'bakkbone-florist-companion'); ?>"></p>
+							<p style="margin:5px 0;"><input type="submit" class="button button-primary button-large" value="<?php esc_html_e('Add Date as Closed', 'bakkbone-florist-companion'); ?>"></p>
 						</form>
 					</div><?php if(!empty(get_option('bkf_dd_closed'))){ ?>
 					<ul style="display:grid;grid-template-columns:auto auto;width:100%;"><?php foreach($closedsort as $ts => $ds){
@@ -120,14 +120,14 @@ class BkfDdBlocks{
 				</ul><? } ?>
                 </div>
                 <div class="inside bkf-inside" style="width:50%;">
-					<h2 style="margin-top:0;"><?php echo esc_html__('Fully Booked Dates', 'bakkbone-florist-companion') ?></h2>
+					<h2 style="margin-top:0;"><?php esc_html_e('Fully Booked Dates', 'bakkbone-florist-companion') ?></h2>
 					<div class="bkf-form" style="max-width:200px;text-align:center;margin: 12px auto;">
 						<form id="add-full" action="<?php echo $ajaxurl; ?>" />
-							<h4 style="margin:0;"><?php echo esc_html__('Add Fully Booked Date', 'bakkbone-florist-companion'); ?></h4>
+							<h4 style="margin:0;"><?php esc_html_e('Add Fully Booked Date', 'bakkbone-florist-companion'); ?></h4>
 							<input type="hidden" name="nonce" value="<?php echo $fullnonce; ?>" />
 							<input type="hidden" name="action" value="bkf_dd_add_full" />
 							<p style="margin:5px 0;"><input style="margin-left:0;" type="text" name="date" class="closure-date input-text bkf-form-control" required placeholder="<?php echo $phtext; ?>" autocomplete="off" /></p>
-							<p style="margin:5px 0;"><input type="submit" class="button button-primary button-large" value="<?php echo esc_html__('Add Date as Fully Booked', 'bakkbone-florist-companion'); ?>"></p>
+							<p style="margin:5px 0;"><input type="submit" class="button button-primary button-large" value="<?php esc_html_e('Add Date as Fully Booked', 'bakkbone-florist-companion'); ?>"></p>
 						</form>
 					</div><?php if(!empty(get_option('bkf_dd_full'))){ ?>
 					<ul style="display:grid;grid-template-columns:auto auto;width:100%;"><?php foreach($fullsort as $ts => $ds){

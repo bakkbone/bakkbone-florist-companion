@@ -425,8 +425,12 @@ function bkf_get_suburbs_by_rate(){
 	return $suburbs;
 }
 
-function bkf_currency_symbol(){
-	return html_entity_decode(get_woocommerce_currency_symbol(get_woocommerce_currency()));
+function bkf_currency_symbol( $echo = false ){
+	if($echo){
+		echo html_entity_decode(get_woocommerce_currency_symbol(get_woocommerce_currency()));
+	} else {
+		return html_entity_decode(get_woocommerce_currency_symbol(get_woocommerce_currency()));
+	}
 }
 
 function bkf_get_rss_feed($feed_url) {

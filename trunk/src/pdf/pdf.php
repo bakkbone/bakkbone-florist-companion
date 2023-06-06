@@ -69,6 +69,17 @@ class BkfPdf{
 			$productname = $item->get_name();
 			$productqty = $item->get_quantity();
 			$productlinetotal = $order->get_formatted_line_subtotal($item);
+			if(function_exists('wcj_get_product_addons')){
+				$addons = wcj_get_product_addons($item, $order->get_currency());
+				$exploded = $addons !== null && $addons !== '' ? explode(', ', $addons) : false;
+				if($exploded){
+					foreach($exploded as $addon){
+						$thisaddon = explode(': ',$addon);
+						$productname .= '<br><strong>'.__('Add-on', 'bakkbone-florist-companion').':</strong> '.$thisaddon[0].' ('.$thisaddon[1].')';
+					}
+					$productlinetotal .= '<br>'.__('inc. add-ons', 'bakkbone-florist-companion');
+				}
+			}
 			$itemtable .= '<tr><td class="center-align width-20"><p>'.$productqty.'</p></td><td class="left-align"><p>'.$productname.'</p></td><td class="right-align"><p>'.$productlinetotal.'</p></td></tr>';
 		}
 		
@@ -76,8 +87,9 @@ class BkfPdf{
 		$feestable = '';
 		foreach($fees as $fee){
 			$feename = $fee->get_name();
-			$feeamt = $order->get_formatted_line_subtotal($fee);
-			$feestable .= '<tr><td colspan="2" class="right-align"><p>'.$feename.'</p></td><td class="right-align"><p>'.$feename.'</p></td></tr>';
+			$feevalue = round($fee->get_total() + $fee->get_total_tax(),2);
+			$feeamt = bkf_currency_symbol().number_format($feevalue,2,'.','');
+			$feestable .= '<tr><td colspan="2" class="right-align"><p>'.$feename.'</p></td><td class="right-align"><p>'.$feeamt.'</p></td></tr>';
 		}
 		
 		$taxtotal = $order->get_total_tax();
@@ -88,7 +100,7 @@ class BkfPdf{
 		}
 		
 		$shippingname = $order->get_shipping_method();
-		$shippingamt = number_format($order->get_shipping_total(),2,'.','');
+		$shippingamt = number_format(round($order->get_shipping_total() + $order->get_shipping_tax(), 2),2,'.','');
 		$shippingtable = '<tr><td colspan="2" class="right-align"><p>'.$shippingname.'</p></td><td class="right-align"><p>'.bkf_currency_symbol().$shippingamt.'</p></td></tr>';
 		
 		$discounttotal = $order->get_discount_total();
@@ -155,6 +167,17 @@ class BkfPdf{
 				$value = str_replace("\n", "", strip_tags($meta['display_value']));
 				$itemmeta .= '<br><strong>'.$key.':</strong> '.$value;
 			}
+			if(function_exists('wcj_get_product_addons')){
+				$addons = wcj_get_product_addons($item, $order->get_currency());
+				$exploded = $addons !== null && $addons !== '' ? explode(', ', $addons) : false;
+				if($exploded){
+					foreach($exploded as $addon){
+						$thisaddon = explode(': ',$addon);
+						$itemmeta .= '<br><strong>'.__('Add-on', 'bakkbone-florist-companion').':</strong> '.$thisaddon[0].' ('.$thisaddon[1].')';
+					}
+					$productlinetotal .= '<br>'.__('inc. add-ons', 'bakkbone-florist-companion');
+				}
+			}
 			$itemtable .= '<tr><td class="center-align width-15"><p>'.$productqty.'</p></td><td class="left-align"><p><strong>'.$productname.'</strong>'.$itemmeta.'</p></td><td class="right-align width-20"><p>'.$productlinetotal.'</p></td></tr>';
 		}
 		
@@ -162,8 +185,9 @@ class BkfPdf{
 		$feestable = '';
 		foreach($fees as $fee){
 			$feename = $fee->get_name();
-			$feeamt = $order->get_formatted_line_subtotal($fee);
-			$feestable .= '<tr><td colspan="2" class="right-align"><p>'.$feename.'</p></td><td class="right-align"><p>'.$feename.'</p></td></tr>';
+			$feevalue = round($fee->get_total() + $fee->get_total_tax(),2);
+			$feeamt = bkf_currency_symbol().number_format($feevalue,2,'.','');
+			$feestable .= '<tr><td colspan="2" class="right-align"><p>'.$feename.'</p></td><td class="right-align"><p>'.$feeamt.'</p></td></tr>';
 		}
 		
 		$sm = $order->get_shipping_methods();
@@ -179,7 +203,7 @@ class BkfPdf{
 		}
 		
 		$shippingname = $order->get_shipping_method();
-		$shippingamt = number_format($order->get_shipping_total(),2,'.','');
+		$shippingamt = number_format(round($order->get_shipping_total() + $order->get_shipping_tax(), 2),2,'.','');
 		$shippingtable = '<tr><td colspan="2" class="right-align"><p>'.$shippingname.'</p></td><td class="right-align"><p>'.bkf_currency_symbol().$shippingamt.'</p></td></tr>';
 		
 		$discounttotal = $order->get_discount_total();
@@ -237,7 +261,18 @@ class BkfPdf{
 			$shipping = $o->needs_shipping_address();
 			$list = array();
 			foreach($items as $item){
-				$list[] = $item->get_quantity() . 'x ' . $item->get_name();
+				$itemtext = $item->get_quantity() . 'x ' . $item->get_name();
+				if(function_exists('wcj_get_product_addons')){
+					$addons = wcj_get_product_addons($item, $o->get_currency());
+					$exploded = $addons !== null && $addons !== '' ? explode(', ', $addons) : false;
+					if($exploded){
+						foreach($exploded as $addon){
+							$thisaddon = explode(': ',$addon);
+							$itemtext .= '<br><strong>'.__('Add-on', 'bakkbone-florist-companion').':</strong> '.$thisaddon[0].' ('.$thisaddon[1].')';
+						}
+					}
+				}
+				$list[] = $itemtext;
 			}
 			$sa = array();
 			if($o->get_shipping_company() !==null && $o->get_shipping_company() !== ''){
@@ -276,7 +311,7 @@ class BkfPdf{
 			}
 		}
 		
-		$template = '<html><head><title>'.esc_html__('Delivery List', 'bakkbone-florist-companion').': '.wp_date('j F Y',$starttime).' '.esc_html__('to', 'bakkbone-florist-companion').' '.wp_date('j F Y',$endtimeadjusted).'</title><style>.nomargin(margin: 0;}table, table th, table td {border: 1px solid black;border-collapse: collapse;}.width-100 {width: 100%;}.height-100 {height: 100%;}.right-align {text-align: right;}.left-align {text-align: left;}.center-align {text-align: center;}th p,td p {margin: 5px;}</style></head><body><div class="nomargin"><h2 style="margin: 0;" class="center-align nomargin">'.wp_date('j F Y',$starttime).' '.esc_html__('to', 'bakkbone-florist-companion').' '.wp_date('j F Y',$endtimeadjusted).'</h2><table class="nomargin"><thead><tr><th>'.esc_html__('Order ID', 'bakkbone-florist-companion').'</th><th>'.$ddtitle.'</th><th>'.esc_html__('Items','bakkbone-florist-companion').'</th><th>'.esc_html__('Total','bakkbone-florist-companion').'</th><th>'.esc_html__('Recipient','bakkbone-florist-companion').'</th><th>'.esc_html__('Address','bakkbone-florist-companion').'</th><th>'.esc_html__('Suburb','bakkbone-florist-companion').'</th><th>'.esc_html__('Phone','bakkbone-florist-companion').'</th><th>'.esc_html__('Notes', 'bakkbone-florist-companion').'</th></tr></thead><tbody>'.$ordertable.'</tbody></table></div></body></html>';
+		$template = '<html><head><title>'.esc_html__('Delivery List', 'bakkbone-florist-companion').': '.wp_date('j F Y',$starttime).' '.esc_html__('to', 'bakkbone-florist-companion').' '.wp_date('j F Y',$endtimeadjusted).'</title><style>.nomargin(margin: 0;}table, table th, table td {border: 1px solid black;border-collapse: collapse;}.width-100 {width: 100%;}.height-100 {height: 100%;}.right-align {text-align: right;}.left-align {text-align: left;}.center-align {text-align: center;}th p,td p {margin: 5px;}</style></head><body><div class="nomargin"><h2 style="margin: 0;" class="center-align nomargin">'.wp_date('j F Y',$starttime).' '.esc_html__('to', 'bakkbone-florist-companion').' '.wp_date('j F Y',$endtimeadjusted).'</h2><table class="nomargin"><thead><tr><th>'.esc_html__('ID', 'bakkbone-florist-companion').'</th><th>'.$ddtitle.'</th><th>'.esc_html__('Items','bakkbone-florist-companion').'</th><th>'.esc_html__('Total','bakkbone-florist-companion').'</th><th>'.esc_html__('Recipient','bakkbone-florist-companion').'</th><th>'.esc_html__('Address','bakkbone-florist-companion').'</th><th>'.esc_html__('Suburb','bakkbone-florist-companion').'</th><th>'.esc_html__('Phone','bakkbone-florist-companion').'</th><th>'.esc_html__('Notes', 'bakkbone-florist-companion').'</th></tr></thead><tbody>'.$ordertable.'</tbody></table></div></body></html>';
 		
 		$dompdf = new Dompdf();
 		$dompdf->loadHtml($template);

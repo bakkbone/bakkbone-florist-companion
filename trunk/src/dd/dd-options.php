@@ -92,7 +92,7 @@ class BkfDdOptions{
 	
 	function bkf_dd_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/dd/dd-options/" target="_blank">https://plugins.bkbn.au/docs/bkf/dd/dd-options/</a>
 		<?php
 	}
@@ -110,7 +110,7 @@ class BkfDdOptions{
 	
 	function bkf_wd_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/dd/weekdays/" target="_blank">https://plugins.bkbn.au/docs/bkf/dd/weekdays/</a>
 		<?php
 	}
@@ -128,7 +128,7 @@ class BkfDdOptions{
 	
 	function bkf_sd_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/dd/same-day/" target="_blank">https://plugins.bkbn.au/docs/bkf/dd/same-day/</a>
 		<?php
 	}
@@ -146,7 +146,7 @@ class BkfDdOptions{
 	
 	function bkf_dm_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/dd/methods/" target="_blank">https://plugins.bkbn.au/docs/bkf/dd/methods/</a>
 		<?php
 	}
@@ -157,7 +157,7 @@ class BkfDdOptions{
         ?>
         <div class="wrap">
             <div class="bkf-box">
-            <h1><?php echo esc_html__("Delivery Date Settings","bakkbone-florist-companion") ?></h1>
+            <h1><?php esc_html_e("Delivery Date Settings","bakkbone-florist-companion") ?></h1>
                 <div class="inside">
                     <form method="post" action="options.php">
                         <?php settings_fields("bkf_ddi_options_group"); ?>
@@ -176,7 +176,7 @@ class BkfDdOptions{
         ?>
         <div class="wrap">
             <div class="bkf-box">
-            <h1><?php echo esc_html__("Weekdays","bakkbone-florist-companion") ?></h1>
+            <h1><?php esc_html_e("Weekdays","bakkbone-florist-companion") ?></h1>
                 <div class="inside">
                     <form method="post" action="options.php">
                         <?php settings_fields("bkf_dd_options_group"); ?>
@@ -195,7 +195,7 @@ class BkfDdOptions{
         ?>
         <div class="wrap">
             <div class="bkf-box">
-            <h1><?php echo esc_html__("Same Day Delivery","bakkbone-florist-companion") ?></h1>
+            <h1><?php esc_html_e("Same Day Delivery","bakkbone-florist-companion") ?></h1>
                 <div class="inside">
                     <form method="post" action="options.php">
                         <?php settings_fields("bkf_sd_options_group"); ?>
@@ -214,7 +214,7 @@ class BkfDdOptions{
         ?>
         <div class="wrap">
             <div class="bkf-box">
-            <h1><?php echo esc_html__("Delivery Method Restrictions","bakkbone-florist-companion") ?></h1>
+            <h1><?php esc_html_e("Delivery Method Restrictions","bakkbone-florist-companion") ?></h1>
                 <div class="inside">
                     <form method="post" action="options.php">
                         <?php settings_fields("bkf_dm_options_group"); ?>
@@ -594,30 +594,30 @@ class BkfDdOptions{
 	function bkfDdiInfo()
 	{
 		echo '<p class="bkf-pageinfo">';
-		echo esc_html__("Enter your settings below.", "bakkbone-florist-companion");
+		esc_html_e("Enter your settings below.", "bakkbone-florist-companion");
 		echo '</p>';
 	}
 	
 	function bkfDdOptionsInfo()
 	{
 		echo '<p class="bkf-pageinfo">';
-		echo esc_html__("Select which days of the week you deliver.", "bakkbone-florist-companion");
+		esc_html_e("Select which days of the week you deliver.", "bakkbone-florist-companion");
 		echo '</p>';
 	}
 
 	function bkfSdOptionsInfo()
 	{
 		echo '<p class="bkf-pageinfo">';
-		echo esc_html__("Set your same day delivery cutoffs - save your delivery weekdays above to display the correct fields below. If you don't accept same day delivery orders, set the cutoff as midnight (12:00 am).", "bakkbone-florist-companion");
+		esc_html_e("Set your same day delivery cutoffs - save your delivery weekdays above to display the correct fields below. If you don't accept same day delivery orders, set the cutoff as midnight (12:00 am).", "bakkbone-florist-companion");
 		echo '</p>';
 	}
 	
 	function bkfDmOptionsInfo()
 	{
 		echo '<p class="bkf-pageinfo">';
-		echo esc_html__("If a particular delivery method is unavailable on a certain day you are otherwise open, indicate this here. Save your delivery weekdays above to display the correct fields below. Remember, delivery methods selected below will <strong>not</strong> be available on the day indicated.", "bakkbone-florist-companion");
+		esc_html_e("If a particular delivery method is unavailable on a certain day you are otherwise open, indicate this here. Save your delivery weekdays above to display the correct fields below. Remember, delivery methods selected below will <strong>not</strong> be available on the day indicated.", "bakkbone-florist-companion");
 		echo '</p><p class="bkf-pageinfo"><em>';
-		echo esc_html__("Hold down Ctrl (Windows) or Cmd (Mac) while selecting, to choose multiple options.", "bakkbone-florist-companion");
+		esc_html_e("Hold down Ctrl (Windows) or Cmd (Mac) while selecting, to choose multiple options.", "bakkbone-florist-companion");
 		echo '</em></p>';
 	}
 
@@ -630,7 +630,7 @@ class BkfDdOptions{
 		}
 		?>
 		<input class="bkf-form-control small-text" id="bkf-ddi" type="number" name="bkf_ddi_setting[ddi]" placeholder="8" value="<?php echo $value; ?>" />
-		<p class="description"><?php echo esc_html__("Maximum number of weeks in the future to enable at checkout.","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Maximum number of weeks in the future to enable at checkout.","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -645,7 +645,7 @@ class BkfDdOptions{
 			$value = $opt1;
 		}
 		?>
-		<p class="description"><?php echo esc_html__("What shall we call this field at checkout?","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("What shall we call this field at checkout?","bakkbone-florist-companion") ?></p>
 		<div style="display: inline;">
 		<label class="bkf-radio-container"><input class="bkf-form-control" id="bkf-ddt1" type="radio" name="bkf_ddi_setting[ddt]" value="<?php echo $opt1; ?>"<?php if($value == $opt1){ echo "checked"; } ?> /><span class="bkf-radio-checkmark"></span><?php echo $opt1; ?></label>
 		<label class="bkf-radio-container"><input class="bkf-form-control" id="bkf-ddt2" type="radio" name="bkf_ddi_setting[ddt]" value="<?php echo $opt2; ?>"<?php if($value == $opt2){ echo "checked"; } ?> /><span class="bkf-radio-checkmark"></span><?php echo $opt2; ?></label>
@@ -664,7 +664,7 @@ class BkfDdOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Deliver on Mondays","bakkbone-florist-companion") ?><input id="bkf-dd-monday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[monday]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Deliver on Mondays","bakkbone-florist-companion") ?><input id="bkf-dd-monday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[monday]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 
@@ -752,7 +752,7 @@ class BkfDdOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Deliver on Tuesdays","bakkbone-florist-companion") ?><input id="bkf-dd-tuesday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[tuesday]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Deliver on Tuesdays","bakkbone-florist-companion") ?><input id="bkf-dd-tuesday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[tuesday]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 
@@ -840,7 +840,7 @@ class BkfDdOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Deliver on Wednesdays","bakkbone-florist-companion") ?><input id="bkf-dd-wednesday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[wednesday]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Deliver on Wednesdays","bakkbone-florist-companion") ?><input id="bkf-dd-wednesday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[wednesday]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 
@@ -928,7 +928,7 @@ class BkfDdOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Deliver on Thursdays","bakkbone-florist-companion") ?><input id="bkf-dd-thursday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[thursday]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Deliver on Thursdays","bakkbone-florist-companion") ?><input id="bkf-dd-thursday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[thursday]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 
@@ -1016,7 +1016,7 @@ class BkfDdOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Deliver on Fridays","bakkbone-florist-companion") ?><input id="bkf-dd-friday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[friday]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Deliver on Fridays","bakkbone-florist-companion") ?><input id="bkf-dd-friday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[friday]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 
@@ -1104,7 +1104,7 @@ class BkfDdOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Deliver on Saturdays","bakkbone-florist-companion") ?><input id="bkf-dd-saturday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[saturday]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Deliver on Saturdays","bakkbone-florist-companion") ?><input id="bkf-dd-saturday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[saturday]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 
@@ -1192,7 +1192,7 @@ class BkfDdOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Deliver on Sundays","bakkbone-florist-companion") ?><input id="bkf-dd-sunday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[sunday]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Deliver on Sundays","bakkbone-florist-companion") ?><input id="bkf-dd-sunday" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_dd_setting[sunday]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 
@@ -1279,7 +1279,8 @@ class BkfDdOptions{
 		$delivery_date = get_post_meta( get_the_id(), '_delivery_date', true );
 		$delivery_timeslot = get_post_meta( get_the_id(), '_delivery_timeslot', true );
         $delivery_timeslot_id = get_post_meta( get_the_id(), '_delivery_timeslot_id', true );
-        $timeslot = bkf_get_timeslots_associative()['ts'.$delivery_timeslot_id];
+		$tsid = $delivery_timeslot_id !== null && $delivery_timeslot_id !== '' && $delivery_timeslot_id ? 'ts'.$delivery_timeslot_id : false;
+        $timeslot = $tsid ? bkf_get_timeslots_associative()['ts'.$delivery_timeslot_id] : null;
 		$order = new WC_Order($post->ID);
 		$methods = $order->get_shipping_methods();
 		$method = '';
@@ -1310,7 +1311,7 @@ class BkfDdOptions{
         </p>
 		<input type="text" name="delivery_date" style="width:100%" class="delivery_date input-text form-control" id="delivery_date" placeholder="Delivery Date"<?php echo $dd ?> />
 		<select name="delivery_timeslot" style="width:100%;" class="delivery_timeslot form-control" id="delivery_timeslot">
-			<option value="" <?php echo $tsp; ?>><?php echo esc_html__('Select a time slot...', 'bakkbone-florist-companion') ?></option>
+			<option value="" <?php echo $tsp; ?>><?php esc_html_e('Select a timeslot...', 'bakkbone-florist-companion') ?></option>
 			<?php
 			$day = date("l", strtotime($delivery_date));
 			$validts = bkf_get_timeslots_for_order($method,$day);
@@ -1325,7 +1326,7 @@ class BkfDdOptions{
 				echo '<option value="'.$tslot['id'].'"'.$sel.'>'.$stringts.'</option>';
 			} ?>
 		</select>
-		<p class="description"><em><?php echo esc_html__('Time slot choices will update after order is saved, if delivery date and/or delivery method changed.', 'bakkbone-florist-companion'); ?></em></p>
+		<p class="description"><em><?php esc_html_e('Timeslot choices will update after order is saved, if delivery date and/or delivery method changed.', 'bakkbone-florist-companion'); ?></em></p>
     	<script>
     	    jQuery(document).ready(function( $ ) {
     	        jQuery(".delivery_date").datepicker( {
@@ -1375,31 +1376,31 @@ class BkfDdOptions{
 			 
 			 <?php if(get_option('bkf_dd_setting')['monday'] == false){ ?>
              if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 1) {
-                  return [true, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"];
+                  return [true, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"];
               }<?php }; ?>
  			 <?php if(get_option('bkf_dd_setting')['tuesday'] == false){ ?>
               if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 2) {
-                   return [true, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"];
+                   return [true, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"];
                }<?php }; ?>
   			 <?php if(get_option('bkf_dd_setting')['wednesday'] == false){ ?>
                if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 3) {
-                    return [true, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"];
+                    return [true, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"];
                 }<?php }; ?>
    			 <?php if(get_option('bkf_dd_setting')['thursday'] == false){ ?>
                 if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 4) {
-                     return [true, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"];
+                     return [true, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"];
                  }<?php }; ?>
 				 <?php if(get_option('bkf_dd_setting')['friday'] == false){ ?>
 	             if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 5) {
-	                  return [true, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"];
+	                  return [true, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"];
 	              }<?php }; ?>
 	 			 <?php if(get_option('bkf_dd_setting')['saturday'] == false){ ?>
 	              if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 6) {
-	                   return [true, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"];
+	                   return [true, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"];
 	               }<?php }; ?>
 	  			 <?php if(get_option('bkf_dd_setting')['sunday'] == false){ ?>
 	               if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 0) {
-	                    return [true, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"];
+	                    return [true, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"];
 	                }<?php }; ?>
 			 
 		 for (i = 0; i < closedDatesList.length; i++) {

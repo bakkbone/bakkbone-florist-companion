@@ -140,7 +140,7 @@ class BkfDdFilter{
 
 				            var buttonPane = jQuery( elem ).datepicker( "widget" ).find( ".ui-datepicker-buttonpane" );
 
-				            var btn = jQuery('<button class="ui-datepicker-current ui-state-default ui-priority-primary ui-corner-all" type="button"><?php echo esc_html__('Clear', 'bakkbone-florist-companion'); ?></button>');
+				            var btn = jQuery('<button class="ui-datepicker-current ui-state-default ui-priority-primary ui-corner-all" type="button"><?php esc_html_e('Clear', 'bakkbone-florist-companion'); ?></button>');
 				            btn.off("click").on("click", function () {
 				                jQuery.datepicker._clearDate( elem.input[0] );
 				            });

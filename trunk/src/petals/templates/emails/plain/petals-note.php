@@ -14,7 +14,7 @@ echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 echo printf( __( 'You\'ve received a message from Petals regarding an order you received - please see below.', 'bakkbone-florist-companion' ) ) . "\n\n";
 echo printf( $email->message->comment_content ) . "\n\n";
-echo esc_html__('You can view the order and respond at this link: ', 'bakkbone-florist-companion') . $email->object->get_edit_order_url();
+esc_html_e('You can view the order and respond at this link: ', 'bakkbone-florist-companion') . $email->object->get_edit_order_url();
 
 echo "\n\n----------------------------------------\n\n";
 

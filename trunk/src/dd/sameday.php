@@ -131,7 +131,7 @@ class BkfSameDay{
 	
 	function bkf_ms_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/dd/method-specific/" target="_blank">https://plugins.bkbn.au/docs/bkf/dd/method-specific/</a>
 		<?php
 	}
@@ -178,12 +178,12 @@ class BkfSameDay{
         ?>
         <div class="wrap">
             <div class="bkf-box">
-            <h1><?php echo esc_html__("Method-Specific Cutoffs","bakkbone-florist-companion") ?></h1>
-			<p><?php echo esc_html__('Here you can add cutoffs per weekday for specific delivery methods. If no cutoff is specified below, your global default same-day cutoff will apply.','bakkbone-florist-companion'); ?></p>
+            <h1><?php esc_html_e("Method-Specific Cutoffs","bakkbone-florist-companion") ?></h1>
+			<p><?php esc_html_e('Here you can add cutoffs per weekday for specific delivery methods. If no cutoff is specified below, your global default same-day cutoff will apply.','bakkbone-florist-companion'); ?></p>
 			<div style="display:grid;grid-template-columns:auto auto;width:100%;">
                 <?php foreach($sm as $smethod){?><div class="inside bkf-inside">
 					<h2 style="margin:0;text-align:center;color:black;"><?php echo $smethod['title'].' #'.$smethod['instanceid'].' - '.$smethod['usertitle']; ?></h2>
-					<p style="margin-top:0;text-align:center;color:black;"><strong><?php echo esc_html__('Zone: ', 'bakkbone-florist-companion'); ?></strong><?php echo $smethod['zone']; ?></p>
+					<p style="margin-top:0;text-align:center;color:black;"><strong><?php esc_html_e('Zone: ', 'bakkbone-florist-companion'); ?></strong><?php echo $smethod['zone']; ?></p>
 					<?php foreach($wd as $day){
 						if($wds[$day] == false){
 							echo '<p>'.sprintf(__('%s disabled globally','bakkbone-florist-companion'), ucwords($day)).'</p>';

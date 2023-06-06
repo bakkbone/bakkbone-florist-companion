@@ -63,7 +63,7 @@ class BkfPluginOptions{
 	
 	function bkf_go_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/florist-options/general-options/" target="_blank">https://plugins.bkbn.au/docs/bkf/florist-options/general-options/</a>
 		<?php
 	}
@@ -73,7 +73,7 @@ class BkfPluginOptions{
 		?>
 		<div class="wrap">
 			<div class="bkf-box">
-			<h1><?php echo esc_html__("Florist Options","bakkbone-florist-companion") ?></h1>
+			<h1><?php esc_html_e("Florist Options","bakkbone-florist-companion") ?></h1>
 				<div class="inside">
 					<form method="post" action="options.php">
 						<?php settings_fields("bkf_options_group"); ?>
@@ -261,28 +261,28 @@ class BkfPluginOptions{
 	function bkfAddOptionsInfo()
 	{
 		echo '<p class="bkf-pageinfo">';
-		echo esc_html__("Enter your settings below:","bakkbone-florist-companion");
+		esc_html_e("Enter your settings below:","bakkbone-florist-companion");
 		echo '</p>';
 	}
 	
 	function bkfAddFeaturesInfo()
 	{
 		echo '<p class="bkf-pageinfo">';
-		echo esc_html__("The below features are optional.","bakkbone-florist-companion");
+		esc_html_e("The below features are optional.","bakkbone-florist-companion");
 		echo '</p>';
 	}
 	
 	function bkfAddAdvancedInfo()
 	{
 		echo '<p class="bkf-pageinfo">';
-		echo esc_html__("The below settings are more advanced.","bakkbone-florist-companion");
+		esc_html_e("The below settings are more advanced.","bakkbone-florist-companion");
 		echo '</p>';
 	}
 	
 	function bkfAddAudioInfo()
 	{
 		echo '<p class="bkf-pageinfo">';
-		echo esc_html__("These settings relate to the audio for the Order Notifier on the Orders list screen.","bakkbone-florist-companion");
+		esc_html_e("These settings relate to the audio for the Order Notifier on the Orders list screen.","bakkbone-florist-companion");
 		echo '</p>';
 	}
 	
@@ -295,7 +295,7 @@ class BkfPluginOptions{
 		}
 		?>
 		<input class="bkf-form-control small-text" id="bkf-card-length" type="number" name="bkf_options_setting[card_length]" placeholder="250" value="<?php echo $value; ?>" />
-		<p class="description"><?php echo esc_html__("Maximum number of characters (including spaces/punctuation) a customer will be able to enter in the Card Message field.","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Maximum number of characters (including spaces/punctuation) a customer will be able to enter in the Card Message field.","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -310,7 +310,7 @@ class BkfPluginOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Display Short Description in product archives","bakkbone-florist-companion") ?><input id="bkf-excerpt-pa" <?php echo $checked ?> type="checkbox" class="bkf-form-control"  name="bkf_features_setting[excerpt_pa]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Display Short Description in product archives","bakkbone-florist-companion") ?><input id="bkf-excerpt-pa" <?php echo $checked ?> type="checkbox" class="bkf-form-control"  name="bkf_features_setting[excerpt_pa]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 	
@@ -325,7 +325,7 @@ class BkfPluginOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Enable Petals Network Integration","bakkbone-florist-companion") ?><input id="bkf-petals-on" <?php echo $checked ?> type="checkbox" class="bkf-form-control"  name="bkf_features_setting[petals_on]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Enable Petals Network Integration","bakkbone-florist-companion") ?><input id="bkf-petals-on" <?php echo $checked ?> type="checkbox" class="bkf-form-control"  name="bkf_features_setting[petals_on]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 
@@ -340,7 +340,7 @@ class BkfPluginOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Disable the Order Comments field (freetext field at checkout for order notes)","bakkbone-florist-companion") ?><input id="bkf-disable-order-comments" <?php echo $checked ?> type="checkbox" class="bkf-form-control"  name="bkf_features_setting[disable_order_comments]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Disable the Order Comments field (freetext field at checkout for order notes)","bakkbone-florist-companion") ?><input id="bkf-disable-order-comments" <?php echo $checked ?> type="checkbox" class="bkf-form-control"  name="bkf_features_setting[disable_order_comments]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 	
@@ -355,7 +355,7 @@ class BkfPluginOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Enable the Order Notifier on the Orders List","bakkbone-florist-companion") ?><input id="bkf-order-notifier" <?php echo $checked ?> type="checkbox" class="bkf-form-control"  name="bkf_features_setting[order_notifier]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Enable the Order Notifier on the Orders List","bakkbone-florist-companion") ?><input id="bkf-order-notifier" <?php echo $checked ?> type="checkbox" class="bkf-form-control"  name="bkf_features_setting[order_notifier]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 
@@ -370,7 +370,7 @@ class BkfPluginOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Purge all data from the database on deactivation","bakkbone-florist-companion") ?><input id="bkf-deactivation-purge" <?php echo $checked ?> type="checkbox" class="bkf-form-control"  name="bkf_advanced_setting[deactivation_purge]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Purge all data from the database on deactivation","bakkbone-florist-companion") ?><input id="bkf-deactivation-purge" <?php echo $checked ?> type="checkbox" class="bkf-form-control"  name="bkf_advanced_setting[deactivation_purge]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 	
@@ -405,7 +405,7 @@ class BkfPluginOptions{
 		?>
 		<div style="display:flex;"><div class="bkf-select" style="width:250px;margin-right:10px;" onclick="bkfAudioSample()">
 			<select id="bkf-notifier-audio" name="bkf_audio_setting[notifier_audio]" required onclick="bkfAudioSample()">
-				<option value="" disabled><?php echo esc_html__('Select a file...', 'bakkbone-florist-companion'); ?></option>
+				<option value="" disabled><?php esc_html_e('Select a file...', 'bakkbone-florist-companion'); ?></option>
 				<?php
 				foreach($files as $file => $name){
 					if($value == $file){
@@ -419,7 +419,7 @@ class BkfPluginOptions{
 		</div>
 		<button type="button" class="button button-secondary" onclick="bkfPlayNotifier()">Play sample of the selected file</button></div>
 		<audio id="bkf-notifier-audio-sample" src="<?php echo $file_urls[$value]; ?>"></audio>
-		<p class="description"><?php echo esc_html__("The audio to be played when a new order is detected.","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("The audio to be played when a new order is detected.","bakkbone-florist-companion") ?></p>
 		<script type="text/javascript">
 			function bkfAudioSample(){
 				const files = [

@@ -140,7 +140,7 @@ class BkfDdTsOptions{
 	
 	function bkf_ts_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/dd/timeslots/" target="_blank">https://plugins.bkbn.au/docs/bkf/dd/timeslots/</a>
 		<?php
 	}
@@ -210,13 +210,13 @@ class BkfDdTsOptions{
 		?>
         <div class="wrap">
             <div class="bkf-box">
-            <h1><?php echo esc_html__("Delivery Timeslots","bakkbone-florist-companion") ?></h1>
-			<p><?php echo esc_html__('Only weekdays enabled on the Delivery Dates page will be displayed below. Any method within a day with no timeslots added will not require timeslots at checkout.','bakkbone-florist-companion') ?><br><em><?php echo sprintf(__('Fees are optional - leave fee blank if not required for a timeslot. If taxable status is enabled on the %1sFees Options page%2s, fees below must be entered <strong>exclusive</strong> of tax.','bakkbone-florist-companion'), '<a href="'.admin_url('admin.php?page=bkf_fees').'" target="_blank">', '</a>'); ?></em></p>
+            <h1><?php esc_html_e("Delivery Timeslots","bakkbone-florist-companion") ?></h1>
+			<p><?php esc_html_e('Only weekdays enabled on the Delivery Dates page will be displayed below. Any method within a day with no timeslots added will not require timeslots at checkout.','bakkbone-florist-companion') ?><br><em><?php esc_html_e('Fees are optional - leave fee blank if not required for a timeslot.','bakkbone-florist-companion'); ?></em></p>
 			<form class="bkf-form" id="addform" action="<?php echo admin_url('admin-ajax.php') ?>">
 							<input type="hidden" name="action" value="bkf_ts_add" />
 							<input type="hidden" name="nonce" value="<?php echo $addnonce; ?>" />
 								<select id="add-day" name="day" class="bkf-form-control" required>
-									<option value="" disabled selected><?php echo esc_html__('Select a day...','bakkbone-florist-companion'); ?></option>
+									<option value="" disabled selected><?php esc_html_e('Select a day...','bakkbone-florist-companion'); ?></option>
 									<?php
 									foreach($days as $day => $on){
 										if($on == 1){
@@ -226,13 +226,13 @@ class BkfDdTsOptions{
 										?>
 									</select>
 							<select disabled class="bkf-form-control" name="method" id="add-method" required>
-									<option value="" disabled selected><?php echo esc_html__('Select a delivery method...','bakkbone-florist-companion'); ?></option>
+									<option value="" disabled selected><?php esc_html_e('Select a delivery method...','bakkbone-florist-companion'); ?></option>
 							</select>
-							<label><?php echo esc_html__('Start: ', 'bakkbone-florist-companion'); ?><input type="time" class="bkf-form-control" id="add-start" name="start" required /></label>
-							<label><?php echo esc_html__('End: ', 'bakkbone-florist-companion'); ?><input type="time" class="bkf-form-control" id="add-end" name="end" required /></label>
-							<label><?php echo esc_html__('Fee: ', 'bakkbone-florist-companion'); ?><div class="bkf-input-icon"><input type="text" placeholder="***.**" class="bkf-form-control" id="add-fee" name="fee" pattern="\d+\.\d{2,}" /><i><?php echo bkf_currency_symbol(); ?></i></div></label>
-							<input type="submit" value="<?php echo esc_html__('Add Timeslot','bakkbone-florist-companion'); ?>" id="add-submit" class="button button-primary" />
-							<div style="max-width:350px;" id="add-error" class="bkf-error bkf-hidden"><p><?php echo esc_html__('End time must be greater than start time.','bakkbone-florist-companion'); ?></p></div>
+							<label><?php esc_html_e('Start: ', 'bakkbone-florist-companion'); ?><input type="time" class="bkf-form-control" id="add-start" name="start" required /></label>
+							<label><?php esc_html_e('End: ', 'bakkbone-florist-companion'); ?><input type="time" class="bkf-form-control" id="add-end" name="end" required /></label>
+							<label><?php esc_html_e('Fee: ', 'bakkbone-florist-companion'); ?><div class="bkf-input-icon"><input type="text" placeholder="***.**" class="bkf-form-control" id="add-fee" name="fee" pattern="\d+\.\d{2,}" /><i><?php bkf_currency_symbol(true); ?></i></div></label>
+							<input type="submit" value="<?php esc_html_e('Add Timeslot','bakkbone-florist-companion'); ?>" id="add-submit" class="button button-primary" />
+							<div style="max-width:350px;" id="add-error" class="bkf-error bkf-hidden"><p><?php esc_html_e('End time must be greater than start time.','bakkbone-florist-companion'); ?></p></div>
 			</form>
 						<script id="addform">
 							jQuery(function($){
@@ -262,7 +262,7 @@ class BkfDdTsOptions{
 									if( day !== '' ) {
 										methodElement.removeAttribute('disabled');
 					  				  jQuery(methodElement).empty($);
-									  let defaultOption = new Option('<?php echo esc_html__('Select a delivery method...', 'bakkbone-florist-companion'); ?>', '');
+									  let defaultOption = new Option('<?php esc_html_e('Select a delivery method...', 'bakkbone-florist-companion'); ?>', '');
 									  methodElement.add(defaultOption, 0);
 									  methodElement.options[0].disabled = true;
 										deliveryMethods.forEach(checkAvail);

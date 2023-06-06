@@ -139,7 +139,7 @@ class BkfSuburbsOptions{
 	
 	function bkf_ds_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/florist-options/delivery-suburbs/" target="_blank">https://plugins.bkbn.au/docs/bkf/florist-options/delivery-suburbs/</a>
 		<?php
 	}
@@ -167,18 +167,18 @@ class BkfSuburbsOptions{
 		?>
         <div class="wrap">
             <div class="bkf-box">
-            <h1><?php echo esc_html__("Delivery Suburbs","bakkbone-florist-companion") ?></h1>
-			<p><?php echo esc_html__('If a delivery method below has no suburbs attached, then the delivery method will be available for all suburbs within its Zone. "Local pickup" delivery methods will not be displayed here as they do not request a delivery suburb at checkout.', 'bakkbone-florist-companion') ?></p>
+            <h1><?php esc_html_e("Delivery Suburbs","bakkbone-florist-companion") ?></h1>
+			<p><?php esc_html_e('If a delivery method below has no suburbs attached, then the delivery method will be available for all suburbs within its Zone. "Local pickup" delivery methods will not be displayed here as they do not request a delivery suburb at checkout.', 'bakkbone-florist-companion') ?></p>
 			<div style="display:grid;grid-template-columns:auto auto;width:100%;">
                 <?php foreach($sm as $smethod){if(!$smethod['pickup']){?><div class="inside bkf-inside">
 					<h2 style="margin:0;text-align:center;color:black;"><?php echo $smethod['title'].' #'.$smethod['instanceid'].' - '.$smethod['usertitle']; ?></h2>
-					<p style="margin-top:0;text-align:center;color:black;"><strong><?php echo esc_html__('Zone Name', 'bakkbone-florist-companion'); ?>: </strong><?php echo $smethod['zone']; ?><br><strong><?php echo esc_html__('Area', 'bakkbone-florist-companion'); ?>: </strong><?php echo $smethod['zonelocation']; ?></p>
+					<p style="margin-top:0;text-align:center;color:black;"><strong><?php esc_html_e('Zone Name', 'bakkbone-florist-companion'); ?>: </strong><?php echo $smethod['zone']; ?><br><strong><?php esc_html_e('Area', 'bakkbone-florist-companion'); ?>: </strong><?php echo $smethod['zonelocation']; ?></p>
 						<form class="bkf-form" id="<?php echo 'addsuburb-'.$smethod['instanceid']; ?>" action="<?php echo admin_url('admin-ajax.php') ?>">
 							<input type="hidden" name="action" value="bkf_suburb_add" />
 							<input type="hidden" name="method" value="<?php echo $smethod['rateid']; ?>" />
 							<input type="hidden" name="nonce" value="<?php echo $addnonce; ?>" />
-							<label><?php echo esc_html__('Suburb: ', 'bakkbone-florist-companion'); ?><input type="text" class="bkf-form-control regular-text" required id="<?php echo $smethod['instanceid']; ?>-suburb" name="suburb" /></label>
-							<input type="submit" value="<?php echo esc_html__('Add Suburb','bakkbone-florist-companion'); ?>" id="<?php echo $smethod['rateid']; ?>-submit" class="button button-primary" />
+							<label><?php esc_html_e('Suburb: ', 'bakkbone-florist-companion'); ?><input type="text" class="bkf-form-control regular-text" required id="<?php echo $smethod['instanceid']; ?>-suburb" name="suburb" /></label>
+							<input type="submit" value="<?php esc_html_e('Add Suburb','bakkbone-florist-companion'); ?>" id="<?php echo $smethod['rateid']; ?>-submit" class="button button-primary" />
 						</form>
 						<?php
 						if(empty($smid[$smethod['rateid']])){

@@ -139,7 +139,7 @@ class BkfLocalisation{
 	
 	function bkf_localisation_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/florist-options/localisation/" target="_blank">https://plugins.bkbn.au/docs/bkf/florist-options/localisation/</a>
 		<?php
 	}
@@ -151,7 +151,7 @@ class BkfLocalisation{
         ?>
         <div class="wrap">
             <div class="bkf-box">
-            <h1><?php echo esc_html__("Localisation Settings","bakkbone-florist-companion"); ?></h1>
+            <h1><?php esc_html_e("Localisation Settings","bakkbone-florist-companion"); ?></h1>
                 <div class="inside">
                     <form method="post" action="options.php">
                         <?php settings_fields("bkf_localisation_options_group"); ?>
@@ -514,8 +514,8 @@ class BkfLocalisation{
 			$value = __('How about adding...','bakkbone-florist-companion');
 		}
 		?>
-		<input class="bkf-form-control large-text" id="csheading" type="text" name="bkf_localisation_setting[csheading]" placeholder="<?php echo esc_html__('How about adding...','bakkbone-florist-companion'); ?>" value="<?php echo $value; ?>" />
-		<p class="description"><?php echo esc_html__("Replaces the heading of the Cross-Sells section of the Cart page","bakkbone-florist-companion"); ?></p>
+		<input class="bkf-form-control large-text" id="csheading" type="text" name="bkf_localisation_setting[csheading]" placeholder="<?php esc_html_e('How about adding...','bakkbone-florist-companion'); ?>" value="<?php echo $value; ?>" />
+		<p class="description"><?php esc_html_e("Replaces the heading of the Cross-Sells section of the Cart page","bakkbone-florist-companion"); ?></p>
 		<?php
 	}
 
@@ -527,8 +527,8 @@ class BkfLocalisation{
 			$value = __('You have selected a suburb or region we do not deliver to.','bakkbone-florist-companion');
 		}
 		?>
-		<input class="bkf-form-control large-text" id="noship" type="text" name="bkf_localisation_setting[noship]" placeholder="<?php echo esc_html__('You have selected a suburb or region we do not deliver to.','bakkbone-florist-companion'); ?>" value="<?php echo $value; ?>" />
-		<p class="description"><?php echo esc_html__("Displays at checkout if the delivery address' suburb is not serviced.","bakkbone-florist-companion"); ?></p>
+		<input class="bkf-form-control large-text" id="noship" type="text" name="bkf_localisation_setting[noship]" placeholder="<?php esc_html_e('You have selected a suburb or region we do not deliver to.','bakkbone-florist-companion'); ?>" value="<?php echo $value; ?>" />
+		<p class="description"><?php esc_html_e("Displays at checkout if the delivery address' suburb is not serviced.","bakkbone-florist-companion"); ?></p>
 		<?php
 	}
 	

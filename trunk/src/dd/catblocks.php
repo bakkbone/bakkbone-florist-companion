@@ -165,7 +165,7 @@ class BkfDdCBOptions{
 	
 	function bkf_cb_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/dd/categories/" target="_blank">https://plugins.bkbn.au/docs/bkf/dd/categories/</a>
 		<?php
 	}
@@ -199,8 +199,8 @@ class BkfDdCBOptions{
 		?>
         <div class="wrap">
             <div class="bkf-box">
-            <h1><?php echo esc_html__("Product Category Blocks","bakkbone-florist-companion") ?></h1>
-			<p><?php echo esc_html__('Dates entered below will be unavailable for the relevant product category.','bakkbone-florist-companion') ?></p>
+            <h1><?php esc_html_e("Product Category Blocks","bakkbone-florist-companion") ?></h1>
+			<p><?php esc_html_e('Dates entered below will be unavailable for the relevant product category.','bakkbone-florist-companion') ?></p>
 			<form class="bkf-form" id="addform" action="<?php echo admin_url('admin-ajax.php') ?>">
 							<input type="hidden" name="action" value="bkf_cb_add" />
 							<input type="hidden" name="nonce" value="<?php echo $addnonce; ?>" />
@@ -220,8 +220,8 @@ class BkfDdCBOptions{
 							);
 							wp_dropdown_categories($args);
 							?>
-							<label><?php echo esc_html__('Date: ', 'bakkbone-florist-companion'); ?><input type="text" class="bkf-form-control" id="add-date" name="date" required /></label>
-							<input type="submit" value="<?php echo esc_html__('Add Date','bakkbone-florist-companion'); ?>" id="add-submit" class="button button-primary" />
+							<label><?php esc_html_e('Date: ', 'bakkbone-florist-companion'); ?><input type="text" class="bkf-form-control" id="add-date" name="date" required /></label>
+							<input type="submit" value="<?php esc_html_e('Add Date','bakkbone-florist-companion'); ?>" id="add-submit" class="button button-primary" />
 			</form>
 			<div style="display:grid;grid-template-columns:auto auto;width:100%;">
                 <?php
@@ -291,31 +291,31 @@ class BkfDdCBOptions{
 			 
 			 <?php if(get_option('bkf_dd_setting')['monday'] == false){ ?>
              if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 1) {
-                  return [false, "closed", <?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>];
+                  return [false, "closed", <?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>];
               }<?php }; ?>
  			 <?php if(get_option('bkf_dd_setting')['tuesday'] == false){ ?>
               if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 2) {
-                   return [false, "closed", <?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>];
+                   return [false, "closed", <?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>];
                }<?php }; ?>
   			 <?php if(get_option('bkf_dd_setting')['wednesday'] == false){ ?>
                if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 3) {
-                    return [false, "closed", <?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>];
+                    return [false, "closed", <?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>];
                 }<?php }; ?>
    			 <?php if(get_option('bkf_dd_setting')['thursday'] == false){ ?>
                 if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 4) {
-                     return [false, "closed", <?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>];
+                     return [false, "closed", <?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>];
                  }<?php }; ?>
 				 <?php if(get_option('bkf_dd_setting')['friday'] == false){ ?>
 	             if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 5) {
-	                  return [false, "closed", <?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>];
+	                  return [false, "closed", <?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>];
 	              }<?php }; ?>
 	 			 <?php if(get_option('bkf_dd_setting')['saturday'] == false){ ?>
 	              if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 6) {
-	                   return [false, "closed", <?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>];
+	                   return [false, "closed", <?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>];
 	               }<?php }; ?>
 	  			 <?php if(get_option('bkf_dd_setting')['sunday'] == false){ ?>
 	               if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 0) {
-	                    return [false, "closed", <?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>];
+	                    return [false, "closed", <?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>];
 	                }<?php }; ?>
 			 
 		 for (i = 0; i < closedDatesList.length; i++) {

@@ -60,13 +60,13 @@ class BkfPetals{
     	<div class="clear"></div>
 		<div class="address">
 			<p<?php if( empty( $petalson ) ) { echo ' class="none_set"'; } ?>>
-	 			<strong><?php echo esc_html__('Petals Order Number:', 'bakkbone-florist-companion'); ?></strong>
+	 			<strong><?php esc_html_e('Petals Order Number:', 'bakkbone-florist-companion'); ?></strong>
 				<?php echo ! empty( $petalson ) ? $petalson : '' ?>
 			</p>
 		</div>
 		<div class="edit_address">
 			<p<?php if( empty( $petalson ) ) { echo ' class="none_set"'; } ?>>
-	 			<strong><?php echo esc_html__('Petals Order Number:', 'bakkbone-florist-companion'); ?></strong>
+	 			<strong><?php esc_html_e('Petals Order Number:', 'bakkbone-florist-companion'); ?></strong>
 				<?php echo ! empty( $petalson ) ? $petalson : '' ?>
 			</p>
 		</div>

@@ -52,12 +52,12 @@ class BkfNotifier{
 			function toggleNotifierStatus(){
 				var toggle = document.querySelector("#bkfNotifierOn");
 				if (toggle.checked == true){
-					console.info("<?php echo esc_html__('Notifier enabled', 'bakkbone-florist-companion'); ?>");
+					console.info("<?php esc_html_e('Notifier enabled', 'bakkbone-florist-companion'); ?>");
 					notifierInterval = setInterval(runNotifierCheck, 30000);
 					var toggleUrl = "<?php echo admin_url('admin-ajax.php?action=notifier_status&status=1&user='.get_current_user_id()); ?>";
 					jQuery( function($){ jQuery.ajax({url: toggleUrl, type: 'POST'}); });
 				} else {
-					console.info("<?php echo esc_html__('Notifier disabled', 'bakkbone-florist-companion'); ?>");
+					console.info("<?php esc_html_e('Notifier disabled', 'bakkbone-florist-companion'); ?>");
 					if(typeof notifierInterval !== 'undefined'){
 						clearInterval(notifierInterval);
 						var toggleUrl = "<?php echo admin_url('admin-ajax.php?action=notifier_status&status=0&user='.get_current_user_id()); ?>";
@@ -86,13 +86,13 @@ class BkfNotifier{
 				
 						function bkfDisplay(order){
 							if(order.requires_shipping == 1){
-								var text = "<strong><?php echo get_option('bkf_ddi_setting')['ddt']; ?>:</strong> " + order.delivery_date + "<br><strong><?php echo esc_html__('Customer Name', 'bakkbone-florist-companion'); ?>:</strong> " + order.billing_name + "<br><strong><?php echo esc_html__('Delivery Address', 'bakkbone-florist-companion'); ?>:</strong> " + order.shipping_address + "<br><strong><?php echo esc_html__('Value', 'bakkbone-florist-companion'); ?>:</strong> " + order.value + '<br><strong><a href="' + order.url + '" target="_blank"><?php echo esc_html__('View Order', 'bakkbone-florist-companion'); ?></a></strong>';
+								var text = "<strong><?php echo get_option('bkf_ddi_setting')['ddt']; ?>:</strong> " + order.delivery_date + "<br><strong><?php esc_html_e('Customer Name', 'bakkbone-florist-companion'); ?>:</strong> " + order.billing_name + "<br><strong><?php esc_html_e('Delivery Address', 'bakkbone-florist-companion'); ?>:</strong> " + order.shipping_address + "<br><strong><?php esc_html_e('Value', 'bakkbone-florist-companion'); ?>:</strong> " + order.value + '<br><strong><a href="' + order.url + '" target="_blank"><?php esc_html_e('View Order', 'bakkbone-florist-companion'); ?></a></strong>';
 							} else {
-								var text = + "<br><strong><?php echo esc_html__('Customer Name', 'bakkbone-florist-companion'); ?>:</strong> " + order.billing_name + "<strong><?php echo esc_html__('Value', 'bakkbone-florist-companion'); ?>:</strong> " + order.value + '<br><strong><a href="' + order.url + '" target="_blank"><?php echo esc_html__('View Order', 'bakkbone-florist-companion'); ?></a></strong>';
+								var text = + "<br><strong><?php esc_html_e('Customer Name', 'bakkbone-florist-companion'); ?>:</strong> " + order.billing_name + "<strong><?php esc_html_e('Value', 'bakkbone-florist-companion'); ?>:</strong> " + order.value + '<br><strong><a href="' + order.url + '" target="_blank"><?php esc_html_e('View Order', 'bakkbone-florist-companion'); ?></a></strong>';
 							}
 							const header = document.querySelector("#order-notifier-toggle");
 							var string = Object.prototype.toString.call(result);
-							let html = '<div id="' + order.id + '-notice" class="notice notice-success is-dismissible"><h3>' + "<?php echo esc_html__('New Order #', 'bakkbone-florist-companion'); ?>" + order.id + '</h3><p>' + text + '</p><button type="button" id="' + order.id + '-dismiss" class="bkf-dismiss notice-dismiss" onclick="bkfDismiss(this.id)"><span class="screen-reader-text"><?php echo esc_html__('Dismiss this notice.', 'bakkbone-florist-companion'); ?></span></button></div>';
+							let html = '<div id="' + order.id + '-notice" class="notice notice-success is-dismissible"><h3>' + "<?php esc_html_e('New Order #', 'bakkbone-florist-companion'); ?>" + order.id + '</h3><p>' + text + '</p><button type="button" id="' + order.id + '-dismiss" class="bkf-dismiss notice-dismiss" onclick="bkfDismiss(this.id)"><span class="screen-reader-text"><?php esc_html_e('Dismiss this notice.', 'bakkbone-florist-companion'); ?></span></button></div>';
 							header.insertAdjacentHTML("afterend", html);
 						}
 						if(JSON.parse(result).length !== 0){
@@ -101,7 +101,7 @@ class BkfNotifier{
 							audio.loop = false;
 							audio.play();
 						} else {
-							console.log("<?php echo esc_html__('No orders found between the following times:', 'bakkbone-florist-companion'); ?>" + ' ' + tsHours + ':' + tsMinutes.substr(-2) + ':' + tsSeconds.substr(-2) + ', ' + currentTimeHours + ':' + currentTimeMinutes.substr(-2) + ':' + currentTimeSeconds.substr(-2) );
+							console.log("<?php esc_html_e('No orders found between the following times:', 'bakkbone-florist-companion'); ?>" + ' ' + tsHours + ':' + tsMinutes.substr(-2) + ':' + tsSeconds.substr(-2) + ', ' + currentTimeHours + ':' + currentTimeMinutes.substr(-2) + ':' + currentTimeSeconds.substr(-2) );
 						}
 					}});
 					
@@ -152,7 +152,7 @@ class BkfNotifier{
 	
 	function bkf_notifier_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/day-to-day/orders-list/" target="_blank">https://plugins.bkbn.au/docs/bkf/day-to-day/orders-list/</a>
 		<?php
 	}

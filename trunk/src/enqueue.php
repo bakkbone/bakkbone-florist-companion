@@ -13,24 +13,25 @@ class BkfEnqueueStyles{
 
 	function __construct()
 	{	
-		add_action("wp_enqueue_scripts", array($this, "bkf_enqueue_frontend"));
+		add_action("wp_enqueue_scripts", array($this, "bkf_enqueue_global"));
 		if(is_admin()){
-			add_action("admin_enqueue_scripts", array($this, "bkf_enqueue_frontend"));
+			add_action("admin_enqueue_scripts", array($this, "bkf_enqueue_global"));
 			add_action("admin_enqueue_scripts", array($this, "bkf_enqueue_backend"));
 			add_action("admin_head", array($this, "bkf_fonts"), 1);
 		}
 	}
 	
-	function bkf_enqueue_frontend()
+	function bkf_enqueue_global()
 	{
+        wp_register_style( 'jquery-ui-overcast', '//code.jquery.com/ui/1.13.2/themes/overcast/jquery-ui.css' );
+        wp_register_style( 'jquery-ui-dark-hive', '//code.jquery.com/ui/1.13.2/themes/dark-hive/jquery-ui.css' );
 		wp_enqueue_script("bkf_select", BKF_URL . "assets/js/select.js",'','','all' );
 		wp_enqueue_style("bkf_bkf", BKF_URL . "assets/css/bkf.css", array(),"1","all" );
 		wp_enqueue_style("bkf_default", BKF_URL . "assets/css/default.css", array(),"1","all" );
 		wp_enqueue_style("bkf_calendar", BKF_URL . "assets/css/calendar.css", array(),"1","all" );
 		if(!is_admin()){
 			wp_enqueue_script( 'jquery-ui-datepicker' );
-	        wp_register_style( 'jquery-ui', '//code.jquery.com/ui/1.13.2/themes/overcast/jquery-ui.css' );
-	        wp_enqueue_style( 'jquery-ui' );
+	        wp_enqueue_style( 'jquery-ui-overcast' );
 		}
 	    global $post_type;
 		if ( 'bkf_petals_order' === $post_type ) {
@@ -40,25 +41,30 @@ class BkfEnqueueStyles{
 
 	function bkf_enqueue_backend($hooks)
 	{
-		wp_enqueue_script("bkf_select", BKF_URL . "assets/js/select.js",'','','all' );
+		wp_enqueue_script('select2', BKF_URL . 'lib/select2/js/select2.min.js', 'jquery');
+		wp_register_style('select2css', BKF_URL . 'lib/select2/css/select2.min.css');
+		wp_enqueue_style('select2css');
 		wp_enqueue_style('dashicons');
 		wp_enqueue_script("bkf_copy", BKF_URL . "assets/js/copy.js",'','','all' );
 		wp_enqueue_script("fullcalendar", BKF_URL . "lib/fullcalendar/dist/index.global.min.js",'','','all' );
 		if(!strpos(get_current_screen()->id,'page_gf_')){
 			wp_enqueue_script( 'jquery-ui-datepicker' );
-	        wp_register_style( 'jquery-ui', '//code.jquery.com/ui/1.13.2/themes/overcast/jquery-ui.css' );
-	        wp_enqueue_style( 'jquery-ui' );
+	        wp_enqueue_style( 'jquery-ui-dark-hive' );
 		}
 		if(get_post_type() == 'bkf_petals_order'){
 			wp_dequeue_script( 'autosave' );
 			wp_enqueue_script("bkf_petals", BKF_URL . "assets/js/petals.js",'','','all' );
 		}
+		if(get_current_screen()->id == 'toplevel_page_bkf_dc'){
+			wp_enqueue_script('jquery-ui-core', 'jquery');
+			wp_enqueue_script('jquery-ui-button', 'jquery');
+			wp_enqueue_script('jquery-ui-dialog', 'jquery');
+	        wp_enqueue_style( 'jquery-ui-dark-hive' );
+		}
 	}
 	
 	function bkf_fonts() {
 		?>
-		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 		<style id="bkf_fonts">
 			/* latin-ext */
 			@font-face {

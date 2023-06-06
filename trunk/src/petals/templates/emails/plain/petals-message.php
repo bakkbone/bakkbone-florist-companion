@@ -14,7 +14,7 @@ echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 echo sprintf( __( 'You\'ve received a message from Petals regarding an order you sent - please see below.', 'bakkbone-florist-companion' ) ) . "\n\n";
 echo printf( $email->message->comment_content ) . "\n\n";
-echo esc_html__('You can view the order and respond at this link: ', 'bakkbone-florist-companion') . get_permalink($email->object->ID);
+esc_html_e('You can view the order and respond at this link: ', 'bakkbone-florist-companion') . get_permalink($email->object->ID);
 
 echo "\n\n----------------------------------------\n\n";
 

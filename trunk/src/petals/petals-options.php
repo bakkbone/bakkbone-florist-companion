@@ -53,7 +53,7 @@ class BkfPetalsOptions{
 	
 	function bkf_pn_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/florist-options/petals-network/" target="_blank">https://plugins.bkbn.au/docs/bkf/florist-options/petals-network/</a>
 		<?php
 	}
@@ -64,7 +64,7 @@ class BkfPetalsOptions{
 		?>
 		<div class="wrap">
 			<div class="bkf-box">
-			<h1><?php echo esc_html__("Petals Network","bakkbone-florist-companion") ?></h1>
+			<h1><?php esc_html_e("Petals Network","bakkbone-florist-companion") ?></h1>
 				<div class="inside">
 					<form method="post" action="options.php">
 						<?php settings_fields("bkf_petals_options_group"); ?>
@@ -174,14 +174,14 @@ class BkfPetalsOptions{
 	function bkfPetalsOptionsInfo()
 	{
 		echo '<p class="bkf-pageinfo">';
-		echo esc_html__("Your site will use this information to communicate with Petals.", "bakkbone-florist-companion");
+		esc_html_e("Your site will use this information to communicate with Petals.", "bakkbone-florist-companion");
 		echo '</p>';
 	}
 	
 	function bkfPetalsProductOptionsInfo()
 	{
 		echo '<p class="bkf-pageinfo">';
-	    echo esc_html__("These settings relate to the WooCommerce product that will be used when an order from Petals is received.", "bakkbone-florist-companion");
+	    esc_html_e("These settings relate to the WooCommerce product that will be used when an order from Petals is received.", "bakkbone-florist-companion");
 		echo '</p>';
 	}
 
@@ -194,7 +194,7 @@ class BkfPetalsOptions{
 		}
 		?>
 		<input autocomplete="off" class="bkf-form-control small-text" id="bkf-petals-member-number" type="number" name="bkf_petals_setting[mn]" placeholder="1234" value="<?php echo $value; ?>" />
-		<p class="description"><?php echo esc_html__("Your Petals Exchange member number.","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Your Petals Exchange member number.","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -207,7 +207,7 @@ class BkfPetalsOptions{
 		}
 		?>
 		<input autocomplete="off" class="bkf-form-control medium-text" id="bkf-petals-password" type="password" name="bkf_petals_setting[ppw]" placeholder="********" value="<?php echo $value; ?>" />
-		<p class="description"><?php echo esc_html__("Your Petals Exchange password. This is encrypted before being stored in your site's database, and is used only to communicate directly with Petals Network.","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Your Petals Exchange password. This is encrypted before being stored in your site's database, and is used only to communicate directly with Petals Network.","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -216,8 +216,8 @@ class BkfPetalsOptions{
 		?>
 		<div class="bkfptooltip" style="width:100%;"><div onclick="bkfCopy()" onmouseout="bkfpCopyOut()" style="width:100%;"><input disabled class="bkf-form-control large-text" style="width:50%;min-width:300px;" id="bkfCopy" type="text" value="<?php echo $value; ?>" />  <span class="bkfptooltiptext" id="bkfpTooltip">Click to copy to clipboard</span>
 </div></div>
-		<p class="description"><?php echo esc_html__('Provide the link above to the Petals <a href="mailto:eflorist@petalsnetwork.com?subject=XML Opt-In&body=Shop Name: %0D%0AMy Full Name: %0D%0APhone: %0D%0AEmail: %0D%0AMember Number: %0D%0AXML Link: %0D%0A%0D%0APlease opt my store into XML orders alongside the Exchange, using the details above.">eFlorist Team</a>, requesting to <em>opt in to XML orders alongside the Exchange to the link provided</em>. The link can be copied to your clipboard by simply clicking the link above.', 'bakkbone-florist-companion'); ?></p>
-		<p class="description"><?php echo esc_html__('<strong>Please note:</strong> The integration will not work unless all other fields on this page are completed <em>and</em> the request is sent to Petals as per the above.', 'bakkbone-florist-companion'); ?></p>
+		<p class="description"><?php esc_html_e('Provide the link above to the Petals <a href="mailto:eflorist@petalsnetwork.com?subject=XML Opt-In&body=Shop Name: %0D%0AMy Full Name: %0D%0APhone: %0D%0AEmail: %0D%0AMember Number: %0D%0AXML Link: %0D%0A%0D%0APlease opt my store into XML orders alongside the Exchange, using the details above.">eFlorist Team</a>, requesting to <em>opt in to XML orders alongside the Exchange to the link provided</em>. The link can be copied to your clipboard by simply clicking the link above.', 'bakkbone-florist-companion'); ?></p>
+		<p class="description"><?php esc_html_e('<strong>Please note:</strong> The integration will not work unless all other fields on this page are completed <em>and</em> the request is sent to Petals as per the above.', 'bakkbone-florist-companion'); ?></p>
 		<?php
 	}
 		
@@ -243,7 +243,7 @@ class BkfPetalsOptions{
 		);
 		?><div class="bkf-select" style="width:200px;">
 		<?php wp_dropdown_categories($args); ?>
-	</div><p class="description"><?php echo esc_html__("Please select the category which will contain the product.", "bakkbone-florist-companion"); ?></p>
+	</div><p class="description"><?php esc_html_e("Please select the category which will contain the product.", "bakkbone-florist-companion"); ?></p>
 		<?php
 	}
 
@@ -290,17 +290,17 @@ class BkfPetalsOptions{
 			<?php
 					if(empty($this->bkf_petals_product_setting["cat"])){
 					?>
-		<p class="description"><?php echo esc_html__("Select a category above first, and Save Changes, then this option will become available.","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Select a category above first, and Save Changes, then this option will become available.","bakkbone-florist-companion") ?></p>
 		<?php
 					}else{
 					?>
-		<p class="description"><?php echo esc_html__("Please select the product.","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Please select the product.","bakkbone-florist-companion") ?></p>
 		<?php					    
 					}
 		if(empty($value) && !empty($this->bkf_petals_product_setting["cat"])) {
 	    $nonce = wp_create_nonce("bkf_cpp");
 	    $ajaxurl = admin_url('admin-ajax.php?action=bkf_cpp&nonce='.$nonce);
-	    ?><a data-nonce="<?php echo $nonce ?>" href="<?php echo $ajaxurl ?>"><?php echo esc_html__("Or click here to generate a compatible product in one click.","bakkbone-florist-companion") ?></a><?php
+	    ?><a data-nonce="<?php echo $nonce ?>" href="<?php echo $ajaxurl ?>"><?php esc_html_e("Or click here to generate a compatible product in one click.","bakkbone-florist-companion") ?></a><?php
 		}
 		
 	}

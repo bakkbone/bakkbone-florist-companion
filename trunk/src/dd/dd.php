@@ -93,7 +93,7 @@ class BkfDd{
 	        ?><h3><?php echo $ddtitle; ?></h3>
 	        <p class="form-row form-row-wide form-group validate-required validate-delivery_date" id="delivery_date_field"><label for="delivery_date">
 	        <?php
-	    	echo esc_html__( "We'll schedule your order for: ", "bakkbone-florist-companion");
+	    	esc_html_e( "We'll schedule your order for: ", "bakkbone-florist-companion");
 	    	?>
 	    	<abbr class="required" title="required">*</abbr></label>
 	    	<input type="text" name="delivery_date" class="delivery_date input-text form-control" id="delivery_date" placeholder="<?php echo $ddtitle; ?>" required autocomplete="off" />
@@ -186,7 +186,7 @@ class BkfDd{
 		         }
 
 	 			<?php if(get_option('bkf_dd_setting')['monday'] == false){ ?>
-	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 1) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 1) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 	 				if(isset(get_option('bkf_dm_setting')['monday'])){
 	 					echo 'var monday_items = [';
 	 					$setting = get_option('bkf_dm_setting')['monday'];
@@ -196,13 +196,13 @@ class BkfDd{
 	 					echo '];';?>
 
 	 					if(w == 1 && monday_items.includes(currentShippingMethod)){
-	 						return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+	 						return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 	 					}
 	 					<?php
 	 				}
 	 			}; ?>
 	 			<?php if(get_option('bkf_dd_setting')['tuesday'] == false){ ?>
-	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 2) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 2) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 	 				if(isset(get_option('bkf_dm_setting')['tuesday'])){
 	 					echo 'var tuesday_items = [';
 	 					$setting = get_option('bkf_dm_setting')['tuesday'];
@@ -212,13 +212,13 @@ class BkfDd{
 	 					echo '];';?>
 
 	 					if(w == 2 && tuesday_items.includes(currentShippingMethod)){
-	 						return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+	 						return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 	 					}
 	 					<?php
 	 				}
 	 			}; ?>
 	 			<?php if(get_option('bkf_dd_setting')['wednesday'] == false){ ?>
-	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 3) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 3) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 	 				if(isset(get_option('bkf_dm_setting')['wednesday'])){
 	 					echo 'var wednesday_items = [';
 	 					$setting = get_option('bkf_dm_setting')['wednesday'];
@@ -228,13 +228,13 @@ class BkfDd{
 	 					echo '];';?>
 
 	 					if(w == 3 && wednesday_items.includes(currentShippingMethod)){
-	 						return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+	 						return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 	 					}
 	 					<?php
 	 				}
 	 			}; ?>
 	 			<?php if(get_option('bkf_dd_setting')['thursday'] == false){ ?>
-	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 4) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 4) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 	 				if(isset(get_option('bkf_dm_setting')['thursday'])){
 	 					echo 'var thursday_items = [';
 	 					$setting = get_option('bkf_dm_setting')['thursday'];
@@ -244,13 +244,13 @@ class BkfDd{
 	 					echo '];';?>
 
 	 					if(w == 4 && thursday_items.includes(currentShippingMethod)){
-	 						return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+	 						return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 	 					}
 	 					<?php
 	 				}
 	 			}; ?>
 	 			<?php if(get_option('bkf_dd_setting')['friday'] == false){ ?>
-	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 5) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 5) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 	 				if(isset(get_option('bkf_dm_setting')['friday'])){
 	 					echo 'var friday_items = [';
 	 					$setting = get_option('bkf_dm_setting')['friday'];
@@ -260,13 +260,13 @@ class BkfDd{
 	 					echo '];';?>
 
 	 					if(w == 5 && friday_items.includes(currentShippingMethod)){
-	 						return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+	 						return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 	 					}
 	 					<?php
 	 				}
 	 			}; ?>
 	 			<?php if(get_option('bkf_dd_setting')['saturday'] == false){ ?>
-	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 6) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 6) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 	 				if(isset(get_option('bkf_dm_setting')['saturday'])){
 	 					echo 'var saturday_items = [';
 	 					$setting = get_option('bkf_dm_setting')['saturday'];
@@ -276,13 +276,13 @@ class BkfDd{
 	 					echo '];';?>
 
 	 					if(w == 6 && saturday_items.includes(currentShippingMethod)){
-	 						return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+	 						return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 	 					}
 	 					<?php
 	 				}
 	 			}; ?>
 	 			<?php if(get_option('bkf_dd_setting')['sunday'] == false){ ?>
-	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 0) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+	 				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 0) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 	 				if(isset(get_option('bkf_dm_setting')['sunday'])){
 	 					echo 'var sunday_items = [';
 	 					$setting = get_option('bkf_dm_setting')['sunday'];
@@ -292,7 +292,7 @@ class BkfDd{
 	 					echo '];';?>
 
 	 					if(w == 0 && sunday_items.includes(currentShippingMethod)){
-	 						return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+	 						return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 	 					}
 	 					<?php
 	 				}
@@ -300,30 +300,30 @@ class BkfDd{
 			 for (i = 0; i < closedDatesList.length; i++) {
 			   if ((m == closedDatesList[i][0] - 1) && (d == closedDatesList[i][1]) && (y == closedDatesList[i][2]))
 			   {
-			   	 return [false,"closed","<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"];
+			   	 return [false,"closed","<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"];
 			   }
 			 }
 		     for (i = 0; i < fullDatesList.length; i++) {
 		       if ((m == fullDatesList[i][0] - 1) && (d == fullDatesList[i][1]) && (y == fullDatesList[i][2]))
 		       {
-		         return [false,"booked","<?php echo esc_html__('Fully Booked', 'bakkbone-florist-companion'); ?>"];
+		         return [false,"booked","<?php esc_html_e('Fully Booked', 'bakkbone-florist-companion'); ?>"];
 		       }
 		     }
 		     for (i = 0; i < catBlockDatesList.length; i++) {
 		       if ((m == catBlockDatesList[i][0] - 1) && (d == catBlockDatesList[i][1]) && (y == catBlockDatesList[i][2]))
 		       {
-		         return [false,"unavailable","<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>"];
+		         return [false,"unavailable","<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>"];
 		       }
 		     }
 			 <?php if($sdcpassed == true){
 				 ?>
 				 if(d == "<?php echo wp_date("j"); ?>" && y == "<?php echo wp_date("Y"); ?>" && m == <?php echo wp_date("n"); ?> - 1){
-					 return [false,"sdc","<?php echo esc_html__('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
+					 return [false,"sdc","<?php esc_html_e('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
 					 }<?php
 			 }?>
 			 var sdc = [<?php foreach($sd_custom as $this_sdc){ echo '"'.$this_sdc.'",';} ?>]
 			 if (sdc.includes(currentShippingMethod) && d == "<?php echo wp_date("j"); ?>" && y == "<?php echo wp_date("Y"); ?>" && m == <?php echo wp_date("n"); ?> - 1){
-				 return [false,"sdc","<?php echo esc_html__('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
+				 return [false,"sdc","<?php esc_html_e('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
 			 }
 
 			 return [true];
@@ -410,7 +410,7 @@ class BkfDd{
 	         }
 
 				<?php if(get_option('bkf_dd_setting')['monday'] == false){ ?>
-					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 1) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 1) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 					if(isset(get_option('bkf_dm_setting')['monday'])){
 						echo 'var monday_items = [';
 						$setting = get_option('bkf_dm_setting')['monday'];
@@ -420,13 +420,13 @@ class BkfDd{
 						echo '];';?>
 
 						if(w == 1 && monday_items.includes(currentShippingMethod)){
-							return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+							return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 						}
 						<?php
 					}
 				}; ?>
 				<?php if(get_option('bkf_dd_setting')['tuesday'] == false){ ?>
-					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 2) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 2) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 					if(isset(get_option('bkf_dm_setting')['tuesday'])){
 						echo 'var tuesday_items = [';
 						$setting = get_option('bkf_dm_setting')['tuesday'];
@@ -436,13 +436,13 @@ class BkfDd{
 						echo '];';?>
 
 						if(w == 2 && tuesday_items.includes(currentShippingMethod)){
-							return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+							return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 						}
 						<?php
 					}
 				}; ?>
 				<?php if(get_option('bkf_dd_setting')['wednesday'] == false){ ?>
-					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 3) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 3) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 					if(isset(get_option('bkf_dm_setting')['wednesday'])){
 						echo 'var wednesday_items = [';
 						$setting = get_option('bkf_dm_setting')['wednesday'];
@@ -452,13 +452,13 @@ class BkfDd{
 						echo '];';?>
 
 						if(w == 3 && wednesday_items.includes(currentShippingMethod)){
-							return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+							return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 						}
 						<?php
 					}
 				}; ?>
 				<?php if(get_option('bkf_dd_setting')['thursday'] == false){ ?>
-					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 4) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 4) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 					if(isset(get_option('bkf_dm_setting')['thursday'])){
 						echo 'var thursday_items = [';
 						$setting = get_option('bkf_dm_setting')['thursday'];
@@ -468,13 +468,13 @@ class BkfDd{
 						echo '];';?>
 
 						if(w == 4 && thursday_items.includes(currentShippingMethod)){
-							return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+							return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 						}
 						<?php
 					}
 				}; ?>
 				<?php if(get_option('bkf_dd_setting')['friday'] == false){ ?>
-					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 5) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 5) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 					if(isset(get_option('bkf_dm_setting')['friday'])){
 						echo 'var friday_items = [';
 						$setting = get_option('bkf_dm_setting')['friday'];
@@ -484,13 +484,13 @@ class BkfDd{
 						echo '];';?>
 
 						if(w == 5 && friday_items.includes(currentShippingMethod)){
-							return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+							return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 						}
 						<?php
 					}
 				}; ?>
 				<?php if(get_option('bkf_dd_setting')['saturday'] == false){ ?>
-					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 6) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 6) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 					if(isset(get_option('bkf_dm_setting')['saturday'])){
 						echo 'var saturday_items = [';
 						$setting = get_option('bkf_dm_setting')['saturday'];
@@ -500,13 +500,13 @@ class BkfDd{
 						echo '];';?>
 
 						if(w == 6 && saturday_items.includes(currentShippingMethod)){
-							return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+							return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 						}
 						<?php
 					}
 				}; ?>
 				<?php if(get_option('bkf_dd_setting')['sunday'] == false){ ?>
-					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 0) { return [false, "closed", "<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
+					if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 0) { return [false, "closed", "<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"]; }<?php } else {
 					if(isset(get_option('bkf_dm_setting')['sunday'])){
 						echo 'var sunday_items = [';
 						$setting = get_option('bkf_dm_setting')['sunday'];
@@ -516,7 +516,7 @@ class BkfDd{
 						echo '];';?>
 
 						if(w == 0 && sunday_items.includes(currentShippingMethod)){
-							return [false, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+							return [false, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
 						}
 						<?php
 					}
@@ -524,30 +524,30 @@ class BkfDd{
 		 for (i = 0; i < closedDatesList.length; i++) {
 		   if ((m == closedDatesList[i][0] - 1) && (d == closedDatesList[i][1]) && (y == closedDatesList[i][2]))
 		   {
-		   	 return [false,"closed","<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"];
+		   	 return [false,"closed","<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"];
 		   }
 		 }
 	     for (i = 0; i < fullDatesList.length; i++) {
 	       if ((m == fullDatesList[i][0] - 1) && (d == fullDatesList[i][1]) && (y == fullDatesList[i][2]))
 	       {
-	         return [false,"booked","<?php echo esc_html__('Fully Booked', 'bakkbone-florist-companion'); ?>"];
+	         return [false,"booked","<?php esc_html_e('Fully Booked', 'bakkbone-florist-companion'); ?>"];
 	       }
 	     }
 	     for (i = 0; i < catBlockDatesList.length; i++) {
 	       if ((m == catBlockDatesList[i][0] - 1) && (d == catBlockDatesList[i][1]) && (y == catBlockDatesList[i][2]))
 	       {
-	         return [false,"unavailable","<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>"];
+	         return [false,"unavailable","<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>"];
 	       }
 	     }
 		 <?php if($sdcpassed == true){
 			 ?>
 			 if(d == "<?php echo wp_date("j"); ?>" && y == "<?php echo wp_date("Y"); ?>" && m == <?php echo wp_date("n"); ?> - 1){
-				 return [false,"sdc","<?php echo esc_html__('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
+				 return [false,"sdc","<?php esc_html_e('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
 				 }<?php
 		 }?>
 		 var sdc = [<?php foreach($sd_custom as $this_sdc){ echo '"'.$this_sdc.'",';} ?>]
 		 if (sdc.includes(currentShippingMethod) && d == "<?php echo wp_date("j"); ?>" && y == "<?php echo wp_date("Y"); ?>" && m == <?php echo wp_date("n"); ?> - 1){
-			 return [false,"sdc","<?php echo esc_html__('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
+			 return [false,"sdc","<?php esc_html_e('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
 		 }
 
 		 return [true];
@@ -560,7 +560,7 @@ class BkfDd{
 		$tsselect = __('Select a timeslot...', 'bakkbone-florist-companion');
 		?>
         <p class="form-row form-row-wide form-group validate-required validate-delivery_timeslot" id="delivery_timeslot_field"><label for="delivery_timeslot">
-        <?php echo esc_html__( "Timeslot: ", "bakkbone-florist-companion"); ?>
+        <?php esc_html_e( "Timeslot: ", "bakkbone-florist-companion"); ?>
     	<abbr class="required" title="required">*</abbr></label>
 			<select name="delivery_timeslot" id="delivery_timeslot" class="delivery_timeslot form-control">
 			</select>
@@ -689,7 +689,8 @@ class BkfDd{
 		$order_id = $order->get_id();
         $delivery_date = get_post_meta( $order_id, '_delivery_date', true );
         $delivery_timeslot_id = get_post_meta( $order_id, '_delivery_timeslot', true );
-		$timeslot = bkf_get_timeslots_associative()['ts'.$delivery_timeslot_id];
+		$tsid = $delivery_timeslot_id !== null && $delivery_timeslot_id !== '' && $delivery_timeslot_id ? 'ts'.$delivery_timeslot_id : false;
+        $timeslot = $tsid ? bkf_get_timeslots_associative()['ts'.$delivery_timeslot_id] : null;
         $rawtimeslot = get_post_meta( $order_id, '_delivery_timeslot', true );
 		$ddtitle = get_option('bkf_ddi_setting')['ddt'];
 		$tstitle = __('Timeslot', 'bakkbone-florist-companion');
@@ -718,11 +719,12 @@ class BkfDd{
     function bkf_dd_thankyou ( $order ) {
 		$order_id = $order->get_id();
         $delivery_date = get_post_meta( $order_id, '_delivery_date', true );
-        $delivery_timeslot_id = get_post_meta( $order_id, '_delivery_timeslot', true );
-		$timeslot = bkf_get_timeslots_associative()['ts'.$delivery_timeslot_id];
+        $delivery_timeslot_id = get_post_meta( $order_id, '_delivery_timeslot_id', true );
+		$tsid = $delivery_timeslot_id !== null && $delivery_timeslot_id !== '' && $delivery_timeslot_id ? 'ts'.$delivery_timeslot_id : false;
+        $timeslot = $tsid ? bkf_get_timeslots_associative()['ts'.$delivery_timeslot_id] : null;
         $delivery_timeslot = get_post_meta( $order_id, '_delivery_timeslot', true );
 		$ddtitle = get_option('bkf_ddi_setting')['ddt'];
-		$tstitle = __('Time Slot', 'bakkbone-florist-companion');
+		$tstitle = __('Timeslot', 'bakkbone-florist-companion');
 
         if ( '' !== $delivery_date ) {
         	echo '<p><strong>' . $ddtitle . ':</strong><br>' . $delivery_date . '</p>';
@@ -731,7 +733,7 @@ class BkfDd{
         if ( null !== $timeslot ) {
         	echo '<p><strong>' . $tstitle . ':</strong><br>' . date("g:i a", strtotime($timeslot['start'])).' - '.date("g:i a", strtotime($timeslot['end'])) . '</p>';
         } elseif ( '' !== $delivery_timeslot ) {
-        	echo '<p><strong>' . $tstitle . ':</strong><br>' . implode($delivery_timeslot) . '</p>';
+        	echo '<p><strong>' . $tstitle . ':</strong><br>' . $delivery_timeslot . '</p>';
     	}
     }
 

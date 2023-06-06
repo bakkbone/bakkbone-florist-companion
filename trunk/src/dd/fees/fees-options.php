@@ -46,7 +46,7 @@ class BkfDdFeesOptions{
 	
 	function bkf_fee_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/dd/fees/" target="_blank">https://plugins.bkbn.au/docs/bkf/dd/fees/</a>
 		<?php
 	}
@@ -58,7 +58,7 @@ class BkfDdFeesOptions{
         ?>
         <div class="wrap">
             <div class="bkf-box">
-            <h1><?php echo esc_html__("Delivery Date Fees","bakkbone-florist-companion") ?></h1>
+            <h1><?php esc_html_e("Delivery Date Fees","bakkbone-florist-companion") ?></h1>
                 <div class="inside">
                     <form method="post" action="options.php">
                         <?php settings_fields("bkf_ddf_options_group"); ?>
@@ -101,7 +101,7 @@ class BkfDdFeesOptions{
 
 		add_settings_field(
 			"bkf_ddtst",
-			__("Time Slot Fees","bakkbone-florist-companion"),
+			__("Timeslot Fees","bakkbone-florist-companion"),
 			array($this,"bkfDdtstCallback"),
 			"bkf-fees",
 			"bkf_ddf_section"
@@ -250,14 +250,14 @@ class BkfDdFeesOptions{
 	function bkfDdfInfo()
 	{
 		echo '<p class="bkf-pageinfo">';
-		echo esc_html__("If taxable status is turned on, fees must be entered <em>exclusive</em> of tax. Time Slot Fees are managed on the Timeslots settings page.", "bakkbone-florist-companion");
+		esc_html_e("Timeslot Fees are managed on the Timeslots settings page.", "bakkbone-florist-companion");
 		echo '</p>';
 	}
 	
 	function bkfWfOptionsInfo()
 	{
 		echo '<p class="bkf-pageinfo">';
-		echo esc_html__("Optionally set an additional fee for delivery on specific weekdays. If taxable status is turned on, fees must be entered <em>exclusive</em> of tax. Leave a row blank to not apply a fee.", "bakkbone-florist-companion");
+		esc_html_e("Optionally set an additional fee for delivery on specific weekdays. Leave a row blank to not apply a fee.", "bakkbone-florist-companion");
 		echo '</p>';
 	}
 
@@ -271,7 +271,7 @@ class BkfDdFeesOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Weekday Fees are taxable","bakkbone-florist-companion") ?><input id="bkf-ddwft" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_ddf_setting[ddwft]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Weekday Fees are taxable","bakkbone-florist-companion") ?><input id="bkf-ddwft" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_ddf_setting[ddwft]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 	
@@ -285,7 +285,7 @@ class BkfDdFeesOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Time Slot Fees are taxable","bakkbone-florist-companion") ?><input id="bkf-ddtst" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_ddf_setting[ddtst]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Timeslot Fees are taxable","bakkbone-florist-companion") ?><input id="bkf-ddtst" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_ddf_setting[ddtst]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 	
@@ -299,7 +299,7 @@ class BkfDdFeesOptions{
 			$checked = "";
 		}
 		?>
-		<label class="bkf-check-container"><?php echo esc_html__("Date-Specific Fees are taxable","bakkbone-florist-companion") ?><input id="bkf-dddft" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_ddf_setting[dddft]" /><span class="bkf-check-checkmark"></span></label>
+		<label class="bkf-check-container"><?php esc_html_e("Date-Specific Fees are taxable","bakkbone-florist-companion") ?><input id="bkf-dddft" <?php echo $checked ?> type="checkbox" class="bkf-form-control" name="bkf_ddf_setting[dddft]" /><span class="bkf-check-checkmark"></span></label>
 		<?php
 	}
 	
@@ -315,7 +315,7 @@ class BkfDdFeesOptions{
 		}else{
 			$value = "";
 		} ?>
-		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-monday" type="text" name="bkf_wf_setting[monday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php echo bkf_currency_symbol(); ?></i></div>
+		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-monday" type="text" name="bkf_wf_setting[monday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php bkf_currency_symbol(true); ?></i></div>
 		<?php		
 	}
 	
@@ -331,7 +331,7 @@ class BkfDdFeesOptions{
 		}else{
 			$value = "";
 		} ?>
-		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-tuesday" type="text" name="bkf_wf_setting[tuesday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php echo bkf_currency_symbol(); ?></i></div>
+		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-tuesday" type="text" name="bkf_wf_setting[tuesday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php bkf_currency_symbol(true); ?></i></div>
 		<?php		
 	}
 	
@@ -347,7 +347,7 @@ class BkfDdFeesOptions{
 		}else{
 			$value = "";
 		} ?>
-		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-wednesday" type="text" name="bkf_wf_setting[wednesday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php echo bkf_currency_symbol(); ?></i></div>
+		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-wednesday" type="text" name="bkf_wf_setting[wednesday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php bkf_currency_symbol(true); ?></i></div>
 		<?php		
 	}
 	
@@ -363,7 +363,7 @@ class BkfDdFeesOptions{
 		}else{
 			$value = "";
 		} ?>
-		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-thursday" type="text" name="bkf_wf_setting[thursday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php echo bkf_currency_symbol(); ?></i></div>
+		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-thursday" type="text" name="bkf_wf_setting[thursday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php bkf_currency_symbol(true); ?></i></div>
 		<?php		
 	}
 	
@@ -379,7 +379,7 @@ class BkfDdFeesOptions{
 		}else{
 			$value = "";
 		} ?>
-		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-friday" type="text" name="bkf_wf_setting[friday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php echo bkf_currency_symbol(); ?></i></div>
+		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-friday" type="text" name="bkf_wf_setting[friday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php bkf_currency_symbol(true); ?></i></div>
 		<?php		
 	}
 	
@@ -395,7 +395,7 @@ class BkfDdFeesOptions{
 		}else{
 			$value = "";
 		} ?>
-		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-saturday" type="text" name="bkf_wf_setting[saturday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php echo bkf_currency_symbol(); ?></i></div>
+		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-saturday" type="text" name="bkf_wf_setting[saturday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php bkf_currency_symbol(true); ?></i></div>
 		<?php		
 	}
 	
@@ -411,7 +411,7 @@ class BkfDdFeesOptions{
 		}else{
 			$value = "";
 		} ?>
-		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-sunday" type="text" name="bkf_wf_setting[sunday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php echo bkf_currency_symbol(); ?></i></div>
+		<div class="bkf-input-icon"><input class="regular-text bkf-form-control allow-disabled" id="bkf-wf-sunday" type="text" name="bkf_wf_setting[sunday]" placeholder="***.**" pattern="\d+\.\d{2,}" value="<?php echo $value; ?>"<?php echo $disabled; ?> /><i><?php bkf_currency_symbol(true); ?></i></div>
 		<?php		
 	}
 	

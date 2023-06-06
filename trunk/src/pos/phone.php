@@ -21,7 +21,7 @@ class BkfPho{
 		if($pagenow == 'admin.php' && isset($_GET['page']) && $_GET['page'] == 'new-phone_order'){
 			?>
 		    <div class="notice notice-bkf">
-		        <p><?php echo esc_html__( 'This form does not yet support fees configured in BKF settings (other than timeslot fees), this is planned for the next major release. Apologies for any inconvenience caused.', 'bakkbone-florist-companion' ); ?></p>
+		        <p><?php esc_html_e( 'This form does not yet support fees configured in BKF settings (other than timeslot fees), this is planned for the next major release. Apologies for any inconvenience caused.', 'bakkbone-florist-companion' ); ?></p>
 		    </div>
 			<?php
 		}
@@ -72,23 +72,23 @@ class BkfPho{
 		<div class="bkf-loading-bg loading" style="display:none;"><img class="bkf-loading-spin" src="<?php echo BKF_URL . '/assets/img/spinner.svg'; ?>" /></div>
 		<div class="wrap">
 			<div class="bkf-box">
-			<h1><?php echo esc_html__("Phone Order","bakkbone-florist-companion") ?></h1>
+			<h1><?php esc_html_e("Phone Order","bakkbone-florist-companion") ?></h1>
 				<div class="inside">
 					<form autocomplete="off" class="bkf-form" method="post" action="<?php echo admin_url('admin-ajax.php'); ?>">
 						<input type="hidden" name="action" value="bkf_phone_order" />
 						<input type="hidden" name="virtualorder" id="virtualorder" />
 						<fieldset>
-							<legend><?php echo esc_html__('Customer', 'bakkbone-florist-companion'); ?></legend>
+							<legend><?php esc_html_e('Customer', 'bakkbone-florist-companion'); ?></legend>
 							<table class="form-table" id="customer_form">
 								<tbody>
 									<tr>
-										<th scope="row"><label for="customer_type"><?php echo esc_html__('Customer Type', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
-										<td><label class="bkf-radio-container"><input checked class="bkf-form-control" type="radio" name="customer_type" id="customer_type-existing" value="existing" /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('Existing Customer', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="customer_type" id="customer_type-new" value="new" /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('New Customer', 'bakkbone-florist-companion'); ?></label></td>
+										<th scope="row"><label for="customer_type"><?php esc_html_e('Customer Type', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<td><label class="bkf-radio-container"><input checked class="bkf-form-control" type="radio" name="customer_type" id="customer_type-existing" value="existing" /><span class="bkf-radio-checkmark"></span><?php esc_html_e('Existing Customer', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="customer_type" id="customer_type-new" value="new" /><span class="bkf-radio-checkmark"></span><?php esc_html_e('New Customer', 'bakkbone-florist-companion'); ?></label></td>
 									</tr>
 									<tr class="get_customer_form">
-										<th scope="row"><label for="customer_id"><?php echo esc_html__('Customer', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<th scope="row"><label for="customer_id"><?php esc_html_e('Customer', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
 										<td><select class="select2 bkf-form-control" name="customer_id" id="customer_id" style="width:100%;" required>
-											<option value="" disabled selected><?php echo esc_html__('Select a customer...', 'bakkbone-florist-companion'); ?></option>
+											<option value="" disabled selected><?php esc_html_e('Select a customer...', 'bakkbone-florist-companion'); ?></option>
 											<?php
 											foreach($users as $user){
 												if($user['business']){
@@ -102,36 +102,36 @@ class BkfPho{
 										</select></td>
 									</tr>
 									<tr class="create_customer_form" style="display:none;">
-										<th scope="row"><label for="billing_first"><?php echo esc_html__('Name', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
-										<td><input class="bkf-form-control regular-text" type="text" autocomplete="off" name="billing[first]" id="billing_first" placeholder="<?php echo esc_html__('First Name', 'bakkbone-florist-companion'); ?>" /><input class="bkf-form-control regular-text" type="text" autocomplete="off" name="billing[last]" id="billing_last" placeholder="<?php echo esc_html__('Last Name', 'bakkbone-florist-companion'); ?>" /></td>
+										<th scope="row"><label for="billing_first"><?php esc_html_e('Name', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<td><input class="bkf-form-control regular-text" type="text" autocomplete="off" name="billing[first]" id="billing_first" placeholder="<?php esc_html_e('First Name', 'bakkbone-florist-companion'); ?>" /><input class="bkf-form-control regular-text" type="text" autocomplete="off" name="billing[last]" id="billing_last" placeholder="<?php esc_html_e('Last Name', 'bakkbone-florist-companion'); ?>" /></td>
 									</tr>
 									<tr class="create_customer_form" style="display:none;">
 										<th scope="row"><label for="billing_company"><?php echo get_option('bkf_localisation_setting')['billing_label_business']; ?></label></th>
 										<td><input class="bkf-form-control regular-text" type="text" autocomplete="off" name="billing[company]" id="billing_company" placeholder="<?php echo get_option('bkf_localisation_setting')['billing_label_business']; ?>" /></td>
 									</tr>
 									<tr class="create_customer_form" style="display:none;">
-										<th scope="row"><label for="billing_email"><?php echo esc_html__('Email', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
-										<td><input class="bkf-form-control regular-text" type="email" autocomplete="off" name="billing[email]" id="billing_email" placeholder="<?php echo esc_html__('Email', 'bakkbone-florist-companion'); ?>" /></td>
+										<th scope="row"><label for="billing_email"><?php esc_html_e('Email', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<td><input class="bkf-form-control regular-text" type="email" autocomplete="off" name="billing[email]" id="billing_email" placeholder="<?php esc_html_e('Email', 'bakkbone-florist-companion'); ?>" /></td>
 									</tr>
 									<tr class="create_customer_form" style="display:none;">
 										<th scope="row"><label for="billing_phone"><?php echo get_option('bkf_localisation_setting')['global_label_telephone']; ?> <abbr class="required" title="required">*</abbr></label></th>
 										<td><input class="bkf-form-control regular-text" type="tel" autocomplete="off" name="billing[phone]" id="billing_phone" placeholder="<?php echo get_option('bkf_localisation_setting')['global_label_telephone']; ?>" /></td>
 									</tr>
 									<tr class="create_customer_form">
-										<th scope="row"><label for="create_customer"><?php echo esc_html__('Create account for customer', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
-										<td><label class="bkf-radio-container"><input checked class="bkf-form-control" type="radio" name="create_customer" id="create_customer-yes" value="1" checked /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('Yes', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="create_customer" id="create_customer-no" value="0" /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('No', 'bakkbone-florist-companion'); ?></label></td>
+										<th scope="row"><label for="create_customer"><?php esc_html_e('Create account for customer', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<td><label class="bkf-radio-container"><input checked class="bkf-form-control" type="radio" name="create_customer" id="create_customer-yes" value="1" checked /><span class="bkf-radio-checkmark"></span><?php esc_html_e('Yes', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="create_customer" id="create_customer-no" value="0" /><span class="bkf-radio-checkmark"></span><?php esc_html_e('No', 'bakkbone-florist-companion'); ?></label></td>
 									</tr>
 								</tbody>
 							</table>
 						</fieldset>
 						<fieldset>
-							<legend><?php echo esc_html__('Product(s)', 'bakkbone-florist-companion'); ?></legend>
+							<legend><?php esc_html_e('Product(s)', 'bakkbone-florist-companion'); ?></legend>
 							<table class="form-table" id="products_form">
 								<tbody>
 									<tr id="p1">
-										<th scope="row"><span class="dashicons dashicons-plus-alt add_button" style="color:black;cursor:pointer;"></span> <label><?php echo esc_html__('Product', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<th scope="row"><span class="dashicons dashicons-plus-alt add_button" style="color:black;cursor:pointer;"></span> <label><?php esc_html_e('Product', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
 										<td><select class="select2 bkf-form-control product" name="product[p1][product]" required>
-											<option value="" disabled selected><?php echo esc_html__('Select a product...', 'bakkbone-florist-companion'); ?></option>
+											<option value="" disabled selected><?php esc_html_e('Select a product...', 'bakkbone-florist-companion'); ?></option>
 											<?php
 											foreach($products as $product){
 												if(! $product['has_child']){
@@ -140,51 +140,51 @@ class BkfPho{
 											}
 											?>
 										</select>
-										<div class="bkf-input-icon"><input required autocomplete="off" class="bkf-form-control price med-text" type="number" step="0.01" name="product[p1][value]" min="0.01" placeholder="<?php echo esc_html__('Price', 'bakkbone-florist-companion'); ?>" /><i><?php echo bkf_currency_symbol(); ?></i></div><br><textarea style="margin-top:5px;" class="bkf-form-control regular-text" name="product[p1][notes]" placeholder="<?php echo esc_html__('Notes (Optional)', 'bakkbone-florist-companion'); ?>" /></textarea><input type="hidden" name="product[p1][virtual]" class="virtual" /></td>
+										<div class="bkf-input-icon"><input required autocomplete="off" class="bkf-form-control price med-text" type="number" step="0.01" name="product[p1][value]" min="0.01" placeholder="<?php esc_html_e('Price', 'bakkbone-florist-companion'); ?>" /><i><?php bkf_currency_symbol(true); ?></i></div><br><textarea style="margin-top:5px;" class="bkf-form-control regular-text" name="product[p1][notes]" placeholder="<?php esc_html_e('Notes (Optional)', 'bakkbone-florist-companion'); ?>" /></textarea><input type="hidden" name="product[p1][virtual]" class="virtual" /></td>
 									</tr>
 								</tbody>
 							</table>
 							<table class="form-table" id="products_summary">
 								<tbody>
 									<tr>
-										<th><?php echo esc_html__('Subtotal'); ?></th>
-										<td><input id="subtotal_field" name="subtotal" type="hidden" value="0.00" /><p class="subtotal" id="subtotal_display"><?php echo bkf_currency_symbol(); ?>0.00</p></td>
+										<th><?php esc_html_e('Subtotal'); ?></th>
+										<td><input id="subtotal_field" name="subtotal" type="hidden" value="0.00" /><p class="subtotal" id="subtotal_display"><?php bkf_currency_symbol(true); ?>0.00</p></td>
 									</tr>
 								</tbody>
 							</table>
 						</fieldset>
 						<?php if(bkf_shop_has_pickup()){ ?>
 						<fieldset id="delivery_details" style="display:none">
-							<legend><?php echo esc_html__('Delivery/Collection Details', 'bakkbone-florist-companion'); ?></legend>
+							<legend><?php esc_html_e('Delivery/Collection Details', 'bakkbone-florist-companion'); ?></legend>
 							<table class="form-table" id="method_form">
 								<tbody>
 									<tr>
-										<th scope="row"><label for="method"><?php echo esc_html__('Order Type', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
-										<td><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="ordertype" id="method-delivery" value="delivery" /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('Delivery', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="ordertype" id="method-collection" value="collection" /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('Collection', 'bakkbone-florist-companion'); ?></label></td>
+										<th scope="row"><label for="method"><?php esc_html_e('Order Type', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<td><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="ordertype" id="method-delivery" value="delivery" /><span class="bkf-radio-checkmark"></span><?php esc_html_e('Delivery', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="ordertype" id="method-collection" value="collection" /><span class="bkf-radio-checkmark"></span><?php esc_html_e('Collection', 'bakkbone-florist-companion'); ?></label></td>
 									</tr>
 								</tbody>
 							</table>
 						<?php } else { ?>
 						<fieldset id="delivery_details" style="display:none">
-							<legend><?php echo esc_html__('Delivery Details', 'bakkbone-florist-companion'); ?></legend>
+							<legend><?php esc_html_e('Delivery Details', 'bakkbone-florist-companion'); ?></legend>
 							<input type="radio" style="display:none;" checked name="ordertype" value="delivery" />
 							<?php } ?>
 							<table class="form-table" id="delivery_form" style="display:none;">
 								<tbody>
 									<tr>
-										<th scope="row"><label for="delivery_first"><?php echo esc_html__('Recipient', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
-										<td><input autocomplete="off" type="text" name="delivery[first]" id="delivery_first" class="bkf-form-control regular-text" placeholder="<?php echo esc_html__('First', 'bakkbone-florist-companion'); ?>" /><input autocomplete="off" type="text" name="delivery[last]" id="delivery_last" class="bkf-form-control regular-text" placeholder="<?php echo esc_html__('Last', 'bakkbone-florist-companion'); ?>" /></td>
+										<th scope="row"><label for="delivery_first"><?php esc_html_e('Recipient', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<td><input autocomplete="off" type="text" name="delivery[first]" id="delivery_first" class="bkf-form-control regular-text" placeholder="<?php esc_html_e('First', 'bakkbone-florist-companion'); ?>" /><input autocomplete="off" type="text" name="delivery[last]" id="delivery_last" class="bkf-form-control regular-text" placeholder="<?php esc_html_e('Last', 'bakkbone-florist-companion'); ?>" /></td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="delivery_company"><?php echo get_option('bkf_localisation_setting')['delivery_label_business']; ?></label></th>
 										<td><input autocomplete="off" type="text" name="delivery[company]" id="delivery_company" class="bkf-form-control regular-text" /></td>
 									</tr>
 									<tr>
-										<th scope="row"><label for="delivery_address_1"><?php echo esc_html__('Address Line 1', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<th scope="row"><label for="delivery_address_1"><?php esc_html_e('Address Line 1', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
 										<td><input autocomplete="off" type="text" name="delivery[address_1]" id="delivery_address_1" class="bkf-form-control regular-text" /></td>
 									</tr>
 									<tr>
-										<th scope="row"><label for="delivery_address_2"><?php echo esc_html__('Address Line 2', 'bakkbone-florist-companion'); ?></label></th>
+										<th scope="row"><label for="delivery_address_2"><?php esc_html_e('Address Line 2', 'bakkbone-florist-companion'); ?></label></th>
 										<td><input autocomplete="off" type="text" name="delivery[address_2]" id="delivery_address_2" class="bkf-form-control regular-text" /></td>
 									</tr>
 									<tr>
@@ -218,7 +218,7 @@ class BkfPho{
 										<td><input autocomplete="off" type="tel" name="delivery[phone]" id="delivery_phone" class="bkf-form-control regular-text" /></td>
 									</tr>
 									<tr>
-										<th scope="row"><label for="delivery_notes"><?php echo esc_html__('Delivery Notes', 'bakkbone-florist-companion'); ?></label></th>
+										<th scope="row"><label for="delivery_notes"><?php esc_html_e('Delivery Notes', 'bakkbone-florist-companion'); ?></label></th>
 										<td><textarea autocomplete="off" name="delivery[notes]" id="delivery_notes" class="bkf-form-control regular-text"></textarea></td>
 									</tr>
 								</tbody>
@@ -226,12 +226,12 @@ class BkfPho{
 							<table class="form-table" id="delivery_method_form">
 								<tbody>
 									<tr>
-										<th scope="row"><label><?php if(bkf_shop_has_pickup()){ echo esc_html__('Delivery/Collection Method', 'bakkbone-florist-companion'); } else { echo esc_html__('Delivery Method', 'bakkbone-florist-companion'); } ?> <abbr class="required" title="required">*</abbr></label></th>
-										<td id="shipping_methods"><p><?php echo esc_html__('No methods available until an order type is selected and/or a valid address entered.', 'bakkbone-florist-companion'); ?></p></td>
+										<th scope="row"><label><?php if(bkf_shop_has_pickup()){ esc_html_e('Delivery/Collection Method', 'bakkbone-florist-companion'); } else { esc_html_e('Delivery Method', 'bakkbone-florist-companion'); } ?> <abbr class="required" title="required">*</abbr></label></th>
+										<td id="shipping_methods"><p><?php esc_html_e('No methods available until an order type is selected and/or a valid address entered.', 'bakkbone-florist-companion'); ?></p></td>
 									</tr>
 									<tr>
-										<th scope="row"><label for="shipping_cost"><?php echo esc_html__('Cost', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
-										<td id="shipping_cost_row"><div class="bkf-input-icon"><input type="number" step="0.01" name="shipping_cost" placeholder="<?php echo esc_html__('Cost', 'bakkbone-florist-companion'); ?>" value="0.00" min="0.00" class="bkf-form-control med-text" id="shipping_cost" readonly /><i><?php echo bkf_currency_symbol(); ?></i></div></td>
+										<th scope="row"><label for="shipping_cost"><?php esc_html_e('Cost', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<td id="shipping_cost_row"><div class="bkf-input-icon"><input type="number" step="0.01" name="shipping_cost" placeholder="<?php esc_html_e('Cost', 'bakkbone-florist-companion'); ?>" value="0.00" min="0.00" class="bkf-form-control med-text" id="shipping_cost" readonly /><i><?php bkf_currency_symbol(true); ?></i></div></td>
 									</tr>
 								</tbody>
 							</table>
@@ -281,27 +281,27 @@ class BkfPho{
  			 </td>
 		 </tr>
 			<tr class="delivery_timeslot_row bkf-hidden" id="delivery_timeslot_row">
-				<th scope="row"><?php echo esc_html__('Timeslot', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
-				<td><select name="delivery_timeslot" id="delivery_timeslot" class="delivery_timeslot bkf-form-control select2"></select><div class="tsfee bkf-input-icon bkf-hidden"><input class="bkf-form-control med-text" type="number" name="timeslot_fee" id="timeslot_fee" step="0.01"><i><?php echo bkf_currency_symbol(); ?></i></div></td>
+				<th scope="row"><?php esc_html_e('Timeslot', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+				<td><select name="delivery_timeslot" id="delivery_timeslot" class="delivery_timeslot bkf-form-control select2"></select><div class="tsfee bkf-input-icon bkf-hidden"><input class="bkf-form-control med-text" type="number" name="timeslot_fee" id="timeslot_fee" step="0.01"><i><?php bkf_currency_symbol(true); ?></i></div></td>
 			</tr>
 			<tr>
-				<th scope="row"><label for="card_message"><?php echo esc_html__('Card Message', 'bakkbone-florist-companion'); ?></label></th>
+				<th scope="row"><label for="card_message"><?php esc_html_e('Card Message', 'bakkbone-florist-companion'); ?></label></th>
 				<td><textarea style="font-family:monospace" rows="4" autocomplete="off" maxlength="<?php echo $bkfcardlength; ?>" name="card_message" id="card_message" class="bkf-form-control regular-text"></textarea></td>
 			</tr>
 		</tbody>
 	</table>
 			</fieldset>
 			<fieldset>
-				<legend><?php echo esc_html__('Totals and Payment', 'bakkbone-florist-companion'); ?></legend>
+				<legend><?php esc_html_e('Totals and Payment', 'bakkbone-florist-companion'); ?></legend>
 							<table class="form-table" id="totals">
 								<tbody>
 									<tr>
-										<th><?php echo esc_html__('Total', 'bakkbone-florist-companion'); ?></th>
-										<td><input id="total_field" name="total" type="hidden" value="0.00" /><p class="total" id="total_display"><?php echo bkf_currency_symbol(); ?>0.00</p></td>
+										<th><?php esc_html_e('Total', 'bakkbone-florist-companion'); ?></th>
+										<td><input id="total_field" name="total" type="hidden" value="0.00" /><p class="total" id="total_display"><?php bkf_currency_symbol(true); ?>0.00</p></td>
 									</tr>
 									<tr>
-										<th scope="row"><label for="payment"><?php echo esc_html__('Payment', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
-										<td><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="payment" required id="payment-paid" value="paid" /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('Mark as Paid', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="payment" required id="payment-invoice" value="invoice" checked /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('Send Invoice', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="payment" required id="payment-draft" value="draft" /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('Save as Draft', 'bakkbone-florist-companion'); ?></label></td>
+										<th scope="row"><label for="payment"><?php esc_html_e('Payment', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<td><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="payment" required id="payment-paid" value="paid" /><span class="bkf-radio-checkmark"></span><?php esc_html_e('Mark as Paid', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="payment" required id="payment-invoice" value="invoice" checked /><span class="bkf-radio-checkmark"></span><?php esc_html_e('Send Invoice', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="payment" required id="payment-draft" value="draft" /><span class="bkf-radio-checkmark"></span><?php esc_html_e('Save as Draft', 'bakkbone-florist-companion'); ?></label></td>
 									</tr>
 								</tbody>
 							</table>
@@ -310,12 +310,12 @@ class BkfPho{
 							<table class="form-table" id="destination_options">
 								<tbody>
 									<tr>
-										<th scope="row"><label for="destination"><?php echo esc_html__('After Saving', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
-										<td><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="destination" required id="destination-list" value="list" /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('Orders List', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="destination" required id="destination-edit" value="edit" checked /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('Manage Order', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="destination" required id="destination-new" value="new" /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('Another Order', 'bakkbone-florist-companion'); ?></label></td>
+										<th scope="row"><label for="destination"><?php esc_html_e('After Saving', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<td><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="destination" required id="destination-list" value="list" /><span class="bkf-radio-checkmark"></span><?php esc_html_e('Orders List', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="destination" required id="destination-edit" value="edit" checked /><span class="bkf-radio-checkmark"></span><?php esc_html_e('Manage Order', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="destination" required id="destination-new" value="new" /><span class="bkf-radio-checkmark"></span><?php esc_html_e('Another Order', 'bakkbone-florist-companion'); ?></label></td>
 									</tr>
 									<tr>
-										<th scope="row"><label for="pdf"><?php echo esc_html__('Download Worksheet?', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
-										<td><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="pdf" required id="pdf-yes" value="1" checked /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('Yes', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="pdf" required id="pdf-no" value="0" /><span class="bkf-radio-checkmark"></span><?php echo esc_html__('No', 'bakkbone-florist-companion'); ?></label></td>
+										<th scope="row"><label for="pdf"><?php esc_html_e('Download Worksheet?', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th>
+										<td><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="pdf" required id="pdf-yes" value="1" checked /><span class="bkf-radio-checkmark"></span><?php esc_html_e('Yes', 'bakkbone-florist-companion'); ?></label><label class="bkf-radio-container"><input class="bkf-form-control" type="radio" name="pdf" required id="pdf-no" value="0" /><span class="bkf-radio-checkmark"></span><?php esc_html_e('No', 'bakkbone-florist-companion'); ?></label></td>
 									</tr>
 								</tbody>
 							</table>
@@ -426,7 +426,7 @@ class BkfPho{
    	 					echo '];';?>
 
    	 					if(w == 1 && monday_items.includes(currentShippingMethod)){
-   	 						return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   	 						return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    	 					}
    	 					<?php
    	 				}
@@ -442,7 +442,7 @@ class BkfPho{
    	 					echo '];';?>
 
    	 					if(w == 2 && tuesday_items.includes(currentShippingMethod)){
-   	 						return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   	 						return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    	 					}
    	 					<?php
    	 				}
@@ -458,7 +458,7 @@ class BkfPho{
    	 					echo '];';?>
 
    	 					if(w == 3 && wednesday_items.includes(currentShippingMethod)){
-   	 						return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   	 						return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    	 					}
    	 					<?php
    	 				}
@@ -474,7 +474,7 @@ class BkfPho{
    	 					echo '];';?>
 
    	 					if(w == 4 && thursday_items.includes(currentShippingMethod)){
-   	 						return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   	 						return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    	 					}
    	 					<?php
    	 				}
@@ -490,7 +490,7 @@ class BkfPho{
    	 					echo '];';?>
 
    	 					if(w == 5 && friday_items.includes(currentShippingMethod)){
-   	 						return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   	 						return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    	 					}
    	 					<?php
    	 				}
@@ -506,7 +506,7 @@ class BkfPho{
    	 					echo '];';?>
 
    	 					if(w == 6 && saturday_items.includes(currentShippingMethod)){
-   	 						return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   	 						return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    	 					}
    	 					<?php
    	 				}
@@ -522,7 +522,7 @@ class BkfPho{
    	 					echo '];';?>
 
    	 					if(w == 0 && sunday_items.includes(currentShippingMethod)){
-   	 						return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   	 						return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    	 					}
    	 					<?php
    	 				}
@@ -530,30 +530,30 @@ class BkfPho{
    			 for (i = 0; i < closedDatesList.length; i++) {
    			   if ((m == closedDatesList[i][0] - 1) && (d == closedDatesList[i][1]) && (y == closedDatesList[i][2]))
    			   {
-   			   	 return [true, "closed","<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"];
+   			   	 return [true, "closed","<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"];
    			   }
    			 }
    		     for (i = 0; i < fullDatesList.length; i++) {
    		       if ((m == fullDatesList[i][0] - 1) && (d == fullDatesList[i][1]) && (y == fullDatesList[i][2]))
    		       {
-   		         return [true, "booked","<?php echo esc_html__('Fully Booked', 'bakkbone-florist-companion'); ?>"];
+   		         return [true, "booked","<?php esc_html_e('Fully Booked', 'bakkbone-florist-companion'); ?>"];
    		       }
    		     }
    		     for (i = 0; i < catBlockDatesList.length; i++) {
    		       if ((m == catBlockDatesList[i][0] - 1) && (d == catBlockDatesList[i][1]) && (y == catBlockDatesList[i][2]))
    		       {
-   		         return [true, "unavailable","<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>"];
+   		         return [true, "unavailable","<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>"];
    		       }
    		     }
    			 <?php if($sdcpassed == true){
    				 ?>
    				 if(d == "<?php echo wp_date("j"); ?>" && y == "<?php echo wp_date("Y"); ?>" && m == <?php echo wp_date("n"); ?> - 1){
-   					 return [true, "sdc","<?php echo esc_html__('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
+   					 return [true, "sdc","<?php esc_html_e('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
    					 }<?php
    			 }?>
    			 var sdc = [<?php foreach($sd_custom as $this_sdc){ echo '"'.$this_sdc.'",';} ?>]
    			 if (sdc.includes(currentShippingMethod) && d == "<?php echo wp_date("j"); ?>" && y == "<?php echo wp_date("Y"); ?>" && m == <?php echo wp_date("n"); ?> - 1){
-   				 return [true, "sdc","<?php echo esc_html__('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
+   				 return [true, "sdc","<?php esc_html_e('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
    			 }
 
    			 return [true];
@@ -650,7 +650,7 @@ class BkfPho{
    						echo '];';?>
 
    						if(w == 1 && monday_items.includes(currentShippingMethod)){
-   							return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   							return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    						}
    						<?php
    					}
@@ -666,7 +666,7 @@ class BkfPho{
    						echo '];';?>
 
    						if(w == 2 && tuesday_items.includes(currentShippingMethod)){
-   							return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   							return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    						}
    						<?php
    					}
@@ -682,7 +682,7 @@ class BkfPho{
    						echo '];';?>
 
    						if(w == 3 && wednesday_items.includes(currentShippingMethod)){
-   							return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   							return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    						}
    						<?php
    					}
@@ -698,7 +698,7 @@ class BkfPho{
    						echo '];';?>
 
    						if(w == 4 && thursday_items.includes(currentShippingMethod)){
-   							return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   							return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    						}
    						<?php
    					}
@@ -714,7 +714,7 @@ class BkfPho{
    						echo '];';?>
 
    						if(w == 5 && friday_items.includes(currentShippingMethod)){
-   							return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   							return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    						}
    						<?php
    					}
@@ -730,7 +730,7 @@ class BkfPho{
    						echo '];';?>
 
    						if(w == 6 && saturday_items.includes(currentShippingMethod)){
-   							return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   							return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    						}
    						<?php
    					}
@@ -746,7 +746,7 @@ class BkfPho{
    						echo '];';?>
 
    						if(w == 0 && sunday_items.includes(currentShippingMethod)){
-   							return [true, "unavailable", '<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>'];
+   							return [true, "unavailable", '<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>'];
    						}
    						<?php
    					}
@@ -754,30 +754,30 @@ class BkfPho{
    		 for (i = 0; i < closedDatesList.length; i++) {
    		   if ((m == closedDatesList[i][0] - 1) && (d == closedDatesList[i][1]) && (y == closedDatesList[i][2]))
    		   {
-   		   	 return [true, "closed","<?php echo esc_html__('Closed', 'bakkbone-florist-companion'); ?>"];
+   		   	 return [true, "closed","<?php esc_html_e('Closed', 'bakkbone-florist-companion'); ?>"];
    		   }
    		 }
    	     for (i = 0; i < fullDatesList.length; i++) {
    	       if ((m == fullDatesList[i][0] - 1) && (d == fullDatesList[i][1]) && (y == fullDatesList[i][2]))
    	       {
-   	         return [true, "booked","<?php echo esc_html__('Fully Booked', 'bakkbone-florist-companion'); ?>"];
+   	         return [true, "booked","<?php esc_html_e('Fully Booked', 'bakkbone-florist-companion'); ?>"];
    	       }
    	     }
    	     for (i = 0; i < catBlockDatesList.length; i++) {
    	       if ((m == catBlockDatesList[i][0] - 1) && (d == catBlockDatesList[i][1]) && (y == catBlockDatesList[i][2]))
    	       {
-   	         return [true, "unavailable","<?php echo esc_html__('Unavailable', 'bakkbone-florist-companion'); ?>"];
+   	         return [true, "unavailable","<?php esc_html_e('Unavailable', 'bakkbone-florist-companion'); ?>"];
    	       }
    	     }
    		 <?php if($sdcpassed == true){
    			 ?>
    			 if(d == "<?php echo wp_date("j"); ?>" && y == "<?php echo wp_date("Y"); ?>" && m == <?php echo wp_date("n"); ?> - 1){
-   				 return [true, "sdc","<?php echo esc_html__('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
+   				 return [true, "sdc","<?php esc_html_e('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
    				 }<?php
    		 }?>
    		 var sdc = [<?php foreach($sd_custom as $this_sdc){ echo '"'.$this_sdc.'",';} ?>]
    		 if (sdc.includes(currentShippingMethod) && d == "<?php echo wp_date("j"); ?>" && y == "<?php echo wp_date("Y"); ?>" && m == <?php echo wp_date("n"); ?> - 1){
-   			 return [true, "sdc","<?php echo esc_html__('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
+   			 return [true, "sdc","<?php esc_html_e('Same Day Delivery Cutoff Passed', 'bakkbone-florist-companion'); ?>"];
    		 }
 
    		 return [true];
@@ -875,7 +875,7 @@ loading.fadeOut();
 				display = document.querySelector('#subtotal_display');
 			
 				field.value = tot.toFixed(2);
-				display.innerText = "<?php echo bkf_currency_symbol(); ?>" + tot.toFixed(2);
+				display.innerText = "<?php bkf_currency_symbol(true); ?>" + tot.toFixed(2);
 				
 				shippingCost = Number(jQuery('#shipping_cost').val());
 				timeslotFee = Number(jQuery('#timeslot_fee').val());
@@ -886,7 +886,7 @@ loading.fadeOut();
 				totalDisplay = document.querySelector('#total_display');
 				
 				totalField.value = totalDisplayAmt;
-				totalDisplay.innerText = "<?php echo bkf_currency_symbol(); ?>" + totalDisplayAmt;
+				totalDisplay.innerText = "<?php bkf_currency_symbol(true); ?>" + totalDisplayAmt;
 				loading.fadeOut();
 			}});
 			
@@ -964,7 +964,7 @@ loading.fadeOut();
     
 			    jQuery(addButton).click(function(){
 		            x++;
-				    fieldHTML = '<tr id="p' + x + '" style="display:none;"><th scope="row"><span class="dashicons dashicons-dismiss remove_button" style="color:black;cursor:pointer;"></span> <label><?php echo esc_html__('Product', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th><td><select class="select2 bkf-form-control product" name="product[p' + x + '][product]" required><option value="" disabled selected><?php echo esc_html__('Select a product...', 'bakkbone-florist-companion'); ?></option><?php foreach($products as $product){ if(! $product['has_child']){ echo '<option value="'.$product['id'].'">'.$product['name'].' ('.$product['cat'].') — '.$product['price'].'</option>'; } } ?> </select> <div class="bkf-input-icon"><input required class="bkf-form-control price med-text" type="number" step="0.01" name="product[p' + x + '][value]" min="0.01" placeholder="<?php echo esc_html__('Price', 'bakkbone-florist-companion'); ?>" /><i><?php echo bkf_currency_symbol(); ?></i></div><br><textarea style="margin-top:5px;" class="bkf-form-control regular-text" name="product[p' + x + '][notes]" placeholder="<?php echo esc_html__('Notes (Optional)', 'bakkbone-florist-companion'); ?>" /></textarea><input type="hidden" name="product[p' + x + '][virtual]" class="virtual" /></td></tr>';
+				    fieldHTML = '<tr id="p' + x + '" style="display:none;"><th scope="row"><span class="dashicons dashicons-dismiss remove_button" style="color:black;cursor:pointer;"></span> <label><?php esc_html_e('Product', 'bakkbone-florist-companion'); ?> <abbr class="required" title="required">*</abbr></label></th><td><select class="select2 bkf-form-control product" name="product[p' + x + '][product]" required><option value="" disabled selected><?php esc_html_e('Select a product...', 'bakkbone-florist-companion'); ?></option><?php foreach($products as $product){ if(! $product['has_child']){ echo '<option value="'.$product['id'].'">'.$product['name'].' ('.$product['cat'].') — '.$product['price'].'</option>'; } } ?> </select> <div class="bkf-input-icon"><input required class="bkf-form-control price med-text" type="number" step="0.01" name="product[p' + x + '][value]" min="0.01" placeholder="<?php esc_html_e('Price', 'bakkbone-florist-companion'); ?>" /><i><?php bkf_currency_symbol(true); ?></i></div><br><textarea style="margin-top:5px;" class="bkf-form-control regular-text" name="product[p' + x + '][notes]" placeholder="<?php esc_html_e('Notes (Optional)', 'bakkbone-florist-companion'); ?>" /></textarea><input type="hidden" name="product[p' + x + '][virtual]" class="virtual" /></td></tr>';
 		            jQuery(wrapper).append(fieldHTML);
 					field = jQuery('#p' + x);
 					field.fadeIn('slow');
@@ -1013,7 +1013,7 @@ loading.fadeOut();
 							display = document.querySelector('#subtotal_display');
 						
 							field.value = tot.toFixed(2);
-							display.innerText = "<?php echo bkf_currency_symbol(); ?>" + tot.toFixed(2);
+							display.innerText = "<?php bkf_currency_symbol(true); ?>" + tot.toFixed(2);
 
 							shippingCost = Number(jQuery('#shipping_cost').val());
 							timeslotFee = Number(jQuery('#timeslot_fee').val());
@@ -1024,7 +1024,7 @@ loading.fadeOut();
 							totalDisplay = document.querySelector('#total_display');
 						
 							totalField.value = totalDisplayAmt;
-							totalDisplay.innerText = "<?php echo bkf_currency_symbol(); ?>" + totalDisplayAmt;
+							totalDisplay.innerText = "<?php bkf_currency_symbol(true); ?>" + totalDisplayAmt;
 						}});
 					});
 					
@@ -1040,7 +1040,7 @@ loading.fadeOut();
 						display = document.querySelector('#subtotal_display');
 					
 						field.value = tot.toFixed(2);
-						display.innerText = "<?php echo bkf_currency_symbol(); ?>" + tot.toFixed(2);
+						display.innerText = "<?php bkf_currency_symbol(true); ?>" + tot.toFixed(2);
 						
 						shippingCost = Number(jQuery('#shipping_cost').val());
 						timeslotFee = Number(jQuery('#timeslot_fee').val());
@@ -1051,7 +1051,7 @@ loading.fadeOut();
 						totalDisplay = document.querySelector('#total_display');
 						
 						totalField.value = totalDisplayAmt;
-						totalDisplay.innerText = "<?php echo bkf_currency_symbol(); ?>" + totalDisplayAmt;
+						totalDisplay.innerText = "<?php bkf_currency_symbol(true); ?>" + totalDisplayAmt;
 					});
 					
 			    });
@@ -1099,7 +1099,7 @@ loading.fadeOut();
 						display = document.querySelector('#subtotal_display');
 					
 						field.value = tot.toFixed(2);
-						display.innerText = "<?php echo bkf_currency_symbol(); ?>" + tot.toFixed(2);
+						display.innerText = "<?php bkf_currency_symbol(true); ?>" + tot.toFixed(2);
 						
 						shippingCost = Number(jQuery('#shipping_cost').val());
 						timeslotFee = Number(jQuery('#timeslot_fee').val());
@@ -1110,7 +1110,7 @@ loading.fadeOut();
 						totalDisplay = document.querySelector('#total_display');
 						
 						totalField.value = totalDisplayAmt;
-						totalDisplay.innerText = "<?php echo bkf_currency_symbol(); ?>" + totalDisplayAmt;
+						totalDisplay.innerText = "<?php bkf_currency_symbol(true); ?>" + totalDisplayAmt;
 					}});
 					
 					jQuery('.price,#shipping_cost,#delivery_date,#timeslot_fee').change(function(){
@@ -1125,7 +1125,7 @@ loading.fadeOut();
 						display = document.querySelector('#subtotal_display');
 					
 						field.value = tot.toFixed(2);
-						display.innerText = "<?php echo bkf_currency_symbol(); ?>" + tot.toFixed(2);
+						display.innerText = "<?php bkf_currency_symbol(true); ?>" + tot.toFixed(2);
 						
 						shippingCost = Number(jQuery('#shipping_cost').val());
 						timeslotFee = Number(jQuery('#timeslot_fee').val());
@@ -1136,7 +1136,7 @@ loading.fadeOut();
 						totalDisplay = document.querySelector('#total_display');
 						
 						totalField.value = totalDisplayAmt;
-						totalDisplay.innerText = "<?php echo bkf_currency_symbol(); ?>" + totalDisplayAmt;
+						totalDisplay.innerText = "<?php bkf_currency_symbol(true); ?>" + totalDisplayAmt;
 					});
 								
 				});
@@ -1213,12 +1213,12 @@ loading.fadeOut();
 										shippingCost = jQuery('#shipping_cost');
 										shippingCost.val(currentCost);
 										shippingCost.prop('readonly', false);
-										HTML = '<label class="bkf-radio-container shipping_method"><input class="bkf-form-control" type="radio" name="shipping_method" required checked value="' + rate.rateid + '" /><span class="bkf-radio-checkmark"></span>' + rate.usertitle + ' (#' + rate.instanceid + ') - <?php echo bkf_currency_symbol(); ?>' + currentCost + '</label>';
+										HTML = '<label class="bkf-radio-container shipping_method"><input class="bkf-form-control" type="radio" name="shipping_method" required checked value="' + rate.rateid + '" /><span class="bkf-radio-checkmark"></span>' + rate.usertitle + ' (#' + rate.instanceid + ') - <?php bkf_currency_symbol(true); ?>' + currentCost + '</label>';
 										first = false;
 									} else {
 										tempCost = Number(rate.cost);
 										thisCost = tempCost.toFixed(2);
-										HTML = '<label class="bkf-radio-container shipping_method"><input class="bkf-form-control" type="radio" name="shipping_method" required value="' + rate.rateid + '" /><span class="bkf-radio-checkmark"></span>' + rate.usertitle + ' (#' + rate.instanceid + ') - <?php echo bkf_currency_symbol(); ?>' + thisCost + '</label>';
+										HTML = '<label class="bkf-radio-container shipping_method"><input class="bkf-form-control" type="radio" name="shipping_method" required value="' + rate.rateid + '" /><span class="bkf-radio-checkmark"></span>' + rate.usertitle + ' (#' + rate.instanceid + ') - <?php bkf_currency_symbol(true); ?>' + thisCost + '</label>';
 									}
 									methodsCell.append(HTML);
 						});
@@ -1226,7 +1226,7 @@ loading.fadeOut();
 					}});
 				} else if(currentType == 'delivery'){
 					methodsCell.empty();
-					HTML = '<p><?php echo esc_html__('No methods available until an order type is selected and/or a valid address entered.', 'bakkbone-florist-companion'); ?></p>';
+					HTML = '<p><?php esc_html_e('No methods available until an order type is selected and/or a valid address entered.', 'bakkbone-florist-companion'); ?></p>';
 					methodsCell.append(HTML);
 					shippingCost = jQuery('#shipping_cost');
 					shippingCost.prop('readonly', true);
@@ -1244,12 +1244,12 @@ loading.fadeOut();
 								shippingCost = jQuery('#shipping_cost');
 								shippingCost.val(currentCost);
 								shippingCost.prop('readonly', false);
-								HTML = '<label class="bkf-radio-container shipping_method"><input class="bkf-form-control" type="radio" name="shipping_method" required checked value="' + rate.rateid + '" /><span class="bkf-radio-checkmark"></span>' + rate.usertitle + ' (#' + rate.instanceid + ') - <?php echo bkf_currency_symbol(); ?>' + currentCost + '</label>';
+								HTML = '<label class="bkf-radio-container shipping_method"><input class="bkf-form-control" type="radio" name="shipping_method" required checked value="' + rate.rateid + '" /><span class="bkf-radio-checkmark"></span>' + rate.usertitle + ' (#' + rate.instanceid + ') - <?php bkf_currency_symbol(true); ?>' + currentCost + '</label>';
 								first = false;
 							} else {
 								tempCost = Number(rate.cost);
 								thisCost = tempCost.toFixed(2);
-								HTML = '<label class="bkf-radio-container shipping_method"><input class="bkf-form-control" type="radio" name="shipping_method" required value="' + rate.rateid + '" /><span class="bkf-radio-checkmark"></span>' + rate.usertitle + ' (#' + rate.instanceid + ') - <?php echo bkf_currency_symbol(); ?>' + thisCost + '</label>';
+								HTML = '<label class="bkf-radio-container shipping_method"><input class="bkf-form-control" type="radio" name="shipping_method" required value="' + rate.rateid + '" /><span class="bkf-radio-checkmark"></span>' + rate.usertitle + ' (#' + rate.instanceid + ') - <?php bkf_currency_symbol(true); ?>' + thisCost + '</label>';
 							}
 							methodsCell.append(HTML);
 						});
@@ -1257,7 +1257,7 @@ loading.fadeOut();
 					}});
 				} else {
 					methodsCell.empty();
-					HTML = '<p><?php echo esc_html__('No methods available until an order type is selected and/or a valid address entered.', 'bakkbone-florist-companion'); ?></p>';
+					HTML = '<p><?php esc_html_e('No methods available until an order type is selected and/or a valid address entered.', 'bakkbone-florist-companion'); ?></p>';
 					methodsCell.append(HTML);
 				}
 			});
@@ -1296,7 +1296,7 @@ loading.fadeOut();
 	
 	function bkf_phone_order_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/day-to-day/phone-orders/" target="_blank">https://plugins.bkbn.au/docs/bkf/day-to-day/phone-orders/</a>
 		<?php
 	}

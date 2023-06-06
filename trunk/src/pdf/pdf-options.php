@@ -118,7 +118,7 @@ class BkfPdfOptions{
 	
 	function bkf_pdf_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/florist-options/pdfs/" target="_blank">https://plugins.bkbn.au/docs/bkf/florist-options/pdfs/</a>
 		<?php
 	}
@@ -130,7 +130,7 @@ class BkfPdfOptions{
         ?>
         <div class="wrap">
             <div class="bkf-box">
-            <h1><?php echo esc_html__("PDF Settings","bakkbone-florist-companion") ?></h1>
+            <h1><?php esc_html_e("PDF Settings","bakkbone-florist-companion") ?></h1>
                 <div class="inside">
                     <form method="post" action="options.php">
                         <?php settings_fields("bkf_pdf_options_group"); ?>
@@ -337,7 +337,7 @@ class BkfPdfOptions{
 	function bkfPdfGlobalInfo()
 	{
 		echo '<p>';
-		echo esc_html__("These settings apply to all PDFs", "bakkbone-florist-companion");
+		esc_html_e("These settings apply to all PDFs", "bakkbone-florist-companion");
 		echo '</p>';
 	}
 
@@ -350,7 +350,7 @@ class BkfPdfOptions{
 		}
 		?>
 		<input type="text" class="bkf-form-control regular-text" id="inv-title" name="bkf_pdf_setting[inv_title]" value="<?php echo $value; ?>" required />
-		<p class="description"><?php echo esc_html__("Title for Invoice","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Title for Invoice","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 	
@@ -363,7 +363,7 @@ class BkfPdfOptions{
 		}
 		?>
 		<input type="text" class="bkf-form-control large-text" id="inv-text" name="bkf_pdf_setting[inv_text]" value="<?php echo $value; ?>" />
-		<p class="description"><?php echo esc_html__("Additional text for bottom of invoice","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Additional text for bottom of invoice","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -376,7 +376,7 @@ class BkfPdfOptions{
 		}
 		?>
 		<input type="text" class="bkf-form-control regular-text" id="ws-title" name="bkf_pdf_setting[ws_title]" value="<?php echo $value; ?>" required />
-		<p class="description"><?php echo esc_html__("Title for Worksheet","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Title for Worksheet","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -389,7 +389,7 @@ class BkfPdfOptions{
 		}
 		?>
 		<input type="text" class="bkf-form-control regular-text" id="inv-sn" name="bkf_pdf_setting[inv_sn]" value="<?php echo $value; ?>" required />
-		<p class="description"><?php echo esc_html__("Store Name as it appears on invoices","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Store Name as it appears on invoices","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -402,7 +402,7 @@ class BkfPdfOptions{
 		}
 		?>
 		<input type="text" class="bkf-form-control regular-text" id="inv-a1" name="bkf_pdf_setting[inv_a1]" value="<?php echo $value; ?>" required />
-		<p class="description"><?php echo esc_html__("Address as it appears on invoices","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Address as it appears on invoices","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -427,7 +427,7 @@ class BkfPdfOptions{
 		}
 		?>
 		<input type="text" class="bkf-form-control regular-text" id="inv-sub" name="bkf_pdf_setting[inv_sub]" value="<?php echo $value; ?>" required />
-		<p class="description"><?php echo esc_html__("Suburb as it appears on invoices","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Suburb as it appears on invoices","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -440,7 +440,7 @@ class BkfPdfOptions{
 		}
 		?>
 		<input type="text" class="bkf-form-control regular-text" id="inv-state" name="bkf_pdf_setting[inv_state]" value="<?php echo $value; ?>" required />
-		<p class="description"><?php echo esc_html__("State/Territory as it appears on invoices","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("State/Territory as it appears on invoices","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -453,7 +453,7 @@ class BkfPdfOptions{
 		}
 		?>
 		<input type="text" class="bkf-form-control regular-text" id="inv-pc" name="bkf_pdf_setting[inv_pc]" value="<?php echo $value; ?>" required />
-		<p class="description"><?php echo esc_html__("Postcode as it appears on invoices","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Postcode as it appears on invoices","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -466,7 +466,7 @@ class BkfPdfOptions{
 		}
 		?>
 		<input type="tel" class="bkf-form-control regular-text" id="inv-phone" name="bkf_pdf_setting[inv_phone]" value="<?php echo $value; ?>" />
-		<p class="description"><?php echo esc_html__("Phone as it appears on invoices","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Phone as it appears on invoices","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -479,7 +479,7 @@ class BkfPdfOptions{
 		}
 		?>
 		<input type="email" class="bkf-form-control regular-text" id="inv-eml" name="bkf_pdf_setting[inv_eml]" value="<?php echo $value; ?>" required />
-		<p class="description"><?php echo esc_html__("Email as it appears on invoices","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Email as it appears on invoices","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -492,7 +492,7 @@ class BkfPdfOptions{
 		}
 		?>
 		<input type="url" class="bkf-form-control regular-text" id="inv-web" name="bkf_pdf_setting[inv_web]" value="<?php echo $value; ?>" required />
-		<p class="description"><?php echo esc_html__("Website as it appears on invoices","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Website as it appears on invoices","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 	
@@ -505,7 +505,7 @@ class BkfPdfOptions{
 		}
 		?>
 		<input type="text" class="bkf-form-control regular-text" id="inv-tax-label" name="bkf_pdf_setting[inv_tax_label]" value="<?php echo $value; ?>" required />
-		<p class="description"><?php echo esc_html__("Label for Tax ID - eg. \"ABN\"","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Label for Tax ID - eg. \"ABN\"","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 
@@ -518,7 +518,7 @@ class BkfPdfOptions{
 		}
 		?>
 		<input type="text" class="bkf-form-control regular-text" id="inv-tax-value" name="bkf_pdf_setting[inv_tax_value]" value="<?php echo $value; ?>" required />
-		<p class="description"><?php echo esc_html__("Your business' Tax ID as it appears on invoices","bakkbone-florist-companion") ?></p>
+		<p class="description"><?php esc_html_e("Your business' Tax ID as it appears on invoices","bakkbone-florist-companion") ?></p>
 		<?php
 	}
 

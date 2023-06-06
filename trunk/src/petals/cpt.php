@@ -1473,7 +1473,7 @@ class BkfPOPosts{
 	
 	function petalsorder_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/petals-network/petals-network-integration/" target="_blank">https://plugins.bkbn.au/docs/bkf/petals-network/petals-network-integration/</a>
 		<?php
 	}

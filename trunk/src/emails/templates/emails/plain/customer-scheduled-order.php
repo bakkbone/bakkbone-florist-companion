@@ -23,7 +23,7 @@ echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 /* translators: %s: Customer first name */
 echo sprintf( esc_html__( 'Hi %s,', 'bakkbone-florist-companion' ), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
-echo esc_html__( 'We have confirmed your order, and have scheduled it for the nominated date.', 'bakkbone-florist-companion' ) . "\n\n";
+esc_html_e( 'We have confirmed your order, and have scheduled it for the nominated date.', 'bakkbone-florist-companion' ) . "\n\n";
 
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.

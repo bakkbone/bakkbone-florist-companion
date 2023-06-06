@@ -42,20 +42,18 @@ class BkfDdCalendar{
 	
 	function bkf_cal_help(){
 		?>
-		<h2><?php echo esc_html__('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
+		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
 			<a href="https://plugins.bkbn.au/docs/bkf/day-to-day/delivery-calendar/" target="_blank">https://plugins.bkbn.au/docs/bkf/day-to-day/delivery-calendar/</a>
 		<?php
 	}
 	
-	function bkfCalendarPageContent()
-	{
+	function bkfCalendarPageContent(){
 		?>
 		<div class="wrap">
 			<div class="bkf-box">
-			<h1><?php  echo esc_html__("Delivery Calendar","bakkbone-florist-companion") ?></h1>
+			<h1><?php  esc_html_e("Delivery Calendar","bakkbone-florist-companion") ?></h1>
 				<div class="inside">
     <script>
-
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -80,7 +78,7 @@ class BkfDdCalendar{
 			},
 		    customButtons: {
 		       CSV: {
-		         text: '<?php echo esc_html__("CSV", "bakkbone-florist-companion"); ?>',
+		         text: '<?php esc_html_e("CSV", "bakkbone-florist-companion"); ?>',
 		         click: function() {
 					 var startYear = calendar.view.currentStart.getFullYear();
 					 var startMonth = calendar.view.currentStart.getMonth() + 1;
@@ -92,7 +90,7 @@ class BkfDdCalendar{
 		         }
 		       },
 		       PDF: {
-		         text: '<?php echo esc_html__("PDF", "bakkbone-florist-companion"); ?>',
+		         text: '<?php esc_html_e("PDF", "bakkbone-florist-companion"); ?>',
 		         click: function() {
 					 var startYear = calendar.view.currentStart.getFullYear();
 					 var startMonth = calendar.view.currentStart.getMonth() + 1;
@@ -115,13 +113,46 @@ class BkfDdCalendar{
 				center: 'CSV,PDF',
 				end: 'today prev,next'
 			},
+			eventClick: function(info) {
+				info.jsEvent.preventDefault();
+				if (jQuery('#bkf_fullcalendar_modal').length) {
+					jQuery('#bkf_fullcalendar_modal').remove();
+				}
+				if (info.event.url.length) {
+					var modalContent = '<div id="bkf_fullcalendar_modal" title="' + info.event.title + '">' + info.event.extendedProps.content + '</div>';
+					jQuery('body').append(modalContent);
+					jQuery('#bkf_fullcalendar_modal').dialog({
+						modal: true,
+						minWidth: 350,
+						draggable: false,
+						resizable: false,
+						position: {
+							my: 'left top',
+							at: 'left bottom',
+							of: info.el
+						},
+						buttons: [
+							{
+								text: "<?php echo esc_html(sprintf(__('Print %s','bakkbone-florist-companion'),get_option('bkf_pdf_setting')['ws_title'])); ?>",
+								icon: "ui-icon-print",
+								click: function(){window.location.href = info.event.extendedProps.wsurl;}
+							},
+							{
+								text: "<?php esc_html_e('View Order','bakkbone-florist-companion'); ?>",
+								icon: "ui-icon-extlink",
+								click: function(){window.open(info.event.url)}
+							},
+						]
+					});
+				}
+			},
 			firstDay: 1,
 			height: '80vh',
 			events:[
 				<?php
 		$orders = get_posts(array(
 			'post_type' => 'shop_order',
-			'post_status' => array('new','accept','processing','completed','scheduled','prepared','collect','out','relayed'),
+			'post_status' => array('new','accept','processing','completed','scheduled','prepared','collect','out','relayed','invoiced'),
 			'numberposts' => '-1'
 		));
 		$closed = get_option('bkf_dd_closed');
@@ -134,44 +165,62 @@ class BkfDdCalendar{
 			$id = $order->ID;
 			if(get_post_meta($id,'_delivery_timestamp',true) !== ''){
 				$url = get_edit_post_link($order);
+				$ws = admin_url('admin-ajax.php?action=bkfdw&order_id='.$id.'&nonce='.wp_create_nonce('bkf_worksheet_pdf'));
 				$date = wp_date("Y-m-d",get_post_meta($order->ID,'_delivery_timestamp',true));
 				$recipient = str_replace('"', '\"', get_post_meta($order->ID, '_shipping_first_name',true).' '.get_post_meta($order->ID, '_shipping_last_name',true));
 				$customer = str_replace('"', '\"', get_post_meta($order->ID, '_billing_first_name',true).' '.get_post_meta($order->ID, '_billing_last_name',true));
 				$suburb = str_replace('"', '\"', get_post_meta($order->ID, '_shipping_city',true));
 				$orderObj = new WC_Order($order->ID);
 				if($orderObj->needs_shipping_address()){
+					$address = $orderObj->get_formatted_shipping_address().'<br>'.esc_html(get_post_meta($order->ID, '_shipping_phone', true)).'<br>'.esc_html(get_post_meta($order->ID, '_shipping_notes', true));
 					if(get_post_meta($id,'_delivery_timeslot_id',true) !== ''){
 						$allts = bkf_get_timeslots_associative();
 						$tsid = 'ts'.get_post_meta($id,'_delivery_timeslot_id',true);
 						$ts = $allts[$tsid];
-						$start = $ts['start'];
-						$end = $ts['end'];
-						echo '{ title: "#'.$order->ID.' - '. $recipient . ', ' . $suburb . '", url: "'.html_entity_decode($url).'", start: "'.$date.' '.$start.':00", end: "'.$date.' '.$end.':00", classNames: ["shipped"] }, ';
+						if($ts){
+							$start = $ts['start'];
+							$end = $ts['end'];
+							echo '{ title: "#'.$order->ID.' - '. $recipient . ', ' . $suburb . '", url: "'.html_entity_decode($url).'", start: "'.$date.' '.$start.':00", end: "'.$date.' '.$end.':00", classNames: ["shipped"], wsurl: "'.$ws.'", content: "'.bkf_get_timeslot_string(get_post_meta($id,'_delivery_timeslot_id',true)).'<br>'.$address.'" }, ';
+						} else {
+							$timeslot = get_post_meta($id,'_delivery_timeslot',true);
+							$array = explode(" - ",$timeslot);
+							$start = date("H:i",strtotime($array[0]));
+							$end = date("H:i",strtotime($array[1]));
+							echo '{ title: "#'.$order->ID.' - '. $recipient . ', ' . $suburb . '", url: "'.html_entity_decode($url).'", start: "'.$date.' '.$start.':00", end: "'.$date.' '.$end.':00", classNames: ["shipped"], wsurl: "'.$ws.'", content: "'.$timeslot.'<br>'.$address.'" }, ';
+						}
 					} elseif(get_post_meta($id,'_delivery_timeslot',true) !== '') {
 						$timeslot = get_post_meta($id,'_delivery_timeslot',true);
 						$array = explode(" - ",$timeslot);
 						$start = date("H:i",strtotime($array[0]));
 						$end = date("H:i",strtotime($array[1]));
-						echo '{ title: "#'.$order->ID.' - '. $recipient . ', ' . $suburb . '", url: "'.html_entity_decode($url).'", start: "'.$date.' '.$start.':00", end: "'.$date.' '.$end.':00", classNames: ["shipped"] }, ';
+						echo '{ title: "#'.$order->ID.' - '. $recipient . ', ' . $suburb . '", url: "'.html_entity_decode($url).'", start: "'.$date.' '.$start.':00", end: "'.$date.' '.$end.':00", classNames: ["shipped"], wsurl: "'.$ws.'", content: "'.$timeslot.'<br>'.$address.'" }, ';
 					} else {
-						echo '{ title: "#'.$order->ID.' - '. $recipient . ', ' . $suburb . '", url: "'.html_entity_decode($url).'", start: "'.$date.'", classNames: ["shipped"] }, ';
+						echo '{ title: "#'.$order->ID.' - '. $recipient . ', ' . $suburb . '", url: "'.html_entity_decode($url).'", start: "'.$date.'", classNames: ["shipped"], wsurl: "'.$ws.'", content: "'.$address.'" }, ';
 					}
 				} else {
 					if(get_post_meta($id,'_delivery_timeslot_id',true) !== ''){
 						$allts = bkf_get_timeslots_associative();
 						$tsid = 'ts'.get_post_meta($id,'_delivery_timeslot_id',true);
 						$ts = $allts[$tsid];
-						$start = $ts['start'];
-						$end = $ts['end'];
-						echo '{ title: "#'.$order->ID.' - '.esc_html__('Pickup', 'bakkbone-florist-companion').', '.$customer.'", url: "'.html_entity_decode($url).'", start: "'.$date.' '.$start.':00", end: "'.$date.' '.$end.':00", classNames: ["unshipped"] }, ';
+						if($ts){
+							$start = $ts['start'];
+							$end = $ts['end'];
+							echo '{ title: "#'.$order->ID.' - '.esc_html__('Pickup', 'bakkbone-florist-companion').', '.$customer.'", url: "'.html_entity_decode($url).'", start: "'.$date.' '.$start.':00", end: "'.$date.' '.$end.':00", classNames: ["unshipped"], wsurl: "'.$ws.'", content: "'.bkf_get_timeslot_string(get_post_meta($id,'_delivery_timeslot_id',true)).'" }, ';
+						} else {
+							$timeslot = get_post_meta($id,'_delivery_timeslot',true);
+							$array = explode(" - ",$timeslot);
+							$start = date("H:i",strtotime($array[0]));
+							$end = date("H:i",strtotime($array[1]));
+							echo '{ title: "#'.$order->ID.' - '.esc_html__('Pickup', 'bakkbone-florist-companion').', '.$customer.'", url: "'.html_entity_decode($url).'", start: "'.$date.' '.$start.':00", end: "'.$date.' '.$end.':00", classNames: ["unshipped"], wsurl: "'.$ws.'", content: "'.$timeslot.'" }, ';
+						}
 					} elseif(get_post_meta($id,'_delivery_timeslot',true) !== '') {
 						$timeslot = get_post_meta($id,'_delivery_timeslot',true);
 						$array = explode(" - ",$timeslot);
 						$start = date("H:i",strtotime($array[0]));
 						$end = date("H:i",strtotime($array[1]));
-						echo '{ title: "#'.$order->ID.' - '.esc_html__('Pickup', 'bakkbone-florist-companion').', '.$customer.'", url: "'.html_entity_decode($url).'", start: "'.$date.' '.$start.':00", end: "'.$date.' '.$end.':00", classNames: ["unshipped"] }, ';
+						echo '{ title: "#'.$order->ID.' - '.esc_html__('Pickup', 'bakkbone-florist-companion').', '.$customer.'", url: "'.html_entity_decode($url).'", start: "'.$date.' '.$start.':00", end: "'.$date.' '.$end.':00", classNames: ["unshipped"], wsurl: "'.$ws.'", content: "'.$timeslot.'" }, ';
 					} else {
-						echo '{ title: "#'.$order->ID.' - '.esc_html__('Pickup', 'bakkbone-florist-companion').', '.$customer.'", url: "'.html_entity_decode($url).'", start: "'.$date.'", classNames: ["unshipped"] }, ';
+						echo '{ title: "#'.$order->ID.' - '.esc_html__('Pickup', 'bakkbone-florist-companion').', '.$customer.'", url: "'.html_entity_decode($url).'", start: "'.$date.'", classNames: ["unshipped"], wsurl: "'.$ws.'", content: "'.get_post_meta($id,'_delivery_date',true).'" }, ';
 					}
 				}
 				

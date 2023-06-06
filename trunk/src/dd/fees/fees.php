@@ -88,7 +88,7 @@ class BkfDdFees{
 
 		$tax = get_option('bkf_ddf_setting')['ddtst'];
 		
-		if($tax == true){
+		if($tax){
 			$taxable = "true";
 		} else {
 			$taxable = "false";
@@ -99,10 +99,20 @@ class BkfDdFees{
 		$thistsid = array_search($thets, $tscol);
 		$thists = $ts[$thistsid];
 		
+        $taxobject = new WC_Tax();
+        if($tax){
+            $taxes = $taxobject->get_rates();
+            $rates = array_shift($taxes);
+            $item_rate = '0.' . round(array_shift($rates));
+            $factor = 1 + $item_rate;
+        } else {
+            $factor = 1;
+        }
+		
 		if($thists !== null && $thists !== ''){
 		    if ( $thists['fee'] !== '' && $thists['fee'] !== null ) {
-		        $label = __("Time Slot Fee", "bakkbone-florist-companion");
-		        $cost  = $thists['fee'];
+		        $label	= esc_html__("Timeslot Fee", "bakkbone-florist-companion");
+		        $cost	= $thists['fee'] / $factor;
 		    }
 		}
 
@@ -117,7 +127,7 @@ class BkfDdFees{
 		
 		$tax = get_option('bkf_ddf_setting')['ddwft'];
 		
-		if($tax == true){
+		if($tax){
 			$taxable = "true";
 		} else {
 			$taxable = "false";
@@ -126,10 +136,20 @@ class BkfDdFees{
 		$setting = get_option('bkf_wf_setting');
 	    $wd = WC()->session->get( 'delivery_weekday' );
 		
+        $taxobject = new WC_Tax();
+        if($tax){
+            $taxes = $taxobject->get_rates();
+            $rates = array_shift($taxes);
+            $item_rate = '0.' . round(array_shift($rates));
+            $factor = 1 + $item_rate;
+        } else {
+            $factor = 1;
+        }
+		
 		if($wd !== null && $wd !== ''){
 		    if ( $setting[$wd] !== '' && $setting[$wd] !== null ) {
-		        $label = ucwords($wd).esc_html__(" Surcharge", "bakkbone-florist-companion");
-		        $cost  = $setting[$wd];
+		        $label	= esc_html(sprintf(__("%s Surcharge", "bakkbone-florist-companion"),ucwords($wd)));
+		        $cost	= $setting[$wd] / $factor;
 		    }
 		}
 
@@ -144,7 +164,7 @@ class BkfDdFees{
 		
 		$tax = get_option('bkf_ddf_setting')['dddft'];
 		
-		if($tax == true){
+		if($tax){
 			$taxable = "true";
 		} else {
 			$taxable = "false";
@@ -153,11 +173,21 @@ class BkfDdFees{
 		$setting = get_option('bkf_dd_ds_fees');
 	    $ts = WC()->session->get( 'delivery_timestamp' );
 		
+        $taxobject = new WC_Tax();
+        if($tax){
+            $taxes = $taxobject->get_rates();
+            $rates = array_shift($taxes);
+            $item_rate = '0.' . round(array_shift($rates));
+            $factor = 1 + $item_rate;
+        } else {
+            $factor = 1;
+        }
+		
 		if($ts !== null && $ts !== ''){
 			if(array_key_exists($ts,$setting)){
 			    if ( $setting[$ts] !== '' && $setting[$ts] !== null ) {
-			        $label = __("Surcharge: ", "bakkbone-florist-companion").stripslashes($setting[$ts]['title']);
-			        $cost  = $setting[$ts]['fee'];
+			        $label	= esc_html(sprintf(__("Surcharge: %s", "bakkbone-florist-companion"),stripslashes($setting[$ts]['title'])));
+			        $cost	= $setting[$ts]['fee'] / $factor;
 				}
 			}
 		}
