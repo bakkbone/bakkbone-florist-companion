@@ -26,7 +26,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <?php /* translators: %s: Customer first name */ ?>
 <p><?php printf( esc_html__( 'Hi %s,', 'bakkbone-florist-companion' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
-<p><?php esc_htmlecho esc_html__( 'We have confirmed your order, and have scheduled it for the nominated date.', 'bakkbone-florist-companion' ); ?></p>
+<p><?php echo esc_html__( 'We have confirmed your order, and have scheduled it for the nominated date.', 'bakkbone-florist-companion' ); ?></p>
 <?php
 
 /*

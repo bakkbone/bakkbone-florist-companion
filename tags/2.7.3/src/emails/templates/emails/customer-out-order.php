@@ -26,7 +26,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <?php /* translators: %s: Customer first name */ ?>
 <p><?php printf( esc_html__( 'Hi %s,', 'bakkbone-florist-companion' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
-<p><?php esc_htmlecho esc_html__( 'Your order has been handed to a driver for delivery.', 'bakkbone-florist-companion' ); ?></p>
+<p><?php echo esc_html__( 'Your order has been handed to a driver for delivery.', 'bakkbone-florist-companion' ); ?></p>
 <?php
 
 /*
