@@ -41,7 +41,7 @@ class BkfTools{
 	function help(){
 		?>
 		<h2><?php esc_html_e('View documentation for this page at: ','bakkbone-florist-companion'); ?></h2>
-			<a href="https://plugins.bkbn.au/docs/bkf/florist-tools/" target="_blank">https://plugins.bkbn.au/docs/bkf/florist-tools/</a>
+			<a href="https://plugins.bkbn.au/docs/bkf/day-to-day/florist-tools/" target="_blank">https://plugins.bkbn.au/docs/bkf/day-to-day/florist-tools/</a>
 		<?php
 	}
 	
