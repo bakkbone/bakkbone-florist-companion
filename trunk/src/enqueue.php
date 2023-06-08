@@ -12,34 +12,40 @@ class BkfEnqueueStyles{
 
 
 	function __construct(){	
-		add_action("wp_enqueue_scripts", array($this, "bkf_enqueue_global"));
+		add_action("wp_enqueue_scripts", array($this, "global"));
+		add_action("wp_enqueue_scripts", array($this, "frontend"));
 		if(is_admin()){
-			add_action("admin_enqueue_scripts", array($this, "bkf_enqueue_global"));
-			add_action("admin_enqueue_scripts", array($this, "bkf_enqueue_backend"));
-			add_action("admin_head", array($this, "bkf_fonts"), 1);
+			add_action("admin_enqueue_scripts", array($this, "global"));
+			add_action("admin_enqueue_scripts", array($this, "backend"));
+			add_action("admin_head", array($this, "fonts"), 1);
 		}
 	}
 	
-	function bkf_enqueue_global(){
+	function global(){
 		wp_register_style( 'jquery-ui-overcast', '//code.jquery.com/ui/1.13.2/themes/overcast/jquery-ui.css' );
 		wp_register_style( 'jquery-ui-dark-hive', '//code.jquery.com/ui/1.13.2/themes/dark-hive/jquery-ui.css' );
-		wp_enqueue_script("bkf_select", BKF_URL . "assets/js/select.js",'','','all' );
+		wp_register_style('select2css', BKF_URL . 'lib/select2/css/select2.min.css');
 		wp_enqueue_style("bkf_bkf", BKF_URL . "assets/css/bkf.css", array(),"1","all" );
 		wp_enqueue_style("bkf_default", BKF_URL . "assets/css/default.css", array(),"1","all" );
 		wp_enqueue_style("bkf_calendar", BKF_URL . "assets/css/calendar.css", array(),"1","all" );
-		if(!is_admin()){
-			wp_enqueue_script( 'jquery-ui-datepicker' );
-			wp_enqueue_style( 'jquery-ui-overcast' );
-		}
 		global $post_type;
 		if ( 'bkf_petals_order' === $post_type ) {
 			wp_enqueue_style("bkf_petals", BKF_URL . "assets/css/petals.css", array(),"1","all" );
 		}
 	}
+	
+	function frontend(){
+		wp_enqueue_script( 'jquery-ui-datepicker' );
+		wp_enqueue_style( 'jquery-ui-overcast' );
+		global $post_type;
+		if ( 'bkf_petals_order' === $post_type ) {
+			wp_enqueue_script('select2', BKF_URL . 'lib/select2/js/select2.full.min.js', 'jquery');
+			wp_enqueue_style('select2css');
+		}
+	}
 
-	function bkf_enqueue_backend($hooks){
+	function backend($hooks){
 		wp_enqueue_script('select2', BKF_URL . 'lib/select2/js/select2.full.min.js', 'jquery');
-		wp_register_style('select2css', BKF_URL . 'lib/select2/css/select2.min.css');
 		wp_enqueue_style('select2css');
 		wp_enqueue_style('dashicons');
 		wp_enqueue_script("bkf_copy", BKF_URL . "assets/js/copy.js",'','','all' );
@@ -60,7 +66,7 @@ class BkfEnqueueStyles{
 		}
 	}
 	
-	function bkf_fonts() {
+	function fonts() {
 		?>
 		<style id="bkf_fonts">
 			/* latin-ext */

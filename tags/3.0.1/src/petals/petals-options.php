@@ -231,10 +231,19 @@ class BkfPetalsOptions{
 			"id" => "bkf-petals-cat",
 			"name" => "bkf_petals_product_setting[cat]",
 			"selected" => $value,
+			"class" => "postform bkf-form-control"
 		);
-		?><div class="bkf-select" style="width:200px;">
+		?>
 		<?php wp_dropdown_categories($args); ?>
-	</div><p class="description"><?php esc_html_e("Please select the category which will contain the product.", "bakkbone-florist-companion"); ?></p>
+		<p class="description"><?php esc_html_e("Please select the category which will contain the product.", "bakkbone-florist-companion"); ?></p>
+		<script>
+			jQuery(document).ready(function($){
+				jQuery('#bkf-petals-cat option').first().prop('disabled', true);
+				jQuery('#bkf-petals-cat').select2({
+					dropdownCssClass: ['bkf-font', 'bkf-select2']
+				});
+			});
+		</script>
 		<?php
 	}
 
@@ -252,7 +261,7 @@ class BkfPetalsOptions{
 			$productdisabled = "";
 		}
 		?>
-			<div class="bkf-select" style="width:200px;"><select id="bkf-petals-product" name="bkf_petals_product_setting[product]"<?php echo $productdisabled ?>>
+			<select id="bkf-petals-product" class="bkf-form-control" name="bkf_petals_product_setting[product]"<?php echo $productdisabled ?>>
 			<?php
 		$orderby = 'term_order';
 		$order = 'asc';
@@ -266,34 +275,41 @@ class BkfPetalsOptions{
 			);
 		$products = wc_get_products( $args );
 		if(empty($value)) {
-		echo "<option value=\"\" selected>".esc_html__('Select a Product...', 'bakkbone-florist-companion')."</option>";	
+			echo "<option value=\"\" selected disabled>".esc_html__('Select a Product...', 'bakkbone-florist-companion')."</option>";	
 		} else {
-		echo "<option value=\"\">".esc_html__('Select a Product...', 'bakkbone-florist-companion')."</option>";}
-			foreach($products as $key => $product){
-				if($value == $product->get_id()){
-					echo "<option selected value=\"" . $product->get_id() . "\">" . $product->get_name() . "</option>";
-				} else {
-					echo "<option value=\"" . $product->get_id() . "\">" . $product->get_name() . "</option>";
-				}
-			}
-			?>
-			</select></div>
-			<?php
-					if(empty($this->bkf_petals_product_setting["cat"])){
-					?>
-		<p class="description"><?php esc_html_e("Select a category above first, and Save Changes, then this option will become available.","bakkbone-florist-companion") ?></p>
-		<?php
-					} else {
-					?>
-		<p class="description"><?php esc_html_e("Please select the product.","bakkbone-florist-companion") ?></p>
-		<?php						
-					}
-		if(empty($value) && !empty($this->bkf_petals_product_setting["cat"])) {
-		$nonce = wp_create_nonce("bkf");
-		$ajaxurl = admin_url('admin-ajax.php?action=bkf_cpp&nonce='.$nonce);
-		?><a data-nonce="<?php echo $nonce ?>" href="<?php echo $ajaxurl ?>"><?php esc_html_e("Or click here to generate a compatible product in one click.","bakkbone-florist-companion") ?></a><?php
+			echo "<option value=\"\" disabled>".esc_html__('Select a Product...', 'bakkbone-florist-companion')."</option>";
 		}
-		
+		foreach($products as $key => $product){
+			if($value == $product->get_id()){
+				echo "<option selected value=\"" . $product->get_id() . "\">" . $product->get_name() . "</option>";
+			} else {
+				echo "<option value=\"" . $product->get_id() . "\">" . $product->get_name() . "</option>";
+			}
+		}
+		?>
+		</select>
+		<script>
+			jQuery(document).ready(function($){
+				jQuery('#bkf-petals-product').select2({
+					dropdownCssClass: ['bkf-font', 'bkf-select2']
+				});
+			});
+		</script>
+		<?php
+		if(empty($this->bkf_petals_product_setting["cat"])){
+			?>
+			<p class="description"><?php esc_html_e("Select a category above first, and Save Changes, then this option will become available.","bakkbone-florist-companion"); ?></p>
+			<?php
+		} else {
+			?>
+			<p class="description"><?php esc_html_e("Please select the product.","bakkbone-florist-companion"); ?></p>
+			<?php
+		}
+		if(empty($value) && !empty($this->bkf_petals_product_setting["cat"])) {
+			$nonce = wp_create_nonce("bkf");
+			$ajaxurl = admin_url('admin-ajax.php?action=bkf_cpp&nonce='.$nonce);
+		?><a data-nonce="<?php echo $nonce ?>" href="<?php echo $ajaxurl ?>"><?php esc_html_e("Or click here to generate a compatible product in one click.", "bakkbone-florist-companion"); ?></a><?php
+		}
 	}
-
+	
 }

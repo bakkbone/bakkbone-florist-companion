@@ -152,10 +152,11 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 == Changelog ==
 ### 3.0.1
 * ADD: `Florist Tools` page to resend invoices and download documents
+* TWEAK: Deprecate and remove `bkf-select` in favor of `Select2`
 * DEV: Include full `Select2` instead of base
 * DEV: Tidy ajax functions
 * DEV: Tidy tabbing in all php code
-* DEV: Fix missed localization on Petals options page
+* DEV: Fix some missed localizations
 * DEV: Fix error with timeslots in emails
 ### 3.0.0
 * ADD: Compatibility in PDFs for Booster for WooCommerce's Product Add-Ons

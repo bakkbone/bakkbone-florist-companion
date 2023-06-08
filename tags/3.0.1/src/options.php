@@ -390,7 +390,7 @@ class BkfPluginOptions{
 			$value = '01-reveal.wav';
 		}
 		?>
-		<div style="display:flex;"><div class="bkf-select" style="width:250px;margin-right:10px;" onclick="bkfAudioSample()">
+		<div style="display:flex;">
 			<select id="bkf-notifier-audio" name="bkf_audio_setting[notifier_audio]" required onclick="bkfAudioSample()">
 				<option value="" disabled><?php esc_html_e('Select a file...', 'bakkbone-florist-companion'); ?></option>
 				<?php
@@ -403,8 +403,14 @@ class BkfPluginOptions{
 				}
 				?>
 			</select>
-		</div>
-		<button type="button" class="button button-secondary" onclick="bkfPlayNotifier()">Play sample of the selected file</button></div>
+		<script>
+			jQuery(document).ready(function($){
+				jQuery('#bkf-notifier-audio').select2({
+					dropdownCssClass: ['bkf-font', 'bkf-select2']
+				});
+			});
+		</script>
+		<button type="button" class="button button-secondary" onclick="bkfPlayNotifier()"><?php esc_html_e('Play sample of the selected file', 'bakkbone-florist-companion'); ?></button></div>
 		<audio id="bkf-notifier-audio-sample" src="<?php echo $file_urls[$value]; ?>"></audio>
 		<p class="description"><?php esc_html_e("The audio to be played when a new order is detected.","bakkbone-florist-companion") ?></p>
 		<script type="text/javascript">

@@ -50,7 +50,7 @@
 	border-radius: 0 !important;
 	border: 1px solid #ddd !important;
 }
-.bkf-form .select2-selection.select2-selection--single, .bkf-fieldset .select2-selection.select2-selection--single{
+.bkf-form .select2-selection.select2-selection--single, .bkf-fieldset .select2-selection.select2-selection--single, .bkf-box .select2-selection.select2-selection--single{
 	border-radius: 0 !important;
 	border: 1px solid #ddd !important;
 	background: white !important;

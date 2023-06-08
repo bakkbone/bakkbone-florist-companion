@@ -337,29 +337,37 @@ while ( have_posts() ) :
 		echo '<h3>'.esc_html__('Messages to/from Petals Network:', 'bakkbone-florist-companion').'</h3>';
 		?>
 		<div id="bkf_pm" name="bkf_pm">
-			<p><div class="bkf-select" style="width:50%;"><select required form="bkf_pm" id="petals_msg_type" name="msgtype">
-				<option value="" disabled selected>Select a message type...</option>
+			<p><select required form="bkf_pm" class="bkf-form-control" id="petals_msg_type" name="msgtype">
+				<option value="" disabled selected><?php esc_html_e('Select a message type...', 'bakkbone-florist-companion'); ?></option>
 				<option value="M"><?php esc_html_e("Message - non-complaint", "bakkbone-florist-companion"); ?></option>
 				<option value="C"><?php esc_html_e("Complaint", "bakkbone-florist-companion"); ?></option>
 				<option value="F"><?php esc_html_e("Final message (no response required)", "bakkbone-florist-companion"); ?></option>
 				<option value="D"><?php esc_html_e("Mark order as delivered", "bakkbone-florist-companion"); ?></option>
-			</select></div></p>
+			</select></p>
 			<p><input type="text" required class="bkf-form-control big" form="bkf_pm" name="msg" id="petals_msg_body" placeholder="<?php esc_html_e("Message to Petals","bakkbone-florist-companion"); ?>" /></p>
 			<p><button form="bkf_pm" class="button wp-element-button" onclick="ajaxPetalsMessage()"><?php esc_html_e("Send Message","bakkbone-florist-companion"); ?></button></p>
 		</div>
 		<script>
+			jQuery(document.body).ready(function($){
+				jQuery('#petals_msg_type').select2({
+					dropdownCssClass: ['bkf-font', 'bkf-select2']
+				});
+			});
 			function ajaxPetalsMessage( $ ) {
 					var postNonce = "<?php echo wp_create_nonce("bkf"); ?>";
 					var orderId = "<?php echo $post->ID; ?>";
 					var msgType = document.getElementById("petals_msg_type").value;
 					var msgBody = document.getElementById("petals_msg_body").value;
 					var postUrl = "<?php echo admin_url('admin-ajax.php'); ?>" + '?action=petals_msg_frontend&nonce=' + postNonce + '&orderid=' + orderId + '&msgtype=' + msgType + '&msgbody=' + msgBody;
-					if(msgType == '' || msgBody == ''){alert('<?php esc_html_e('Please fill in both fields before attempting to send a message.', 'bakkbone-florist-companion'); ?>');} else {
-					if(confirm('<?php esc_html_e('Send Message?', 'bakkbone-florist-companion'); ?>')){
-						alert('<?php esc_html_e('Please wait...', 'bakkbone-florist-companion'); ?>')
-						jQuery.post(postUrl);
-						setTimeout(ajaxPetalsMessageProceed,3000);
-					} else {};};
+					if(msgType == '' || msgBody == ''){
+						alert('<?php esc_html_e('Please fill in both fields before attempting to send a message.', 'bakkbone-florist-companion'); ?>');
+					} else {
+						if(confirm('<?php esc_html_e('Send Message?', 'bakkbone-florist-companion'); ?>')){
+							alert('<?php esc_html_e('Please wait...', 'bakkbone-florist-companion'); ?>')
+							jQuery.post(postUrl);
+							setTimeout(ajaxPetalsMessageProceed,3000);
+						};
+					};
 				}
 				function ajaxPetalsMessageProceed( $ ) {
 					document.getElementById("petals_msg_type").value = '';
