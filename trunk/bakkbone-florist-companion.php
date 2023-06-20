@@ -1,17 +1,21 @@
 <?php
 
 /**
- * Plugin Name: BAKKBONE Florist Companion
- * Plugin URI: https://plugins.bkbn.au/docs/bkf/
- * Description: Provides standardized features for floristry websites.
- * Version: 3.0.2.2
- * Requires at least: 6.0
- * Requires PHP: 7.4
- * Author: BAKKBONE Australia
- * Author URI: https://www.bakkbone.com.au/
- * License: GNU General Public License (GPL) 3.0 or later
- * License URI: https://www.gnu.org/licenses/gpl.html
- * Text Domain: bakkbone-florist-companion
+ * Plugin Name:					BAKKBONE Florist Companion
+ * Plugin URI:					https://plugins.bkbn.au/docs/bkf/
+ * Description:					Provides standardized features for floristry websites.
+ * Version:						3.0.2.2
+ * Requires at least:			6.0
+ * Requires PHP:				7.4
+ * Author:						BAKKBONE Australia
+ * Author URI:					https://www.bakkbone.com.au/
+ * License:						GNU General Public License (GPL) 3.0 or later
+ * License URI:					https://www.gnu.org/licenses/gpl.html
+ * Tested up to:				6.2.2
+ * WC tested up to:				7.8.0
+ * Elementor tested up to:		3.14.0
+ * Elementor Pro tested up to:	3.14.0
+ * Text Domain:					bakkbone-florist-companion
 **/
 
 // @TODO Payment integration for phone orders
