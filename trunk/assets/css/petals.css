@@ -7,6 +7,6 @@
 .comment-edit-link{
 	display: none;
 }
-.wp-admin #wpbody *,.wp-admin #wpfooter *{
+.wp-admin #wpbody *:not(.dashicons),.wp-admin #wpfooter *:not(.dashicons){
 	font-family: 'Oxygen', sans-serif;
 }
