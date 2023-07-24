@@ -11,7 +11,7 @@
  * Author URI:					https://www.bakkbone.com.au/
  * License:						GNU General Public License (GPL) 3.0 or later
  * License URI:					https://www.gnu.org/licenses/gpl.html
- * Tested up to:				6.2.2
+ * Tested up to:				6.3
  * WC tested up to:				7.9.0
  * Elementor tested up to:		3.14.1
  * Elementor Pro tested up to:	3.14.1
