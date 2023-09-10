@@ -5,7 +5,7 @@ Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 6.0
 Tested up to: 6.3
 Requires PHP: 7.4
-Stable tag: 3.0.4
+Stable tag: 3.0.5
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -153,6 +153,7 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 ### 3.0.5
 * TWEAK: Set default email content type to HTML
 * DEV: Fix bugs with email overrides
+* DEV: RSS feed in admin widget no longer shows endless entries
 * TEST: Tested WP 6.3.1
 * TEST: Tested Woo 8.0.3
 ### 3.0.4
