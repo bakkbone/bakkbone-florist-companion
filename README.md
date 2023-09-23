@@ -6,6 +6,7 @@ Download at: https://wordpress.org/plugins/bakkbone-florist-companion/
 ### Petals Network Integration
 
 * Receive your Petals Network orders through your WooCommerce dashboard
+* Send Petals orders from your website dashboard
 * Accept/reject orders directly from WooCommerce without needing to log into the Petals Exchange
 * Send and receive messages to/from Petals about an order
 
@@ -25,6 +26,8 @@ Why? You can view/print your orders all in one place, and in one consistent form
 * Add "Recipient Phone" field as a required field
 * Delivery address not requested at checkout if order method is pickup
 * Add "Card Message" as a required field, and limit the maximum length of a message
+* Option to require confirmation of email at checkout for logged-out users
+* Option to disable the "Order Comments" freetext field at checkout
 
 ### Delivery Dates
 
@@ -42,6 +45,7 @@ Why? You can view/print your orders all in one place, and in one consistent form
 
 ### Order Status
 
+* Change default display on admin orders list to "active" orders (not yet delivered, not rejected/cancelled/refunded)
 * Add "Scheduled" status and optional notification email to customer
 * Add "Prepared" status and optional notification email to customer
 * Add "Out for Delivery" status and optional notification email to customer
@@ -54,18 +58,23 @@ Why? You can view/print your orders all in one place, and in one consistent form
 ### Plugin Compatibility
 
 * Creates input masks for the [Gravity Forms](https://rocketgenius.pxf.io/bakkbone) "Telephone" field for Australian phone number formats _(affiliate link)_
+* Creates an Australian address format for the [Gravity Forms](https://rocketgenius.pxf.io/bakkbone) Address field _(affiliate link)_
 * Re-words the descriptions of fields on [WooCommerce Address Book](https://wordpress.org/plugins/woo-address-book/) features
+* Provides compatibility in PDF invoices/worksheets for Product Add-Ons from [Booster for WooCommerce](https://booster.io/buy-booster?campaign=bkf&btr=bakkbone) _(affiliate link)_
 
 ### Localisation
 
-* Rename fields on frontend to match Australian/Commonwealth address standards (eg. "Suburb" instead of "City", "Postcode" instead of "Zip")
-* Or, rename the same fields however suits your business
+* Rename fields on frontend to match local address standards (eg. "Suburb" instead of "City", "Postcode" instead of "sip")
 * Option to change heading on Cart Cross-sells section
 * Option to change the text displayed when no valid delivery method is available based on recipient address
+
+### Order Notifier
+
+* Optional feature to play a sound when new orders arrive
+* Choose from 9 possible sounds for your alert
 
 ### Tweaks
 
 * Rename "shipping" to "delivery"
 * Automatically assign guest orders placed by registered customer to the matching user (so it appears in their order history when logged in)
 * Option to display product "short description" in archive listings
-* Option to disable the "Order Comments" freetext field at checkout
