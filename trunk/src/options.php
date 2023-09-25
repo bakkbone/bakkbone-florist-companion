@@ -34,18 +34,11 @@ class BkfPluginOptions{
 			if($current_version == '' || $current_version == null || $current_version < 1){
 				$bkfoptions = get_option("bkf_options_setting");
 				$oldfeatures = get_option("bkf_features_setting");
-				$newfeatures = $oldfeatures;
-				if($oldfeatures['billing_label_business'] !== null){
-					$newfeatures = [
-						'excerpt_pa'				=> false,
-						'petals_on'					=> false,
-						'disable_order_comments'	=> true,
-						'order_notifier'			=> false,
-						'confirm_email'				=> false]
-				} elseif ($oldfeatures['confirm_email'] !== null && $oldfeatures['confirm_email'] !== ''){
+				$newfeatures = [];
+				if($oldfeatures['confirm_email'] !== null && $oldfeatures['confirm_email'] !== ''){
 					$newfeatures['confirm_email'] = $oldfeatures['confirm_email'];
 				} else {
-					$newfeatures['confirm_email'] = false;
+					$newfeatures['billing_label_business'] = false;
 				}
 				update_option('bkf_features_setting', $newfeatures);
 				update_option('bkf_options_version', $bkf_options_version);

@@ -5,7 +5,7 @@ Tags: package,woocommerce,filters,florist,ecommerce
 Requires at least: 6.0
 Tested up to: 6.3
 Requires PHP: 7.4
-Stable tag: 3.0.7.2
+Stable tag: 3.0.7.1
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -149,8 +149,6 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 14. Order Notifier Toggle
 
 == Changelog ==
-### 3.0.7.2
-* DEV: Fix options database entry from 3.0.7.1
 ### 3.0.7.1
 * DEV: Fix bug with implementation of 3.0.7's new feature
 ### 3.0.7
