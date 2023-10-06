@@ -387,7 +387,7 @@ class BkfCore{
 	}
 	
 	function add_email_verification_field_checkout( $fields ) {
-		if(is_user_logged_in()){
+		if(!is_user_logged_in()){
 		    $fields['billing']['billing_em_ver'] = array(
 		       'label' => 'Confirm email address',
 		       'required' => true,
@@ -399,7 +399,7 @@ class BkfCore{
 	}
 	
 	function matching_email_addresses() { 
-		if(is_user_logged_in()){
+		if(!is_user_logged_in()){
 		    $email1 = $_POST['billing_email'];
 		    $email2 = $_POST['billing_em_ver'];
 		    if ( $email2 !== $email1 ) {
