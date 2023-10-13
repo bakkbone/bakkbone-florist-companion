@@ -2,10 +2,10 @@
 # This file is distributed under the GNU General Public License (GPL) 3.0 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: FloristPress 4.0.0\n"
+"Project-Id-Version: FloristPress 3.1.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/bakkbone-florist-companion\n"
-"POT-Creation-Date: 2023-10-13 03:03:36+00:00\n"
+"POT-Creation-Date: 2023-10-13 07:26:30+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -136,8 +136,8 @@ msgstr ""
 msgid "No deliveries today..."
 msgstr ""
 
-#: src/admin-notices.php:83 src/admin-notices.php:124 src/dd/calendar.php:207
-#: src/dd/calendar.php:213 src/dd/calendar.php:220 src/dd/calendar.php:222
+#: src/admin-notices.php:83 src/admin-notices.php:124 src/dd/calendar.php:219
+#: src/dd/calendar.php:225 src/dd/calendar.php:232 src/dd/calendar.php:234
 #: src/pdf/pdf.php:201 src/pdf/pdf.php:312
 msgid "Pickup"
 msgstr ""
@@ -147,7 +147,7 @@ msgid "No orders yet..."
 msgstr ""
 
 #: src/admin-notices.php:141
-msgid "News and updates from Team BAKKBONE"
+msgid "News and updates from the FloristPress team"
 msgstr ""
 
 #: src/ajax.php:148 src/ajax.php:166 src/ajax.php:179 src/ajax.php:197
@@ -508,7 +508,7 @@ msgstr ""
 msgid "Remove block for this date?"
 msgstr ""
 
-#: src/dd/blocks.php:157 src/dd/calendar.php:159 src/dd/catblocks.php:274
+#: src/dd/blocks.php:157 src/dd/calendar.php:171 src/dd/catblocks.php:274
 #: src/dd/catblocks.php:278 src/dd/catblocks.php:282 src/dd/catblocks.php:286
 #: src/dd/catblocks.php:290 src/dd/catblocks.php:294 src/dd/catblocks.php:298
 #: src/dd/catblocks.php:352 src/dd/dd-options.php:1366
@@ -523,34 +523,34 @@ msgstr ""
 msgid "Closed"
 msgstr ""
 
-#: src/dd/blocks.php:158 src/dd/calendar.php:160 src/dd/catblocks.php:353
+#: src/dd/blocks.php:158 src/dd/calendar.php:172 src/dd/catblocks.php:353
 #: src/dd/fees/date-specific.php:65
 msgid "Closed (Global)"
 msgstr ""
 
-#: src/dd/blocks.php:159 src/dd/calendar.php:161 src/dd/catblocks.php:354
+#: src/dd/blocks.php:159 src/dd/calendar.php:173 src/dd/catblocks.php:354
 #: src/dd/dd.php:309 src/dd/dd.php:533 src/dd/fees/date-specific.php:66
 #: src/pos/phone.php:539 src/pos/phone.php:763
 msgid "Fully Booked"
 msgstr ""
 
-#: src/dd/calendar.php:20 src/dd/calendar.php:21 src/dd/calendar.php:53
+#: src/dd/calendar.php:20 src/dd/calendar.php:21 src/dd/calendar.php:58
 msgid "Delivery Calendar"
 msgstr ""
 
-#: src/dd/calendar.php:80
+#: src/dd/calendar.php:88
 msgid "CSV"
 msgstr ""
 
-#: src/dd/calendar.php:92
+#: src/dd/calendar.php:100
 msgid "PDF"
 msgstr ""
 
-#: src/dd/calendar.php:135
+#: src/dd/calendar.php:143
 msgid "Print %s"
 msgstr ""
 
-#: src/dd/calendar.php:140 src/notifier.php:88 src/notifier.php:90
+#: src/dd/calendar.php:148 src/notifier.php:88 src/notifier.php:90
 #: src/petals/cpt.php:1484
 msgid "View Order"
 msgstr ""
@@ -1899,7 +1899,7 @@ msgid "Your business' Tax ID as it appears on invoices"
 msgstr ""
 
 #: src/pdf/pdf-options.php:592 src/pdf/pdf-options.php:594
-#: src/pdf/pdf-options.php:602 src/tools.php:62 src/tools.php:63
+#: src/pdf/pdf-options.php:602 src/tools.php:63 src/tools.php:64
 msgid "Download %s"
 msgstr ""
 
@@ -1989,7 +1989,7 @@ msgstr ""
 msgid "<strong>Order sending failed.<br>Response from Petals: </strong><br>"
 msgstr ""
 
-#: src/petals/cpt.php:548 src/tools.php:58
+#: src/petals/cpt.php:548 src/tools.php:59
 msgid "Order Number"
 msgstr ""
 
@@ -3834,23 +3834,23 @@ msgid ""
 "delete the delivery method %1shere%2s."
 msgstr ""
 
-#: src/tools.php:19 src/tools.php:20 src/tools.php:52
+#: src/tools.php:19 src/tools.php:20 src/tools.php:53
 msgid "Florist Tools"
 msgstr ""
 
-#: src/tools.php:56
+#: src/tools.php:57
 msgid "Order Document Actions"
 msgstr ""
 
-#: src/tools.php:60
+#: src/tools.php:61
 msgid "Select an action..."
 msgstr ""
 
-#: src/tools.php:61
+#: src/tools.php:62
 msgid "Resend %s to Customer"
 msgstr ""
 
-#: src/tools.php:65
+#: src/tools.php:66
 msgid "Go"
 msgstr ""
 
