@@ -83,8 +83,8 @@ if ( ! empty( $shipping_classes ) ) {
 		'class'   => 'wc-enhanced-select',
 		'default' => 'class',
 		'options' => array(
-			'class' => __( 'Per class: Charge shipping for each delivery class individually', 'bakkbone-florist-companion' ),
-			'order' => __( 'Per order: Charge shipping for the most expensive delivery class', 'bakkbone-florist-companion' ),
+			'class' => __( 'Per class: Charge delivery for each delivery class individually', 'bakkbone-florist-companion' ),
+			'order' => __( 'Per order: Charge delivery for the most expensive delivery class', 'bakkbone-florist-companion' ),
 		),
 	);
 }
