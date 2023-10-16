@@ -1,15 +1,13 @@
 <?php
 /**
  * @author BAKKBONE Australia
- * @package BKF\Delivery_Date\Fees\Date_Specific
+ * @package BKF_Delivery_Date_Fees_Date_Specific
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF\Delivery_Date\Fees;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Date_Specific{
+class BKF_Delivery_Date_Fees_Date_Specific{
 	
 	private $bkf_dd_ds_fees = [];
 	

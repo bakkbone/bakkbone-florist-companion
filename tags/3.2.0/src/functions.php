@@ -1,7 +1,7 @@
 <?php
 /**
  * @author BAKKBONE Australia
- * @package BkfFunctions
+ * @package BKF_Functions
  * @license GNU General Public License (GPL) 3.0
 **/
 

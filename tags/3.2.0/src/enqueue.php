@@ -2,15 +2,13 @@
 
 /**
  * @author BAKKBONE Australia
- * @package BKF\Enqueue
+ * @package BKF_Enqueue
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Enqueue{
+class BKF_Enqueue{
 	
 	function __construct(){	
 		add_action("wp_enqueue_scripts", array($this, "global"));

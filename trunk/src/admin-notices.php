@@ -2,14 +2,13 @@
 
 /**
  * @author BAKKBONE Australia
- * @package BKF\Admin_Notices
+ * @package BKF_Admin_Notices
  * @license GNU General Public License (GPL) 3.0
 **/
-namespace BKF;
 
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Admin_Notices{
+class BKF_Admin_Notices{
 
 	function __construct(){
 		add_action('plugins_loaded', array($this, 'check_plugin_compatibility'));

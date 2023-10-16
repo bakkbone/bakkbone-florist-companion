@@ -1,23 +1,19 @@
 <?php
-
 /**
  * @author BAKKBONE Australia
- * @package BKF\Shortcodes
+ * @package BKF_Shortcodes
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Shortcodes{
+class BKF_Shortcodes{
 
 	function __construct(){
 		add_action("init",array($this,"bkfPageTitle"));
 		add_action("init",array($this,"bkfPageTitleTinymce"));
 		add_action("init",array($this,"bkfSiteTitle"));
 		add_action("init",array($this,"bkfSiteTitleTinymce"));
-		
 	}
 
 	function bkfPageTitle(){

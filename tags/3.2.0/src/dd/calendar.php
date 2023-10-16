@@ -1,22 +1,20 @@
 <?php
 /**
  * @author BAKKBONE Australia
- * @package BKF\Delivery_Date\Calendar
+ * @package BKF_Delivery_Date_Calendar
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF\Delivery_Date;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Calendar{
+class BKF_Delivery_Date_Calendar{
 	
 	function __construct(){
-		add_action("admin_menu",array($this,"bkfAddCalendarPageOption"),3);
+		add_action("admin_menu",array($this,"page"),3);
 		add_filter('woocommerce_order_data_store_cpt_get_orders_query', array($this, 'bkf_handle_custom_query_var'), PHP_INT_MAX, 2 );
 	}
 
-	function bkfAddCalendarPageOption(){
+	function page(){
 		$admin_page = add_menu_page(
 			__("Delivery Calendar","bakkbone-florist-companion"),
 			__("Delivery Calendar","bakkbone-florist-companion"),

@@ -209,7 +209,7 @@ class BKF_Ajax{
 	function bkf_cal_pdf(){
 		$start = $_REQUEST['starty'] . '-' . $_REQUEST['startm'] . '-' . $_REQUEST['startd'];
 		$end = $_REQUEST['endy'] . '-' . $_REQUEST['endm'] . '-' . $_REQUEST['endd'];
-		$pdf = new BKF\PDF\Core();
+		$pdf = new BKF_PDF_Core();
 		$thepdf = $pdf->calendar($start,$end);
 		$ct = __('calendar','bakkbone-florist-companion');
 		$thepdf->stream($ct.'-'.$start.'-'.esc_html__('to','bakkbone-florist-companion').'-'.$end.'.pdf');
@@ -478,7 +478,7 @@ class BKF_Ajax{
 
 		$order_id = $_REQUEST['order_id'];
 		$invtitle = get_option('bkf_pdf_setting')['inv_title'];
-		$pdf = new BKF\PDF\Core();
+		$pdf = new BKF_PDF_Core();
 		$thepdf = $pdf->invoice($order_id);
 		$thepdf->stream($invtitle.' #'.$order_id.'.pdf');
 	}
@@ -490,7 +490,7 @@ class BKF_Ajax{
 
 		$order_id = $_REQUEST['order_id'];
 		$wstitle = get_option('bkf_pdf_setting')['ws_title'];
-		$pdf = new BKF\PDF\Core();
+		$pdf = new BKF_PDF_Core();
 		$thepdf = $pdf->worksheet($order_id);
 		$thepdf->stream($wstitle.' #'.$order_id.'.pdf');
 	}

@@ -1,15 +1,13 @@
 <?php
 /**
  * @author BAKKBONE Australia
- * @package BKF\Delivery_Date\Block
+ * @package BKF_Delivery_Date_Block
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF\Delivery_Date;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Block{
+class BKF_Delivery_Date_Block{
 
 	private $bkf_dd_closed = [];
 	private $bkf_dd_full = [];

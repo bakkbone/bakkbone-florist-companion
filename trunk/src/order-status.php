@@ -1,16 +1,13 @@
 <?php
-
 /**
  * @author BAKKBONE Australia
- * @package BKF\Order_Status
+ * @package BKF_Order_Status
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Order_Status{
+class BKF_Order_Status{
   
 	public function __construct() {
 		add_action( 'init', array($this, 'bkf_register_order_status'), 10 );

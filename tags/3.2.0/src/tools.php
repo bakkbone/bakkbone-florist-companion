@@ -2,15 +2,13 @@
 
 /**
  * @author BAKKBONE Australia
- * @package BKF\Tools
+ * @package BKF_Tools
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Tools{
+class BKF_Tools{
 	
 	function __construct(){
 		add_action("admin_menu",array($this,"menu"),2);

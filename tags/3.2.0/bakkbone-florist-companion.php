@@ -94,42 +94,42 @@ if(!in_array('advanced-custom-fields/acf.php', apply_filters('active_plugins', g
 
 function run_bkf(){
 	if (in_array("woocommerce/woocommerce.php", apply_filters("active_plugins", get_option("active_plugins")))){
-		new BKF\CPT\Delivery_Suburb();
-		new BKF\Enqueue();
-		new BKF\Options();
-		new BKF\Shortcodes();
-		new BKF\Core();
-		new BKF\Local_Pickup();
-		new BKF\PDF\Options();
-		new BKF\PDF\Actions();
-	    new BKF\Delivery_Date\Core();
-	    new BKF\Delivery_Date\Filter();
+		new BKF_CPT_Delivery_Suburb();
+		new BKF_Enqueue();
+		new BKF_Options();
+		new BKF_Shortcodes();
+		new BKF_Core();
+		new BKF_Local_Pickup();
+		new BKF_PDF_Options();
+		new BKF_PDF_Actions();
+	    new BKF_Delivery_Date_Core();
+	    new BKF_Delivery_Date_Filter();
 	    new BKF_Delivery_Date_Same_Day();
 	    new BKF_Delivery_Date_Fees_Core();
-	    new BKF\Delivery_Date\Fees\Date_Specific();
-	    new BKF\Delivery_Date\Fees\Options();
+	    new BKF_Delivery_Date_Fees_Date_Specific();
+	    new BKF_Delivery_Date_Fees_Options();
 	    new BKF_Delivery_Date_Options();
-		new BKF\Delivery_Date\Block();
-		new BKF\Delivery_Date\Category_Block();
-		new BKF\Delivery_Date\Calendar();
+		new BKF_Delivery_Date_Block();
+		new BKF_Delivery_Date_Category_Block();
+		new BKF_Delivery_Date_Calendar();
 		new BKF_Delivery_Date_Timeslots();
-		new BKF\Order_Status();
-		new BKF\Petals\Core();
-		new BKF\Petals\Options();
-		new BKF\Petals\Outbound();
-		new BKF\Petals\Messaging();
-		new BKF\Petals\CPT();
-		new BKF\Petals\Email();
+		new BKF_Order_Status();
+		new BKF_Petals_Core();
+		new BKF_Petals_Options();
+		new BKF_Petals_Outbound();
+		new BKF_Petals_Messaging();
+		new BKF_Petals_CPT();
+		new BKF_Petals_Email();
 	    new BKF_Email_Override();
 	    new BKF_Email_Status();
 		new BKF_Suburbs_Core_v1();
-		new BKF\Localisation();
-		new BKF\Notifier();
-		new BKF\Phone_Order();
+		new BKF_Localisation();
+		new BKF_Notifier();
+		new BKF_Phone_Order();
 		new BKF_Ajax();
-		new BKF\Tools();
+		new BKF_Tools();
 	}
-	new BKF\Admin_Notices();
+	new BKF_Admin_Notices();
 }
 
 add_filter( 'woocommerce_ship_to_different_address_checked', '__return_true' );

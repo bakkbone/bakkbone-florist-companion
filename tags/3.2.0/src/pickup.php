@@ -1,16 +1,14 @@
 <?php
-
 /**
  * @author BAKKBONE Australia
- * @package BKF\Local_Pickup
+ * @package BKF_Local_Pickup
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Local_Pickup{
+class BKF_Local_Pickup {
+	
 	function __construct() {
 		add_filter( 'woocommerce_package_rates', array( $this, 'bkf_pickup_rates' ), 999 , 2 );
 		add_action( 'wp_footer', array($this, 'bkf_ship_type_code') );

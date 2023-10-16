@@ -2,15 +2,13 @@
 
 /**
  * @author BAKKBONE Australia
- * @package BkfNotifier
+ * @package BKF_Notifier
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Notifier{
+class BKF_Notifier{
 
 	function __construct(){
 		global $bkf_notifier_version;

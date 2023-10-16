@@ -1,16 +1,13 @@
 <?php
-
 /**
  * @author BAKKBONE Australia
- * @package BKF\Options
+ * @package BKF_Options
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Options{
+class BKF_Options{
 
 	private $bkf_options_setting = [];
 	private $bkf_features_setting = [];

@@ -1,16 +1,14 @@
 <?php
-
 /**
  * @author BAKKBONE Australia
- * @package BKF\PDF\Actions
+ * @package BKF_PDF_Actions
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF\PDF;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 use Dompdf\Dompdf;
-class Actions{
+
+class BKF_PDF_Actions{
 	
 	function __construct(){
 		add_filter( 'woocommerce_admin_order_actions', array( $this, 'invoiceactions' ), PHP_INT_MAX, 2 );

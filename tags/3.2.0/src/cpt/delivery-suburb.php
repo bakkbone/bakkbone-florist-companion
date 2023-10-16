@@ -1,15 +1,13 @@
 <?php
 /**
  * @author BAKKBONE Australia
- * @package BKF_DS_Posts
+ * @package BKF_CPT_Delivery_Suburb
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF\CPT;
-	
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Delivery_Suburb{
+class BKF_CPT_Delivery_Suburb{
 
 	function __construct(){
 		add_action("init", array($this, "register_cpt"));

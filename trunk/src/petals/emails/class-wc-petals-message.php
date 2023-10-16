@@ -1,6 +1,4 @@
 <?php
-namespace BKF\Petals\Email;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }

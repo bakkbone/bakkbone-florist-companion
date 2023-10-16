@@ -2,15 +2,13 @@
 
 /**
  * @author BAKKBONE Australia
- * @package BKF\Phone_Order
+ * @package BKF_Phone_Order
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Phone_Order{
+class BKF_Phone_Order{
 
 	function __construct(){
 		add_action('admin_menu', array($this, 'admin_menu'));

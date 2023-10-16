@@ -1,15 +1,13 @@
 <?php
 /**
  * @author BAKKBONE Australia
- * @package BkfDdFilter
+ * @package BKF_Delivery_Date_Filter
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF\Delivery_Date;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Filter{
+class BKF_Delivery_Date_Filter{
 	
 	function __construct(){
 		add_action('pre_get_posts', array($this, 'action_parse_query'), PHP_INT_MAX, 1 );

@@ -1,16 +1,13 @@
 <?php
-
 /**
  * @author BAKKBONE Australia
- * @package BKF\Petals\Outbound
+ * @package BKF_Petals_Outbound
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF\Petals;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Outbound{
+class BKF_Petals_Outbound{
   
 	function __construct() {
 	  $bkfoptions = get_option("bkf_features_setting");

@@ -5,7 +5,7 @@ Tags: woocommerce,florist,ecommerce,shipping,pdf,forms
 Requires at least: 6.0
 Tested up to: 6.3
 Requires PHP: 7.4
-Stable tag: 3.1.0
+Stable tag: 3.2.0
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -162,7 +162,7 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 * DEV: Suburbs options page deprecated, to be removed in v4.0.0
 * DEV: Fixed `WC_Eval_Math` error appearing on v1 delivery suburbs options page
 * TWEAK: Delivery date field moved to above payment
-* TWEAK: Moved majority of plugin into namespaces under `BKF\`, except where not practical due to dependencies
+* TWEAK: Renamed all classes for clarity
 * TWEAK: Improve display of method-specific cutoffs on settings page
 ### 3.1.0
 * TWEAK: Rebrand to FloristPress

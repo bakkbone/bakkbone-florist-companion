@@ -1,15 +1,14 @@
 <?php
 /**
  * @author BAKKBONE Australia
- * @package BKF\PDF\Options
+ * @package BKF_PDF_Options
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF\PDF;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 use Dompdf\Dompdf;
-class Options{
+
+class BKF_PDF_Options{
 
 	private $bkf_pdf_setting = [];
 	private $htmlplaceholder = "";
@@ -63,7 +62,7 @@ class Options{
 		if ( in_array ( $email_id, $email_ids ) ) {
 			$invtitle = get_option('bkf_pdf_setting')['inv_title'];
 			$order_id = $order->get_id();
-			$pdf = new BKF\PDF\Core();
+			$pdf = new BKF_PDF_Core();
 			$thepdf = $pdf->invoice($order_id);
 			$thispdf = $thepdf->output();
 			$upload_dir = wp_upload_dir();
@@ -85,7 +84,7 @@ class Options{
 		if ( in_array ( $email_id, $email_ids ) ) {
 			$wstitle = get_option('bkf_pdf_setting')['ws_title'];
 			$order_id = $order->get_id();
-			$pdf = new BKF\PDF\Core();
+			$pdf = new BKF_PDF_Core();
 			$thepdf = $pdf->worksheet($order_id);
 			$thispdf = $thepdf->output();
 			$upload_dir = wp_upload_dir();

@@ -1,17 +1,15 @@
 <?php
 /**
  * @author BAKKBONE Australia
- * @package BKF\Petals\Email
+ * @package BKF_Petals_Email
  * @license GNU General Public License (GPL) 3.0
 **/
-
-namespace BKF\Petals;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	return;
 }
 
-class Email{
+class BKF_Petals_Email{
 
 	public function __construct() {
 		$bkfoptions = get_option("bkf_features_setting");

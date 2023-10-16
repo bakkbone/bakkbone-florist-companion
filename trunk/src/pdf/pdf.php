@@ -1,15 +1,13 @@
 <?php
 /**
  * @author BAKKBONE Australia
- * @package BKF\PDF\Core
+ * @package BKF_PDF_Core
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF\PDF;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 use Dompdf\Dompdf;
-class Core{
+class BKF_PDF_Core{
 	
 	function __construct(){
 		$this->store = [];

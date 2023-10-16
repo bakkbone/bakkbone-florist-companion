@@ -1,15 +1,13 @@
 <?php
 /**
  * @author BAKKBONE Australia
- * @package BKF\Delivery_Date\Fees\Options
+ * @package BKF_Delivery_Date_Fees_Options
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF\Delivery_Date\Fees;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Options{
+class BKF_Delivery_Date_Fees_Options{
 	
 	private $bkf_ddf_setting = [];
 	private $bkf_wf_setting = [];

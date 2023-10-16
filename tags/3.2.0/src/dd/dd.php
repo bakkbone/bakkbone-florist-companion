@@ -1,15 +1,13 @@
 <?php
 /**
  * @author BAKKBONE Australia
- * @package BkfDd
+ * @package BKF_Delivery_Date_Core
  * @license GNU General Public License (GPL) 3.0
 **/
 
-namespace BKF\Delivery_Date;
-
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 
-class Core{
+class BKF_Delivery_Date_Core{
 
 	function __construct(){
 		add_action('woocommerce_review_order_before_payment', array($this,'dd_field_init'), 10 );
