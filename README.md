@@ -3,6 +3,10 @@ Provides standardised updates for floristry websites
 
 Download at: https://wordpress.org/plugins/bakkbone-florist-companion/
 
+### Delivery Suburbs
+
+* Adds the ability to limit specific delivery methods to specific suburbs within their Zones
+
 ### Petals Network Integration
 
 * Receive your Petals Network orders through your WooCommerce dashboard
@@ -17,7 +21,7 @@ Why? You can view/print your orders all in one place, and in one consistent form
 * PDF Invoices attached to customer-facing emails and in their online account
 * PDF Worksheets, printable in an easy-to-use format for your workroom, attached to order notification emails
 * Access invoices and worksheets from your orders list or the order's individual page
-* Customise store details display on invoices and optionally add a message at the bottom
+* Customize store details display on invoices and optionally add a message at the bottom
 
 ### Checkout Fields
 
@@ -61,10 +65,11 @@ Why? You can view/print your orders all in one place, and in one consistent form
 * Creates an Australian address format for the [Gravity Forms](https://rocketgenius.pxf.io/bakkbone) Address field _(affiliate link)_
 * Re-words the descriptions of fields on [WooCommerce Address Book](https://wordpress.org/plugins/woo-address-book/) features
 * Provides compatibility in PDF invoices/worksheets for Product Add-Ons from [Booster for WooCommerce](https://booster.io/buy-booster?campaign=bkf&btr=bakkbone) _(affiliate link)_
+* Acknowledges duplicated functionality with [Breakdance](https://breakdance.com/ref/357/) Page Builder when clashing features enabled, via persistent admin notice _(affiliate link)_
 
-### Localisation
+### Localization
 
-* Rename fields on frontend to match local address standards (eg. "Suburb" instead of "City", "Postcode" instead of "sip")
+* Rename fields on frontend to match local address standards (eg. "Suburb" instead of "City", "Postcode" instead of "Zip")
 * Option to change heading on Cart Cross-sells section
 * Option to change the text displayed when no valid delivery method is available based on recipient address
 
