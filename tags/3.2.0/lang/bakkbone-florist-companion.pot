@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: FloristPress 3.2.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/bakkbone-florist-companion\n"
-"POT-Creation-Date: 2023-10-15 12:19:04+00:00\n"
+"POT-Creation-Date: 2023-10-16 01:15:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,83 +26,83 @@ msgstr ""
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
 #: bakkbone-florist-companion.php:174 bakkbone-florist-companion.php:248
-#: src/localisation.php:100 src/localisation.php:512 src/localisation.php:515
+#: src/localisation.php:98 src/localisation.php:510 src/localisation.php:513
 msgid "How about adding..."
 msgstr ""
 
 #: bakkbone-florist-companion.php:175 bakkbone-florist-companion.php:249
-#: src/localisation.php:107 src/localisation.php:525 src/localisation.php:528
+#: src/localisation.php:105 src/localisation.php:523 src/localisation.php:526
 msgid "You have selected a suburb or region we do not deliver to."
 msgstr ""
 
 #: bakkbone-florist-companion.php:196 src/dd/dd-options.php:620
-#: src/dd/dd-options.php:1256 src/dd/dd.php:857 src/petals/cpt.php:60
-#: src/petals/cpt.php:737 src/petals/templates/petals-single.php:316
+#: src/dd/dd-options.php:1256 src/dd/dd.php:855 src/petals/cpt.php:57
+#: src/petals/cpt.php:734 src/petals/templates/petals-single.php:316
 msgid "Delivery Date"
 msgstr ""
 
-#: bakkbone-florist-companion.php:237 src/localisation.php:43
-#: src/localisation.php:439
+#: bakkbone-florist-companion.php:237 src/localisation.php:41
+#: src/localisation.php:437
 msgid "Business Name"
 msgstr ""
 
-#: bakkbone-florist-companion.php:238 src/localisation.php:48
-#: src/localisation.php:379 src/pdf/pdf-options.php:240
+#: bakkbone-florist-companion.php:238 src/localisation.php:46
+#: src/localisation.php:377 src/pdf/pdf-options.php:239
 msgid "State/Territory"
 msgstr ""
 
-#: bakkbone-florist-companion.php:239 src/ajax.php:256 src/localisation.php:53
-#: src/localisation.php:391 src/pdf/pdf-options.php:232 src/pdf/pdf.php:317
+#: bakkbone-florist-companion.php:239 src/ajax.php:256 src/localisation.php:51
+#: src/localisation.php:389 src/pdf/pdf-options.php:231 src/pdf/pdf.php:315
 msgid "Suburb"
 msgstr ""
 
-#: bakkbone-florist-companion.php:240 src/localisation.php:58
-#: src/localisation.php:403 src/pdf/pdf-options.php:248
+#: bakkbone-florist-companion.php:240 src/localisation.php:56
+#: src/localisation.php:401 src/pdf/pdf-options.php:247
 msgid "Postcode"
 msgstr ""
 
-#: bakkbone-florist-companion.php:241 src/localisation.php:63
-#: src/localisation.php:415 src/petals/cpt.php:933
+#: bakkbone-florist-companion.php:241 src/localisation.php:61
+#: src/localisation.php:413 src/petals/cpt.php:930
 #: src/petals/templates/petals-single.php:325
 msgid "Country"
 msgstr ""
 
-#: bakkbone-florist-companion.php:242 src/ajax.php:257 src/localisation.php:68
-#: src/localisation.php:427 src/options.php:429 src/pdf/pdf-options.php:256
-#: src/pdf/pdf.php:317
+#: bakkbone-florist-companion.php:242 src/ajax.php:257 src/localisation.php:66
+#: src/localisation.php:425 src/options.php:426 src/pdf/pdf-options.php:255
+#: src/pdf/pdf.php:315
 msgid "Phone"
 msgstr ""
 
-#: bakkbone-florist-companion.php:243 src/localisation.php:73
-#: src/localisation.php:451
+#: bakkbone-florist-companion.php:243 src/localisation.php:71
+#: src/localisation.php:449
 msgid "Business/Hospital/Hotel Name"
 msgstr ""
 
-#: bakkbone-florist-companion.php:244 src/localisation.php:78
-#: src/localisation.php:463
+#: bakkbone-florist-companion.php:244 src/localisation.php:76
+#: src/localisation.php:461
 msgid "For hospitals/hotels/etc., please include ward/room information if known"
 msgstr ""
 
-#: bakkbone-florist-companion.php:245 src/localisation.php:83
-#: src/localisation.php:475
+#: bakkbone-florist-companion.php:245 src/localisation.php:81
+#: src/localisation.php:473
 msgid "Anything we need to know about the address?"
 msgstr ""
 
-#: bakkbone-florist-companion.php:246 src/localisation.php:88
-#: src/localisation.php:487
+#: bakkbone-florist-companion.php:246 src/localisation.php:86
+#: src/localisation.php:485
 msgid "eg. gate code, fence, dog, etc."
 msgstr ""
 
-#: bakkbone-florist-companion.php:247 src/localisation.php:93
-#: src/localisation.php:499
+#: bakkbone-florist-companion.php:247 src/localisation.php:91
+#: src/localisation.php:497
 msgid "We'll include this with your gift. Maximum %s characters."
 msgstr ""
 
-#: bakkbone-florist-companion.php:255 src/pdf/pdf-options.php:408
+#: bakkbone-florist-companion.php:255 src/pdf/pdf-options.php:407
 msgid "Tax Invoice"
 msgstr ""
 
-#: bakkbone-florist-companion.php:257 src/pdf/pdf-options.php:434
+#: bakkbone-florist-companion.php:257 src/pdf/pdf-options.php:433
 msgid "Worksheet"
 msgstr ""
 
@@ -336,7 +336,7 @@ msgstr ""
 #: lib/acf/includes/acf-wp-functions.php:63
 #: lib/acf/includes/admin/views/acf-field-group/options.php:175
 #: lib/acf/includes/admin/views/acf-post-type/advanced-settings.php:23
-#: src/petals/cpt.php:1284 src/petals/templates/petals-single.php:329
+#: src/petals/cpt.php:1281 src/petals/templates/petals-single.php:329
 msgid "Comments"
 msgstr ""
 
@@ -589,7 +589,7 @@ msgid ""
 "on our Help Desk will assist with your more in depth, technical challenges."
 msgstr ""
 
-#: lib/acf/includes/admin/admin.php:167 src/petals/cpt.php:1226
+#: lib/acf/includes/admin/admin.php:167 src/petals/cpt.php:1223
 msgid "Information"
 msgstr ""
 
@@ -619,19 +619,19 @@ msgid "is developed and maintained by"
 msgstr ""
 
 #: lib/acf/includes/admin/admin.php:259
-#: lib/acf/includes/admin/views/browse-fields-modal.php:92 src/core.php:143
-#: src/cpt/delivery-suburb.php:29 src/dd/blocks.php:75 src/dd/calendar.php:38
-#: src/dd/catblocks.php:162 src/dd/dd-options.php:87 src/dd/dd-options.php:105
+#: lib/acf/includes/admin/views/browse-fields-modal.php:92 src/core.php:141
+#: src/cpt/delivery-suburb.php:27 src/dd/blocks.php:73 src/dd/calendar.php:36
+#: src/dd/catblocks.php:160 src/dd/dd-options.php:87 src/dd/dd-options.php:105
 #: src/dd/dd-options.php:123 src/dd/dd-options.php:141
-#: src/dd/fees/date-specific.php:41 src/dd/fees/fees-options.php:43
-#: src/dd/sameday.php:126 src/dd/timeslots.php:135 src/localisation.php:137
-#: src/notifier.php:147 src/options.php:86 src/pdf/pdf-options.php:128
-#: src/petals/cpt.php:1463 src/petals/petals-options.php:48
-#: src/pos/phone.php:1300 src/suburbs/suburbs-v1.php:136 src/tools.php:38
+#: src/dd/fees/date-specific.php:39 src/dd/fees/fees-options.php:41
+#: src/dd/sameday.php:126 src/dd/timeslots.php:135 src/localisation.php:135
+#: src/notifier.php:145 src/options.php:83 src/pdf/pdf-options.php:127
+#: src/petals/cpt.php:1460 src/petals/petals-options.php:45
+#: src/pos/phone.php:1298 src/suburbs/suburbs-v1.php:136 src/tools.php:36
 msgid "Documentation"
 msgstr ""
 
-#: lib/acf/includes/admin/admin.php:261 src/core.php:144
+#: lib/acf/includes/admin/admin.php:261 src/core.php:142
 msgid "Support"
 msgstr ""
 
@@ -805,7 +805,7 @@ msgstr ""
 
 #: lib/acf/includes/admin/post-types/admin-field-group.php:164
 #: lib/acf/includes/admin/tools/class-acf-admin-tool-export.php:342
-#: src/core.php:142
+#: src/core.php:140
 msgid "Settings"
 msgstr ""
 
@@ -843,7 +843,7 @@ msgstr ""
 #: lib/acf/includes/admin/views/acf-post-type/advanced-settings.php:62
 #: lib/acf/includes/admin/views/acf-taxonomy/advanced-settings.php:114
 #: lib/acf/includes/admin/views/upgrade/network.php:38
-#: lib/acf/includes/admin/views/upgrade/network.php:49 src/petals/cpt.php:588
+#: lib/acf/includes/admin/views/upgrade/network.php:49 src/petals/cpt.php:585
 #: src/petals/templates/petals-single.php:310
 msgid "Description"
 msgstr ""
@@ -1000,7 +1000,7 @@ msgid "Basic Settings"
 msgstr ""
 
 #: lib/acf/includes/admin/post-types/admin-post-type.php:162
-#: lib/acf/includes/admin/post-types/admin-taxonomy.php:164 src/options.php:168
+#: lib/acf/includes/admin/post-types/admin-taxonomy.php:164 src/options.php:165
 msgid "Advanced Settings"
 msgstr ""
 
@@ -1159,7 +1159,7 @@ msgstr ""
 
 #: lib/acf/includes/admin/post-types/admin-taxonomy.php:130
 #: lib/acf/includes/admin/views/acf-field-group/options.php:182
-#: src/dd/catblocks.php:147
+#: src/dd/catblocks.php:145
 msgid "Categories"
 msgstr ""
 
@@ -1343,7 +1343,7 @@ msgstr ""
 #: lib/acf/includes/admin/views/acf-field-group/options.php:215
 #: lib/acf/includes/admin/views/acf-post-type/advanced-settings.php:78
 #: lib/acf/includes/admin/views/acf-taxonomy/advanced-settings.php:130
-#: src/dd/filter.php:86 src/dd/filter.php:88
+#: src/dd/filter.php:84 src/dd/filter.php:86
 msgid "Active"
 msgstr ""
 
@@ -1472,7 +1472,7 @@ msgstr ""
 
 #: lib/acf/includes/admin/views/acf-field-group/fields.php:53
 #: lib/acf/includes/fields/class-acf-field-taxonomy.php:908
-#: src/pos/phone.php:107
+#: src/pos/phone.php:105
 msgid "Name"
 msgstr ""
 
@@ -1777,7 +1777,7 @@ msgstr ""
 #: lib/acf/includes/admin/views/acf-post-type/advanced-settings.php:89
 #: lib/acf/includes/admin/views/acf-taxonomy/advanced-settings.php:141
 #: lib/acf/includes/fields/class-acf-field-color_picker.php:72
-#: src/dd/filter.php:144
+#: src/dd/filter.php:142
 msgid "Clear"
 msgstr ""
 
@@ -3604,14 +3604,14 @@ msgstr ""
 #: lib/acf/includes/assets.php:350
 #: lib/acf/includes/fields/class-acf-field-true_false.php:83
 #: lib/acf/includes/fields/class-acf-field-true_false.php:171
-#: src/pos/phone.php:124 src/pos/phone.php:320
+#: src/pos/phone.php:122 src/pos/phone.php:318
 msgid "Yes"
 msgstr ""
 
 #: lib/acf/includes/assets.php:351
 #: lib/acf/includes/fields/class-acf-field-true_false.php:86
 #: lib/acf/includes/fields/class-acf-field-true_false.php:187
-#: src/pos/phone.php:124 src/pos/phone.php:320
+#: src/pos/phone.php:122 src/pos/phone.php:318
 msgid "No"
 msgstr ""
 
@@ -3769,8 +3769,8 @@ msgstr ""
 #: lib/acf/includes/fields/class-acf-field-button-group.php:173
 #: lib/acf/includes/fields/class-acf-field-checkbox.php:377
 #: lib/acf/includes/fields/class-acf-field-radio.php:218
-#: lib/acf/includes/fields/class-acf-field-select.php:397 src/notifier.php:90
-#: src/notifier.php:92 src/pdf/pdf.php:117 src/pdf/pdf.php:233
+#: lib/acf/includes/fields/class-acf-field-select.php:397 src/notifier.php:88
+#: src/notifier.php:90 src/pdf/pdf.php:115 src/pdf/pdf.php:231
 msgid "Value"
 msgstr ""
 
@@ -3976,8 +3976,8 @@ msgid ""
 "be customized using the field settings."
 msgstr ""
 
-#: lib/acf/includes/fields/class-acf-field-email.php:25 src/pos/phone.php:115
-#: src/pos/phone.php:116
+#: lib/acf/includes/fields/class-acf-field-email.php:25 src/pos/phone.php:113
+#: src/pos/phone.php:114
 msgid "Email"
 msgstr ""
 
@@ -4102,7 +4102,7 @@ msgstr ""
 #: lib/acf/includes/locations/class-acf-location-user-form.php:71
 #: lib/acf/includes/locations/class-acf-location-user-role.php:78
 #: lib/acf/includes/locations/class-acf-location-widget.php:65
-#: src/dd/filter.php:85 src/dd/filter.php:87
+#: src/dd/filter.php:83 src/dd/filter.php:85
 msgid "All"
 msgstr ""
 
@@ -4318,7 +4318,7 @@ msgstr ""
 #: lib/acf/includes/fields/class-acf-field-message.php:26
 #: lib/acf/includes/fields/class-acf-field-message.php:99
 #: lib/acf/includes/fields/class-acf-field-true_false.php:137
-#: src/options.php:431
+#: src/options.php:428
 msgid "Message"
 msgstr ""
 
@@ -4483,7 +4483,7 @@ msgid "Select Multiple"
 msgstr ""
 
 #: lib/acf/includes/fields/class-acf-field-password.php:25
-#: src/petals/petals-options.php:113
+#: src/petals/petals-options.php:110
 msgid "Password"
 msgstr ""
 
@@ -4850,7 +4850,7 @@ msgid "Text shown when inactive"
 msgstr ""
 
 #: lib/acf/includes/fields/class-acf-field-url.php:25
-#: src/petals/petals-options.php:121
+#: src/petals/petals-options.php:118
 msgid "URL"
 msgstr ""
 
@@ -5396,7 +5396,7 @@ msgid "The action's schedule frequency."
 msgstr ""
 
 #: lib/action-scheduler/classes/ActionScheduler_AdminView.php:246
-#: src/order-status.php:75 src/order-status.php:183
+#: src/order-status.php:72 src/order-status.php:180
 msgid "Scheduled"
 msgstr ""
 
@@ -6080,41 +6080,41 @@ msgstr ""
 msgid "Caught exception while cancelling action: %s"
 msgstr ""
 
-#: src/admin-notices.php:34
+#: src/admin-notices.php:33
 msgid "This feature is deprecated"
 msgstr ""
 
-#: src/admin-notices.php:34 src/admin-notices.php:36
+#: src/admin-notices.php:33 src/admin-notices.php:35
 msgid ""
 "The Delivery Suburbs functionality provided by FloristPress is changing. "
 "%1sClick here%2s to understand what you need to do."
 msgstr ""
 
-#: src/admin-notices.php:34
+#: src/admin-notices.php:33
 msgid ""
 "This page, and all data entered on it, will be permanently deleted when you "
 "update to v4 (once it is available)."
 msgstr ""
 
-#: src/admin-notices.php:36
+#: src/admin-notices.php:35
 msgid "Action Required"
 msgstr ""
 
-#: src/admin-notices.php:36
+#: src/admin-notices.php:35
 msgid ""
 "This message will automatically disappear either when you delete all "
 "suburbs listed under the previous method, or when you update to v4 (once it "
 "is available)."
 msgstr ""
 
-#: src/admin-notices.php:65
+#: src/admin-notices.php:64
 #. translators: %1s: conflicting plugin name. %2s: this plugin name.
 msgid ""
 "<strong>%1s</strong> has not been tested with your current version of %2s – "
 "please ask the developer to update their plugin."
 msgstr ""
 
-#: src/admin-notices.php:69
+#: src/admin-notices.php:68
 #. translators: %1s: conflicting plugin name. %2s: Required version of this
 #. plugin. %3s: this plugin name.
 msgid ""
@@ -6122,7 +6122,7 @@ msgid ""
 "%3s – please update %3s."
 msgstr ""
 
-#: src/admin-notices.php:82
+#: src/admin-notices.php:81
 #. translators: %1s: conflicting plugin name. %2s: this plugin name. %3s:
 #. opening link tag. %4s: closing link tag.
 msgid ""
@@ -6131,7 +6131,7 @@ msgid ""
 "feature %3shere%4s."
 msgstr ""
 
-#: src/admin-notices.php:92
+#: src/admin-notices.php:91
 #. translators: %1s: subscription link. %2s: dashboard link. %3s: Canny roadmap
 #. link.
 msgid ""
@@ -6142,17 +6142,17 @@ msgid ""
 "target=\"_blank\">Canny</a>."
 msgstr ""
 
-#: src/admin-notices.php:99
+#: src/admin-notices.php:98
 msgid ""
 "<strong>%s</strong> requires WooCommerce to be installed and activated on "
 "your site."
 msgstr ""
 
-#: src/admin-notices.php:105
+#: src/admin-notices.php:104
 msgid "Today's Deliveries"
 msgstr ""
 
-#: src/admin-notices.php:106
+#: src/admin-notices.php:105
 msgid "Recent Orders"
 msgstr ""
 
@@ -6160,25 +6160,25 @@ msgstr ""
 msgid "FloristPress"
 msgstr ""
 
-#: src/admin-notices.php:127
+#: src/admin-notices.php:126
 msgid "No deliveries today..."
 msgstr ""
 
-#: src/admin-notices.php:147 src/admin-notices.php:188 src/dd/calendar.php:220
-#: src/dd/calendar.php:226 src/dd/calendar.php:233 src/dd/calendar.php:235
-#: src/pdf/pdf.php:202 src/pdf/pdf.php:313
+#: src/admin-notices.php:146 src/admin-notices.php:187 src/dd/calendar.php:218
+#: src/dd/calendar.php:224 src/dd/calendar.php:231 src/dd/calendar.php:233
+#: src/pdf/pdf.php:200 src/pdf/pdf.php:311
 msgid "Pickup"
 msgstr ""
 
-#: src/admin-notices.php:164
+#: src/admin-notices.php:163
 msgid "No orders yet..."
 msgstr ""
 
-#: src/admin-notices.php:205
+#: src/admin-notices.php:204
 msgid "News and updates from the FloristPress team"
 msgstr ""
 
-#: src/admin-notices.php:211
+#: src/admin-notices.php:210
 msgid ""
 "You can also keep up to date and request features/integrations on <a "
 "href=\"%s\" target=\"_blank\">Canny</a>."
@@ -6198,7 +6198,7 @@ msgstr ""
 msgid "calendar"
 msgstr ""
 
-#: src/ajax.php:215 src/ajax.php:238 src/pdf/pdf.php:317
+#: src/ajax.php:215 src/ajax.php:238 src/pdf/pdf.php:315
 msgid "to"
 msgstr ""
 
@@ -6210,25 +6210,25 @@ msgstr ""
 msgid "Order ID"
 msgstr ""
 
-#: src/ajax.php:252 src/pdf/pdf.php:317
+#: src/ajax.php:252 src/pdf/pdf.php:315
 msgid "Items"
 msgstr ""
 
-#: src/ajax.php:253 src/pdf/pdf.php:117 src/pdf/pdf.php:233 src/pdf/pdf.php:317
-#: src/pos/phone.php:301
+#: src/ajax.php:253 src/pdf/pdf.php:115 src/pdf/pdf.php:231 src/pdf/pdf.php:315
+#: src/pos/phone.php:299
 msgid "Total"
 msgstr ""
 
-#: src/ajax.php:254 src/dd/dd.php:859 src/pdf/pdf.php:229 src/pdf/pdf.php:317
-#: src/petals/cpt.php:775 src/pos/phone.php:177
+#: src/ajax.php:254 src/dd/dd.php:857 src/pdf/pdf.php:227 src/pdf/pdf.php:315
+#: src/petals/cpt.php:772 src/pos/phone.php:175
 msgid "Recipient"
 msgstr ""
 
-#: src/ajax.php:255 src/pdf/pdf.php:317
+#: src/ajax.php:255 src/pdf/pdf.php:315
 msgid "Address"
 msgstr ""
 
-#: src/ajax.php:258 src/ajax.php:1102 src/pdf/pdf.php:317
+#: src/ajax.php:258 src/ajax.php:1102 src/pdf/pdf.php:315
 msgid "Notes"
 msgstr ""
 
@@ -6240,17 +6240,17 @@ msgstr ""
 msgid "Response from Petals:"
 msgstr ""
 
-#: src/ajax.php:543 src/petals/cpt.php:502
+#: src/ajax.php:543 src/petals/cpt.php:499
 msgid "<strong>Order sent.<br>Response from Petals: </strong><br>"
 msgstr ""
 
-#: src/ajax.php:548 src/ajax.php:565 src/ajax.php:853 src/petals/cpt.php:507
-#: src/petals/cpt.php:525
+#: src/ajax.php:548 src/ajax.php:565 src/ajax.php:853 src/petals/cpt.php:504
+#: src/petals/cpt.php:522
 msgid "Petals API"
 msgstr ""
 
-#: src/ajax.php:550 src/ajax.php:567 src/ajax.php:855 src/petals/cpt.php:509
-#: src/petals/cpt.php:527
+#: src/ajax.php:550 src/ajax.php:567 src/ajax.php:855 src/petals/cpt.php:506
+#: src/petals/cpt.php:524
 msgid "Petals Exchange"
 msgstr ""
 
@@ -6274,7 +6274,7 @@ msgstr ""
 msgid "<strong>Order rejection failed.<br>Response from Petals: </strong><br>"
 msgstr ""
 
-#: src/ajax.php:784 src/petals/cpt.php:628
+#: src/ajax.php:784 src/petals/cpt.php:625
 #: src/petals/templates/petals-single.php:312
 msgid "Makeup"
 msgstr ""
@@ -6283,7 +6283,7 @@ msgstr ""
 msgid "Delivery Included"
 msgstr ""
 
-#: src/ajax.php:818 src/ajax.php:843 src/petals/cpt.php:520
+#: src/ajax.php:818 src/ajax.php:843 src/petals/cpt.php:517
 msgid "<strong>Full transmission from Petals: </strong><br>"
 msgstr ""
 
@@ -6303,291 +6303,291 @@ msgstr ""
 msgid "Paid by phone"
 msgstr ""
 
-#: src/core.php:57 src/pdf/pdf.php:204 src/petals/cpt.php:719
-#: src/pickup.php:140 src/pos/phone.php:165 src/suburbs/method-settings.php:12
+#: src/core.php:55 src/pdf/pdf.php:202 src/petals/cpt.php:716
+#: src/pickup.php:138 src/pos/phone.php:163 src/suburbs/method-settings.php:12
 msgid "Delivery"
 msgstr ""
 
-#: src/core.php:58
+#: src/core.php:56
 msgid "delivery"
 msgstr ""
 
-#: src/core.php:81
+#: src/core.php:79
 #. translators: %s: Current user's display name.
 msgid "Good morning, %s"
 msgstr ""
 
-#: src/core.php:84
+#: src/core.php:82
 #. translators: %s: Current user's display name.
 msgid "Good afternoon, %s"
 msgstr ""
 
-#: src/core.php:87
+#: src/core.php:85
 #. translators: %s: Current user's display name.
 msgid "Good evening, %s"
 msgstr ""
 
-#: src/core.php:89
+#: src/core.php:87
 msgid "Hi, %s"
 msgstr ""
 
-#: src/core.php:125
+#: src/core.php:123
 msgid "Created with %s"
 msgstr ""
 
-#: src/core.php:131
+#: src/core.php:129
 msgid ""
 "Thank you for creating with <a href=\"%1s\" target=\"_blank\">%2s</a> and "
 "<a href=\"%3s\" target=\"_blank\">%4s</a>."
 msgstr ""
 
-#: src/core.php:131
+#: src/core.php:129
 msgid "WordPress"
 msgstr ""
 
-#: src/core.php:180
+#: src/core.php:178
 msgid "Address nickname"
 msgstr ""
 
-#: src/core.php:181
+#: src/core.php:179
 msgid ""
 "Send to someone regularly? An address nickname will help you find this "
 "address easily next time. Example: Jessica's Work"
 msgstr ""
 
-#: src/core.php:220 src/core.php:245 src/core.php:298 src/core.php:306
-#: src/pos/phone.php:223
+#: src/core.php:218 src/core.php:243 src/core.php:296 src/core.php:304
+#: src/pos/phone.php:221
 msgid "Delivery Notes"
 msgstr ""
 
-#: src/core.php:224 src/core.php:235 src/core.php:260 src/core.php:266
-#: src/core.php:329 src/pdf/pdf.php:233 src/petals/cpt.php:1244
-#: src/petals/templates/petals-single.php:327 src/pos/phone.php:290
+#: src/core.php:222 src/core.php:233 src/core.php:258 src/core.php:264
+#: src/core.php:327 src/pdf/pdf.php:231 src/petals/cpt.php:1241
+#: src/petals/templates/petals-single.php:327 src/pos/phone.php:288
 msgid "Card Message"
 msgstr ""
 
-#: src/core.php:408
+#: src/core.php:406
 msgid "Your email addresses do not match"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:37 src/dd/blocks.php:82 src/dd/calendar.php:45
-#: src/dd/catblocks.php:169 src/dd/dd-options.php:94 src/dd/dd-options.php:112
+#: src/cpt/delivery-suburb.php:35 src/dd/blocks.php:80 src/dd/calendar.php:43
+#: src/dd/catblocks.php:167 src/dd/dd-options.php:94 src/dd/dd-options.php:112
 #: src/dd/dd-options.php:130 src/dd/dd-options.php:148
-#: src/dd/fees/date-specific.php:48 src/dd/fees/fees-options.php:50
-#: src/dd/sameday.php:133 src/dd/timeslots.php:142 src/localisation.php:144
-#: src/notifier.php:156 src/options.php:93 src/pdf/pdf-options.php:135
-#: src/petals/cpt.php:1471 src/petals/petals-options.php:55
-#: src/pos/phone.php:1307 src/suburbs/suburbs-v1.php:143 src/tools.php:45
+#: src/dd/fees/date-specific.php:46 src/dd/fees/fees-options.php:48
+#: src/dd/sameday.php:133 src/dd/timeslots.php:142 src/localisation.php:142
+#: src/notifier.php:154 src/options.php:90 src/pdf/pdf-options.php:134
+#: src/petals/cpt.php:1468 src/petals/petals-options.php:52
+#: src/pos/phone.php:1305 src/suburbs/suburbs-v1.php:143 src/tools.php:43
 msgid "View documentation for this page at: "
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:50
+#: src/cpt/delivery-suburb.php:48
 msgid "Add New Suburb"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:51
+#: src/cpt/delivery-suburb.php:49
 msgid "New Suburb"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:52
+#: src/cpt/delivery-suburb.php:50
 msgid "Edit Suburb"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:53
+#: src/cpt/delivery-suburb.php:51
 msgid "View Suburb"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:54
+#: src/cpt/delivery-suburb.php:52
 msgid "All Suburbs"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:55
+#: src/cpt/delivery-suburb.php:53
 msgid "Search Suburbs"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:56
+#: src/cpt/delivery-suburb.php:54
 msgid "Parent Suburbs:"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:57 src/petals/cpt.php:1490
+#: src/cpt/delivery-suburb.php:55 src/petals/cpt.php:1487
 msgid "Not found"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:58 src/petals/cpt.php:1491
+#: src/cpt/delivery-suburb.php:56 src/petals/cpt.php:1488
 msgid "Not found in trash"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:59
+#: src/cpt/delivery-suburb.php:57
 msgid "Suburb Attributes"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:60
+#: src/cpt/delivery-suburb.php:58
 msgid "Insert into suburb"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:61
+#: src/cpt/delivery-suburb.php:59
 msgid "Uploaded to this suburb"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:62
+#: src/cpt/delivery-suburb.php:60
 msgid "Filter suburbs list"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:63
+#: src/cpt/delivery-suburb.php:61
 msgid "Suburbs list navigation"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:64
+#: src/cpt/delivery-suburb.php:62
 msgid "Suburbs list"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:65
+#: src/cpt/delivery-suburb.php:63
 msgid "Suburb published."
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:66
+#: src/cpt/delivery-suburb.php:64
 msgid "Suburb published privately."
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:67
+#: src/cpt/delivery-suburb.php:65
 msgid "Suburb reverted to draft."
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:68
+#: src/cpt/delivery-suburb.php:66
 msgid "Suburb scheduled."
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:69
+#: src/cpt/delivery-suburb.php:67
 msgid "Suburb updated."
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:70
+#: src/cpt/delivery-suburb.php:68
 msgid "Suburb link"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:71
+#: src/cpt/delivery-suburb.php:69
 msgid "A link to a Delivery Suburb."
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:77 src/suburbs/suburbs-v1.php:120
+#: src/cpt/delivery-suburb.php:75 src/suburbs/suburbs-v1.php:120
 #: src/suburbs/suburbs-v1.php:121 src/suburbs/suburbs-v1.php:174
 msgid "Delivery Suburbs"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:84 src/cpt/delivery-suburb.php:88
+#: src/cpt/delivery-suburb.php:82 src/cpt/delivery-suburb.php:86
 msgid "suburb"
 msgstr ""
 
-#: src/cpt/delivery-suburb.php:103
+#: src/cpt/delivery-suburb.php:101
 msgid "Delivery Suburbs base"
 msgstr ""
 
-#: src/dd/blocks.php:59
+#: src/dd/blocks.php:57
 msgid "Blocked Delivery Dates"
 msgstr ""
 
-#: src/dd/blocks.php:60
+#: src/dd/blocks.php:58
 msgid "Blocked Dates"
 msgstr ""
 
-#: src/dd/blocks.php:96 src/dd/fees/date-specific.php:80
+#: src/dd/blocks.php:94 src/dd/fees/date-specific.php:78
 msgid "Date"
 msgstr ""
 
-#: src/dd/blocks.php:97
+#: src/dd/blocks.php:95
 msgid "Unblock Date"
 msgstr ""
 
-#: src/dd/blocks.php:102
+#: src/dd/blocks.php:100
 msgid "Delivery Date Blocks"
 msgstr ""
 
-#: src/dd/blocks.php:103
+#: src/dd/blocks.php:101
 msgid "Click a block on the calendar to delete it."
 msgstr ""
 
-#: src/dd/blocks.php:107
+#: src/dd/blocks.php:105
 msgid "Add Closure Date"
 msgstr ""
 
-#: src/dd/blocks.php:111
+#: src/dd/blocks.php:109
 msgid "Add Date as Closed"
 msgstr ""
 
-#: src/dd/blocks.php:116
+#: src/dd/blocks.php:114
 msgid "Add Fully Booked Date"
 msgstr ""
 
-#: src/dd/blocks.php:120
+#: src/dd/blocks.php:118
 msgid "Add Date as Fully Booked"
 msgstr ""
 
-#: src/dd/blocks.php:130 src/dd/catblocks.php:325
+#: src/dd/blocks.php:128 src/dd/catblocks.php:323
 msgid "Remove block for this date?"
 msgstr ""
 
-#: src/dd/blocks.php:158 src/dd/calendar.php:172 src/dd/catblocks.php:275
-#: src/dd/catblocks.php:279 src/dd/catblocks.php:283 src/dd/catblocks.php:287
-#: src/dd/catblocks.php:291 src/dd/catblocks.php:295 src/dd/catblocks.php:299
-#: src/dd/catblocks.php:353 src/dd/dd-options.php:1361
+#: src/dd/blocks.php:156 src/dd/calendar.php:170 src/dd/catblocks.php:273
+#: src/dd/catblocks.php:277 src/dd/catblocks.php:281 src/dd/catblocks.php:285
+#: src/dd/catblocks.php:289 src/dd/catblocks.php:293 src/dd/catblocks.php:297
+#: src/dd/catblocks.php:351 src/dd/dd-options.php:1361
 #: src/dd/dd-options.php:1365 src/dd/dd-options.php:1369
 #: src/dd/dd-options.php:1373 src/dd/dd-options.php:1377
-#: src/dd/dd-options.php:1381 src/dd/dd-options.php:1385 src/dd/dd.php:190
-#: src/dd/dd.php:206 src/dd/dd.php:222 src/dd/dd.php:238 src/dd/dd.php:254
-#: src/dd/dd.php:270 src/dd/dd.php:286 src/dd/dd.php:304 src/dd/dd.php:414
-#: src/dd/dd.php:430 src/dd/dd.php:446 src/dd/dd.php:462 src/dd/dd.php:478
-#: src/dd/dd.php:494 src/dd/dd.php:510 src/dd/dd.php:528
-#: src/dd/fees/date-specific.php:65 src/pos/phone.php:535 src/pos/phone.php:759
+#: src/dd/dd-options.php:1381 src/dd/dd-options.php:1385 src/dd/dd.php:188
+#: src/dd/dd.php:204 src/dd/dd.php:220 src/dd/dd.php:236 src/dd/dd.php:252
+#: src/dd/dd.php:268 src/dd/dd.php:284 src/dd/dd.php:302 src/dd/dd.php:412
+#: src/dd/dd.php:428 src/dd/dd.php:444 src/dd/dd.php:460 src/dd/dd.php:476
+#: src/dd/dd.php:492 src/dd/dd.php:508 src/dd/dd.php:526
+#: src/dd/fees/date-specific.php:63 src/pos/phone.php:533 src/pos/phone.php:757
 msgid "Closed"
 msgstr ""
 
-#: src/dd/blocks.php:159 src/dd/calendar.php:173 src/dd/catblocks.php:354
-#: src/dd/fees/date-specific.php:66
+#: src/dd/blocks.php:157 src/dd/calendar.php:171 src/dd/catblocks.php:352
+#: src/dd/fees/date-specific.php:64
 msgid "Closed (Global)"
 msgstr ""
 
-#: src/dd/blocks.php:160 src/dd/calendar.php:174 src/dd/catblocks.php:355
-#: src/dd/dd.php:310 src/dd/dd.php:534 src/dd/fees/date-specific.php:67
-#: src/pos/phone.php:541 src/pos/phone.php:765
+#: src/dd/blocks.php:158 src/dd/calendar.php:172 src/dd/catblocks.php:353
+#: src/dd/dd.php:308 src/dd/dd.php:532 src/dd/fees/date-specific.php:65
+#: src/pos/phone.php:539 src/pos/phone.php:763
 msgid "Fully Booked"
 msgstr ""
 
-#: src/dd/calendar.php:21 src/dd/calendar.php:22 src/dd/calendar.php:59
+#: src/dd/calendar.php:19 src/dd/calendar.php:20 src/dd/calendar.php:57
 msgid "Delivery Calendar"
 msgstr ""
 
-#: src/dd/calendar.php:89
+#: src/dd/calendar.php:87
 msgid "CSV"
 msgstr ""
 
-#: src/dd/calendar.php:101
+#: src/dd/calendar.php:99
 msgid "PDF"
 msgstr ""
 
-#: src/dd/calendar.php:144
+#: src/dd/calendar.php:142
 msgid "Print %s"
 msgstr ""
 
-#: src/dd/calendar.php:149 src/notifier.php:90 src/notifier.php:92
-#: src/petals/cpt.php:1486
+#: src/dd/calendar.php:147 src/notifier.php:88 src/notifier.php:90
+#: src/petals/cpt.php:1483
 msgid "View Order"
 msgstr ""
 
-#: src/dd/catblocks.php:146 src/dd/catblocks.php:201
+#: src/dd/catblocks.php:144 src/dd/catblocks.php:199
 msgid "Product Category Blocks"
 msgstr ""
 
-#: src/dd/catblocks.php:202
+#: src/dd/catblocks.php:200
 msgid ""
 "Dates entered below will be unavailable for the relevant product category. "
 "Click a block on the calendar to delete it."
 msgstr ""
 
-#: src/dd/catblocks.php:222
+#: src/dd/catblocks.php:220
 msgid "Date: "
 msgstr ""
 
-#: src/dd/catblocks.php:223
+#: src/dd/catblocks.php:221
 msgid "Add Date"
 msgstr ""
 
@@ -6595,7 +6595,7 @@ msgstr ""
 msgid "Delivery Dates"
 msgstr ""
 
-#: src/dd/dd-options.php:41 src/options.php:71
+#: src/dd/dd-options.php:41 src/options.php:68
 msgid "General Options"
 msgstr ""
 
@@ -6625,8 +6625,8 @@ msgstr ""
 
 #: src/dd/dd-options.php:163 src/dd/dd-options.php:181
 #: src/dd/dd-options.php:199 src/dd/dd-options.php:217
-#: src/dd/fees/fees-options.php:66 src/localisation.php:159
-#: src/pdf/pdf-options.php:151
+#: src/dd/fees/fees-options.php:64 src/localisation.php:157
+#: src/pdf/pdf-options.php:150
 msgid "Save All Changes"
 msgstr ""
 
@@ -6651,37 +6651,37 @@ msgid "Pre-ordering"
 msgstr ""
 
 #: src/dd/dd-options.php:294 src/dd/dd-options.php:301
-#: src/dd/dd-options.php:308 src/dd/fees/fees-options.php:126
+#: src/dd/dd-options.php:308 src/dd/fees/fees-options.php:124
 msgid "Monday"
 msgstr ""
 
 #: src/dd/dd-options.php:317 src/dd/dd-options.php:324
-#: src/dd/dd-options.php:331 src/dd/fees/fees-options.php:135
+#: src/dd/dd-options.php:331 src/dd/fees/fees-options.php:133
 msgid "Tuesday"
 msgstr ""
 
 #: src/dd/dd-options.php:340 src/dd/dd-options.php:347
-#: src/dd/dd-options.php:354 src/dd/fees/fees-options.php:144
+#: src/dd/dd-options.php:354 src/dd/fees/fees-options.php:142
 msgid "Wednesday"
 msgstr ""
 
 #: src/dd/dd-options.php:363 src/dd/dd-options.php:370
-#: src/dd/dd-options.php:377 src/dd/fees/fees-options.php:153
+#: src/dd/dd-options.php:377 src/dd/fees/fees-options.php:151
 msgid "Thursday"
 msgstr ""
 
 #: src/dd/dd-options.php:386 src/dd/dd-options.php:393
-#: src/dd/dd-options.php:400 src/dd/fees/fees-options.php:162
+#: src/dd/dd-options.php:400 src/dd/fees/fees-options.php:160
 msgid "Friday"
 msgstr ""
 
 #: src/dd/dd-options.php:409 src/dd/dd-options.php:416
-#: src/dd/dd-options.php:423 src/dd/fees/fees-options.php:171
+#: src/dd/dd-options.php:423 src/dd/fees/fees-options.php:169
 msgid "Saturday"
 msgstr ""
 
 #: src/dd/dd-options.php:432 src/dd/dd-options.php:439
-#: src/dd/dd-options.php:446 src/dd/fees/fees-options.php:180
+#: src/dd/dd-options.php:446 src/dd/fees/fees-options.php:178
 msgid "Sunday"
 msgstr ""
 
@@ -6758,7 +6758,7 @@ msgstr ""
 msgid "Deliver on Sundays"
 msgstr ""
 
-#: src/dd/dd-options.php:1296 src/dd/dd.php:561 src/pos/phone.php:791
+#: src/dd/dd-options.php:1296 src/dd/dd.php:559 src/pos/phone.php:789
 msgid "Select a timeslot..."
 msgstr ""
 
@@ -6768,137 +6768,137 @@ msgid ""
 "delivery method changed."
 msgstr ""
 
-#: src/dd/dd.php:31
+#: src/dd/dd.php:29
 msgid "Delivery details"
 msgstr ""
 
-#: src/dd/dd.php:35
+#: src/dd/dd.php:33
 msgid "Delivery Recipient"
 msgstr ""
 
-#: src/dd/dd.php:37
+#: src/dd/dd.php:35
 msgid "%s is a required field."
 msgstr ""
 
-#: src/dd/dd.php:97
+#: src/dd/dd.php:95
 msgid "We'll schedule your order for: "
 msgstr ""
 
-#: src/dd/dd.php:200 src/dd/dd.php:216 src/dd/dd.php:232 src/dd/dd.php:248
-#: src/dd/dd.php:264 src/dd/dd.php:280 src/dd/dd.php:296 src/dd/dd.php:316
-#: src/dd/dd.php:424 src/dd/dd.php:440 src/dd/dd.php:456 src/dd/dd.php:472
-#: src/dd/dd.php:488 src/dd/dd.php:504 src/dd/dd.php:520 src/dd/dd.php:540
-#: src/pos/phone.php:431 src/pos/phone.php:447 src/pos/phone.php:463
-#: src/pos/phone.php:479 src/pos/phone.php:495 src/pos/phone.php:511
-#: src/pos/phone.php:527 src/pos/phone.php:547 src/pos/phone.php:655
-#: src/pos/phone.php:671 src/pos/phone.php:687 src/pos/phone.php:703
-#: src/pos/phone.php:719 src/pos/phone.php:735 src/pos/phone.php:751
-#: src/pos/phone.php:771
+#: src/dd/dd.php:198 src/dd/dd.php:214 src/dd/dd.php:230 src/dd/dd.php:246
+#: src/dd/dd.php:262 src/dd/dd.php:278 src/dd/dd.php:294 src/dd/dd.php:314
+#: src/dd/dd.php:422 src/dd/dd.php:438 src/dd/dd.php:454 src/dd/dd.php:470
+#: src/dd/dd.php:486 src/dd/dd.php:502 src/dd/dd.php:518 src/dd/dd.php:538
+#: src/pos/phone.php:429 src/pos/phone.php:445 src/pos/phone.php:461
+#: src/pos/phone.php:477 src/pos/phone.php:493 src/pos/phone.php:509
+#: src/pos/phone.php:525 src/pos/phone.php:545 src/pos/phone.php:653
+#: src/pos/phone.php:669 src/pos/phone.php:685 src/pos/phone.php:701
+#: src/pos/phone.php:717 src/pos/phone.php:733 src/pos/phone.php:749
+#: src/pos/phone.php:769
 msgid "Unavailable"
 msgstr ""
 
-#: src/dd/dd.php:322 src/dd/dd.php:327 src/dd/dd.php:546 src/dd/dd.php:551
-#: src/pos/phone.php:553 src/pos/phone.php:558 src/pos/phone.php:777
-#: src/pos/phone.php:782
+#: src/dd/dd.php:320 src/dd/dd.php:325 src/dd/dd.php:544 src/dd/dd.php:549
+#: src/pos/phone.php:551 src/pos/phone.php:556 src/pos/phone.php:775
+#: src/pos/phone.php:780
 msgid "Same Day Delivery Cutoff Passed"
 msgstr ""
 
-#: src/dd/dd.php:564
+#: src/dd/dd.php:562
 msgid "Timeslot: "
 msgstr ""
 
-#: src/dd/dd.php:697 src/dd/dd.php:728 src/pos/phone.php:286
+#: src/dd/dd.php:695 src/dd/dd.php:726 src/pos/phone.php:284
 msgid "Timeslot"
 msgstr ""
 
-#: src/dd/dd.php:744
+#: src/dd/dd.php:742
 msgid "Please select a valid <strong>%s</strong> via the datepicker."
 msgstr ""
 
-#: src/dd/dd.php:745
+#: src/dd/dd.php:743
 msgid "Please select a valid <strong>timeslot</strong>."
 msgstr ""
 
-#: src/dd/dd.php:858 src/pdf/pdf.php:228 src/pos/phone.php:83
-#: src/pos/phone.php:91
+#: src/dd/dd.php:856 src/pdf/pdf.php:226 src/pos/phone.php:81
+#: src/pos/phone.php:89
 msgid "Customer"
 msgstr ""
 
-#: src/dd/fees/date-specific.php:25 src/dd/fees/date-specific.php:72
+#: src/dd/fees/date-specific.php:23 src/dd/fees/date-specific.php:70
 msgid "Date-Specific Fees"
 msgstr ""
 
-#: src/dd/fees/date-specific.php:26
+#: src/dd/fees/date-specific.php:24
 msgid "Date-Specific"
 msgstr ""
 
-#: src/dd/fees/date-specific.php:73
+#: src/dd/fees/date-specific.php:71
 msgid "Click a fee on the calendar to delete it."
 msgstr ""
 
-#: src/dd/fees/date-specific.php:77 src/dd/fees/date-specific.php:83
+#: src/dd/fees/date-specific.php:75 src/dd/fees/date-specific.php:81
 msgid "Add Fee"
 msgstr ""
 
-#: src/dd/fees/date-specific.php:82
+#: src/dd/fees/date-specific.php:80
 msgid "Fee Title"
 msgstr ""
 
-#: src/dd/fees/date-specific.php:93
+#: src/dd/fees/date-specific.php:91
 msgid "Remove fee for this date?"
 msgstr ""
 
-#: src/dd/fees/date-specific.php:274
+#: src/dd/fees/date-specific.php:272
 msgid "Fee Applied"
 msgstr ""
 
-#: src/dd/fees/fees-options.php:27
+#: src/dd/fees/fees-options.php:25
 msgid "Additional Fees"
 msgstr ""
 
-#: src/dd/fees/fees-options.php:28
+#: src/dd/fees/fees-options.php:26
 msgid "Fees"
 msgstr ""
 
-#: src/dd/fees/fees-options.php:61
+#: src/dd/fees/fees-options.php:59
 msgid "Delivery Date Fees"
 msgstr ""
 
-#: src/dd/fees/fees-options.php:89
+#: src/dd/fees/fees-options.php:87
 msgid "Taxable Status"
 msgstr ""
 
-#: src/dd/fees/fees-options.php:96 src/dd/fees/fees-options.php:110
+#: src/dd/fees/fees-options.php:94 src/dd/fees/fees-options.php:108
 msgid "Weekday Fees"
 msgstr ""
 
-#: src/dd/fees/fees-options.php:103
+#: src/dd/fees/fees-options.php:101
 msgid "Timeslot Fees"
 msgstr ""
 
-#: src/dd/fees/fees-options.php:117
+#: src/dd/fees/fees-options.php:115
 msgid "Date Fees"
 msgstr ""
 
-#: src/dd/fees/fees-options.php:249
+#: src/dd/fees/fees-options.php:247
 msgid "Timeslot Fees are managed on the Timeslots settings page."
 msgstr ""
 
-#: src/dd/fees/fees-options.php:255
+#: src/dd/fees/fees-options.php:253
 msgid ""
 "Optionally set an additional fee for delivery on specific weekdays. Leave a "
 "row blank to not apply a fee."
 msgstr ""
 
-#: src/dd/fees/fees-options.php:269
+#: src/dd/fees/fees-options.php:267
 msgid "Weekday Fees are taxable"
 msgstr ""
 
-#: src/dd/fees/fees-options.php:283
+#: src/dd/fees/fees-options.php:281
 msgid "Timeslot Fees are taxable"
 msgstr ""
 
-#: src/dd/fees/fees-options.php:297
+#: src/dd/fees/fees-options.php:295
 msgid "Date-Specific Fees are taxable"
 msgstr ""
 
@@ -7093,113 +7093,113 @@ msgid "You can manage this order from your website's dashboard."
 msgstr ""
 
 #: src/emails/emails/class-wc-draft-phone-order.php:148
-#: src/petals/emails/class-wc-petals-inbound.php:138
-#: src/petals/emails/class-wc-petals-message.php:136
-#: src/petals/emails/class-wc-petals-new.php:146
-#: src/petals/emails/class-wc-petals-note.php:148
-#: src/petals/emails/class-wc-petals-outcome.php:136
+#: src/petals/emails/class-wc-petals-inbound.php:136
+#: src/petals/emails/class-wc-petals-message.php:134
+#: src/petals/emails/class-wc-petals-new.php:144
+#: src/petals/emails/class-wc-petals-note.php:146
+#: src/petals/emails/class-wc-petals-outcome.php:134
 #. translators: %s: list of placeholders
 msgid "Available placeholders: %s"
 msgstr ""
 
 #: src/emails/emails/class-wc-draft-phone-order.php:151
+#: src/petals/emails/class-wc-petals-inbound.php:139
+#: src/petals/emails/class-wc-petals-message.php:137
+#: src/petals/emails/class-wc-petals-new.php:147
+#: src/petals/emails/class-wc-petals-note.php:149
+#: src/petals/emails/class-wc-petals-outcome.php:137
+msgid "Enable/Disable"
+msgstr ""
+
+#: src/emails/emails/class-wc-draft-phone-order.php:153
 #: src/petals/emails/class-wc-petals-inbound.php:141
 #: src/petals/emails/class-wc-petals-message.php:139
 #: src/petals/emails/class-wc-petals-new.php:149
 #: src/petals/emails/class-wc-petals-note.php:151
 #: src/petals/emails/class-wc-petals-outcome.php:139
-msgid "Enable/Disable"
-msgstr ""
-
-#: src/emails/emails/class-wc-draft-phone-order.php:153
-#: src/petals/emails/class-wc-petals-inbound.php:143
-#: src/petals/emails/class-wc-petals-message.php:141
-#: src/petals/emails/class-wc-petals-new.php:151
-#: src/petals/emails/class-wc-petals-note.php:153
-#: src/petals/emails/class-wc-petals-outcome.php:141
 msgid "Enable this email notification"
 msgstr ""
 
 #: src/emails/emails/class-wc-draft-phone-order.php:157
-#: src/petals/emails/class-wc-petals-inbound.php:147
-#: src/petals/emails/class-wc-petals-message.php:145
-#: src/petals/emails/class-wc-petals-new.php:155
-#: src/petals/emails/class-wc-petals-note.php:157
-#: src/petals/emails/class-wc-petals-outcome.php:145
+#: src/petals/emails/class-wc-petals-inbound.php:145
+#: src/petals/emails/class-wc-petals-message.php:143
+#: src/petals/emails/class-wc-petals-new.php:153
+#: src/petals/emails/class-wc-petals-note.php:155
+#: src/petals/emails/class-wc-petals-outcome.php:143
 msgid "Recipient(s)"
 msgstr ""
 
 #: src/emails/emails/class-wc-draft-phone-order.php:160
-#: src/petals/emails/class-wc-petals-inbound.php:150
-#: src/petals/emails/class-wc-petals-message.php:148
-#: src/petals/emails/class-wc-petals-new.php:158
-#: src/petals/emails/class-wc-petals-note.php:160
-#: src/petals/emails/class-wc-petals-outcome.php:148
+#: src/petals/emails/class-wc-petals-inbound.php:148
+#: src/petals/emails/class-wc-petals-message.php:146
+#: src/petals/emails/class-wc-petals-new.php:156
+#: src/petals/emails/class-wc-petals-note.php:158
+#: src/petals/emails/class-wc-petals-outcome.php:146
 #. translators: %s: WP admin email
 msgid "Enter recipients (comma separated) for this email. Defaults to %s."
 msgstr ""
 
 #: src/emails/emails/class-wc-draft-phone-order.php:166
-#: src/petals/emails/class-wc-petals-inbound.php:156
-#: src/petals/emails/class-wc-petals-message.php:154
-#: src/petals/emails/class-wc-petals-new.php:164
-#: src/petals/emails/class-wc-petals-note.php:166
-#: src/petals/emails/class-wc-petals-outcome.php:154
+#: src/petals/emails/class-wc-petals-inbound.php:154
+#: src/petals/emails/class-wc-petals-message.php:152
+#: src/petals/emails/class-wc-petals-new.php:162
+#: src/petals/emails/class-wc-petals-note.php:164
+#: src/petals/emails/class-wc-petals-outcome.php:152
 msgid "Subject"
 msgstr ""
 
 #: src/emails/emails/class-wc-draft-phone-order.php:174
-#: src/petals/emails/class-wc-petals-inbound.php:164
-#: src/petals/emails/class-wc-petals-message.php:162
-#: src/petals/emails/class-wc-petals-new.php:172
-#: src/petals/emails/class-wc-petals-note.php:174
-#: src/petals/emails/class-wc-petals-outcome.php:162
+#: src/petals/emails/class-wc-petals-inbound.php:162
+#: src/petals/emails/class-wc-petals-message.php:160
+#: src/petals/emails/class-wc-petals-new.php:170
+#: src/petals/emails/class-wc-petals-note.php:172
+#: src/petals/emails/class-wc-petals-outcome.php:160
 msgid "Email heading"
 msgstr ""
 
 #: src/emails/emails/class-wc-draft-phone-order.php:182
-#: src/petals/emails/class-wc-petals-inbound.php:172
-#: src/petals/emails/class-wc-petals-message.php:170
-#: src/petals/emails/class-wc-petals-new.php:180
-#: src/petals/emails/class-wc-petals-note.php:182
-#: src/petals/emails/class-wc-petals-outcome.php:170
+#: src/petals/emails/class-wc-petals-inbound.php:170
+#: src/petals/emails/class-wc-petals-message.php:168
+#: src/petals/emails/class-wc-petals-new.php:178
+#: src/petals/emails/class-wc-petals-note.php:180
+#: src/petals/emails/class-wc-petals-outcome.php:168
 msgid "Additional content"
 msgstr ""
 
 #: src/emails/emails/class-wc-draft-phone-order.php:183
+#: src/petals/emails/class-wc-petals-inbound.php:171
+#: src/petals/emails/class-wc-petals-message.php:169
+#: src/petals/emails/class-wc-petals-new.php:179
+#: src/petals/emails/class-wc-petals-note.php:181
+#: src/petals/emails/class-wc-petals-outcome.php:169
+msgid "Text to appear below the main email content."
+msgstr ""
+
+#: src/emails/emails/class-wc-draft-phone-order.php:185
 #: src/petals/emails/class-wc-petals-inbound.php:173
 #: src/petals/emails/class-wc-petals-message.php:171
 #: src/petals/emails/class-wc-petals-new.php:181
 #: src/petals/emails/class-wc-petals-note.php:183
 #: src/petals/emails/class-wc-petals-outcome.php:171
-msgid "Text to appear below the main email content."
-msgstr ""
-
-#: src/emails/emails/class-wc-draft-phone-order.php:185
-#: src/petals/emails/class-wc-petals-inbound.php:175
-#: src/petals/emails/class-wc-petals-message.php:173
-#: src/petals/emails/class-wc-petals-new.php:183
-#: src/petals/emails/class-wc-petals-note.php:185
-#: src/petals/emails/class-wc-petals-outcome.php:173
 #: src/suburbs/method-settings.php:62 src/suburbs/method-settings.php:73
 msgid "N/A"
 msgstr ""
 
 #: src/emails/emails/class-wc-draft-phone-order.php:191
+#: src/petals/emails/class-wc-petals-inbound.php:179
+#: src/petals/emails/class-wc-petals-message.php:177
+#: src/petals/emails/class-wc-petals-new.php:187
+#: src/petals/emails/class-wc-petals-note.php:189
+#: src/petals/emails/class-wc-petals-outcome.php:177
+msgid "Email type"
+msgstr ""
+
+#: src/emails/emails/class-wc-draft-phone-order.php:193
 #: src/petals/emails/class-wc-petals-inbound.php:181
 #: src/petals/emails/class-wc-petals-message.php:179
 #: src/petals/emails/class-wc-petals-new.php:189
 #: src/petals/emails/class-wc-petals-note.php:191
 #: src/petals/emails/class-wc-petals-outcome.php:179
-msgid "Email type"
-msgstr ""
-
-#: src/emails/emails/class-wc-draft-phone-order.php:193
-#: src/petals/emails/class-wc-petals-inbound.php:183
-#: src/petals/emails/class-wc-petals-message.php:181
-#: src/petals/emails/class-wc-petals-new.php:191
-#: src/petals/emails/class-wc-petals-note.php:193
-#: src/petals/emails/class-wc-petals-outcome.php:181
 msgid "Choose which format of email to send."
 msgstr ""
 
@@ -7288,696 +7288,696 @@ msgstr ""
 msgid "Your order has been marked as completed/delivered."
 msgstr ""
 
-#: src/localisation.php:118
+#: src/localisation.php:116
 msgid "Localization"
 msgstr ""
 
-#: src/localisation.php:154
+#: src/localisation.php:152
 msgid "Localization Settings"
 msgstr ""
 
-#: src/localisation.php:177
+#: src/localisation.php:175
 msgid "Global Fields"
 msgstr ""
 
-#: src/localisation.php:184
+#: src/localisation.php:182
 msgid "Billing Fields"
 msgstr ""
 
-#: src/localisation.php:191
+#: src/localisation.php:189
 msgid "Delivery Fields"
 msgstr ""
 
-#: src/localisation.php:198
+#: src/localisation.php:196
 msgid "Additional Fields"
 msgstr ""
 
-#: src/localisation.php:205
+#: src/localisation.php:203
 msgid "Customer Experience Flow"
 msgstr ""
 
-#: src/localisation.php:212
+#: src/localisation.php:210
 msgid "Label: State/Territory"
 msgstr ""
 
-#: src/localisation.php:220
+#: src/localisation.php:218
 msgid "Label: Suburb"
 msgstr ""
 
-#: src/localisation.php:228
+#: src/localisation.php:226
 msgid "Label: Postcode"
 msgstr ""
 
-#: src/localisation.php:236
+#: src/localisation.php:234
 msgid "Label: Country"
 msgstr ""
 
-#: src/localisation.php:244
+#: src/localisation.php:242
 msgid "Label: Telephone"
 msgstr ""
 
-#: src/localisation.php:252 src/localisation.php:260
+#: src/localisation.php:250 src/localisation.php:258
 msgid "Label: Business Name"
 msgstr ""
 
-#: src/localisation.php:268
+#: src/localisation.php:266
 msgid "Description: Business Name"
 msgstr ""
 
-#: src/localisation.php:276
+#: src/localisation.php:274
 msgid "Label: Delivery Notes"
 msgstr ""
 
-#: src/localisation.php:284
+#: src/localisation.php:282
 msgid "Description: Delivery Notes"
 msgstr ""
 
-#: src/localisation.php:292
+#: src/localisation.php:290
 msgid "Description: Card Message"
 msgstr ""
 
-#: src/localisation.php:300
+#: src/localisation.php:298
 msgid "Heading: Cart Cross-Sells"
 msgstr ""
 
-#: src/localisation.php:308
+#: src/localisation.php:306
 msgid "Error: No-Ship"
 msgstr ""
 
-#: src/localisation.php:503
+#: src/localisation.php:501
 msgid ""
 "Insert <strong>%%s</strong> where your maximum characters will "
 "appear.<br><em>eg. Entering \"Maximum %%s characters\" will display "
 "\"Maximum %d characters\" at checkout.</em>"
 msgstr ""
 
-#: src/localisation.php:516
+#: src/localisation.php:514
 msgid "Replaces the heading of the Cross-Sells section of the Cart page"
 msgstr ""
 
-#: src/localisation.php:529
+#: src/localisation.php:527
 msgid "Displays at checkout if the delivery address' suburb is not serviced."
 msgstr ""
 
-#: src/localisation.php:535
+#: src/localisation.php:533
 msgid "Australia Mobile"
 msgstr ""
 
-#: src/localisation.php:541
+#: src/localisation.php:539
 msgid "Australia Landline"
 msgstr ""
 
-#: src/localisation.php:551 src/petals/cpt.php:959
+#: src/localisation.php:549 src/petals/cpt.php:956
 #: src/petals/templates/petals-single.php:26
 msgid "Australia"
 msgstr ""
 
-#: src/localisation.php:557
+#: src/localisation.php:555
 msgid "Australian Capital Territory"
 msgstr ""
 
-#: src/localisation.php:558
+#: src/localisation.php:556
 msgid "New South Wales"
 msgstr ""
 
-#: src/localisation.php:559
+#: src/localisation.php:557
 msgid "Northern Territory"
 msgstr ""
 
-#: src/localisation.php:560
+#: src/localisation.php:558
 msgid "Queensland"
 msgstr ""
 
-#: src/localisation.php:561
+#: src/localisation.php:559
 msgid "South Australia"
 msgstr ""
 
-#: src/localisation.php:562
+#: src/localisation.php:560
 msgid "Tasmania"
 msgstr ""
 
-#: src/localisation.php:563
+#: src/localisation.php:561
 msgid "Victoria"
 msgstr ""
 
-#: src/localisation.php:564
+#: src/localisation.php:562
 msgid "Western Australia"
 msgstr ""
 
-#: src/notifier.php:56
+#: src/notifier.php:54
 msgid "Notifier enabled"
 msgstr ""
 
-#: src/notifier.php:61
+#: src/notifier.php:59
 msgid "Notifier disabled"
 msgstr ""
 
-#: src/notifier.php:90 src/notifier.php:92 src/petals/cpt.php:1342
+#: src/notifier.php:88 src/notifier.php:90 src/petals/cpt.php:1339
 #: src/petals/templates/petals-single.php:331
 msgid "Customer Name"
 msgstr ""
 
-#: src/notifier.php:90
+#: src/notifier.php:88
 msgid "Delivery Address"
 msgstr ""
 
-#: src/notifier.php:96
+#: src/notifier.php:94
 msgid "New Order #"
 msgstr ""
 
-#: src/notifier.php:96
+#: src/notifier.php:94
 msgid "Dismiss this notice."
 msgstr ""
 
-#: src/notifier.php:105
+#: src/notifier.php:103
 msgid "No orders found between the following times:"
 msgstr ""
 
-#: src/notifier.php:123
+#: src/notifier.php:121
 msgid "Enable Order Notifier:"
 msgstr ""
 
-#: src/options.php:70 src/options.php:103
+#: src/options.php:67 src/options.php:100
 msgid "Florist Options"
 msgstr ""
 
-#: src/options.php:136
+#: src/options.php:133
 msgid "General Settings"
 msgstr ""
 
-#: src/options.php:142
+#: src/options.php:139
 msgid "Other Features"
 msgstr ""
 
-#: src/options.php:154
+#: src/options.php:151
 msgid "Audio"
 msgstr ""
 
-#: src/options.php:160
+#: src/options.php:157
 msgid "Audio File"
 msgstr ""
 
-#: src/options.php:175
+#: src/options.php:172
 msgid "Card Message Length"
 msgstr ""
 
-#: src/options.php:183
+#: src/options.php:180
 msgid "Product Archives"
 msgstr ""
 
-#: src/options.php:191 src/petals/petals-options.php:33
-#: src/petals/petals-options.php:65
+#: src/options.php:188 src/petals/petals-options.php:30
+#: src/petals/petals-options.php:62
 msgid "Petals Network"
 msgstr ""
 
-#: src/options.php:199
+#: src/options.php:196
 msgid "Disable Order Comments"
 msgstr ""
 
-#: src/options.php:207
+#: src/options.php:204
 msgid "Enable Order Notifier"
 msgstr ""
 
-#: src/options.php:215
+#: src/options.php:212
 msgid "Confirm Email"
 msgstr ""
 
-#: src/options.php:223
+#: src/options.php:220
 msgid "Purge on Deactivation"
 msgstr ""
 
-#: src/options.php:299
+#: src/options.php:296
 msgid "Enter your settings below:"
 msgstr ""
 
-#: src/options.php:305
+#: src/options.php:302
 msgid "The below features are optional."
 msgstr ""
 
-#: src/options.php:311
+#: src/options.php:308
 msgid "The below settings are more advanced."
 msgstr ""
 
-#: src/options.php:317
+#: src/options.php:314
 msgid ""
 "These settings relate to the audio for the Order Notifier on the Orders "
 "list screen."
 msgstr ""
 
-#: src/options.php:330
+#: src/options.php:327
 msgid ""
 "Maximum number of characters (including spaces/punctuation) a customer will "
 "be able to enter in the Card Message field."
 msgstr ""
 
-#: src/options.php:345
+#: src/options.php:342
 msgid "Display Short Description in product archives"
 msgstr ""
 
-#: src/options.php:360
+#: src/options.php:357
 msgid "Enable Petals Network Integration"
 msgstr ""
 
-#: src/options.php:375
+#: src/options.php:372
 msgid ""
 "Disable the Order Comments field (freetext field at checkout for order "
 "notes)"
 msgstr ""
 
-#: src/options.php:390
+#: src/options.php:387
 msgid "Enable the Order Notifier on the Orders List"
 msgstr ""
 
-#: src/options.php:405
+#: src/options.php:402
 msgid "Require email confirmation at checkout for logged-out users"
 msgstr ""
 
-#: src/options.php:420
+#: src/options.php:417
 msgid "Purge all data from the database on deactivation"
 msgstr ""
 
-#: src/options.php:426
+#: src/options.php:423
 msgid "Reveal"
 msgstr ""
 
-#: src/options.php:427
+#: src/options.php:424
 msgid "Bells"
 msgstr ""
 
-#: src/options.php:428
+#: src/options.php:425
 msgid "Alert"
 msgstr ""
 
-#: src/options.php:430
+#: src/options.php:427
 msgid "Chime"
 msgstr ""
 
-#: src/options.php:432
+#: src/options.php:429
 msgid "Cute"
 msgstr ""
 
-#: src/options.php:433
+#: src/options.php:430
 msgid "Roll"
 msgstr ""
 
-#: src/options.php:434
+#: src/options.php:431
 msgid "Nit"
 msgstr ""
 
-#: src/options.php:455
+#: src/options.php:452
 msgid "Select a file..."
 msgstr ""
 
-#: src/options.php:466
+#: src/options.php:463
 msgid "Play sample of the selected file"
 msgstr ""
 
-#: src/options.php:469
+#: src/options.php:466
 msgid "The audio to be played when a new order is detected."
 msgstr ""
 
-#: src/order-status.php:35
+#: src/order-status.php:32
 msgid "Draft (Phone)"
 msgstr ""
 
-#: src/order-status.php:40
+#: src/order-status.php:37
 msgid "Draft (Phone) <span class=\"count\">(%s)</span>"
 msgid_plural "Draft (Phone) <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/order-status.php:43 src/order-status.php:190
+#: src/order-status.php:40 src/order-status.php:187
 msgid "Prepared"
 msgstr ""
 
-#: src/order-status.php:48
+#: src/order-status.php:45
 msgid "Prepared <span class=\"count\">(%s)</span>"
 msgid_plural "Prepared <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/order-status.php:51 src/order-status.php:197
+#: src/order-status.php:48 src/order-status.php:194
 msgid "Ready for Collection"
 msgstr ""
 
-#: src/order-status.php:56
+#: src/order-status.php:53
 msgid "Ready for Collection <span class=\"count\">(%s)</span>"
 msgid_plural "Ready for Collection <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/order-status.php:59 src/order-status.php:211
+#: src/order-status.php:56 src/order-status.php:208
 msgid "Out for Delivery"
 msgstr ""
 
-#: src/order-status.php:64
+#: src/order-status.php:61
 msgid "Out for Delivery <span class=\"count\">(%s)</span>"
 msgid_plural "Out for Delivery <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/order-status.php:67 src/order-status.php:204
+#: src/order-status.php:64 src/order-status.php:201
 msgid "Relayed"
 msgstr ""
 
-#: src/order-status.php:72
+#: src/order-status.php:69
 msgid "Relayed <span class=\"count\">(%s)</span>"
 msgid_plural "Relayed <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/order-status.php:80
+#: src/order-status.php:77
 msgid "Scheduled <span class=\"count\">(%s)</span>"
 msgid_plural "Scheduled <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/order-status.php:83
+#: src/order-status.php:80
 msgid "Invoiced, Awaiting Payment"
 msgstr ""
 
-#: src/order-status.php:88
+#: src/order-status.php:85
 msgid "Invoiced <span class=\"count\">(%s)</span>"
 msgid_plural "Invoiced <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/order-status.php:93
+#: src/order-status.php:90
 msgid "New (Petals)"
 msgstr ""
 
-#: src/order-status.php:98
+#: src/order-status.php:95
 msgid "New (Petals) <span class=\"count\">(%s)</span>"
 msgid_plural "New (Petals) <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/order-status.php:101
+#: src/order-status.php:98
 msgid "Accepted (Petals)"
 msgstr ""
 
-#: src/order-status.php:106
+#: src/order-status.php:103
 msgid "Accepted (Petals) <span class=\"count\">(%s)</span>"
 msgid_plural "Accepted (Petals) <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/order-status.php:109
+#: src/order-status.php:106
 msgid "Rejected (Petals)"
 msgstr ""
 
-#: src/order-status.php:114
+#: src/order-status.php:111
 msgid "Rejected (Petals) <span class=\"count\">(%s)</span>"
 msgid_plural "Rejected (Petals) <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/order-status.php:166
+#: src/order-status.php:163
 msgid "Change status to received"
 msgstr ""
 
-#: src/order-status.php:167
+#: src/order-status.php:164
 msgid "Change status to scheduled"
 msgstr ""
 
-#: src/order-status.php:168
+#: src/order-status.php:165
 msgid "Change status to prepared"
 msgstr ""
 
-#: src/order-status.php:169
+#: src/order-status.php:166
 msgid "Change status to ready for collection"
 msgstr ""
 
-#: src/order-status.php:170
+#: src/order-status.php:167
 msgid "Change status to out for delivery"
 msgstr ""
 
-#: src/order-status.php:171
+#: src/order-status.php:168
 msgid "Change status to delivered"
 msgstr ""
 
-#: src/order-status.php:172
+#: src/order-status.php:169
 msgid "Change status to relayed"
 msgstr ""
 
-#: src/order-status.php:218 src/order-status.php:495
+#: src/order-status.php:215 src/order-status.php:492
 msgid "Delivered"
 msgstr ""
 
-#: src/order-status.php:225 src/pos/phone.php:306
+#: src/order-status.php:222 src/pos/phone.php:304
 msgid "Mark as Paid"
 msgstr ""
 
-#: src/order-status.php:498
+#: src/order-status.php:495
 msgid "Received"
 msgstr ""
 
-#: src/order-status.php:501
+#: src/order-status.php:498
 msgid "Payment Unsuccessful"
 msgstr ""
 
-#: src/pdf/pdf-options.php:112
+#: src/pdf/pdf-options.php:111
 msgid "PDF Invoices and Worksheets"
 msgstr ""
 
-#: src/pdf/pdf-options.php:113
+#: src/pdf/pdf-options.php:112
 msgid "PDFs"
 msgstr ""
 
-#: src/pdf/pdf-options.php:146
+#: src/pdf/pdf-options.php:145
 msgid "PDF Settings"
 msgstr ""
 
-#: src/pdf/pdf-options.php:169
+#: src/pdf/pdf-options.php:168
 msgid "Defaults"
 msgstr ""
 
-#: src/pdf/pdf-options.php:176
+#: src/pdf/pdf-options.php:175
 msgid "Page Size"
 msgstr ""
 
-#: src/pdf/pdf-options.php:184
+#: src/pdf/pdf-options.php:183
 msgid "Invoice Title"
 msgstr ""
 
-#: src/pdf/pdf-options.php:192
+#: src/pdf/pdf-options.php:191
 msgid "Invoice Text"
 msgstr ""
 
-#: src/pdf/pdf-options.php:200
+#: src/pdf/pdf-options.php:199
 msgid "Worksheet Title"
 msgstr ""
 
-#: src/pdf/pdf-options.php:208
+#: src/pdf/pdf-options.php:207
 msgid "Store Name"
 msgstr ""
 
-#: src/pdf/pdf-options.php:216 src/pos/phone.php:185
+#: src/pdf/pdf-options.php:215 src/pos/phone.php:183
 msgid "Address Line 1"
 msgstr ""
 
-#: src/pdf/pdf-options.php:224 src/pos/phone.php:189
+#: src/pdf/pdf-options.php:223 src/pos/phone.php:187
 msgid "Address Line 2"
 msgstr ""
 
-#: src/pdf/pdf-options.php:264
+#: src/pdf/pdf-options.php:263
 msgid "Email Address"
 msgstr ""
 
-#: src/pdf/pdf-options.php:272
+#: src/pdf/pdf-options.php:271
 msgid "Website Address"
 msgstr ""
 
-#: src/pdf/pdf-options.php:280
+#: src/pdf/pdf-options.php:279
 msgid "Tax ID Label"
 msgstr ""
 
-#: src/pdf/pdf-options.php:288
+#: src/pdf/pdf-options.php:287
 msgid "Tax ID"
 msgstr ""
 
-#: src/pdf/pdf-options.php:363
+#: src/pdf/pdf-options.php:362
 msgid "These settings apply to all PDFs"
 msgstr ""
 
-#: src/pdf/pdf-options.php:375
+#: src/pdf/pdf-options.php:374
 msgid "A4 (210mm x 297mm)"
 msgstr ""
 
-#: src/pdf/pdf-options.php:376
+#: src/pdf/pdf-options.php:375
 msgid "Legal (8.5\" x 14\")"
 msgstr ""
 
-#: src/pdf/pdf-options.php:377
+#: src/pdf/pdf-options.php:376
 msgid "Letter (8.5\" x 11\")"
 msgstr ""
 
-#: src/pdf/pdf-options.php:378
+#: src/pdf/pdf-options.php:377
 msgid "Tabloid (11\" x 17\")"
 msgstr ""
 
-#: src/pdf/pdf-options.php:412
+#: src/pdf/pdf-options.php:411
 msgid "Title for Invoice"
 msgstr ""
 
-#: src/pdf/pdf-options.php:425
+#: src/pdf/pdf-options.php:424
 msgid "Additional text for bottom of invoice"
 msgstr ""
 
-#: src/pdf/pdf-options.php:438
+#: src/pdf/pdf-options.php:437
 msgid "Title for Worksheet"
 msgstr ""
 
-#: src/pdf/pdf-options.php:451
+#: src/pdf/pdf-options.php:450
 msgid "Store Name as it appears on invoices"
 msgstr ""
 
-#: src/pdf/pdf-options.php:464
+#: src/pdf/pdf-options.php:463
 msgid "Address as it appears on invoices"
 msgstr ""
 
-#: src/pdf/pdf-options.php:489
+#: src/pdf/pdf-options.php:488
 msgid "Suburb as it appears on invoices"
 msgstr ""
 
-#: src/pdf/pdf-options.php:502
+#: src/pdf/pdf-options.php:501
 msgid "State/Territory as it appears on invoices"
 msgstr ""
 
-#: src/pdf/pdf-options.php:515
+#: src/pdf/pdf-options.php:514
 msgid "Postcode as it appears on invoices"
 msgstr ""
 
-#: src/pdf/pdf-options.php:528
+#: src/pdf/pdf-options.php:527
 msgid "Phone as it appears on invoices"
 msgstr ""
 
-#: src/pdf/pdf-options.php:541
+#: src/pdf/pdf-options.php:540
 msgid "Email as it appears on invoices"
 msgstr ""
 
-#: src/pdf/pdf-options.php:554
+#: src/pdf/pdf-options.php:553
 msgid "Website as it appears on invoices"
 msgstr ""
 
-#: src/pdf/pdf-options.php:563
+#: src/pdf/pdf-options.php:562
 msgid "ABN"
 msgstr ""
 
-#: src/pdf/pdf-options.php:567
+#: src/pdf/pdf-options.php:566
 msgid "Label for Tax ID - eg. \"ABN\""
 msgstr ""
 
-#: src/pdf/pdf-options.php:580
+#: src/pdf/pdf-options.php:579
 msgid "Your business' Tax ID as it appears on invoices"
 msgstr ""
 
-#: src/pdf/pdf-options.php:593 src/pdf/pdf-options.php:595
-#: src/pdf/pdf-options.php:603 src/tools.php:65 src/tools.php:66
+#: src/pdf/pdf-options.php:592 src/pdf/pdf-options.php:594
+#: src/pdf/pdf-options.php:602 src/tools.php:63 src/tools.php:64
 msgid "Download %s"
 msgstr ""
 
-#: src/pdf/pdf.php:38 src/pdf/pdf.php:55
+#: src/pdf/pdf.php:36 src/pdf/pdf.php:53
 msgid "Phone: "
 msgstr ""
 
-#: src/pdf/pdf.php:41 src/pdf/pdf.php:117
+#: src/pdf/pdf.php:39 src/pdf/pdf.php:115
 msgid "Email: "
 msgstr ""
 
-#: src/pdf/pdf.php:79 src/pdf/pdf.php:178 src/pdf/pdf.php:274
+#: src/pdf/pdf.php:77 src/pdf/pdf.php:176 src/pdf/pdf.php:272
 msgid "Add-on"
 msgstr ""
 
-#: src/pdf/pdf.php:81 src/pdf/pdf.php:180
+#: src/pdf/pdf.php:79 src/pdf/pdf.php:178
 msgid "inc. add-ons"
 msgstr ""
 
-#: src/pdf/pdf.php:100
+#: src/pdf/pdf.php:98
 msgid "Tax"
 msgstr ""
 
-#: src/pdf/pdf.php:111 src/pdf/pdf.php:215
+#: src/pdf/pdf.php:109 src/pdf/pdf.php:213
 msgid "Discount"
 msgstr ""
 
-#: src/pdf/pdf.php:117
+#: src/pdf/pdf.php:115
 msgid "Invoice From"
 msgstr ""
 
-#: src/pdf/pdf.php:117
+#: src/pdf/pdf.php:115
 msgid "Invoice To"
 msgstr ""
 
-#: src/pdf/pdf.php:117
+#: src/pdf/pdf.php:115
 msgid "Website: "
 msgstr ""
 
-#: src/pdf/pdf.php:117 src/pdf/pdf.php:233
+#: src/pdf/pdf.php:115 src/pdf/pdf.php:231
 msgid "Qty"
 msgstr ""
 
-#: src/pdf/pdf.php:117 src/pdf/pdf.php:233
+#: src/pdf/pdf.php:115 src/pdf/pdf.php:231
 msgid "Item"
 msgstr ""
 
-#: src/pdf/pdf.php:117 src/pdf/pdf.php:233 src/pos/phone.php:152
+#: src/pdf/pdf.php:115 src/pdf/pdf.php:231 src/pos/phone.php:150
 msgid "Subtotal"
 msgstr ""
 
-#: src/pdf/pdf.php:222
+#: src/pdf/pdf.php:220
 msgid "Comments from Customer"
 msgstr ""
 
-#: src/pdf/pdf.php:222
+#: src/pdf/pdf.php:220
 msgid "Comments from Sender"
 msgstr ""
 
-#: src/pdf/pdf.php:228
+#: src/pdf/pdf.php:226
 msgid "Sender"
 msgstr ""
 
-#: src/pdf/pdf.php:317
+#: src/pdf/pdf.php:315
 msgid "Delivery List"
 msgstr ""
 
-#: src/pdf/pdf.php:317
+#: src/pdf/pdf.php:315
 msgid "ID"
 msgstr ""
 
-#: src/petals/cpt.php:61 src/petals/cpt.php:793
+#: src/petals/cpt.php:58 src/petals/cpt.php:790
 #: src/petals/templates/petals-single.php:318
 msgid "Recipient's Name"
 msgstr ""
 
-#: src/petals/cpt.php:62 src/petals/cpt.php:873
+#: src/petals/cpt.php:59 src/petals/cpt.php:870
 #: src/petals/templates/petals-single.php:322
 msgid "Town/City"
 msgstr ""
 
-#: src/petals/cpt.php:134 src/petals/templates/petals-single.php:309
+#: src/petals/cpt.php:131 src/petals/templates/petals-single.php:309
 msgid "Petals Order #%s"
 msgstr ""
 
-#: src/petals/cpt.php:519
+#: src/petals/cpt.php:516
 msgid "<strong>Order sending failed.<br>Response from Petals: </strong><br>"
 msgstr ""
 
-#: src/petals/cpt.php:550 src/tools.php:61
+#: src/petals/cpt.php:547 src/tools.php:59
 msgid "Order Number"
 msgstr ""
 
-#: src/petals/cpt.php:554
+#: src/petals/cpt.php:551
 msgid ""
 "An order reference of up to 6 digits. Orders with duplicate or missing "
 "numbers, or numbers longer than 6 digits, will be rejected by Petals."
 msgstr ""
 
-#: src/petals/cpt.php:570
+#: src/petals/cpt.php:567
 msgid "Order Items"
 msgstr ""
 
-#: src/petals/cpt.php:592
+#: src/petals/cpt.php:589
 msgid ""
 "Order description in words. This field should contain sufficient info to "
 "supply the order. For example; 6 red roses bouquet, paper wrapped plus "
@@ -7988,1433 +7988,1433 @@ msgid ""
 "please keep the material in these fields to the minimum."
 msgstr ""
 
-#: src/petals/cpt.php:608 src/petals/templates/petals-single.php:311
+#: src/petals/cpt.php:605 src/petals/templates/petals-single.php:311
 msgid "Petals Product ID"
 msgstr ""
 
-#: src/petals/cpt.php:612
+#: src/petals/cpt.php:609
 msgid ""
 "The Petals product ID. Please refer to the pricing guide for product IDs "
 "and descriptions."
 msgstr ""
 
-#: src/petals/cpt.php:632
+#: src/petals/cpt.php:629
 msgid ""
 "Provide optional information on how to make up the order. Note that this is "
 "only a guide. Petals Partners do not guarantee specific make-ups unless "
 "directly agreed between the Partners."
 msgstr ""
 
-#: src/petals/cpt.php:648 src/petals/templates/petals-single.php:313
+#: src/petals/cpt.php:645 src/petals/templates/petals-single.php:313
 msgid "Add-Ons"
 msgstr ""
 
-#: src/petals/cpt.php:652
+#: src/petals/cpt.php:649
 msgid "This is where you would include any add-ons such as chocolates, balloons etc"
 msgstr ""
 
-#: src/petals/cpt.php:668 src/petals/templates/petals-single.php:314
+#: src/petals/cpt.php:665 src/petals/templates/petals-single.php:314
 msgid "Add-Ons Value"
 msgstr ""
 
-#: src/petals/cpt.php:672
+#: src/petals/cpt.php:669
 msgid "This is where you would include the total value of all add ons"
 msgstr ""
 
-#: src/petals/cpt.php:697 src/petals/templates/petals-single.php:315
+#: src/petals/cpt.php:694 src/petals/templates/petals-single.php:315
 msgid "Total Order Value"
 msgstr ""
 
-#: src/petals/cpt.php:701
+#: src/petals/cpt.php:698
 msgid ""
 "Total value of the order in the currency Petals has you registered to send "
 "and receive orders in. Format is $$$.¢¢, eg. 123.00 - must include the "
 "cents."
 msgstr ""
 
-#: src/petals/cpt.php:755 src/petals/templates/petals-single.php:317
+#: src/petals/cpt.php:752 src/petals/templates/petals-single.php:317
 msgid "Delivery Time"
 msgstr ""
 
-#: src/petals/cpt.php:759
+#: src/petals/cpt.php:756
 msgid "Optional: text notes - e.g. am / pm, funeral time"
 msgstr ""
 
-#: src/petals/cpt.php:797
+#: src/petals/cpt.php:794
 msgid "Name of person receiving flowers"
 msgstr ""
 
-#: src/petals/cpt.php:813 src/petals/templates/petals-single.php:319
+#: src/petals/cpt.php:810 src/petals/templates/petals-single.php:319
 msgid "Recipient's Surname"
 msgstr ""
 
-#: src/petals/cpt.php:817
+#: src/petals/cpt.php:814
 msgid "Recipient's surname - first 8 characters"
 msgstr ""
 
-#: src/petals/cpt.php:833 src/petals/templates/petals-single.php:320
+#: src/petals/cpt.php:830 src/petals/templates/petals-single.php:320
 msgid "Address Type"
 msgstr ""
 
-#: src/petals/cpt.php:837
+#: src/petals/cpt.php:834
 msgid ""
 "Should be the \"location\" part of the address, ie. "
 "Home/Business/Hospital/Church etc"
 msgstr ""
 
-#: src/petals/cpt.php:853 src/petals/templates/petals-single.php:321
+#: src/petals/cpt.php:850 src/petals/templates/petals-single.php:321
 msgid "Street Address"
 msgstr ""
 
-#: src/petals/cpt.php:893 src/petals/templates/petals-single.php:323
+#: src/petals/cpt.php:890 src/petals/templates/petals-single.php:323
 msgid "State/Province"
 msgstr ""
 
-#: src/petals/cpt.php:913 src/petals/templates/petals-single.php:324
+#: src/petals/cpt.php:910 src/petals/templates/petals-single.php:324
 msgid "Postal Code"
 msgstr ""
 
-#: src/petals/cpt.php:946 src/petals/templates/petals-single.php:13
+#: src/petals/cpt.php:943 src/petals/templates/petals-single.php:13
 msgid "Afghanistan"
 msgstr ""
 
-#: src/petals/cpt.php:947 src/petals/templates/petals-single.php:14
+#: src/petals/cpt.php:944 src/petals/templates/petals-single.php:14
 msgid "Åland Islands"
 msgstr ""
 
-#: src/petals/cpt.php:948 src/petals/templates/petals-single.php:15
+#: src/petals/cpt.php:945 src/petals/templates/petals-single.php:15
 msgid "Albania"
 msgstr ""
 
-#: src/petals/cpt.php:949 src/petals/templates/petals-single.php:16
+#: src/petals/cpt.php:946 src/petals/templates/petals-single.php:16
 msgid "Algeria"
 msgstr ""
 
-#: src/petals/cpt.php:950 src/petals/templates/petals-single.php:17
+#: src/petals/cpt.php:947 src/petals/templates/petals-single.php:17
 msgid "American Samoa"
 msgstr ""
 
-#: src/petals/cpt.php:951 src/petals/templates/petals-single.php:18
+#: src/petals/cpt.php:948 src/petals/templates/petals-single.php:18
 msgid "Andorra"
 msgstr ""
 
-#: src/petals/cpt.php:952 src/petals/templates/petals-single.php:19
+#: src/petals/cpt.php:949 src/petals/templates/petals-single.php:19
 msgid "Angola"
 msgstr ""
 
-#: src/petals/cpt.php:953 src/petals/templates/petals-single.php:20
+#: src/petals/cpt.php:950 src/petals/templates/petals-single.php:20
 msgid "Anguilla"
 msgstr ""
 
-#: src/petals/cpt.php:954 src/petals/templates/petals-single.php:21
+#: src/petals/cpt.php:951 src/petals/templates/petals-single.php:21
 msgid "Antarctica"
 msgstr ""
 
-#: src/petals/cpt.php:955 src/petals/templates/petals-single.php:22
+#: src/petals/cpt.php:952 src/petals/templates/petals-single.php:22
 msgid "Antigua and Barbuda"
 msgstr ""
 
-#: src/petals/cpt.php:956 src/petals/templates/petals-single.php:23
+#: src/petals/cpt.php:953 src/petals/templates/petals-single.php:23
 msgid "Argentina"
 msgstr ""
 
-#: src/petals/cpt.php:957 src/petals/templates/petals-single.php:24
+#: src/petals/cpt.php:954 src/petals/templates/petals-single.php:24
 msgid "Armenia"
 msgstr ""
 
-#: src/petals/cpt.php:958 src/petals/templates/petals-single.php:25
+#: src/petals/cpt.php:955 src/petals/templates/petals-single.php:25
 msgid "Aruba"
 msgstr ""
 
-#: src/petals/cpt.php:960 src/petals/templates/petals-single.php:27
+#: src/petals/cpt.php:957 src/petals/templates/petals-single.php:27
 msgid "Austria"
 msgstr ""
 
-#: src/petals/cpt.php:961 src/petals/templates/petals-single.php:28
+#: src/petals/cpt.php:958 src/petals/templates/petals-single.php:28
 msgid "Azerbaijan"
 msgstr ""
 
-#: src/petals/cpt.php:962 src/petals/templates/petals-single.php:29
+#: src/petals/cpt.php:959 src/petals/templates/petals-single.php:29
 msgid "Bahamas"
 msgstr ""
 
-#: src/petals/cpt.php:963 src/petals/templates/petals-single.php:30
+#: src/petals/cpt.php:960 src/petals/templates/petals-single.php:30
 msgid "Bahrain"
 msgstr ""
 
-#: src/petals/cpt.php:964 src/petals/templates/petals-single.php:31
+#: src/petals/cpt.php:961 src/petals/templates/petals-single.php:31
 msgid "Bangladesh"
 msgstr ""
 
-#: src/petals/cpt.php:965 src/petals/templates/petals-single.php:32
+#: src/petals/cpt.php:962 src/petals/templates/petals-single.php:32
 msgid "Barbados"
 msgstr ""
 
-#: src/petals/cpt.php:966 src/petals/templates/petals-single.php:33
+#: src/petals/cpt.php:963 src/petals/templates/petals-single.php:33
 msgid "Belarus"
 msgstr ""
 
-#: src/petals/cpt.php:967 src/petals/templates/petals-single.php:34
+#: src/petals/cpt.php:964 src/petals/templates/petals-single.php:34
 msgid "Belgium"
 msgstr ""
 
-#: src/petals/cpt.php:968 src/petals/templates/petals-single.php:35
+#: src/petals/cpt.php:965 src/petals/templates/petals-single.php:35
 msgid "Belize"
 msgstr ""
 
-#: src/petals/cpt.php:969 src/petals/templates/petals-single.php:36
+#: src/petals/cpt.php:966 src/petals/templates/petals-single.php:36
 msgid "Benin"
 msgstr ""
 
-#: src/petals/cpt.php:970 src/petals/templates/petals-single.php:37
+#: src/petals/cpt.php:967 src/petals/templates/petals-single.php:37
 msgid "Bermuda"
 msgstr ""
 
-#: src/petals/cpt.php:971 src/petals/templates/petals-single.php:38
+#: src/petals/cpt.php:968 src/petals/templates/petals-single.php:38
 msgid "Bhutan"
 msgstr ""
 
-#: src/petals/cpt.php:972 src/petals/templates/petals-single.php:39
+#: src/petals/cpt.php:969 src/petals/templates/petals-single.php:39
 msgid "Bolivia (Plurinational State of)"
 msgstr ""
 
-#: src/petals/cpt.php:973 src/petals/templates/petals-single.php:40
+#: src/petals/cpt.php:970 src/petals/templates/petals-single.php:40
 msgid "Bonaire, Sint Eustatius and Saba"
 msgstr ""
 
-#: src/petals/cpt.php:974 src/petals/templates/petals-single.php:41
+#: src/petals/cpt.php:971 src/petals/templates/petals-single.php:41
 msgid "Bosnia and Herzegovina"
 msgstr ""
 
-#: src/petals/cpt.php:975 src/petals/templates/petals-single.php:42
+#: src/petals/cpt.php:972 src/petals/templates/petals-single.php:42
 msgid "Botswana"
 msgstr ""
 
-#: src/petals/cpt.php:976 src/petals/templates/petals-single.php:43
+#: src/petals/cpt.php:973 src/petals/templates/petals-single.php:43
 msgid "Bouvet Island"
 msgstr ""
 
-#: src/petals/cpt.php:977 src/petals/templates/petals-single.php:44
+#: src/petals/cpt.php:974 src/petals/templates/petals-single.php:44
 msgid "Brazil"
 msgstr ""
 
-#: src/petals/cpt.php:978 src/petals/templates/petals-single.php:45
+#: src/petals/cpt.php:975 src/petals/templates/petals-single.php:45
 msgid "British Indian Ocean Territory"
 msgstr ""
 
-#: src/petals/cpt.php:979 src/petals/templates/petals-single.php:46
+#: src/petals/cpt.php:976 src/petals/templates/petals-single.php:46
 msgid "Brunei Darussalam"
 msgstr ""
 
-#: src/petals/cpt.php:980 src/petals/templates/petals-single.php:47
+#: src/petals/cpt.php:977 src/petals/templates/petals-single.php:47
 msgid "Bulgaria"
 msgstr ""
 
-#: src/petals/cpt.php:981 src/petals/templates/petals-single.php:48
+#: src/petals/cpt.php:978 src/petals/templates/petals-single.php:48
 msgid "Burkina Faso"
 msgstr ""
 
-#: src/petals/cpt.php:982 src/petals/templates/petals-single.php:49
+#: src/petals/cpt.php:979 src/petals/templates/petals-single.php:49
 msgid "Burundi"
 msgstr ""
 
-#: src/petals/cpt.php:983 src/petals/templates/petals-single.php:50
+#: src/petals/cpt.php:980 src/petals/templates/petals-single.php:50
 msgid "Cabo Verde"
 msgstr ""
 
-#: src/petals/cpt.php:984 src/petals/templates/petals-single.php:51
+#: src/petals/cpt.php:981 src/petals/templates/petals-single.php:51
 msgid "Cambodia"
 msgstr ""
 
-#: src/petals/cpt.php:985 src/petals/templates/petals-single.php:52
+#: src/petals/cpt.php:982 src/petals/templates/petals-single.php:52
 msgid "Cameroon"
 msgstr ""
 
-#: src/petals/cpt.php:986 src/petals/templates/petals-single.php:53
+#: src/petals/cpt.php:983 src/petals/templates/petals-single.php:53
 msgid "Canada"
 msgstr ""
 
-#: src/petals/cpt.php:987 src/petals/templates/petals-single.php:54
+#: src/petals/cpt.php:984 src/petals/templates/petals-single.php:54
 msgid "Cayman Islands"
 msgstr ""
 
-#: src/petals/cpt.php:988 src/petals/templates/petals-single.php:55
+#: src/petals/cpt.php:985 src/petals/templates/petals-single.php:55
 msgid "Central African Republic"
 msgstr ""
 
-#: src/petals/cpt.php:989 src/petals/templates/petals-single.php:56
+#: src/petals/cpt.php:986 src/petals/templates/petals-single.php:56
 msgid "Chad"
 msgstr ""
 
-#: src/petals/cpt.php:990 src/petals/templates/petals-single.php:57
+#: src/petals/cpt.php:987 src/petals/templates/petals-single.php:57
 msgid "Chile"
 msgstr ""
 
-#: src/petals/cpt.php:991 src/petals/templates/petals-single.php:58
+#: src/petals/cpt.php:988 src/petals/templates/petals-single.php:58
 msgid "China"
 msgstr ""
 
-#: src/petals/cpt.php:992 src/petals/templates/petals-single.php:59
+#: src/petals/cpt.php:989 src/petals/templates/petals-single.php:59
 msgid "Christmas Island"
 msgstr ""
 
-#: src/petals/cpt.php:993 src/petals/templates/petals-single.php:60
+#: src/petals/cpt.php:990 src/petals/templates/petals-single.php:60
 msgid "Cocos (Keeling) Islands"
 msgstr ""
 
-#: src/petals/cpt.php:994 src/petals/templates/petals-single.php:61
+#: src/petals/cpt.php:991 src/petals/templates/petals-single.php:61
 msgid "Colombia"
 msgstr ""
 
-#: src/petals/cpt.php:995 src/petals/templates/petals-single.php:62
+#: src/petals/cpt.php:992 src/petals/templates/petals-single.php:62
 msgid "Comoros"
 msgstr ""
 
-#: src/petals/cpt.php:996 src/petals/templates/petals-single.php:63
+#: src/petals/cpt.php:993 src/petals/templates/petals-single.php:63
 msgid "Congo"
 msgstr ""
 
-#: src/petals/cpt.php:997 src/petals/templates/petals-single.php:64
+#: src/petals/cpt.php:994 src/petals/templates/petals-single.php:64
 msgid "Congo, Democratic Republic of the"
 msgstr ""
 
-#: src/petals/cpt.php:998 src/petals/templates/petals-single.php:65
+#: src/petals/cpt.php:995 src/petals/templates/petals-single.php:65
 msgid "Cook Islands"
 msgstr ""
 
-#: src/petals/cpt.php:999 src/petals/templates/petals-single.php:66
+#: src/petals/cpt.php:996 src/petals/templates/petals-single.php:66
 msgid "Costa Rica"
 msgstr ""
 
-#: src/petals/cpt.php:1000 src/petals/templates/petals-single.php:67
+#: src/petals/cpt.php:997 src/petals/templates/petals-single.php:67
 msgid "Côte d'Ivoire"
 msgstr ""
 
-#: src/petals/cpt.php:1001 src/petals/templates/petals-single.php:68
+#: src/petals/cpt.php:998 src/petals/templates/petals-single.php:68
 msgid "Croatia"
 msgstr ""
 
-#: src/petals/cpt.php:1002 src/petals/templates/petals-single.php:69
+#: src/petals/cpt.php:999 src/petals/templates/petals-single.php:69
 msgid "Cuba"
 msgstr ""
 
-#: src/petals/cpt.php:1003 src/petals/templates/petals-single.php:70
+#: src/petals/cpt.php:1000 src/petals/templates/petals-single.php:70
 msgid "Curaçao"
 msgstr ""
 
-#: src/petals/cpt.php:1004 src/petals/templates/petals-single.php:71
+#: src/petals/cpt.php:1001 src/petals/templates/petals-single.php:71
 msgid "Cyprus"
 msgstr ""
 
-#: src/petals/cpt.php:1005 src/petals/templates/petals-single.php:72
+#: src/petals/cpt.php:1002 src/petals/templates/petals-single.php:72
 msgid "Czechia"
 msgstr ""
 
-#: src/petals/cpt.php:1006 src/petals/templates/petals-single.php:73
+#: src/petals/cpt.php:1003 src/petals/templates/petals-single.php:73
 msgid "Denmark"
 msgstr ""
 
-#: src/petals/cpt.php:1007 src/petals/templates/petals-single.php:74
+#: src/petals/cpt.php:1004 src/petals/templates/petals-single.php:74
 msgid "Djibouti"
 msgstr ""
 
-#: src/petals/cpt.php:1008 src/petals/templates/petals-single.php:75
+#: src/petals/cpt.php:1005 src/petals/templates/petals-single.php:75
 msgid "Dominica"
 msgstr ""
 
-#: src/petals/cpt.php:1009 src/petals/templates/petals-single.php:76
+#: src/petals/cpt.php:1006 src/petals/templates/petals-single.php:76
 msgid "Dominican Republic"
 msgstr ""
 
-#: src/petals/cpt.php:1010 src/petals/templates/petals-single.php:77
+#: src/petals/cpt.php:1007 src/petals/templates/petals-single.php:77
 msgid "Ecuador"
 msgstr ""
 
-#: src/petals/cpt.php:1011 src/petals/templates/petals-single.php:78
+#: src/petals/cpt.php:1008 src/petals/templates/petals-single.php:78
 msgid "Egypt"
 msgstr ""
 
-#: src/petals/cpt.php:1012 src/petals/templates/petals-single.php:79
+#: src/petals/cpt.php:1009 src/petals/templates/petals-single.php:79
 msgid "El Salvador"
 msgstr ""
 
-#: src/petals/cpt.php:1013 src/petals/templates/petals-single.php:80
+#: src/petals/cpt.php:1010 src/petals/templates/petals-single.php:80
 msgid "Equatorial Guinea"
 msgstr ""
 
-#: src/petals/cpt.php:1014 src/petals/templates/petals-single.php:81
+#: src/petals/cpt.php:1011 src/petals/templates/petals-single.php:81
 msgid "Eritrea"
 msgstr ""
 
-#: src/petals/cpt.php:1015 src/petals/templates/petals-single.php:82
+#: src/petals/cpt.php:1012 src/petals/templates/petals-single.php:82
 msgid "Estonia"
 msgstr ""
 
-#: src/petals/cpt.php:1016 src/petals/templates/petals-single.php:83
+#: src/petals/cpt.php:1013 src/petals/templates/petals-single.php:83
 msgid "Eswatini"
 msgstr ""
 
-#: src/petals/cpt.php:1017 src/petals/templates/petals-single.php:84
+#: src/petals/cpt.php:1014 src/petals/templates/petals-single.php:84
 msgid "Ethiopia"
 msgstr ""
 
-#: src/petals/cpt.php:1018 src/petals/templates/petals-single.php:85
+#: src/petals/cpt.php:1015 src/petals/templates/petals-single.php:85
 msgid "Falkland Islands (Malvinas)"
 msgstr ""
 
-#: src/petals/cpt.php:1019 src/petals/templates/petals-single.php:86
+#: src/petals/cpt.php:1016 src/petals/templates/petals-single.php:86
 msgid "Faroe Islands"
 msgstr ""
 
-#: src/petals/cpt.php:1020 src/petals/templates/petals-single.php:87
+#: src/petals/cpt.php:1017 src/petals/templates/petals-single.php:87
 msgid "Fiji"
 msgstr ""
 
-#: src/petals/cpt.php:1021 src/petals/templates/petals-single.php:88
+#: src/petals/cpt.php:1018 src/petals/templates/petals-single.php:88
 msgid "Finland"
 msgstr ""
 
-#: src/petals/cpt.php:1022 src/petals/templates/petals-single.php:89
+#: src/petals/cpt.php:1019 src/petals/templates/petals-single.php:89
 msgid "France"
 msgstr ""
 
-#: src/petals/cpt.php:1023 src/petals/templates/petals-single.php:90
+#: src/petals/cpt.php:1020 src/petals/templates/petals-single.php:90
 msgid "French Guiana"
 msgstr ""
 
-#: src/petals/cpt.php:1024 src/petals/templates/petals-single.php:91
+#: src/petals/cpt.php:1021 src/petals/templates/petals-single.php:91
 msgid "French Polynesia"
 msgstr ""
 
-#: src/petals/cpt.php:1025 src/petals/templates/petals-single.php:92
+#: src/petals/cpt.php:1022 src/petals/templates/petals-single.php:92
 msgid "French Southern Territories"
 msgstr ""
 
-#: src/petals/cpt.php:1026 src/petals/templates/petals-single.php:93
+#: src/petals/cpt.php:1023 src/petals/templates/petals-single.php:93
 msgid "Gabon"
 msgstr ""
 
-#: src/petals/cpt.php:1027 src/petals/templates/petals-single.php:94
+#: src/petals/cpt.php:1024 src/petals/templates/petals-single.php:94
 msgid "Gambia"
 msgstr ""
 
-#: src/petals/cpt.php:1028 src/petals/templates/petals-single.php:95
+#: src/petals/cpt.php:1025 src/petals/templates/petals-single.php:95
 msgid "Georgia"
 msgstr ""
 
-#: src/petals/cpt.php:1029 src/petals/templates/petals-single.php:96
+#: src/petals/cpt.php:1026 src/petals/templates/petals-single.php:96
 msgid "Germany"
 msgstr ""
 
-#: src/petals/cpt.php:1030 src/petals/templates/petals-single.php:97
+#: src/petals/cpt.php:1027 src/petals/templates/petals-single.php:97
 msgid "Ghana"
 msgstr ""
 
-#: src/petals/cpt.php:1031 src/petals/templates/petals-single.php:98
+#: src/petals/cpt.php:1028 src/petals/templates/petals-single.php:98
 msgid "Gibraltar"
 msgstr ""
 
-#: src/petals/cpt.php:1032 src/petals/templates/petals-single.php:99
+#: src/petals/cpt.php:1029 src/petals/templates/petals-single.php:99
 msgid "Greece"
 msgstr ""
 
-#: src/petals/cpt.php:1033 src/petals/templates/petals-single.php:100
+#: src/petals/cpt.php:1030 src/petals/templates/petals-single.php:100
 msgid "Greenland"
 msgstr ""
 
-#: src/petals/cpt.php:1034 src/petals/templates/petals-single.php:101
+#: src/petals/cpt.php:1031 src/petals/templates/petals-single.php:101
 msgid "Grenada"
 msgstr ""
 
-#: src/petals/cpt.php:1035 src/petals/templates/petals-single.php:102
+#: src/petals/cpt.php:1032 src/petals/templates/petals-single.php:102
 msgid "Guadeloupe"
 msgstr ""
 
-#: src/petals/cpt.php:1036 src/petals/templates/petals-single.php:103
+#: src/petals/cpt.php:1033 src/petals/templates/petals-single.php:103
 msgid "Guam"
 msgstr ""
 
-#: src/petals/cpt.php:1037 src/petals/templates/petals-single.php:104
+#: src/petals/cpt.php:1034 src/petals/templates/petals-single.php:104
 msgid "Guatemala"
 msgstr ""
 
-#: src/petals/cpt.php:1038 src/petals/templates/petals-single.php:105
+#: src/petals/cpt.php:1035 src/petals/templates/petals-single.php:105
 msgid "Guernsey"
 msgstr ""
 
-#: src/petals/cpt.php:1039 src/petals/templates/petals-single.php:106
+#: src/petals/cpt.php:1036 src/petals/templates/petals-single.php:106
 msgid "Guinea"
 msgstr ""
 
-#: src/petals/cpt.php:1040 src/petals/templates/petals-single.php:107
+#: src/petals/cpt.php:1037 src/petals/templates/petals-single.php:107
 msgid "Guinea-Bissau"
 msgstr ""
 
-#: src/petals/cpt.php:1041 src/petals/templates/petals-single.php:108
+#: src/petals/cpt.php:1038 src/petals/templates/petals-single.php:108
 msgid "Guyana"
 msgstr ""
 
-#: src/petals/cpt.php:1042 src/petals/templates/petals-single.php:109
+#: src/petals/cpt.php:1039 src/petals/templates/petals-single.php:109
 msgid "Haiti"
 msgstr ""
 
-#: src/petals/cpt.php:1043 src/petals/templates/petals-single.php:110
+#: src/petals/cpt.php:1040 src/petals/templates/petals-single.php:110
 msgid "Heard Island and McDonald Islands"
 msgstr ""
 
-#: src/petals/cpt.php:1044 src/petals/templates/petals-single.php:111
+#: src/petals/cpt.php:1041 src/petals/templates/petals-single.php:111
 msgid "Holy See"
 msgstr ""
 
-#: src/petals/cpt.php:1045 src/petals/templates/petals-single.php:112
+#: src/petals/cpt.php:1042 src/petals/templates/petals-single.php:112
 msgid "Honduras"
 msgstr ""
 
-#: src/petals/cpt.php:1046 src/petals/templates/petals-single.php:113
+#: src/petals/cpt.php:1043 src/petals/templates/petals-single.php:113
 msgid "Hong Kong"
 msgstr ""
 
-#: src/petals/cpt.php:1047 src/petals/templates/petals-single.php:114
+#: src/petals/cpt.php:1044 src/petals/templates/petals-single.php:114
 msgid "Hungary"
 msgstr ""
 
-#: src/petals/cpt.php:1048 src/petals/templates/petals-single.php:115
+#: src/petals/cpt.php:1045 src/petals/templates/petals-single.php:115
 msgid "Iceland"
 msgstr ""
 
-#: src/petals/cpt.php:1049 src/petals/templates/petals-single.php:116
+#: src/petals/cpt.php:1046 src/petals/templates/petals-single.php:116
 msgid "India"
 msgstr ""
 
-#: src/petals/cpt.php:1050 src/petals/templates/petals-single.php:117
+#: src/petals/cpt.php:1047 src/petals/templates/petals-single.php:117
 msgid "Indonesia"
 msgstr ""
 
-#: src/petals/cpt.php:1051 src/petals/templates/petals-single.php:118
+#: src/petals/cpt.php:1048 src/petals/templates/petals-single.php:118
 msgid "Iran (Islamic Republic of)"
 msgstr ""
 
-#: src/petals/cpt.php:1052 src/petals/templates/petals-single.php:119
+#: src/petals/cpt.php:1049 src/petals/templates/petals-single.php:119
 msgid "Iraq"
 msgstr ""
 
-#: src/petals/cpt.php:1053 src/petals/templates/petals-single.php:120
+#: src/petals/cpt.php:1050 src/petals/templates/petals-single.php:120
 msgid "Ireland"
 msgstr ""
 
-#: src/petals/cpt.php:1054 src/petals/templates/petals-single.php:121
+#: src/petals/cpt.php:1051 src/petals/templates/petals-single.php:121
 msgid "Isle of Man"
 msgstr ""
 
-#: src/petals/cpt.php:1055 src/petals/templates/petals-single.php:122
+#: src/petals/cpt.php:1052 src/petals/templates/petals-single.php:122
 msgid "Israel"
 msgstr ""
 
-#: src/petals/cpt.php:1056 src/petals/templates/petals-single.php:123
+#: src/petals/cpt.php:1053 src/petals/templates/petals-single.php:123
 msgid "Italy"
 msgstr ""
 
-#: src/petals/cpt.php:1057 src/petals/templates/petals-single.php:124
+#: src/petals/cpt.php:1054 src/petals/templates/petals-single.php:124
 msgid "Jamaica"
 msgstr ""
 
-#: src/petals/cpt.php:1058 src/petals/templates/petals-single.php:125
+#: src/petals/cpt.php:1055 src/petals/templates/petals-single.php:125
 msgid "Japan"
 msgstr ""
 
-#: src/petals/cpt.php:1059 src/petals/templates/petals-single.php:126
+#: src/petals/cpt.php:1056 src/petals/templates/petals-single.php:126
 msgid "Jersey"
 msgstr ""
 
-#: src/petals/cpt.php:1060 src/petals/templates/petals-single.php:127
+#: src/petals/cpt.php:1057 src/petals/templates/petals-single.php:127
 msgid "Jordan"
 msgstr ""
 
-#: src/petals/cpt.php:1061 src/petals/templates/petals-single.php:128
+#: src/petals/cpt.php:1058 src/petals/templates/petals-single.php:128
 msgid "Kazakhstan"
 msgstr ""
 
-#: src/petals/cpt.php:1062 src/petals/templates/petals-single.php:129
+#: src/petals/cpt.php:1059 src/petals/templates/petals-single.php:129
 msgid "Kenya"
 msgstr ""
 
-#: src/petals/cpt.php:1063 src/petals/templates/petals-single.php:130
+#: src/petals/cpt.php:1060 src/petals/templates/petals-single.php:130
 msgid "Kiribati"
 msgstr ""
 
-#: src/petals/cpt.php:1064 src/petals/templates/petals-single.php:131
+#: src/petals/cpt.php:1061 src/petals/templates/petals-single.php:131
 msgid "Korea (Democratic People's Republic of)"
 msgstr ""
 
-#: src/petals/cpt.php:1065 src/petals/templates/petals-single.php:132
+#: src/petals/cpt.php:1062 src/petals/templates/petals-single.php:132
 msgid "Korea, Republic of"
 msgstr ""
 
-#: src/petals/cpt.php:1066 src/petals/templates/petals-single.php:133
+#: src/petals/cpt.php:1063 src/petals/templates/petals-single.php:133
 msgid "Kuwait"
 msgstr ""
 
-#: src/petals/cpt.php:1067 src/petals/templates/petals-single.php:134
+#: src/petals/cpt.php:1064 src/petals/templates/petals-single.php:134
 msgid "Kyrgyzstan"
 msgstr ""
 
-#: src/petals/cpt.php:1068 src/petals/templates/petals-single.php:135
+#: src/petals/cpt.php:1065 src/petals/templates/petals-single.php:135
 msgid "Lao People's Democratic Republic"
 msgstr ""
 
-#: src/petals/cpt.php:1069 src/petals/templates/petals-single.php:136
+#: src/petals/cpt.php:1066 src/petals/templates/petals-single.php:136
 msgid "Latvia"
 msgstr ""
 
-#: src/petals/cpt.php:1070 src/petals/templates/petals-single.php:137
+#: src/petals/cpt.php:1067 src/petals/templates/petals-single.php:137
 msgid "Lebanon"
 msgstr ""
 
-#: src/petals/cpt.php:1071 src/petals/templates/petals-single.php:138
+#: src/petals/cpt.php:1068 src/petals/templates/petals-single.php:138
 msgid "Lesotho"
 msgstr ""
 
-#: src/petals/cpt.php:1072 src/petals/templates/petals-single.php:139
+#: src/petals/cpt.php:1069 src/petals/templates/petals-single.php:139
 msgid "Liberia"
 msgstr ""
 
-#: src/petals/cpt.php:1073 src/petals/templates/petals-single.php:140
+#: src/petals/cpt.php:1070 src/petals/templates/petals-single.php:140
 msgid "Libya"
 msgstr ""
 
-#: src/petals/cpt.php:1074 src/petals/templates/petals-single.php:141
+#: src/petals/cpt.php:1071 src/petals/templates/petals-single.php:141
 msgid "Liechtenstein"
 msgstr ""
 
-#: src/petals/cpt.php:1075 src/petals/templates/petals-single.php:142
+#: src/petals/cpt.php:1072 src/petals/templates/petals-single.php:142
 msgid "Lithuania"
 msgstr ""
 
-#: src/petals/cpt.php:1076 src/petals/templates/petals-single.php:143
+#: src/petals/cpt.php:1073 src/petals/templates/petals-single.php:143
 msgid "Luxembourg"
 msgstr ""
 
-#: src/petals/cpt.php:1077 src/petals/templates/petals-single.php:144
+#: src/petals/cpt.php:1074 src/petals/templates/petals-single.php:144
 msgid "Macao"
 msgstr ""
 
-#: src/petals/cpt.php:1078 src/petals/templates/petals-single.php:145
+#: src/petals/cpt.php:1075 src/petals/templates/petals-single.php:145
 msgid "Madagascar"
 msgstr ""
 
-#: src/petals/cpt.php:1079 src/petals/templates/petals-single.php:146
+#: src/petals/cpt.php:1076 src/petals/templates/petals-single.php:146
 msgid "Malawi"
 msgstr ""
 
-#: src/petals/cpt.php:1080 src/petals/templates/petals-single.php:147
+#: src/petals/cpt.php:1077 src/petals/templates/petals-single.php:147
 msgid "Malaysia"
 msgstr ""
 
-#: src/petals/cpt.php:1081 src/petals/templates/petals-single.php:148
+#: src/petals/cpt.php:1078 src/petals/templates/petals-single.php:148
 msgid "Maldives"
 msgstr ""
 
-#: src/petals/cpt.php:1082 src/petals/templates/petals-single.php:149
+#: src/petals/cpt.php:1079 src/petals/templates/petals-single.php:149
 msgid "Mali"
 msgstr ""
 
-#: src/petals/cpt.php:1083 src/petals/templates/petals-single.php:150
+#: src/petals/cpt.php:1080 src/petals/templates/petals-single.php:150
 msgid "Malta"
 msgstr ""
 
-#: src/petals/cpt.php:1084 src/petals/templates/petals-single.php:151
+#: src/petals/cpt.php:1081 src/petals/templates/petals-single.php:151
 msgid "Marshall Islands"
 msgstr ""
 
-#: src/petals/cpt.php:1085 src/petals/templates/petals-single.php:152
+#: src/petals/cpt.php:1082 src/petals/templates/petals-single.php:152
 msgid "Martinique"
 msgstr ""
 
-#: src/petals/cpt.php:1086 src/petals/templates/petals-single.php:153
+#: src/petals/cpt.php:1083 src/petals/templates/petals-single.php:153
 msgid "Mauritania"
 msgstr ""
 
-#: src/petals/cpt.php:1087 src/petals/templates/petals-single.php:154
+#: src/petals/cpt.php:1084 src/petals/templates/petals-single.php:154
 msgid "Mauritius"
 msgstr ""
 
-#: src/petals/cpt.php:1088 src/petals/templates/petals-single.php:155
+#: src/petals/cpt.php:1085 src/petals/templates/petals-single.php:155
 msgid "Mayotte"
 msgstr ""
 
-#: src/petals/cpt.php:1089 src/petals/templates/petals-single.php:156
+#: src/petals/cpt.php:1086 src/petals/templates/petals-single.php:156
 msgid "Mexico"
 msgstr ""
 
-#: src/petals/cpt.php:1090 src/petals/templates/petals-single.php:157
+#: src/petals/cpt.php:1087 src/petals/templates/petals-single.php:157
 msgid "Micronesia (Federated States of)"
 msgstr ""
 
-#: src/petals/cpt.php:1091 src/petals/templates/petals-single.php:158
+#: src/petals/cpt.php:1088 src/petals/templates/petals-single.php:158
 msgid "Moldova, Republic of"
 msgstr ""
 
-#: src/petals/cpt.php:1092 src/petals/templates/petals-single.php:159
+#: src/petals/cpt.php:1089 src/petals/templates/petals-single.php:159
 msgid "Monaco"
 msgstr ""
 
-#: src/petals/cpt.php:1093 src/petals/templates/petals-single.php:160
+#: src/petals/cpt.php:1090 src/petals/templates/petals-single.php:160
 msgid "Mongolia"
 msgstr ""
 
-#: src/petals/cpt.php:1094 src/petals/templates/petals-single.php:161
+#: src/petals/cpt.php:1091 src/petals/templates/petals-single.php:161
 msgid "Montenegro"
 msgstr ""
 
-#: src/petals/cpt.php:1095 src/petals/templates/petals-single.php:162
+#: src/petals/cpt.php:1092 src/petals/templates/petals-single.php:162
 msgid "Montserrat"
 msgstr ""
 
-#: src/petals/cpt.php:1096 src/petals/templates/petals-single.php:163
+#: src/petals/cpt.php:1093 src/petals/templates/petals-single.php:163
 msgid "Morocco"
 msgstr ""
 
-#: src/petals/cpt.php:1097 src/petals/templates/petals-single.php:164
+#: src/petals/cpt.php:1094 src/petals/templates/petals-single.php:164
 msgid "Mozambique"
 msgstr ""
 
-#: src/petals/cpt.php:1098 src/petals/templates/petals-single.php:165
+#: src/petals/cpt.php:1095 src/petals/templates/petals-single.php:165
 msgid "Myanmar"
 msgstr ""
 
-#: src/petals/cpt.php:1099 src/petals/templates/petals-single.php:166
+#: src/petals/cpt.php:1096 src/petals/templates/petals-single.php:166
 msgid "Namibia"
 msgstr ""
 
-#: src/petals/cpt.php:1100 src/petals/templates/petals-single.php:167
+#: src/petals/cpt.php:1097 src/petals/templates/petals-single.php:167
 msgid "Nauru"
 msgstr ""
 
-#: src/petals/cpt.php:1101 src/petals/templates/petals-single.php:168
+#: src/petals/cpt.php:1098 src/petals/templates/petals-single.php:168
 msgid "Nepal"
 msgstr ""
 
-#: src/petals/cpt.php:1102 src/petals/templates/petals-single.php:169
+#: src/petals/cpt.php:1099 src/petals/templates/petals-single.php:169
 msgid "Netherlands"
 msgstr ""
 
-#: src/petals/cpt.php:1103 src/petals/templates/petals-single.php:170
+#: src/petals/cpt.php:1100 src/petals/templates/petals-single.php:170
 msgid "New Caledonia"
 msgstr ""
 
-#: src/petals/cpt.php:1104 src/petals/templates/petals-single.php:171
+#: src/petals/cpt.php:1101 src/petals/templates/petals-single.php:171
 msgid "New Zealand"
 msgstr ""
 
-#: src/petals/cpt.php:1105 src/petals/templates/petals-single.php:172
+#: src/petals/cpt.php:1102 src/petals/templates/petals-single.php:172
 msgid "Nicaragua"
 msgstr ""
 
-#: src/petals/cpt.php:1106 src/petals/templates/petals-single.php:173
+#: src/petals/cpt.php:1103 src/petals/templates/petals-single.php:173
 msgid "Niger"
 msgstr ""
 
-#: src/petals/cpt.php:1107 src/petals/templates/petals-single.php:174
+#: src/petals/cpt.php:1104 src/petals/templates/petals-single.php:174
 msgid "Nigeria"
 msgstr ""
 
-#: src/petals/cpt.php:1108 src/petals/templates/petals-single.php:175
+#: src/petals/cpt.php:1105 src/petals/templates/petals-single.php:175
 msgid "Niue"
 msgstr ""
 
-#: src/petals/cpt.php:1109 src/petals/templates/petals-single.php:176
+#: src/petals/cpt.php:1106 src/petals/templates/petals-single.php:176
 msgid "Norfolk Island"
 msgstr ""
 
-#: src/petals/cpt.php:1110 src/petals/templates/petals-single.php:177
+#: src/petals/cpt.php:1107 src/petals/templates/petals-single.php:177
 msgid "North Macedonia"
 msgstr ""
 
-#: src/petals/cpt.php:1111 src/petals/templates/petals-single.php:178
+#: src/petals/cpt.php:1108 src/petals/templates/petals-single.php:178
 msgid "Northern Mariana Islands"
 msgstr ""
 
-#: src/petals/cpt.php:1112 src/petals/templates/petals-single.php:179
+#: src/petals/cpt.php:1109 src/petals/templates/petals-single.php:179
 msgid "Norway"
 msgstr ""
 
-#: src/petals/cpt.php:1113 src/petals/templates/petals-single.php:180
+#: src/petals/cpt.php:1110 src/petals/templates/petals-single.php:180
 msgid "Oman"
 msgstr ""
 
-#: src/petals/cpt.php:1114 src/petals/templates/petals-single.php:181
+#: src/petals/cpt.php:1111 src/petals/templates/petals-single.php:181
 msgid "Pakistan"
 msgstr ""
 
-#: src/petals/cpt.php:1115 src/petals/templates/petals-single.php:182
+#: src/petals/cpt.php:1112 src/petals/templates/petals-single.php:182
 msgid "Palau"
 msgstr ""
 
-#: src/petals/cpt.php:1116 src/petals/templates/petals-single.php:183
+#: src/petals/cpt.php:1113 src/petals/templates/petals-single.php:183
 msgid "Palestine, State of"
 msgstr ""
 
-#: src/petals/cpt.php:1117 src/petals/templates/petals-single.php:184
+#: src/petals/cpt.php:1114 src/petals/templates/petals-single.php:184
 msgid "Panama"
 msgstr ""
 
-#: src/petals/cpt.php:1118 src/petals/templates/petals-single.php:185
+#: src/petals/cpt.php:1115 src/petals/templates/petals-single.php:185
 msgid "Papua New Guinea"
 msgstr ""
 
-#: src/petals/cpt.php:1119 src/petals/templates/petals-single.php:186
+#: src/petals/cpt.php:1116 src/petals/templates/petals-single.php:186
 msgid "Paraguay"
 msgstr ""
 
-#: src/petals/cpt.php:1120 src/petals/templates/petals-single.php:187
+#: src/petals/cpt.php:1117 src/petals/templates/petals-single.php:187
 msgid "Peru"
 msgstr ""
 
-#: src/petals/cpt.php:1121 src/petals/templates/petals-single.php:188
+#: src/petals/cpt.php:1118 src/petals/templates/petals-single.php:188
 msgid "Philippines"
 msgstr ""
 
-#: src/petals/cpt.php:1122 src/petals/templates/petals-single.php:189
+#: src/petals/cpt.php:1119 src/petals/templates/petals-single.php:189
 msgid "Pitcairn"
 msgstr ""
 
-#: src/petals/cpt.php:1123 src/petals/templates/petals-single.php:190
+#: src/petals/cpt.php:1120 src/petals/templates/petals-single.php:190
 msgid "Poland"
 msgstr ""
 
-#: src/petals/cpt.php:1124 src/petals/templates/petals-single.php:191
+#: src/petals/cpt.php:1121 src/petals/templates/petals-single.php:191
 msgid "Portugal"
 msgstr ""
 
-#: src/petals/cpt.php:1125 src/petals/templates/petals-single.php:192
+#: src/petals/cpt.php:1122 src/petals/templates/petals-single.php:192
 msgid "Puerto Rico"
 msgstr ""
 
-#: src/petals/cpt.php:1126 src/petals/templates/petals-single.php:193
+#: src/petals/cpt.php:1123 src/petals/templates/petals-single.php:193
 msgid "Qatar"
 msgstr ""
 
-#: src/petals/cpt.php:1127 src/petals/templates/petals-single.php:194
+#: src/petals/cpt.php:1124 src/petals/templates/petals-single.php:194
 msgid "Réunion"
 msgstr ""
 
-#: src/petals/cpt.php:1128 src/petals/templates/petals-single.php:195
+#: src/petals/cpt.php:1125 src/petals/templates/petals-single.php:195
 msgid "Romania"
 msgstr ""
 
-#: src/petals/cpt.php:1129 src/petals/templates/petals-single.php:196
+#: src/petals/cpt.php:1126 src/petals/templates/petals-single.php:196
 msgid "Russian Federation"
 msgstr ""
 
-#: src/petals/cpt.php:1130 src/petals/templates/petals-single.php:197
+#: src/petals/cpt.php:1127 src/petals/templates/petals-single.php:197
 msgid "Rwanda"
 msgstr ""
 
-#: src/petals/cpt.php:1131 src/petals/templates/petals-single.php:198
+#: src/petals/cpt.php:1128 src/petals/templates/petals-single.php:198
 msgid "Saint Barthélemy"
 msgstr ""
 
-#: src/petals/cpt.php:1132 src/petals/templates/petals-single.php:199
+#: src/petals/cpt.php:1129 src/petals/templates/petals-single.php:199
 msgid "Saint Helena, Ascension and Tristan da Cunha"
 msgstr ""
 
-#: src/petals/cpt.php:1133 src/petals/templates/petals-single.php:200
+#: src/petals/cpt.php:1130 src/petals/templates/petals-single.php:200
 msgid "Saint Kitts and Nevis"
 msgstr ""
 
-#: src/petals/cpt.php:1134 src/petals/templates/petals-single.php:201
+#: src/petals/cpt.php:1131 src/petals/templates/petals-single.php:201
 msgid "Saint Lucia"
 msgstr ""
 
-#: src/petals/cpt.php:1135 src/petals/templates/petals-single.php:202
+#: src/petals/cpt.php:1132 src/petals/templates/petals-single.php:202
 msgid "Saint Martin (French part)"
 msgstr ""
 
-#: src/petals/cpt.php:1136 src/petals/templates/petals-single.php:203
+#: src/petals/cpt.php:1133 src/petals/templates/petals-single.php:203
 msgid "Saint Pierre and Miquelon"
 msgstr ""
 
-#: src/petals/cpt.php:1137 src/petals/templates/petals-single.php:204
+#: src/petals/cpt.php:1134 src/petals/templates/petals-single.php:204
 msgid "Saint Vincent and the Grenadines"
 msgstr ""
 
-#: src/petals/cpt.php:1138 src/petals/templates/petals-single.php:205
+#: src/petals/cpt.php:1135 src/petals/templates/petals-single.php:205
 msgid "Samoa"
 msgstr ""
 
-#: src/petals/cpt.php:1139 src/petals/templates/petals-single.php:206
+#: src/petals/cpt.php:1136 src/petals/templates/petals-single.php:206
 msgid "San Marino"
 msgstr ""
 
-#: src/petals/cpt.php:1140 src/petals/templates/petals-single.php:207
+#: src/petals/cpt.php:1137 src/petals/templates/petals-single.php:207
 msgid "Sao Tome and Principe"
 msgstr ""
 
-#: src/petals/cpt.php:1141 src/petals/templates/petals-single.php:208
+#: src/petals/cpt.php:1138 src/petals/templates/petals-single.php:208
 msgid "Saudi Arabia"
 msgstr ""
 
-#: src/petals/cpt.php:1142 src/petals/templates/petals-single.php:209
+#: src/petals/cpt.php:1139 src/petals/templates/petals-single.php:209
 msgid "Senegal"
 msgstr ""
 
-#: src/petals/cpt.php:1143 src/petals/templates/petals-single.php:210
+#: src/petals/cpt.php:1140 src/petals/templates/petals-single.php:210
 msgid "Serbia"
 msgstr ""
 
-#: src/petals/cpt.php:1144 src/petals/templates/petals-single.php:211
+#: src/petals/cpt.php:1141 src/petals/templates/petals-single.php:211
 msgid "Seychelles"
 msgstr ""
 
-#: src/petals/cpt.php:1145 src/petals/templates/petals-single.php:212
+#: src/petals/cpt.php:1142 src/petals/templates/petals-single.php:212
 msgid "Sierra Leone"
 msgstr ""
 
-#: src/petals/cpt.php:1146 src/petals/templates/petals-single.php:213
+#: src/petals/cpt.php:1143 src/petals/templates/petals-single.php:213
 msgid "Singapore"
 msgstr ""
 
-#: src/petals/cpt.php:1147 src/petals/templates/petals-single.php:214
+#: src/petals/cpt.php:1144 src/petals/templates/petals-single.php:214
 msgid "Sint Maarten (Dutch part)"
 msgstr ""
 
-#: src/petals/cpt.php:1148 src/petals/templates/petals-single.php:215
+#: src/petals/cpt.php:1145 src/petals/templates/petals-single.php:215
 msgid "Slovakia"
 msgstr ""
 
-#: src/petals/cpt.php:1149 src/petals/templates/petals-single.php:216
+#: src/petals/cpt.php:1146 src/petals/templates/petals-single.php:216
 msgid "Slovenia"
 msgstr ""
 
-#: src/petals/cpt.php:1150 src/petals/templates/petals-single.php:217
+#: src/petals/cpt.php:1147 src/petals/templates/petals-single.php:217
 msgid "Solomon Islands"
 msgstr ""
 
-#: src/petals/cpt.php:1151 src/petals/templates/petals-single.php:218
+#: src/petals/cpt.php:1148 src/petals/templates/petals-single.php:218
 msgid "Somalia"
 msgstr ""
 
-#: src/petals/cpt.php:1152 src/petals/templates/petals-single.php:219
+#: src/petals/cpt.php:1149 src/petals/templates/petals-single.php:219
 msgid "South Africa"
 msgstr ""
 
-#: src/petals/cpt.php:1153 src/petals/templates/petals-single.php:220
+#: src/petals/cpt.php:1150 src/petals/templates/petals-single.php:220
 msgid "South Georgia and the South Sandwich Islands"
 msgstr ""
 
-#: src/petals/cpt.php:1154 src/petals/templates/petals-single.php:221
+#: src/petals/cpt.php:1151 src/petals/templates/petals-single.php:221
 msgid "South Sudan"
 msgstr ""
 
-#: src/petals/cpt.php:1155 src/petals/templates/petals-single.php:222
+#: src/petals/cpt.php:1152 src/petals/templates/petals-single.php:222
 msgid "Spain"
 msgstr ""
 
-#: src/petals/cpt.php:1156 src/petals/templates/petals-single.php:223
+#: src/petals/cpt.php:1153 src/petals/templates/petals-single.php:223
 msgid "Sri Lanka"
 msgstr ""
 
-#: src/petals/cpt.php:1157 src/petals/templates/petals-single.php:224
+#: src/petals/cpt.php:1154 src/petals/templates/petals-single.php:224
 msgid "Sudan"
 msgstr ""
 
-#: src/petals/cpt.php:1158 src/petals/templates/petals-single.php:225
+#: src/petals/cpt.php:1155 src/petals/templates/petals-single.php:225
 msgid "Suriname"
 msgstr ""
 
-#: src/petals/cpt.php:1159 src/petals/templates/petals-single.php:226
+#: src/petals/cpt.php:1156 src/petals/templates/petals-single.php:226
 msgid "Svalbard and Jan Mayen"
 msgstr ""
 
-#: src/petals/cpt.php:1160 src/petals/templates/petals-single.php:227
+#: src/petals/cpt.php:1157 src/petals/templates/petals-single.php:227
 msgid "Sweden"
 msgstr ""
 
-#: src/petals/cpt.php:1161 src/petals/templates/petals-single.php:228
+#: src/petals/cpt.php:1158 src/petals/templates/petals-single.php:228
 msgid "Switzerland"
 msgstr ""
 
-#: src/petals/cpt.php:1162 src/petals/templates/petals-single.php:229
+#: src/petals/cpt.php:1159 src/petals/templates/petals-single.php:229
 msgid "Syrian Arab Republic"
 msgstr ""
 
-#: src/petals/cpt.php:1163 src/petals/templates/petals-single.php:230
+#: src/petals/cpt.php:1160 src/petals/templates/petals-single.php:230
 msgid "Taiwan, Province of China"
 msgstr ""
 
-#: src/petals/cpt.php:1164 src/petals/templates/petals-single.php:231
+#: src/petals/cpt.php:1161 src/petals/templates/petals-single.php:231
 msgid "Tajikistan"
 msgstr ""
 
-#: src/petals/cpt.php:1165 src/petals/templates/petals-single.php:232
+#: src/petals/cpt.php:1162 src/petals/templates/petals-single.php:232
 msgid "Tanzania, United Republic of"
 msgstr ""
 
-#: src/petals/cpt.php:1166 src/petals/templates/petals-single.php:233
+#: src/petals/cpt.php:1163 src/petals/templates/petals-single.php:233
 msgid "Thailand"
 msgstr ""
 
-#: src/petals/cpt.php:1167 src/petals/templates/petals-single.php:234
+#: src/petals/cpt.php:1164 src/petals/templates/petals-single.php:234
 msgid "Timor-Leste"
 msgstr ""
 
-#: src/petals/cpt.php:1168 src/petals/templates/petals-single.php:235
+#: src/petals/cpt.php:1165 src/petals/templates/petals-single.php:235
 msgid "Togo"
 msgstr ""
 
-#: src/petals/cpt.php:1169 src/petals/templates/petals-single.php:236
+#: src/petals/cpt.php:1166 src/petals/templates/petals-single.php:236
 msgid "Tokelau"
 msgstr ""
 
-#: src/petals/cpt.php:1170 src/petals/templates/petals-single.php:237
+#: src/petals/cpt.php:1167 src/petals/templates/petals-single.php:237
 msgid "Tonga"
 msgstr ""
 
-#: src/petals/cpt.php:1171 src/petals/templates/petals-single.php:238
+#: src/petals/cpt.php:1168 src/petals/templates/petals-single.php:238
 msgid "Trinidad and Tobago"
 msgstr ""
 
-#: src/petals/cpt.php:1172 src/petals/templates/petals-single.php:239
+#: src/petals/cpt.php:1169 src/petals/templates/petals-single.php:239
 msgid "Tunisia"
 msgstr ""
 
-#: src/petals/cpt.php:1173 src/petals/templates/petals-single.php:240
+#: src/petals/cpt.php:1170 src/petals/templates/petals-single.php:240
 msgid "Türkiye"
 msgstr ""
 
-#: src/petals/cpt.php:1174 src/petals/templates/petals-single.php:241
+#: src/petals/cpt.php:1171 src/petals/templates/petals-single.php:241
 msgid "Turkmenistan"
 msgstr ""
 
-#: src/petals/cpt.php:1175 src/petals/templates/petals-single.php:242
+#: src/petals/cpt.php:1172 src/petals/templates/petals-single.php:242
 msgid "Turks and Caicos Islands"
 msgstr ""
 
-#: src/petals/cpt.php:1176 src/petals/templates/petals-single.php:243
+#: src/petals/cpt.php:1173 src/petals/templates/petals-single.php:243
 msgid "Tuvalu"
 msgstr ""
 
-#: src/petals/cpt.php:1177 src/petals/templates/petals-single.php:244
+#: src/petals/cpt.php:1174 src/petals/templates/petals-single.php:244
 msgid "Uganda"
 msgstr ""
 
-#: src/petals/cpt.php:1178 src/petals/templates/petals-single.php:245
+#: src/petals/cpt.php:1175 src/petals/templates/petals-single.php:245
 msgid "Ukraine"
 msgstr ""
 
-#: src/petals/cpt.php:1179 src/petals/templates/petals-single.php:246
+#: src/petals/cpt.php:1176 src/petals/templates/petals-single.php:246
 msgid "United Arab Emirates"
 msgstr ""
 
-#: src/petals/cpt.php:1180 src/petals/templates/petals-single.php:247
+#: src/petals/cpt.php:1177 src/petals/templates/petals-single.php:247
 msgid "United Kingdom of Great Britain and Northern Ireland"
 msgstr ""
 
-#: src/petals/cpt.php:1181 src/petals/templates/petals-single.php:248
+#: src/petals/cpt.php:1178 src/petals/templates/petals-single.php:248
 msgid "United States Minor Outlying Islands"
 msgstr ""
 
-#: src/petals/cpt.php:1182 src/petals/templates/petals-single.php:249
+#: src/petals/cpt.php:1179 src/petals/templates/petals-single.php:249
 msgid "United States of America"
 msgstr ""
 
-#: src/petals/cpt.php:1183 src/petals/templates/petals-single.php:250
+#: src/petals/cpt.php:1180 src/petals/templates/petals-single.php:250
 msgid "Uruguay"
 msgstr ""
 
-#: src/petals/cpt.php:1184 src/petals/templates/petals-single.php:251
+#: src/petals/cpt.php:1181 src/petals/templates/petals-single.php:251
 msgid "Uzbekistan"
 msgstr ""
 
-#: src/petals/cpt.php:1185 src/petals/templates/petals-single.php:252
+#: src/petals/cpt.php:1182 src/petals/templates/petals-single.php:252
 msgid "Vanuatu"
 msgstr ""
 
-#: src/petals/cpt.php:1186 src/petals/templates/petals-single.php:253
+#: src/petals/cpt.php:1183 src/petals/templates/petals-single.php:253
 msgid "Venezuela (Bolivarian Republic of)"
 msgstr ""
 
-#: src/petals/cpt.php:1187 src/petals/templates/petals-single.php:254
+#: src/petals/cpt.php:1184 src/petals/templates/petals-single.php:254
 msgid "Viet Nam"
 msgstr ""
 
-#: src/petals/cpt.php:1188 src/petals/templates/petals-single.php:255
+#: src/petals/cpt.php:1185 src/petals/templates/petals-single.php:255
 msgid "Virgin Islands (British)"
 msgstr ""
 
-#: src/petals/cpt.php:1189 src/petals/templates/petals-single.php:256
+#: src/petals/cpt.php:1186 src/petals/templates/petals-single.php:256
 msgid "Virgin Islands (U.S.)"
 msgstr ""
 
-#: src/petals/cpt.php:1190 src/petals/templates/petals-single.php:257
+#: src/petals/cpt.php:1187 src/petals/templates/petals-single.php:257
 msgid "Wallis and Futuna"
 msgstr ""
 
-#: src/petals/cpt.php:1191 src/petals/templates/petals-single.php:258
+#: src/petals/cpt.php:1188 src/petals/templates/petals-single.php:258
 msgid "Western Sahara"
 msgstr ""
 
-#: src/petals/cpt.php:1192 src/petals/templates/petals-single.php:259
+#: src/petals/cpt.php:1189 src/petals/templates/petals-single.php:259
 msgid "Yemen"
 msgstr ""
 
-#: src/petals/cpt.php:1193 src/petals/templates/petals-single.php:260
+#: src/petals/cpt.php:1190 src/petals/templates/petals-single.php:260
 msgid "Zambia"
 msgstr ""
 
-#: src/petals/cpt.php:1194 src/petals/templates/petals-single.php:261
+#: src/petals/cpt.php:1191 src/petals/templates/petals-single.php:261
 msgid "Zimbabwe"
 msgstr ""
 
-#: src/petals/cpt.php:1206 src/petals/templates/petals-single.php:326
+#: src/petals/cpt.php:1203 src/petals/templates/petals-single.php:326
 msgid "Recipient's Phone"
 msgstr ""
 
-#: src/petals/cpt.php:1210
+#: src/petals/cpt.php:1207
 msgid ""
 "It is strongly recommended that you seek and provide contact numbers for "
 "recipients to reduce delivery problems. Be advised that some partners in "
 "some countries will not deliver without a telephone number."
 msgstr ""
 
-#: src/petals/cpt.php:1264 src/petals/templates/petals-single.php:328
+#: src/petals/cpt.php:1261 src/petals/templates/petals-single.php:328
 msgid "Occasion"
 msgstr ""
 
-#: src/petals/cpt.php:1268
+#: src/petals/cpt.php:1265
 msgid "Should be the occasion they select with the card message"
 msgstr ""
 
-#: src/petals/cpt.php:1288
+#: src/petals/cpt.php:1285
 msgid "Any comments, delivery notes, or special instructions"
 msgstr ""
 
-#: src/petals/cpt.php:1304 src/petals/templates/petals-single.php:330
+#: src/petals/cpt.php:1301 src/petals/templates/petals-single.php:330
 msgid "Designated Executing Florist"
 msgstr ""
 
-#: src/petals/cpt.php:1308
+#: src/petals/cpt.php:1305
 msgid ""
 "Member number of the supplying florist. Normally this will be provided by "
 "Petals when it chooses a florist to supply the order. However, if you have "
 "a preference, you can insert a valid Petals member number in this field."
 msgstr ""
 
-#: src/petals/cpt.php:1324
+#: src/petals/cpt.php:1321
 msgid "Your Customer"
 msgstr ""
 
-#: src/petals/cpt.php:1346
+#: src/petals/cpt.php:1343
 msgid ""
 "Purchaser or other contact person's name for the sell side of this order. "
 "(Optional, but needed if Petals might need to contact the purchaser)"
 msgstr ""
 
-#: src/petals/cpt.php:1362 src/petals/templates/petals-single.php:332
+#: src/petals/cpt.php:1359 src/petals/templates/petals-single.php:332
 msgid "Customer Email"
 msgstr ""
 
-#: src/petals/cpt.php:1366
+#: src/petals/cpt.php:1363
 msgid ""
 "Purchaser or other contact person's email for the sell side of this order. "
 "(Optional, but needed if Petals might need to contact the purchaser)"
 msgstr ""
 
-#: src/petals/cpt.php:1381 src/petals/templates/petals-single.php:333
+#: src/petals/cpt.php:1378 src/petals/templates/petals-single.php:333
 msgid "Customer Phone"
 msgstr ""
 
-#: src/petals/cpt.php:1385
+#: src/petals/cpt.php:1382
 msgid ""
 "Purchaser or other contact person's business hours phone for the sell side "
 "of this order. (Optional, but needed if Petals might need to contact the "
 "purchaser)"
 msgstr ""
 
-#: src/petals/cpt.php:1429 src/petals/cpt.php:1446
+#: src/petals/cpt.php:1426 src/petals/cpt.php:1443
 msgid "Send Order"
 msgstr ""
 
-#: src/petals/cpt.php:1443
+#: src/petals/cpt.php:1440
 msgid "Order sent to Petals"
 msgstr ""
 
-#: src/petals/cpt.php:1483
+#: src/petals/cpt.php:1480
 msgid "Send New Petals Order"
 msgstr ""
 
-#: src/petals/cpt.php:1484
+#: src/petals/cpt.php:1481
 msgid "New Order"
 msgstr ""
 
-#: src/petals/cpt.php:1485
+#: src/petals/cpt.php:1482
 msgid "Edit Order"
 msgstr ""
 
-#: src/petals/cpt.php:1487
+#: src/petals/cpt.php:1484
 msgid "All Orders"
 msgstr ""
 
-#: src/petals/cpt.php:1488
+#: src/petals/cpt.php:1485
 msgid "Search Orders"
 msgstr ""
 
-#: src/petals/cpt.php:1489
+#: src/petals/cpt.php:1486
 msgid "Parent Orders:"
 msgstr ""
 
-#: src/petals/cpt.php:1492
+#: src/petals/cpt.php:1489
 msgid "Order Attributes"
 msgstr ""
 
-#: src/petals/cpt.php:1493
+#: src/petals/cpt.php:1490
 msgid "Insert into order"
 msgstr ""
 
-#: src/petals/cpt.php:1494
+#: src/petals/cpt.php:1491
 msgid "Uploaded to this order"
 msgstr ""
 
-#: src/petals/cpt.php:1495
+#: src/petals/cpt.php:1492
 msgid "Filter orders list"
 msgstr ""
 
-#: src/petals/cpt.php:1496
+#: src/petals/cpt.php:1493
 msgid "Orders list navigation"
 msgstr ""
 
-#: src/petals/cpt.php:1497
+#: src/petals/cpt.php:1494
 msgid "Orders list"
 msgstr ""
 
-#: src/petals/cpt.php:1498
+#: src/petals/cpt.php:1495
 msgid "Order sent."
 msgstr ""
 
-#: src/petals/cpt.php:1499
+#: src/petals/cpt.php:1496
 msgid "Order sent privately."
 msgstr ""
 
-#: src/petals/cpt.php:1500
+#: src/petals/cpt.php:1497
 msgid "Order reverted to draft."
 msgstr ""
 
-#: src/petals/cpt.php:1501
+#: src/petals/cpt.php:1498
 msgid "Order scheduled."
 msgstr ""
 
-#: src/petals/cpt.php:1502
+#: src/petals/cpt.php:1499
 msgid "Order updated."
 msgstr ""
 
-#: src/petals/cpt.php:1503
+#: src/petals/cpt.php:1500
 msgid "Order link"
 msgstr ""
 
-#: src/petals/cpt.php:1504
+#: src/petals/cpt.php:1501
 msgid "A link to a Petals Order."
 msgstr ""
 
-#: src/petals/email.php:76
+#: src/petals/email.php:74
 msgid "There are no order notes compatible to display here."
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-inbound.php:27
+#: src/petals/emails/class-wc-petals-inbound.php:25
 msgid "Petals - Inbound Order Sent"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-inbound.php:28
+#: src/petals/emails/class-wc-petals-inbound.php:26
 msgid ""
 "Inbound Order Sent emails are sent to chosen recipient(s) when an order is "
 "sent into the Petals Network."
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-inbound.php:52
+#: src/petals/emails/class-wc-petals-inbound.php:50
 msgid "[{site_title}]: Petals Order #{petals_order_number}"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-inbound.php:62
+#: src/petals/emails/class-wc-petals-inbound.php:60
 msgid "Order Sent: #{petals_order_number}"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-inbound.php:130
-#: src/petals/emails/class-wc-petals-message.php:128
-#: src/petals/emails/class-wc-petals-note.php:140
-#: src/petals/emails/class-wc-petals-outcome.php:128
+#: src/petals/emails/class-wc-petals-inbound.php:128
+#: src/petals/emails/class-wc-petals-message.php:126
+#: src/petals/emails/class-wc-petals-note.php:138
+#: src/petals/emails/class-wc-petals-outcome.php:126
 msgid "Thank you"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-message.php:27
+#: src/petals/emails/class-wc-petals-message.php:25
 msgid "Petals - Message (Inbound Order)"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-message.php:28
+#: src/petals/emails/class-wc-petals-message.php:26
 msgid ""
 "Message (Inbound Order) emails are sent to chosen recipient(s) when a "
 "message from Petals is received regarding an order you sent."
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-message.php:51
+#: src/petals/emails/class-wc-petals-message.php:49
 msgid "[{site_title}]: Petals Order #{order_number} - Petals Message"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-message.php:61
+#: src/petals/emails/class-wc-petals-message.php:59
 msgid "Petals Message for order: #{order_number}"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-new.php:28
+#: src/petals/emails/class-wc-petals-new.php:26
 msgid "Petals - New Outbound Order"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-new.php:29
+#: src/petals/emails/class-wc-petals-new.php:27
 msgid ""
 "New Outbound Order emails are sent to chosen recipient(s) when a new order "
 "from Petals is received."
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-new.php:53
+#: src/petals/emails/class-wc-petals-new.php:51
 msgid "[{site_title}]: New Petals Network Order #{petals_order_number}"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-new.php:63
+#: src/petals/emails/class-wc-petals-new.php:61
 msgid "New Petals Order: #{petals_order_number}"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-new.php:138
+#: src/petals/emails/class-wc-petals-new.php:136
 msgid "You can accept or reject this order from your website's dashboard."
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-note.php:27
+#: src/petals/emails/class-wc-petals-note.php:25
 msgid "Petals - Message (Outbound Order)"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-note.php:28
+#: src/petals/emails/class-wc-petals-note.php:26
 msgid ""
 "Message (Outbound Order) emails are sent to chosen recipient(s) when a "
 "message from Petals is received regarding an order you received."
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-note.php:53
+#: src/petals/emails/class-wc-petals-note.php:51
 msgid "[{site_title}]: Order #{petals_order_number} - Petals Message"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-note.php:63
+#: src/petals/emails/class-wc-petals-note.php:61
 msgid "Petals Message for order: #{petals_order_number}"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-outcome.php:27
+#: src/petals/emails/class-wc-petals-outcome.php:25
 msgid "Petals - Action Outcome"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-outcome.php:28
+#: src/petals/emails/class-wc-petals-outcome.php:26
 msgid ""
 "Action Outcome emails are sent to chosen recipient(s) when you perform "
 "certain actions in your dashboard, notifying you of the outcome of the "
 "action."
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-outcome.php:51
+#: src/petals/emails/class-wc-petals-outcome.php:49
 msgid "[{site_title}]: Petals Action Outcome"
 msgstr ""
 
-#: src/petals/emails/class-wc-petals-outcome.php:61
+#: src/petals/emails/class-wc-petals-outcome.php:59
 msgid "Petals Action Outcome"
 msgstr ""
 
-#: src/petals/messaging.php:25
+#: src/petals/messaging.php:22
 msgid "Petals Messaging"
 msgstr ""
 
-#: src/petals/messaging.php:33 src/petals/templates/petals-single.php:341
+#: src/petals/messaging.php:30 src/petals/templates/petals-single.php:341
 msgid "Select a message type..."
 msgstr ""
 
-#: src/petals/messaging.php:34 src/petals/templates/petals-single.php:342
+#: src/petals/messaging.php:31 src/petals/templates/petals-single.php:342
 msgid "Message - non-complaint"
 msgstr ""
 
-#: src/petals/messaging.php:35 src/petals/templates/petals-single.php:343
+#: src/petals/messaging.php:32 src/petals/templates/petals-single.php:343
 msgid "Complaint"
 msgstr ""
 
-#: src/petals/messaging.php:36 src/petals/templates/petals-single.php:344
+#: src/petals/messaging.php:33 src/petals/templates/petals-single.php:344
 msgid "Final message (no response required)"
 msgstr ""
 
-#: src/petals/messaging.php:41 src/petals/templates/petals-single.php:347
+#: src/petals/messaging.php:38 src/petals/templates/petals-single.php:347
 msgid "Message to Petals"
 msgstr ""
 
-#: src/petals/messaging.php:42 src/petals/templates/petals-single.php:348
+#: src/petals/messaging.php:39 src/petals/templates/petals-single.php:348
 msgid "Send Message"
 msgstr ""
 
-#: src/petals/messaging.php:51 src/petals/templates/petals-single.php:363
+#: src/petals/messaging.php:48 src/petals/templates/petals-single.php:363
 msgid "Please fill in both fields before attempting to send a message."
 msgstr ""
 
-#: src/petals/messaging.php:52 src/petals/templates/petals-single.php:365
+#: src/petals/messaging.php:49 src/petals/templates/petals-single.php:365
 msgid "Send Message?"
 msgstr ""
 
-#: src/petals/messaging.php:53 src/petals/templates/petals-single.php:366
+#: src/petals/messaging.php:50 src/petals/templates/petals-single.php:366
 msgid "Please wait..."
 msgstr ""
 
-#: src/petals/messaging.php:61
+#: src/petals/messaging.php:58
 msgid ""
 "Message queued for sending - this page will now attempt to refresh to "
 "display the outcome in the Order Notes. An email will also be sent to the "
 "site admin."
 msgstr ""
 
-#: src/petals/petals-options.php:32 src/petals/petals-options.php:92
+#: src/petals/petals-options.php:29 src/petals/petals-options.php:89
 msgid "Petals Network Integration"
 msgstr ""
 
-#: src/petals/petals-options.php:98
+#: src/petals/petals-options.php:95
 msgid "Outbound Order Product"
 msgstr ""
 
-#: src/petals/petals-options.php:105
+#: src/petals/petals-options.php:102
 msgid "Member Number"
 msgstr ""
 
-#: src/petals/petals-options.php:129
+#: src/petals/petals-options.php:126
 msgid "Product Category"
 msgstr ""
 
-#: src/petals/petals-options.php:137 src/pos/phone.php:134
-#: src/pos/phone.php:971
+#: src/petals/petals-options.php:134 src/pos/phone.php:132
+#: src/pos/phone.php:969
 msgid "Product"
 msgstr ""
 
-#: src/petals/petals-options.php:171
+#: src/petals/petals-options.php:168
 msgid "Your site will use this information to communicate with Petals."
 msgstr ""
 
-#: src/petals/petals-options.php:177
+#: src/petals/petals-options.php:174
 msgid ""
 "These settings relate to the WooCommerce product that will be used when an "
 "order from Petals is received."
 msgstr ""
 
-#: src/petals/petals-options.php:190
+#: src/petals/petals-options.php:187
 msgid "Your Petals Exchange member number."
 msgstr ""
 
-#: src/petals/petals-options.php:203
+#: src/petals/petals-options.php:200
 msgid ""
 "Your Petals Exchange password. This is encrypted before being stored in "
 "your site's database, and is used only to communicate directly with Petals "
 "Network."
 msgstr ""
 
-#: src/petals/petals-options.php:210
+#: src/petals/petals-options.php:207
 msgid "Click to copy to clipboard"
 msgstr ""
 
-#: src/petals/petals-options.php:212
+#: src/petals/petals-options.php:209
 msgid ""
 "Provide the link above to the Petals <a "
 "href=\"mailto:eflorist@petalsnetwork.com?subject=XML Opt-In&body=Shop Name: "
@@ -9425,100 +9425,100 @@ msgid ""
 "The link can be copied to your clipboard by simply clicking the link above."
 msgstr ""
 
-#: src/petals/petals-options.php:213
+#: src/petals/petals-options.php:210
 msgid ""
 "<strong>Please note:</strong> The integration will not work unless all "
 "other fields on this page are completed <em>and</em> the request is sent to "
 "Petals as per the above."
 msgstr ""
 
-#: src/petals/petals-options.php:224
+#: src/petals/petals-options.php:221
 msgid "Select a Category..."
 msgstr ""
 
-#: src/petals/petals-options.php:239
+#: src/petals/petals-options.php:236
 msgid "Please select the category which will contain the product."
 msgstr ""
 
-#: src/petals/petals-options.php:279 src/petals/petals-options.php:281
+#: src/petals/petals-options.php:276 src/petals/petals-options.php:278
 msgid "Select a Product..."
 msgstr ""
 
-#: src/petals/petals-options.php:302
+#: src/petals/petals-options.php:299
 msgid ""
 "Select a category above first, and Save Changes, then this option will "
 "become available."
 msgstr ""
 
-#: src/petals/petals-options.php:306
+#: src/petals/petals-options.php:303
 msgid "Please select the product."
 msgstr ""
 
-#: src/petals/petals-options.php:312
+#: src/petals/petals-options.php:309
 msgid "Or click here to generate a compatible product in one click."
 msgstr ""
 
-#: src/petals/petals.php:33
+#: src/petals/petals.php:30
 msgid "Accept/Reject"
 msgstr ""
 
-#: src/petals/petals.php:35
+#: src/petals/petals.php:32
 msgid "Accept"
 msgstr ""
 
-#: src/petals/petals.php:36
+#: src/petals/petals.php:33
 msgid "Reject"
 msgstr ""
 
-#: src/petals/petals.php:38
+#: src/petals/petals.php:35
 msgid "Cannot deliver flowers"
 msgstr ""
 
-#: src/petals/petals.php:39
+#: src/petals/petals.php:36
 msgid "Don't have the required flowers"
 msgstr ""
 
-#: src/petals/petals.php:40
+#: src/petals/petals.php:37
 msgid "We cannot deliver to this location ever"
 msgstr ""
 
-#: src/petals/petals.php:41
+#: src/petals/petals.php:38
 msgid "Cannot deliver to this location today"
 msgstr ""
 
-#: src/petals/petals.php:42
+#: src/petals/petals.php:39
 msgid "Do not have these flowers but could do a florist choice"
 msgstr ""
 
-#: src/petals/petals.php:43
+#: src/petals/petals.php:40
 msgid "Do not have any flowers to meet delivery date"
 msgstr ""
 
-#: src/petals/petals.php:44
+#: src/petals/petals.php:41
 msgid "Need more information to deliver this order"
 msgstr ""
 
-#: src/petals/petals.php:45
+#: src/petals/petals.php:42
 msgid "Do not have this container but could do with a substitution of container"
 msgstr ""
 
-#: src/petals/petals.php:46
+#: src/petals/petals.php:43
 msgid "Do not do this product ever"
 msgstr ""
 
-#: src/petals/petals.php:47
+#: src/petals/petals.php:44
 msgid "There is a problem with this address"
 msgstr ""
 
-#: src/petals/petals.php:48
+#: src/petals/petals.php:45
 msgid "This area is restricted, can go on next run but not this delivery date"
 msgstr ""
 
-#: src/petals/petals.php:49
+#: src/petals/petals.php:46
 msgid "This area is restricted and can't be delivered until next week"
 msgstr ""
 
-#: src/petals/petals.php:65 src/petals/petals.php:71
+#: src/petals/petals.php:62 src/petals/petals.php:68
 msgid "Petals Order Number:"
 msgstr ""
 
@@ -9587,157 +9587,157 @@ msgstr ""
 msgid "Sorry, you must be logged in as an authorized user to view this content."
 msgstr ""
 
-#: src/pickup.php:133
+#: src/pickup.php:131
 msgid "Order type"
 msgstr ""
 
-#: src/pickup.php:141 src/pos/phone.php:165
+#: src/pickup.php:139 src/pos/phone.php:163
 msgid "Collection"
 msgstr ""
 
-#: src/pos/phone.php:26
+#: src/pos/phone.php:24
 msgid ""
 "This form does not yet support fees configured in BKF settings (other than "
 "timeslot fees), this is planned for the next major release. Apologies for "
 "any inconvenience caused."
 msgstr ""
 
-#: src/pos/phone.php:35 src/pos/phone.php:77
+#: src/pos/phone.php:33 src/pos/phone.php:75
 msgid "Phone Order"
 msgstr ""
 
-#: src/pos/phone.php:41
+#: src/pos/phone.php:39
 msgid "Web Order"
 msgstr ""
 
-#: src/pos/phone.php:51 src/pos/phone.php:52
+#: src/pos/phone.php:49 src/pos/phone.php:50
 msgid "New Phone Order"
 msgstr ""
 
-#: src/pos/phone.php:87
+#: src/pos/phone.php:85
 msgid "Customer Type"
 msgstr ""
 
-#: src/pos/phone.php:88
+#: src/pos/phone.php:86
 msgid "Existing Customer"
 msgstr ""
 
-#: src/pos/phone.php:88
+#: src/pos/phone.php:86
 msgid "New Customer"
 msgstr ""
 
-#: src/pos/phone.php:93
+#: src/pos/phone.php:91
 msgid "Select a customer..."
 msgstr ""
 
-#: src/pos/phone.php:108
+#: src/pos/phone.php:106
 msgid "First Name"
 msgstr ""
 
-#: src/pos/phone.php:108
+#: src/pos/phone.php:106
 msgid "Last Name"
 msgstr ""
 
-#: src/pos/phone.php:123
+#: src/pos/phone.php:121
 msgid "Create account for customer"
 msgstr ""
 
-#: src/pos/phone.php:130
+#: src/pos/phone.php:128
 msgid "Product(s)"
 msgstr ""
 
-#: src/pos/phone.php:136 src/pos/phone.php:971
+#: src/pos/phone.php:134 src/pos/phone.php:969
 msgid "Select a product..."
 msgstr ""
 
-#: src/pos/phone.php:145 src/pos/phone.php:971
+#: src/pos/phone.php:143 src/pos/phone.php:969
 msgid "Price"
 msgstr ""
 
-#: src/pos/phone.php:145 src/pos/phone.php:971
+#: src/pos/phone.php:143 src/pos/phone.php:969
 msgid "Notes (Optional)"
 msgstr ""
 
-#: src/pos/phone.php:160
+#: src/pos/phone.php:158
 msgid "Delivery/Collection Details"
 msgstr ""
 
-#: src/pos/phone.php:164
+#: src/pos/phone.php:162
 msgid "Order Type"
 msgstr ""
 
-#: src/pos/phone.php:171
+#: src/pos/phone.php:169
 msgid "Delivery Details"
 msgstr ""
 
-#: src/pos/phone.php:178
+#: src/pos/phone.php:176
 msgid "First"
 msgstr ""
 
-#: src/pos/phone.php:178
+#: src/pos/phone.php:176
 msgid "Last"
 msgstr ""
 
-#: src/pos/phone.php:198 src/pos/phone.php:213 src/pos/phone.php:926
+#: src/pos/phone.php:196 src/pos/phone.php:211 src/pos/phone.php:924
 msgid "Select a %s..."
 msgstr ""
 
-#: src/pos/phone.php:231
+#: src/pos/phone.php:229
 msgid "Delivery/Collection Method"
 msgstr ""
 
-#: src/pos/phone.php:231
+#: src/pos/phone.php:229
 msgid "Delivery Method"
 msgstr ""
 
-#: src/pos/phone.php:232 src/pos/phone.php:1237 src/pos/phone.php:1268
+#: src/pos/phone.php:230 src/pos/phone.php:1235 src/pos/phone.php:1266
 msgid ""
 "No methods available until an order type is selected and/or a valid address "
 "entered."
 msgstr ""
 
-#: src/pos/phone.php:235 src/pos/phone.php:236
+#: src/pos/phone.php:233 src/pos/phone.php:234
 #: src/suburbs/method-settings.php:26
 msgid "Cost"
 msgstr ""
 
-#: src/pos/phone.php:297
+#: src/pos/phone.php:295
 msgid "Totals and Payment"
 msgstr ""
 
-#: src/pos/phone.php:305
+#: src/pos/phone.php:303
 msgid "Payment"
 msgstr ""
 
-#: src/pos/phone.php:306
+#: src/pos/phone.php:304
 msgid "Send Invoice"
 msgstr ""
 
-#: src/pos/phone.php:306
+#: src/pos/phone.php:304
 msgid "Save as Draft"
 msgstr ""
 
-#: src/pos/phone.php:315
+#: src/pos/phone.php:313
 msgid "After Saving"
 msgstr ""
 
-#: src/pos/phone.php:316
+#: src/pos/phone.php:314
 msgid "Orders List"
 msgstr ""
 
-#: src/pos/phone.php:316
+#: src/pos/phone.php:314
 msgid "Manage Order"
 msgstr ""
 
-#: src/pos/phone.php:316
+#: src/pos/phone.php:314
 msgid "Another Order"
 msgstr ""
 
-#: src/pos/phone.php:319
+#: src/pos/phone.php:317
 msgid "Download Worksheet?"
 msgstr ""
 
-#: src/pos/phone.php:327
+#: src/pos/phone.php:325
 msgid "Create Order"
 msgstr ""
 
@@ -9809,11 +9809,11 @@ msgid "Calculation type"
 msgstr ""
 
 #: src/suburbs/method-settings.php:86
-msgid "Per class: Charge shipping for each delivery class individually"
+msgid "Per class: Charge delivery for each delivery class individually"
 msgstr ""
 
 #: src/suburbs/method-settings.php:87
-msgid "Per order: Charge shipping for the most expensive delivery class"
+msgid "Per order: Charge delivery for the most expensive delivery class"
 msgstr ""
 
 #: src/suburbs/method.php:71
@@ -9860,23 +9860,23 @@ msgid ""
 "delete the delivery method %1shere%2s."
 msgstr ""
 
-#: src/tools.php:21 src/tools.php:22 src/tools.php:55
+#: src/tools.php:19 src/tools.php:20 src/tools.php:53
 msgid "Florist Tools"
 msgstr ""
 
-#: src/tools.php:59
+#: src/tools.php:57
 msgid "Order Document Actions"
 msgstr ""
 
-#: src/tools.php:63
+#: src/tools.php:61
 msgid "Select an action..."
 msgstr ""
 
-#: src/tools.php:64
+#: src/tools.php:62
 msgid "Resend %s to Customer"
 msgstr ""
 
-#: src/tools.php:68
+#: src/tools.php:66
 msgid "Go"
 msgstr ""
 
@@ -10158,134 +10158,134 @@ msgctxt "Product Slug"
 msgid "petals-network-order"
 msgstr ""
 
-#: src/core.php:150
+#: src/core.php:148
 msgctxt "shipping packages"
 msgid "Delivery"
 msgid_plural "Delivery %d"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/cpt/delivery-suburb.php:45
+#: src/cpt/delivery-suburb.php:43
 msgctxt "post type general name"
 msgid "Delivery Suburbs"
 msgstr ""
 
-#: src/petals/cpt.php:1478
+#: src/petals/cpt.php:1475
 msgctxt "post type general name"
+msgid "Petals Orders"
+msgstr ""
+
+#: src/cpt/delivery-suburb.php:44
+msgctxt "post type singular name"
+msgid "Delivery Suburb"
+msgstr ""
+
+#: src/petals/cpt.php:1476
+msgctxt "post type singular name"
+msgid "Petals Order"
+msgstr ""
+
+#: src/cpt/delivery-suburb.php:45
+msgctxt "admin menu"
+msgid "Delivery Suburbs"
+msgstr ""
+
+#: src/petals/cpt.php:1477
+msgctxt "admin menu"
 msgid "Petals Orders"
 msgstr ""
 
 #: src/cpt/delivery-suburb.php:46
-msgctxt "post type singular name"
+msgctxt "add new on admin bar"
 msgid "Delivery Suburb"
 msgstr ""
 
-#: src/petals/cpt.php:1479
-msgctxt "post type singular name"
+#: src/petals/cpt.php:1478
+msgctxt "add new on admin bar"
 msgid "Petals Order"
 msgstr ""
 
 #: src/cpt/delivery-suburb.php:47
-msgctxt "admin menu"
-msgid "Delivery Suburbs"
-msgstr ""
-
-#: src/petals/cpt.php:1480
-msgctxt "admin menu"
-msgid "Petals Orders"
-msgstr ""
-
-#: src/cpt/delivery-suburb.php:48
-msgctxt "add new on admin bar"
-msgid "Delivery Suburb"
-msgstr ""
-
-#: src/petals/cpt.php:1481
-msgctxt "add new on admin bar"
-msgid "Petals Order"
-msgstr ""
-
-#: src/cpt/delivery-suburb.php:49
 msgctxt "Add New"
 msgid "Add New"
 msgstr ""
 
-#: src/petals/cpt.php:1482
+#: src/petals/cpt.php:1479
 msgctxt "Add New"
 msgid "Send New"
 msgstr ""
 
-#: src/order-status.php:124
+#: src/order-status.php:121
 msgctxt "Order status"
 msgid "Prepared"
 msgstr ""
 
-#: src/order-status.php:125
+#: src/order-status.php:122
 msgctxt "Order status"
 msgid "Ready for Collection"
 msgstr ""
 
-#: src/order-status.php:126
+#: src/order-status.php:123
 msgctxt "Order status"
 msgid "Out for Delivery"
 msgstr ""
 
-#: src/order-status.php:127
+#: src/order-status.php:124
 msgctxt "Order status"
 msgid "Relayed"
 msgstr ""
 
-#: src/order-status.php:128
+#: src/order-status.php:125
 msgctxt "Order status"
 msgid "Scheduled"
 msgstr ""
 
-#: src/order-status.php:131
+#: src/order-status.php:128
 msgctxt "Order status"
 msgid "New (Petals)"
 msgstr ""
 
-#: src/order-status.php:132
+#: src/order-status.php:129
 msgctxt "Order status"
 msgid "Accepted (Petals)"
 msgstr ""
 
-#: src/order-status.php:133
+#: src/order-status.php:130
 msgctxt "Order status"
 msgid "Rejected (Petals)"
 msgstr ""
 
-#: src/order-status.php:135
+#: src/order-status.php:132
 msgctxt "Order status"
 msgid "Invoiced, Awaiting Payment"
 msgstr ""
 
-#: src/order-status.php:136
+#: src/order-status.php:133
 msgctxt "Order status"
 msgid "Draft (Phone)"
 msgstr ""
 
-#: src/order-status.php:487
+#: src/order-status.php:484
 msgctxt "Order status"
 msgid "Delivered"
 msgstr ""
 
-#: src/order-status.php:488
+#: src/order-status.php:485
 msgctxt "Order status"
 msgid "Received"
 msgstr ""
 
-#: src/order-status.php:489
+#: src/order-status.php:486
 msgctxt "Order status"
 msgid "Payment Unsuccessful"
 msgstr ""
 
-#: src/petals/cpt.php:59
+#: src/petals/cpt.php:56
 msgctxt "order list column title"
 msgid "Petals Order Number"
 msgstr ""
 
-#: src/petals/cpt.php:1521
+#: src/petals/cpt.php:1518
 msgctxt "label"
 msgid "Petals Order"
 msgstr ""
