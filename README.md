@@ -6,6 +6,7 @@ Download at: https://wordpress.org/plugins/bakkbone-florist-companion/
 ### Delivery Suburbs
 
 * Adds the ability to limit specific delivery methods to specific suburbs within their Zones
+* Adds a Custom Post Type of `Delivery Suburb` for easy setup of SEO-friendly pages for each suburb you deliver to
 
 ### Petals Network Integration
 
@@ -58,6 +59,13 @@ Why? You can view/print your orders all in one place, and in one consistent form
 * Rename "Processing" to "Received"
 * Rename "Completed" to "Delivered"
 * Rename "Failed" to "Payment Unsuccessful"
+
+### Admin Dashboard
+
+* "Today's Deliveries" Widget (all orders with today as delivery/collection date)
+* "Recent Orders" Widget (5 latest orders)
+* "Delivery Methods" Widget (all delivery methods configured, with cost, list of suburbs, and edit link)
+* Admin bar navigation for all FloristPress-generated pages
 
 ### Plugin Compatibility
 
