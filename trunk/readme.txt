@@ -163,7 +163,7 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 ### 3.2.2
 * ADD: New dashboard widget showing delivery methods and a summary of suburbs included
 * ADD: Complete Admin Bar navigation for all FloristPress-generated pages of the dashboard
-* DEV: Fix class capitalisation in custom delivery method
+* DEV: Fix class capitalization in custom delivery method
 * DEV: Patch delivery suburbs not being sanitized on save
 * TWEAK: Delivery suburbs auto-alphabetize when being sanitized
 ### 3.2.1

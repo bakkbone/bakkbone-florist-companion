@@ -81,7 +81,7 @@ class BKF_Admin_Notices{
 		$admin_bar->add_menu( array(
 			'id'    => 'floristpress-options-localisation',
 			'parent'=> 'floristpress-options',
-			'title' => __('Localisation', 'bakkbone-florist-companion'),
+			'title' => __('Localization', 'bakkbone-florist-companion'),
 			'href'  => admin_url('admin.php?page=bkf_localisation'),
 		) );
 	
