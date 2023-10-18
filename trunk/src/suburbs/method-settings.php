@@ -38,6 +38,7 @@ $settings = array(
 		'description'       => __('Enter one suburb per line, in the exact format you would write on a postage envelope. Case does not matter, only spelling – Perth would be treated the same as PERTH or perth. Ensure there are no additional spaces at the beginning or end of each line.', 'bakkbone-florist-companion'),
 		'default'           => '',
 		'desc_tip'          => true,
+		'sanitize_callback'	=> array( $this, 'sanitize_suburbs' ),
 	),
 );
 

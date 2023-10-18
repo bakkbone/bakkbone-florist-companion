@@ -5,7 +5,7 @@ Tags: woocommerce,florist,ecommerce,shipping,pdf,forms
 Requires at least: 6.0
 Tested up to: 6.3
 Requires PHP: 7.4
-Stable tag: 3.2.1
+Stable tag: 3.2.2
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -17,6 +17,7 @@ Provides a suite of highly customizable features designed specifically for flori
 ### Delivery Suburbs
 
 * Adds the ability to limit specific delivery methods to specific suburbs within their Zones
+* Adds a Custom Post Type of `Delivery Suburb` for easy setup of SEO-friendly pages for each suburb you deliver to
 
 ### Petals Network Integration
 
@@ -69,6 +70,13 @@ Why? You can view/print your orders all in one place, and in one consistent form
 * Rename "Processing" to "Received"
 * Rename "Completed" to "Delivered"
 * Rename "Failed" to "Payment Unsuccessful"
+
+### Admin Dashboard
+
+* "Today's Deliveries" Widget (all orders with today as delivery/collection date)
+* "Recent Orders" Widget (5 latest orders)
+* "Delivery Methods" Widget (all delivery methods configured, with cost, list of suburbs, and edit link)
+* Admin bar navigation for all FloristPress-generated pages
 
 ### Plugin Compatibility
 
@@ -152,6 +160,12 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 13. Order Notifier Toggle
 
 == Changelog ==
+### 3.2.2
+* ADD: New dashboard widget showing delivery methods and a summary of suburbs included
+* ADD: Complete Admin Bar navigation for all FloristPress-generated pages of the dashboard
+* DEV: Fix class capitalisation in custom delivery method
+* DEV: Patch delivery suburbs not being sanitized on save
+* TWEAK: Delivery suburbs auto-alphabetize when being sanitized
 ### 3.2.1
 * REMOVE: Removed `Action Scheduler` files since they are provided by WooCommerce core
 * TEST: Tested Woo 8.2.1

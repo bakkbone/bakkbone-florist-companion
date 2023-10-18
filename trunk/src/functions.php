@@ -38,6 +38,29 @@ function bkf_compare_semantic_version($standard, $applicant = "0.0.0"){
 	return $flag;
 }
 
+function bkf_calc_cost($cost){
+    if(!is_float($cost)){
+        if(str_contains($cost, '[')){
+            $cost = 999999;
+        } else {
+            include_once WC()->plugin_path() . '/includes/libraries/class-wc-eval-math.php';
+            $sum = preg_replace( '/\s+/', '', $cost );
+            $sum = str_replace( wc_get_price_decimal_separator(), '.', $sum );
+            $cost = WC_Eval_Math::evaluate($sum);
+        }
+    }
+    $taxrates = bkf_shipping_tax_rates();
+    if(!empty($taxrates)){
+        foreach($taxrates as $rate){
+            $rateval = $rate['rate'];
+            $ratepc = $rateval / 100;
+            $ratecalc = $ratepc + 1;
+            $cost = $cost * $ratecalc;
+        }
+    }
+    return $cost;
+}
+
 function bkf_shipping_tax_rates(){
     $tax = new WC_Tax();
     $rates = $tax->get_rates();
@@ -71,6 +94,75 @@ function bkf_get_shipping_methods(){
 	return $sm;
 }
 
+function bkf_get_shipping_zones(){
+	$v1listsuburbs = bkf_get_all_suburbs();
+	$allzones = WC_Data_Store::load('shipping-zone');
+	$rawzones = $allzones->get_zones();
+	$zones = [];
+	$zones[] = new WC_Shipping_Zone( 0 );
+	foreach($rawzones as $rawzone){
+		$zones[] = new WC_Shipping_Zone( $rawzone );
+	}
+	
+	$zones_result = [];
+	
+	foreach($zones as $zone){
+		$array = [];
+		$methods = $zone->get_shipping_methods();
+		foreach($methods as $method){
+			$method_type = $method->id;
+			$method_is_enabled = $method->is_enabled();
+			$method_instance_id = $method->get_instance_id();
+			$method_rate_id = $method->get_rate_id();
+			$title = $method->get_method_title();
+			$instance = $method->instance_settings;
+			$usertitle = $instance['title'];
+			$taxable = array_key_exists('tax_status',$instance) ? $instance['tax_status'] : 'none';
+			$cost = array_key_exists('cost',$instance) ? $instance['cost'] : '0';
+			$methodsuburbs = explode("\r\n", $instance['method_suburbs']);
+		
+			$suburbsv1 = [];
+			foreach($v1listsuburbs as $suburb){
+				if($suburb['method'] == $method_rate_id){
+					$suburbsv1[] = $suburb['suburb'];
+				}
+			}
+		
+			if(!empty($suburbsv1)){
+				$hassuburbs = true;
+			} else {
+				$hassuburbs = false;
+			}
+		
+			$array[] = array(
+				'method'		=> $method,
+				'type'			=> $method_type,
+				'enabled'		=> $method_is_enabled,
+				'instanceid'	=> $method_instance_id,
+				'settings'		=> $instance,
+				'rateid'		=> $method_rate_id,
+				'usertitle'		=> $usertitle,
+				'tax_status'	=> $taxable,
+				'cost'			=> $cost,
+				'suburbs'		=> $suburbsv1,
+				'hassuburbs'	=> $hassuburbs,
+				'title'			=> $title,
+				'method_suburbs'=> $methodsuburbs
+			);
+			
+		}
+		$zones_result[] = [
+			'name'		=>	$zone->get_zone_name(),
+			'id'		=>	$zone->get_id(),
+			'locations'	=>	$zone->get_zone_locations(),
+			'location'	=>	$zone->get_formatted_location(),
+			'methods'	=>	$array
+		];
+	}
+	
+	return $zones_result;
+}
+
 function bkf_get_shipping_methods_array(){
 	$allzones = WC_Data_Store::load('shipping-zone');
 	$rawzones = $allzones->get_zones();
@@ -83,7 +175,6 @@ function bkf_get_shipping_methods_array(){
 	$sm = [];
 	foreach($zones as $zone){
 		$items = $zone->get_shipping_methods();
-		$array = $zone->get_shipping_methods(false, 'json');
 		foreach($items as $item){
 			$sm[] = array(
 				'zone'		=>	array(
@@ -95,7 +186,7 @@ function bkf_get_shipping_methods_array(){
 				'type'		=>  $item->id,
 				'method'	=>	$item,
 				'methodid'	=>	$item->get_instance_id(),
-				'suburbs'	=>	$item->id == 'floristpress' ? $item->instance_settings['method_suburbs'] : null,
+				'suburbs'	=>	$item->id == 'floristpress' ? $item->instance_settings['method_suburbs'] : [],
 			);
 		}
 
@@ -161,6 +252,69 @@ function bkf_get_shipping_rates(){
 			'type'			=> $ratetype,
 			'method_suburbs'=> $methodsuburbs
 		);
+	}
+	return $sr;
+}
+
+function bkf_get_shipping_rates_by_zone($zone_id){
+	$methods = bkf_get_shipping_methods_array();
+	$suburbs = bkf_get_all_suburbs();
+	
+	$sr = [];
+	
+	foreach($methods as $thismethod){
+		$method = $thismethod['method'];
+		$zone = $thismethod['zone'];
+		$method_is_enabled = $method->is_enabled();
+		$method_instance_id = $method->get_instance_id();
+		$method_rate_id = $method->get_rate_id();
+		$title = $method->get_method_title();
+		$instance = $method->instance_settings;
+		$usertitle = $instance['title'];
+		$taxable = array_key_exists('tax_status',$instance) ? $instance['tax_status'] : 'none';
+		$cost = array_key_exists('cost',$instance) ? $instance['cost'] : '0';
+		$ratetype = $thismethod['type'];
+		$methodsuburbs = explode("\r\n", $thismethod['suburbs']);
+		
+		$suburbsv1 = [];
+		foreach($suburbs as $suburb){
+			if($suburb['method'] == $method_rate_id){
+				$suburbsv1[] = $suburb['suburb'];
+			}
+		}
+		
+		if(0 === strpos($method_rate_id, 'local_pickup')){
+			$pickup = true;
+		} else {
+			$pickup = false;
+		}
+		
+		if(!empty($suburbsv1)){
+			$hassuburbs = true;
+		} else {
+			$hassuburbs = false;
+		}
+		
+		if($zone['id'] == $zone_id){
+    		$sr[] = array(
+    			'enabled'		=> $method_is_enabled,
+    			'instanceid'	=> $method_instance_id,
+    			'rateid'		=> $method_rate_id,
+    			'usertitle'		=> $usertitle,
+    			'tax_status'	=> $taxable,
+    			'cost'			=> $cost,
+    			'suburbs'		=> $suburbsv1,
+    			'hassuburbs'	=> $hassuburbs,
+    			'title'			=> $title,
+    			'zone'			=> $zone['name'],
+    			'zoneid'        => $zone['id'],
+    			'zonelocations'	=> $zone['locations'],
+    			'zonelocation'	=> $zone['location'],
+    			'pickup'		=> $pickup,
+    			'type'			=> $ratetype,
+    			'method_suburbs'=> $methodsuburbs
+    		);
+		}
 	}
 	return $sr;
 }

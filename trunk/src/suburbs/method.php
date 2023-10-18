@@ -28,41 +28,21 @@ function BKF_Suburbs_filter_shipping_methods($rates, $package){
 add_filter('woocommerce_package_rates', 'BKF_Suburbs_filter_shipping_methods', PHP_INT_MAX - 1, 2);
 
 function BKF_Suburbs_add_shipping_method( $methods ) {
-	$methods['floristpress'] = 'Bkf_Shipping_Method';
+	$methods['floristpress'] = 'BKF_Shipping_Method';
 	return $methods;
 }
 
 add_filter( 'woocommerce_shipping_methods', 'BKF_Suburbs_add_shipping_method' );
 
 function BKF_Suburbs_init_shipping_method(){
-	if ( ! class_exists( 'Bkf_Shipping_Method' ) ) {
+	if ( ! class_exists( 'BKF_Shipping_Method' ) ) {
 		class BKF_Shipping_Method extends WC_Shipping_Method {
-			/**
-			 * Cost passed to [fee] shortcode.
-			 *
-			 * @var string Cost.
-			 */
 			protected $fee_cost = '';
 
-			/**
-			 * Shipping method cost.
-			 *
-			 * @var string
-			 */
 			public $cost;
 
-			/**
-			 * Shipping method type.
-			 *
-			 * @var string
-			 */
 			public $type;
 
-			/**
-			 * Constructor.
-			 *
-			 * @param int $instance_id Shipping method instance ID.
-			 */
 			public function __construct( $instance_id = 0 ) {
 				
 				$this->id                 = 'floristpress';
@@ -80,9 +60,6 @@ function BKF_Suburbs_init_shipping_method(){
 				add_action( 'woocommerce_update_options_shipping_' . $this->id, array( $this, 'process_admin_options' ) );
 			}
 
-			/**
-			 * Init user set variables.
-			 */
 			public function init() {
 				$this->instance_form_fields = include __DIR__ . '/method-settings.php';
 				$this->title                = $this->get_option( 'title' );
@@ -91,13 +68,6 @@ function BKF_Suburbs_init_shipping_method(){
 				$this->type                 = $this->get_option( 'type', 'class' );
 			}
 
-			/**
-			 * Evaluate a cost from a sum/string.
-			 *
-			 * @param  string $sum Sum of shipping.
-			 * @param  array  $args Args, must contain `cost` and `qty` keys. Having `[]` as default is for back compat reasons.
-			 * @return string
-			 */
 			protected function evaluate_cost( $sum, $args = [] ) {
 				// Add warning for subclasses.
 				if ( ! is_array( $args ) || ! array_key_exists( 'qty', $args ) || ! array_key_exists( 'cost', $args ) ) {
@@ -144,12 +114,6 @@ function BKF_Suburbs_init_shipping_method(){
 				return $sum ? WC_Eval_Math::evaluate( $sum ) : 0;
 			}
 
-			/**
-			 * Work out fee (shortcode).
-			 *
-			 * @param  array $atts Attributes.
-			 * @return string
-			 */
 			public function fee( $atts ) {
 				$atts = shortcode_atts(
 					array(
@@ -178,11 +142,6 @@ function BKF_Suburbs_init_shipping_method(){
 				return $calculated_fee;
 			}
 
-			/**
-			 * Calculate the shipping costs.
-			 *
-			 * @param array $package Package of items from cart.
-			 */
 			public function calculate_shipping( $package = [] ) {
 				$rate = array(
 					'id'      => $this->get_rate_id(),
@@ -247,21 +206,9 @@ function BKF_Suburbs_init_shipping_method(){
 					$this->add_rate( $rate );
 				}
 
-				/**
-				 * Developers can add additional flat rates based on this one via this action since @version 2.4.
-				 *
-				 * Previously there were (overly complex) options to add additional rates however this was not user.
-				 * friendly and goes against what Flat Rate Shipping was originally intended for.
-				 */
 				do_action( 'woocommerce_' . $this->id . '_shipping_add_rate', $this, $rate );
 			}
 
-			/**
-			 * Get items in package.
-			 *
-			 * @param  array $package Package of items from cart.
-			 * @return int
-			 */
 			public function get_package_item_qty( $package ) {
 				$total_quantity = 0;
 				foreach ( $package['contents'] as $item_id => $values ) {
@@ -272,12 +219,6 @@ function BKF_Suburbs_init_shipping_method(){
 				return $total_quantity;
 			}
 
-			/**
-			 * Finds and returns shipping classes and the products with said class.
-			 *
-			 * @param mixed $package Package of items from cart.
-			 * @return array
-			 */
 			public function find_shipping_classes( $package ) {
 				$found_shipping_classes = [];
 
@@ -296,14 +237,6 @@ function BKF_Suburbs_init_shipping_method(){
 				return $found_shipping_classes;
 			}
 
-			/**
-			 * Sanitize the cost field.
-			 *
-			 * @since 3.4.0
-			 * @param string $value Unsanitized value.
-			 * @throws Exception Last error triggered.
-			 * @return string
-			 */
 			public function sanitize_cost( $value ) {
 				$value = is_null( $value ) ? '' : $value;
 				$value = wp_kses_post( trim( wp_unslash( $value ) ) );
@@ -320,6 +253,17 @@ function BKF_Suburbs_init_shipping_method(){
 					throw new Exception( WC_Eval_Math::$last_error );
 				}
 				return $value;
+			}
+			
+			public function sanitize_suburbs( $value ) {
+				$array = explode("\r\n",$value);
+				sort($array);
+				$newarray = [];
+				foreach($array as $item){
+					$newarray[] = sanitize_text_field($item);
+				}
+				$newvalue = implode("\r\n",$newarray);
+				return $newvalue;
 			}
 		}
 	}
