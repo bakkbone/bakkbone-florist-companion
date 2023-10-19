@@ -20,7 +20,7 @@ class BKF_Admin_Notices{
 			add_action("admin_notices", array($this, "installwoo"));
 		}
 		add_action('wp_dashboard_setup', array($this, 'dashwidgets'));
-		if(BKF_VERSION == "3.2.0" || BKF_VERSION == "3.2.1" || BKF_VERSION == "3.2.2" || BKF_VERSION "3.2.2.1"){
+		if(BKF_VERSION == "3.2.0" || BKF_VERSION == "3.2.1" || BKF_VERSION == "3.2.2" || BKF_VERSION == "3.2.2.1"){
 			add_action("admin_notices", array($this, "upgrade_suburbs"));
 		}
 		add_action( 'admin_bar_menu', array($this, 'admin_bar_item'), 500 );
