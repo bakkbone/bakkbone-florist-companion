@@ -506,6 +506,8 @@ First release hosted on WordPress Plugin Repository
 * Initial release.
 
 == Upgrade Notice ==
+### 3.3.0
+Introduces HPOS compatibility
 ### 3.2.0
 * New Delivery Suburbs approach requires attention ASAP, before release of v4
 ### 3.0.2.2
