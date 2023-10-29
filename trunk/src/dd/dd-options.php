@@ -24,6 +24,7 @@ class BKF_Delivery_Date_Options{
 		add_action("admin_init", [$this, 'bkfAddDdPageInit']);
 		add_action('add_meta_boxes', [$this, 'bkf_dd_metabox_init']);
 		add_action('save_post', [$this, 'bkf_dd_save_metabox_data']);
+		add_action('woocommerce_process_shop_order_meta', [$this, 'bkf_dd_save_metabox_data']);
 	}
 
 	function bkf_admin_menu(){
@@ -1439,10 +1440,12 @@ class BKF_Delivery_Date_Options{
 				$text = date("g:i a", strtotime($thists['start'])).' - '.date("g:i a", strtotime($thists['end']));
 				$order->update_meta_data( '_delivery_timeslot_id',  sanitize_text_field( $_POST['delivery_timeslot'] ) );
 				$order->update_meta_data( '_delivery_timeslot',  $text );
+				$order->save();
 			} else {
 				$order = new WC_Order($post_id);
 				$order->delete_meta_data( '_delivery_timeslot_id');
-				$order->delete_meta_data( '_delivery_timeslot');			
+				$order->delete_meta_data( '_delivery_timeslot');
+				$order->save();
 			}
 		}
 	}

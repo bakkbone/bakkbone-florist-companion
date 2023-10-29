@@ -161,6 +161,9 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 13. Order Notifier Toggle
 
 == Changelog ==
+### 3.4.0
+* ADD: Advanced validation for phone fields at checkout
+* DEV: Improve db query for Today's Deliveries widget
 ### 3.3.2
 * DEV: Patch orders list critical error
 ### 3.3.1

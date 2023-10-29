@@ -325,7 +325,6 @@ class BKF_Admin_Notices{
 	}
 	
 	function dashwidgets() {
-		global $wp_meta_boxes;
 		wp_add_dashboard_widget('bkf_today', __("Today's Deliveries", "bakkbone-florist-companion"), [$this, 'dashtoday']);
 		wp_add_dashboard_widget('bkf_recent', __("Recent Orders", "bakkbone-florist-companion"), [$this, 'dashrecent']);
 		wp_add_dashboard_widget('bkf_news', __("FloristPress", 'bakkbone-florist-companion'), [$this, 'dashnews']);
@@ -335,13 +334,19 @@ class BKF_Admin_Notices{
 	function dashtoday() {
 		$todayserver = strtotime('today midnight');
 		$todaylocal = strtotime('today midnight '.wp_timezone_string());
-		$orders = wc_get_orders(array(
+		$array = wc_get_orders(array(
 			'type' => 'shop_order',
 			'status' => array('wc-new','wc-accept','wc-processing','wc-completed','wc-scheduled','wc-prepared','wc-collect','wc-out','wc-relayed'),
 			'limit' => '-1',
-			'_delivery_date' => wp_date("l, j F Y"),
 			)
 		);
+		$orders = [];
+		foreach ($array as $value) {
+			if ($value->get_meta('_delivery_timestamp', true) == $todayserver || $value->get_meta('_delivery_timestamp', true) == $todaylocal) {
+				$orders[] = $value;
+			}
+		}
+		error_log(json_encode($orders));
 		if(count($orders) == 0){
 			echo '<p>'.esc_html__('No deliveries today...', 'bakkbone-florist-companion').'</p>';
 		} else {
