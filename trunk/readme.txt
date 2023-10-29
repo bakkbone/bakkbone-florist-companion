@@ -5,7 +5,7 @@ Tags: woocommerce,florist,ecommerce,shipping,pdf,forms
 Requires at least: 6.0
 Tested up to: 6.3
 Requires PHP: 7.4
-Stable tag: 3.3.2
+Stable tag: 3.4.0
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -37,6 +37,7 @@ Why? You can view/print your orders all in one place, and in one consistent form
 
 ### Checkout Fields
 
+* Validate phone numbers to match the address location (eg. billing address in New Zealand must provide valid NZ phone number, recipient in Australia must have valid Australian phone number)
 * Force display of delivery address fields and gets rid of the "Ship to a different address?" question at checkout
 * Add "Delivery Notes" field for notes about delivery address
 * Add "Recipient Phone" field as a required field

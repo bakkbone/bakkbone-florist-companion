@@ -7,6 +7,8 @@
 
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 use Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController;
+use Brick\PhoneNumber\PhoneNumber;
+use Brick\PhoneNumber\PhoneNumberParseException;
 
 class BKF_Core{
 	
@@ -28,6 +30,7 @@ class BKF_Core{
 			add_filter( 'woocommerce_checkout_fields' , [$this, 'add_email_verification_field_checkout'], 1, 1 );
 			add_action( 'woocommerce_checkout_process', [$this, 'matching_email_addresses'] );
 		};
+		add_action( 'woocommerce_checkout_process', [$this, 'phone_number_validation'] );
 		add_filter( 'plugin_action_links_bakkbone-florist-companion/bakkbone-florist-companion.php', [$this, 'bkf_settings_link'] );
 		add_filter( "woocommerce_shipping_package_name" , [$this, 'bkf_shipping_to_delivery'], 10, 3);
 		add_filter( "gettext" , [$this, 'bkf_translate_reply'], PHP_INT_MAX, 1 );
@@ -186,21 +189,22 @@ class BKF_Core{
 		$fields['shipping_postcode']['label'] = get_option('bkf_localisation_setting')['global_label_postcode'];
 		$fields['shipping_country']['label'] = get_option('bkf_localisation_setting')['global_label_country'];
 		$fields['shipping_phone'] = array(
-		'label'	 => get_option('bkf_localisation_setting')['global_label_telephone'],
-		'placeholder'   => get_option('bkf_localisation_setting')['global_label_telephone'],
-		'required'  => true,
-		'class'	 => array("form-row-wide"),
-		'clear'	 => true,
-		'type'	  => 'tel',
-		'validate'  => array( 'phone' ),
+			'label'			=> get_option('bkf_localisation_setting')['global_label_telephone'],
+			'placeholder'	=> get_option('bkf_localisation_setting')['global_label_telephone'],
+			'required'		=> true,
+			'class'			=> array("form-row-wide"),
+			'type'			=> 'tel',
+			'validate'		=> array( 'phone' ),
+			'autocomplete'	=> 'tel',
+			'priority'		=> 100
 		 );
 		$fields['shipping_notes'] = array(
-		'label'	 => get_option('bkf_localisation_setting')['delivery_label_notes'],
-		'required'  => false,
-		'class'	 => array('form-row-wide'),
-		'clear'	 => true,
-		'type'		=> 'textarea',
-		'description' => get_option('bkf_localisation_setting')['delivery_description_notes']
+			'label'	 => get_option('bkf_localisation_setting')['delivery_label_notes'],
+			'required'  => false,
+			'class'	 => array('form-row-wide'),
+			'clear'	 => true,
+			'type'		=> 'textarea',
+			'description' => get_option('bkf_localisation_setting')['delivery_description_notes']
 		 );
 		 return $fields;
 	}
@@ -332,18 +336,18 @@ class BKF_Core{
 		$cardlength = $bkfoptions["card_length"];
 
 		if( bkf_cart_has_physical() ) {
-			 $fields['order']['card_message'] = array(
-			'label'	 => __('Card Message', 'bakkbone-florist-companion'),
-			'required'  => true,
-			'class'	 => array('form-row-wide'),
-			'clear'	 => true,
-			'type'		=> 'textarea',
-			'input_class'=> array('card_message'),
-			'description' => sprintf( get_option('bkf_localisation_setting')['additional_description_cardmessage'], $cardlength ),
-			'maxlength' => $cardlength
-				 );
+			$fields['order']['card_message'] = array(
+				'label'	 => __('Card Message', 'bakkbone-florist-companion'),
+				'required'  => true,
+				'class'	 => array('form-row-wide'),
+				'clear'	 => true,
+				'type'		=> 'textarea',
+				'input_class'=> array('card_message'),
+				'description' => sprintf( get_option('bkf_localisation_setting')['additional_description_cardmessage'], $cardlength ),
+				'maxlength' => $cardlength
+			);
 		}
-		 return $fields;
+		return $fields;
 	}
 	
 	function card_message_js(){
@@ -415,6 +419,28 @@ class BKF_Core{
 		    if ( $email2 !== $email1 ) {
 		        wc_add_notice( esc_html__('Your email addresses do not match', 'bakkbone-florist-companion'), 'error' );
 			}
+		}
+	}
+	
+	function phone_number_validation() {
+		$billing_country = $_POST['billing_country'];
+		$shipping_country = $_POST['shipping_country'];
+		
+		try {
+			$billing_phone = PhoneNumber::parse($_POST['billing_phone'], $billing_country);
+		} catch (PhoneNumberParseException $e) {
+			wc_add_notice( '<strong>'.esc_html(sprintf(__('Billing %s error:', 'bakkbone-florist-companion'), get_option('bkf_localisation_setting')['global_label_telephone'])) . '</strong> ' . wp_kses_post($e->getMessage()), 'error' );
+		}
+		if(! $billing_phone->isValidNumber()) {
+			wc_add_notice( wp_kses_post(sprintf(__('<strong>Billing %s</strong> does not appear to be a valid phone number for the location.', 'bakkbone-florist-companion'), get_option('bkf_localisation_setting')['global_label_telephone'])), 'error' );
+		}
+		try {
+			$shipping_phone = PhoneNumber::parse($_POST['shipping_phone'], $shipping_country);
+		} catch (PhoneNumberParseException $e) {
+			wc_add_notice( '<strong>'.esc_html(sprintf(__('Delivery Recipient %s error:', 'bakkbone-florist-companion'),get_option('bkf_localisation_setting')['global_label_telephone'])) . '</strong> ' . wp_kses_post($e->getMessage()), 'error' );
+		}
+		if(! $shipping_phone->isValidNumber()) {
+			wc_add_notice( wp_kses_post(sprintf(__('<strong>Delivery Recipient %s</strong> does not appear to be a valid phone number for the location.', 'bakkbone-florist-companion'), get_option('bkf_localisation_setting')['global_label_telephone'])), 'error' );
 		}
 	}
 	

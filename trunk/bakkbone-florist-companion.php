@@ -3,7 +3,7 @@
  * Plugin Name:			FloristPress
  * Plugin URI:			https://docs.floristpress.org/
  * Description:			Provides standardized features for floristry websites – built by florists, for florists.
- * Version:				3.3.2
+ * Version:				3.4.0
  * Requires at least:	6.0
  * Requires PHP:		7.4
  * Author:				BAKKBONE Australia
@@ -20,19 +20,19 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if(!defined("WPINC")){
+if (!defined("WPINC")) {
 	die;
 }
 
-if( ! function_exists('get_plugin_data') ){
+if ( ! function_exists('get_plugin_data') ) {
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 }
 	
 define("BKF_EXEC", true);
 define("BKF_FILE", __FILE__);
 define("BKF_VERSION", get_plugin_data(BKF_FILE)['Version']);
-define("BKF_PATH", dirname(__FILE__));
-define("BKF_URL", plugins_url("/",__FILE__));
+define("BKF_PATH", dirname(BKF_FILE));
+define("BKF_URL", plugins_url("/",BKF_FILE));
 
 function BKF_enable_bkf_plugin_headers($headers){
 	$headers['BKFTested'] = 'BKF tested up to';
@@ -49,6 +49,7 @@ add_action( 'before_woocommerce_init', function() {
 
 require BKF_PATH . "/src/functions.php";
 require BKF_PATH . "/lib/dompdf/autoload.inc.php";
+require BKF_PATH . "/lib/phonenumber/autoload.inc.php";
 require BKF_PATH . "/src/cpt/delivery-suburb.php";
 require BKF_PATH . "/src/enqueue.php";
 require BKF_PATH . "/src/options.php";
