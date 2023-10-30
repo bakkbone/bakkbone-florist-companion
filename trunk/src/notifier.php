@@ -7,6 +7,7 @@
 
 defined("BKF_EXEC") or die("Ah, sweet silence.");
 use Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController;
+use Automattic\WooCommerce\Utilities\OrderUtil;
 
 class BKF_Notifier{
 
@@ -29,8 +30,15 @@ class BKF_Notifier{
 	function bkf_notifier_js() {
 	    $audiourl = BKF_URL . 'assets/audio/';
 		$current = get_current_screen();
-		$screen = wc_get_container()->get( CustomOrdersTableController::class )->custom_orders_table_usage_is_enabled() ? wc_get_page_screen_id( 'shop-order' ) : 'edit-shop_order';
-		if ( $current->id == $screen ) {
+		$hpos = OrderUtil::custom_orders_table_usage_is_enabled();
+		$screen = $hpos ? wc_get_page_screen_id( 'shop-order' ) : 'edit-shop_order';
+		
+		if ($hpos) {
+			$display = $current->id == $screen && (!isset($_GET['action'])) ? true : false;
+		} else {
+			$display = $current->id == $screen ? true : false;
+		}
+		if ( $display ) {
 		?>
 		<script type="text/javascript" id="order_notifier_js">
 			

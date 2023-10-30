@@ -163,7 +163,13 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 == Changelog ==
 ### 3.4.0
 * ADD: Advanced validation for phone fields at checkout
+* ADD: Admin bar link to delivery date blocks
+* ADD: Admin dashboard widget with blocked delivery dates
+* TWEAK: Patch incorrect links in admin bar menu
+* TWEAK: Convert download links on order edit screen to buttons
+* TWEAK: Re-word send invoice order action on order edit screen
 * DEV: Improve db query for Today's Deliveries widget
+* DEV: Refine display conditions for order notifier JS
 ### 3.3.2
 * DEV: Patch orders list critical error
 ### 3.3.1
@@ -187,8 +193,8 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 * TEST: Tested Woo 8.2.1
 ### 3.2.0
 * ADD: Testing/Minimum plugin headers
-* ADD: `bkf_dd_title` class added to title of delivery date section of checkout for easier customisation
-* ADD: `bkf_dd_fields` class added to enclosing `<div>` of delivery date section of checkout for easier customisation
+* ADD: `bkf_dd_title` class added to title of delivery date section of checkout for easier customization
+* ADD: `bkf_dd_fields` class added to enclosing `<div>` of delivery date section of checkout for easier customization
 * DEV: New Delivery Suburbs management interface
 * DEV: Removed superfluous code from `src/suburbs/suburbs.php`
 * DEV: General tidying – we like clean code

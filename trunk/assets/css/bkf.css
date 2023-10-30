@@ -100,7 +100,7 @@ input.bkf_secret_input,input.bkf_secret_input:focus{
 #bkf_recent li p, #bkf_today li p, #bkf_news li p, #bkf_news li h3, #bkf_shipping li p {
 	margin: 0;
 }
-#bkf_news .inside, #bkf_recent .inside, #bkf_today .inside, #bkf_shipping .inside{
+#bkf_news .inside, #bkf_recent .inside, #bkf_today .inside, #bkf_shipping .inside, #bkf_blocks .inside {
 	font-family: 'Oxygen', sans-serif;
 }
 #bkf_news .date {

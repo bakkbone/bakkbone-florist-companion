@@ -25,6 +25,7 @@ class BKF_PDF_Options{
 		add_action("admin_init",array($this,"bkfAddPdfPageInit"));
 		add_action('woocommerce_admin_order_data_after_order_details',array($this,'add_pdf_downloads' ));
 		add_filter('woocommerce_order_details_before_order_table', [$this, 'pdf_thankyou'], PHP_INT_MAX , 1 );
+		add_filter('woocommerce_order_actions', [$this, 'order_actions'], 10, 2);
 	}
 	
 	function pdf_version_check(){
@@ -589,9 +590,10 @@ class BKF_PDF_Options{
 		$invurl = admin_url( 'admin-ajax.php?action=bkfdi&order_id=' . $order_id . '&nonce=' . $nonce );
 		$wsurl = admin_url( 'admin-ajax.php?action=bkfdw&order_id=' . $order_id . '&nonce=' . $nonce );
 		if($petalson == null){
-			echo '<p class="form-field form-field-wide wc-customer-user"><a href="'.$invurl.'">'.esc_html(sprintf(__('Download %s', 'bakkbone-florist-companion'), $invtitle)).'</a></p>';
+			echo '<div class="form-field form-field-wide wc-customer-user" style="display:flex;gap:5px;"><a href="'.$wsurl.'"><button class="button button-primary">'.esc_html(sprintf(__('Download %s', 'bakkbone-florist-companion'), $wstitle)).'</button></a><a href="'.$invurl.'"><button class="button button-secondary">'.esc_html(sprintf(__('Download %s', 'bakkbone-florist-companion'), $invtitle)).'</button></a></div>';
+		} else {
+			echo '<p class="form-field form-field-wide wc-customer-user"><a href="'.$wsurl.'"><button class="button button-primary">'.esc_html(sprintf(__('Download %s', 'bakkbone-florist-companion'), $wstitle)).'</button></a></p>';
 		}
-		echo '<p class="form-field form-field-wide wc-customer-user"><a href="'.$wsurl.'">'.esc_html(sprintf(__('Download %s', 'bakkbone-florist-companion'), $wstitle)).'</a></p>';
 	}
 	
 	function pdf_thankyou ( $order ) {
@@ -599,8 +601,13 @@ class BKF_PDF_Options{
 		$invtitle = get_option('bkf_pdf_setting')['inv_title'];
 		$invnonce = wp_create_nonce("bkf");
 		$invurl = admin_url( 'admin-ajax.php?action=bkfdi&order_id=' . $order_id . '&nonce=' . $invnonce );
-		echo '<p class="form-field form-field-wide wc-customer-user"><a href="'.$invurl.'">'.esc_html(sprintf(__('Download %s', 'bakkbone-florist-companion'), $invtitle)).'</a></p>';
-		
+		echo '<p class="form-field form-field-wide wc-customer-user"><a href="'.$invurl.'">'.esc_html(sprintf(__('Download %s', 'bakkbone-florist-companion'), $invtitle)).'</a></p>';	
+	}
+	
+	function order_actions($actions, $order) {
+		$invtitle = get_option('bkf_pdf_setting')['inv_title'];
+		$actions['send_order_details'] = esc_html(sprintf(__('Send %s to customer', 'bakkbone-florist-companion'), $invtitle));
+		return $actions;
 	}
 	
 }

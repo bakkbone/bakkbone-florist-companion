@@ -118,7 +118,7 @@ class BKF_Admin_Notices{
 		) );
 		$admin_bar->add_menu( array(
 			'id'    => 'floristpress-dd-sameday-1',
-			'parent'=> 'floristpress-dd',
+			'parent'=> 'floristpress-dd-sameday',
 			'title' => __('Same Day Delivery', 'bakkbone-florist-companion'),
 			'href'  => admin_url('admin.php?page=bkf_dd_sd'),
 		) );
@@ -162,7 +162,7 @@ class BKF_Admin_Notices{
 			'id'    => 'floristpress-dd-fees',
 			'parent'=> 'floristpress-dd',
 			'title' => __('Fees', 'bakkbone-florist-companion'),
-			'href'  => admin_url('admin.php?page=bkf_ddb'),
+			'href'  => admin_url('admin.php?page=bkf_fees'),
 		) );
 		$admin_bar->add_menu( array(
 			'id'    => 'floristpress-dd-fees-1',
@@ -221,6 +221,13 @@ class BKF_Admin_Notices{
 			'parent'=> null,
 			'title' => '<span class="ab-icon dashicons-before dashicons-calendar-alt"></span><span class="ab-label">'.__('Delivery Calendar', 'bakkbone-florist-companion').'</span>',
 			'href'  => admin_url('admin.php?page=bkf_dc'),
+		) );
+		
+		$admin_bar->add_menu( array(
+			'id'    => 'floristpress-block-dates',
+			'parent'=> null,
+			'title' => '<span class="ab-label">'.__('Block Dates', 'bakkbone-florist-companion').'</span>',
+			'href'  => admin_url('admin.php?page=bkf_ddb'),
 		) );
 		
 		if($petals){
@@ -329,6 +336,7 @@ class BKF_Admin_Notices{
 		wp_add_dashboard_widget('bkf_recent', __("Recent Orders", "bakkbone-florist-companion"), [$this, 'dashrecent']);
 		wp_add_dashboard_widget('bkf_news', __("FloristPress", 'bakkbone-florist-companion'), [$this, 'dashnews']);
 		wp_add_dashboard_widget('bkf_shipping', __("Delivery Methods", 'bakkbone-florist-companion'), [$this, 'dashshipping']);
+		wp_add_dashboard_widget('bkf_blocks', __("Blocked Delivery Dates", 'bakkbone-florist-companion'), [$this, 'dashblocks']);
 	}
  
 	function dashtoday() {
@@ -346,7 +354,6 @@ class BKF_Admin_Notices{
 				$orders[] = $value;
 			}
 		}
-		error_log(json_encode($orders));
 		if(count($orders) == 0){
 			echo '<p>'.esc_html__('No deliveries today...', 'bakkbone-florist-companion').'</p>';
 		} else {
@@ -466,4 +473,148 @@ class BKF_Admin_Notices{
 		echo '</ul>';
 	}
 	
+	function dashblocks(){
+		$bkf_dd_closed = get_option("bkf_dd_closed");
+		$closedsort = $bkf_dd_closed;
+		ksort($closedsort);
+		$bkf_dd_full = get_option("bkf_dd_full");
+		$fullsort = $bkf_dd_full;
+		ksort($fullsort);
+		$nonce = wp_create_nonce("bkf");
+		$ajaxurl = admin_url('admin-ajax.php');
+		$phtext = __("Date", "bakkbone-florist-companion");
+		$ubtext = __("Unblock Date", "bakkbone-florist-companion");
+		$ct = __('Closed','bakkbone-florist-companion');
+		$gt = __('Closed (Global)','bakkbone-florist-companion');
+		$ft = __('Fully Booked','bakkbone-florist-companion');
+		/* translators: %1s: opening link tag. %2s: closing link tag. */
+		echo '<h3 style="text-align:center;"><strong>'.wp_kses_post(sprintf(__('View and manage your blocked dates in more detail %1shere%2s'), '<a href="'.admin_url('admin.php?page=bkf_ddb').'">','</a>')).'</strong></h3>';
+		?>
+			<div class="bkf-form" style="width:auto;text-align:center;">
+				<form id="add-closed" action="<?php echo $ajaxurl; ?>" />
+					<h4 style="margin:0;"><?php esc_html_e('Add Closure Date', 'bakkbone-florist-companion'); ?></h4>
+					<?php wp_nonce_field('bkf', 'nonce'); ?>
+					<input type="hidden" name="action" value="bkf_dd_add_closed" />
+					<p style="margin:5px 0;"><input style="margin-left:0;" type="text" name="date" class="closure-date input-text bkf-form-control" required placeholder="<?php echo $phtext; ?>" autocomplete="off" /></p>
+					<p style="margin:5px 0;"><input type="submit" class="button button-primary button-large" value="<?php esc_html_e('Add Date as Closed', 'bakkbone-florist-companion'); ?>"></p>
+					<?php if (count($closedsort) > 0){
+						echo '<hr><ul style="list-style:inside disc;text-align:left;">';
+						foreach ($closedsort as $key => $value) {
+							echo '<li>'.esc_html($value).'</li>';
+						}
+						echo '</ul>';
+					} ?>
+				</form>
+			</div>
+			<div class="bkf-form" style="width:auto;text-align:center;">
+				<form id="add-full" action="<?php echo $ajaxurl; ?>" />
+					<h4 style="margin:0;"><?php esc_html_e('Add Fully Booked Date', 'bakkbone-florist-companion'); ?></h4>
+					<?php wp_nonce_field('bkf', 'nonce'); ?>
+					<input type="hidden" name="action" value="bkf_dd_add_full" />
+					<p style="margin:5px 0;"><input style="margin-left:0;" type="text" name="date" class="closure-date input-text bkf-form-control" required placeholder="<?php echo $phtext; ?>" autocomplete="off" /></p>
+					<p style="margin:5px 0;"><input type="submit" class="button button-primary button-large" value="<?php esc_html_e('Add Date as Fully Booked', 'bakkbone-florist-companion'); ?>"></p>
+					<?php if (count($fullsort) > 0){
+						echo '<hr><ul style="list-style:inside disc;text-align:left;">';
+						foreach ($fullsort as $key => $value) {
+							echo '<li>'.esc_html($value).'</li>';
+						}
+						echo '</ul>';
+					} ?>
+				</form>
+			</div>
+			<script id="datepicker">
+   			jQuery(document).ready(function( $ ) {
+   				jQuery(".closure-date").attr( 'readOnly' , 'true' );
+   				jQuery(".closure-date").datepicker( {
+   					firstDay: 1,
+   					minDate: 0,
+   					dateFormat: "DD, d MM yy",
+   					hideIfNoPrevNext: true,
+   					constrainInput: true,
+   					beforeShowDay: blockedDates
+   				} );
+     			 var closedDatesList = [<?php
+   		 		$closeddates = get_option('bkf_dd_closed');
+   				if( !empty($closeddates)){
+   				 $i = 0;
+   				 $len = count($closeddates);
+   				 foreach($closeddates as $date){
+   					 $ts = strtotime($date);
+   					 $jsdate = wp_date('n,j,Y',$ts);
+   					 if ($i == $len - 1) {
+   					 echo '['.$jsdate.']';	
+   			 } else {
+   					 echo '['.$jsdate.'],';		 	
+   					 }
+   					 $i++;
+   			 };}; ?>];
+      			 var fullDatesList = [<?php
+   		 		$fulldates = get_option('bkf_dd_full');
+   				if( !empty($fulldates)){
+   				 $i = 0;
+   				 $len = count($fulldates);
+   				 foreach($fulldates as $date){
+   					 $ts = strtotime($date);
+   					 $jsdate = wp_date('n,j,Y',$ts);
+   					 if ($i == $len - 1) {
+   					 echo '['.$jsdate.']';
+   				 } else {
+   					 echo '['.$jsdate.'],';		 	
+   					 }
+   					 $i++;
+   				 };}; ?>];
+		 
+   		 function blockedDates(date) {
+   			 var w = date.getDay();
+   			 var m = date.getMonth();
+   			 var d = date.getDate();
+   			 var y = date.getFullYear();
+			 
+   			 <?php if(get_option('bkf_dd_setting')['monday'] == false){ ?>
+   				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 1) {
+   				return [false, "closed", '<?php echo $gt; ?>'];
+   				}<?php }; ?>
+   				<?php if(get_option('bkf_dd_setting')['tuesday'] == false){ ?>
+   				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 2) {
+   				return [false, "closed", '<?php echo $gt; ?>'];
+   				}<?php }; ?>
+   				<?php if(get_option('bkf_dd_setting')['wednesday'] == false){ ?>
+   				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 3) {
+   				return [false, "closed", '<?php echo $gt; ?>'];
+   				}<?php }; ?>
+   				<?php if(get_option('bkf_dd_setting')['thursday'] == false){ ?>
+   				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 4) {
+   				return [false, "closed", '<?php echo $gt; ?>'];
+   				}<?php }; ?>
+   				<?php if(get_option('bkf_dd_setting')['friday'] == false){ ?>
+   				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 5) {
+   				return [false, "closed", '<?php echo $gt; ?>'];
+   				}<?php }; ?>
+   				<?php if(get_option('bkf_dd_setting')['saturday'] == false){ ?>
+   				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 6) {
+   				return [false, "closed", '<?php echo $gt; ?>'];
+   				}<?php }; ?>
+   				<?php if(get_option('bkf_dd_setting')['sunday'] == false){ ?>
+   				if (date >= new Date("<?php echo bkf_get_monday(); ?>") && w == 0) {
+   				return [false, "closed", '<?php echo $gt; ?>'];
+   				}<?php }; ?>
+			 
+   		 for (i = 0; i < closedDatesList.length; i++) {
+   		   if ((m == closedDatesList[i][0] - 1) && (d == closedDatesList[i][1]) && (y == closedDatesList[i][2]))
+   		   {
+   		   	 return [false,"closed","<?php echo $ct; ?>"];
+   		   }
+   		 }
+   		 for (i = 0; i < fullDatesList.length; i++) {
+   		   if ((m == fullDatesList[i][0] - 1) && (d == fullDatesList[i][1]) && (y == fullDatesList[i][2]))
+   		   {
+   			 return [false,"booked","<?php echo $ft; ?>"];
+   		   }
+   		 }
+   		 return [true];
+   	 }
+   		 } );
+   		</script>
+		<?php
+	}
 }
