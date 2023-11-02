@@ -1027,10 +1027,8 @@ class BKF_Ajax{
 					$shippingrates = array_shift($shippingtaxes);
 					$shipping_rate = '0.' . round(array_shift($shippingrates));
 					$shippingfactor = 1 + $shipping_rate;
-					error_log('factor '.$shippingfactor);
 				} else {
 					$shippingfactor = 1;
-					error_log('factor '.$shippingfactor);
 				}
 				$item['cost'] = ($item['cost'] * $shippingfactor);
 				$result[] = $item;
@@ -1053,10 +1051,8 @@ class BKF_Ajax{
 					$shippingrates = array_shift($shippingtaxes);
 					$shipping_rate = '0.' . round(array_shift($shippingrates));
 					$shippingfactor = 1 + $shipping_rate;
-					error_log('factor '.$shippingfactor);
 				} else {
 					$shippingfactor = 1;
-					error_log('factor '.$shippingfactor);
 				}
 				$cost = ($rate['cost'] * $shippingfactor);
 			}
