@@ -102,6 +102,7 @@ Why? You can view/print your orders all in one place, and in one consistent form
 
 * `[bkf_site_title]` – your site's title
 * `[bkf_page_title]` – current post/page's title
+* `[bkf_suburb_search]` – ajax search of delivery suburbs with rates
 
 ### Tweaks
 
@@ -167,6 +168,7 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 
 == Changelog ==
 ### 3.4.2
+* ADD: `[bkf_suburb_search]` shortcode
 * ADD: Ajax search of suburb costs in Delivery Methods dashboard widget
 * DEV: Patch delivery methods for modern delivery suburbs feature on phone orders
 * DEV: Patch PHP warnings on phone order screen
