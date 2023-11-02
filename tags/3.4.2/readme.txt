@@ -170,7 +170,6 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 * ADD: Ajax search of suburb costs in Delivery Methods dashboard widget
 * DEV: Patch delivery methods for modern delivery suburbs feature on phone orders
 * DEV: Patch PHP warnings on phone order screen
-
 * DEV: Patch shipping tax on phone orders
 * DEV: Add `invoiced` and `phone-draft` to `woocommerce_valid_order_statuses_for_payment` filter
 * DEV: Patch 500 error for SiteGround customers on admin dashboard
