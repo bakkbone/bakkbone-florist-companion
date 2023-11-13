@@ -169,6 +169,9 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 13. Order Notifier Toggle
 
 == Changelog ==
+### 3.5.0
+* ADD: "Collected" and "Processed" order statuses
+* TEST: Tested Woo 8.2.2
 ### 3.4.3
 * DEV: Patch checkout error for virtual orders
 * DEV: Patch backslashes in some checkout fields
