@@ -1,8 +1,8 @@
 <?php
 /**
- * Customer completed order email (plain text)
+ * Customer processed order email (plain text)
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/emails/plain/customer-completed-order.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/emails/plain/customer-processed-order.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -23,8 +23,7 @@ echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 /* translators: %s: Customer first name */
 echo sprintf( esc_html__( 'Hi %s,', 'bakkbone-florist-companion' ), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
-/* translators: %s: Site title */
-esc_html_e( 'Your order has been marked as completed/delivered.', 'bakkbone-florist-companion' ) . "\n\n";
+esc_html_e( 'Your order has been marked as processed.', 'bakkbone-florist-companion' ) . "\n\n";
 
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.

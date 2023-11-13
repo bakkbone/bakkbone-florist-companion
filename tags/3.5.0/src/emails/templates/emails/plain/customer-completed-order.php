@@ -1,6 +1,6 @@
 <?php
 /**
- * Customer completed order email (plain text)
+ * Customer delivered order email (plain text)
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/emails/plain/customer-completed-order.php.
  *
@@ -23,8 +23,7 @@ echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 /* translators: %s: Customer first name */
 echo sprintf( esc_html__( 'Hi %s,', 'bakkbone-florist-companion' ), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
-/* translators: %s: Site title */
-esc_html_e( 'Your order has been marked as completed/delivered.', 'bakkbone-florist-companion' ) . "\n\n";
+esc_html_e( 'Your order has been marked as delivered.', 'bakkbone-florist-companion' ) . "\n\n";
 
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.

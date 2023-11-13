@@ -1,6 +1,6 @@
 <?php
 /**
- * Completed Order sent to Customer.
+ * Collected Order sent to Customer.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
-	<p><?php sprintf( __( 'The order #%d has been marked as completed/delivered. Order Details:', 'bakkbone-florist-companion' ), $order->get_order_number() ); ?></p>
+	<p><?php sprintf( __( 'The order #%d has been marked as collected. Order Details:', 'bakkbone-florist-companion' ), $order->get_order_number() ); ?></p>
 
 <?php
 
