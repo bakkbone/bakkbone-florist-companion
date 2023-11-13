@@ -279,8 +279,7 @@ class BKF_Order_Status{
 	}
 	
 	public function bkf_status_css() {
-	?>
-	<style id="bkf_order_status">
+	echo '<style id="bkf_order_status">
 		mark.processing::after {
 			content: "\\f18e";
 			color: #000000;
@@ -446,8 +445,7 @@ class BKF_Order_Status{
 			height:100%;
 			text-align:center;
 		}
-	</style>
-	<?php
+	</style>';
 	}
 
 	public function bkf_rename_order_status_msg( $order_statuses ) {
