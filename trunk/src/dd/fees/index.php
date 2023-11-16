@@ -1,2 +1,2 @@
 <?php
-defined("BKF_EXEC") or die("Ah, sweet silence.");
+defined("__BKF_EXEC__") or die("Ah, sweet silence.");
