@@ -176,6 +176,7 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 * DEV: Improve validation of phone numbers to prevent errors
 * DEV: Localize email verification field label
 * DEV: Strip slashes from card message in PDFs
+* TEST: Tested Woo 8.3.1
 ### 4.0.2
 * DEV: Patch phone number validation not running on virtual orders
 * DEV: Recent orders widget patched to exclude `shop_order_refund`
