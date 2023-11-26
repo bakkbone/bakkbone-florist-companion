@@ -5,8 +5,7 @@ Tags: woocommerce,florist,ecommerce
 Requires at least: 6.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag:  4.1.0
-License: GPL-3.0-or-later
+Stable tag: 4.1.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
 Provides standardized features for floristry websites – built by florists, for florists.
@@ -50,8 +49,8 @@ Why? You can view/print your orders all in one place, and in one consistent form
 
 * Collect delivery/collection date at checkout
 * Set which weekdays you deliver
-* Set your same-day delivery cutoff globally
-* Set separate same-day cutoffs for specific delivery methods (ie. delivery areas)
+* Set your lead time or same-day delivery cutoff globally
+* Set separate lead times for specific delivery methods (ie. delivery areas)
 * Manage closure days (eg. public holidays) and fully booked dates in your dashboard
 * Optionally set timeslots (eg. 9am-12pm) for customers to choose from per delivery method and per day, and optionally set a fee for a timeslot
 * Restrict delivery methods per weekday
@@ -81,6 +80,7 @@ Why? You can view/print your orders all in one place, and in one consistent form
 * "Recent Orders" Widget (5 latest orders)
 * "Delivery Methods" Widget (all delivery methods configured, with cost, list of suburbs, and edit link)
 * Admin bar navigation for all FloristPress-generated pages
+* Option to add admin bar navigation of WooCommerce settings
 
 ### Plugin Compatibility
 
@@ -170,6 +170,21 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 13. Order Notifier Toggle
 
 == Changelog ==
+### 5.0.0
+* ADD: Woo settings admin bar feature
+* ADD: Session storage of delivery notes and card message
+* ADD: Lead time in days alongside cutoff time
+* ADD: Realtime delivery date validation on checkout submission to mitigate orders submitted after cutoff
+* REMOVE: Delete support for WooCommerce Address Book
+* TWEAK: Delivery date availability now checked via Ajax to be closer to realtime display at checkout
+* TWEAK: Improve display of email confirmation field at checkout
+* TWEAK: Move DD scripts for checkout to js asset instead of inline
+* TWEAK: Force visibility of tooltips with reason date is unavailable on checkout calendar
+* TWEAK: Improve session storage of delivery date and timeslot
+* DEV: Fix activation settings list
+* DEV: Restructure folders
+* DEV: Update meta calls on delivery calendar to combat warnings
+* UPDATE: Update FullCalendar to Scheduler under GPL3 license arrangement
 ### 4.1.0
 * ADD: Auto process feature
 * ADD: Validation of card message to exclude emoji characters
