@@ -16,7 +16,7 @@ class BKF_Options{
 
 	function __construct(){
 		global $bkf_options_version;
-		$bkf_options_version = 4;
+		$bkf_options_version = 5;
 		add_action("plugins_loaded", [$this, "update_options_check"]);
 		$this->bkf_options_setting = get_option("bkf_options_setting");
 		$this->bkf_features_setting = get_option("bkf_features_setting");
@@ -67,6 +67,14 @@ class BKF_Options{
 				$features['settingsbar'] = false;
 				update_option('bkf_features_setting', $features);
 				update_option('bkf_options_version', 4);
+			}
+			if($current_version !== '' && $current_version !== null && $current_version < 5){
+				$sd = get_option('bkf_sd_setting');
+				foreach ($sd as $key => $value) {
+					$sd[$key.'lead'] = '0';
+				}
+				update_option('bkf_sd_setting', $sd);
+				update_option('bkf_options_version', 5);		
 			}
 		}
 	}
