@@ -45,7 +45,7 @@ class BKF_Delivery_Date_Fees_Core{
 		<?php
 		endif;
 	}
-
+	
 	function add_ts_fee( $cart ) {
 		if ( is_admin() && ! defined( 'DOING_AJAX' ) )
 			return;

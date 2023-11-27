@@ -50,7 +50,7 @@ class BKF_Core{
 		add_action( 'save_post', [$this, 'bkf_cm_save_metabox_data'] );
 		add_action( 'woocommerce_admin_order_data_after_shipping_address', [$this, 'bkf_editable_order_meta_shipping'] );
 		add_action( 'woocommerce_process_shop_order_meta', [$this, 'bkf_save_general_details'], 10, 2);
-		add_filter( 'woocommerce_checkout_fields' , [$this, 'bkf_override_checkout_fields'] );
+		add_filter( 'woocommerce_checkout_fields' , [$this, 'add_card_message_field'] );
 		add_action( 'woocommerce_after_checkout_billing_form', [$this, 'card_message_js']);
 		add_filter( 'woocommerce_product_cross_sells_products_heading', [$this, 'bkf_add_cs_heading'], 10, 1 );
 		add_filter( 'woocommerce_cart_no_shipping_available_html', [$this, 'noship_message'] );
@@ -58,6 +58,7 @@ class BKF_Core{
 		add_action( 'woocommerce_new_order', [$this, 'bkf_link_guest_order'], 10, 1 );
 		add_filter( 'admin_bar_menu', [$this, 'bkf_replace_wordpress_howdy'], PHP_INT_MAX, 1 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', '__return_true' );
+		add_action( 'wp_footer', [$this, 'session_script']);
 		
 		$this->del1 = __('Delivery', 'bakkbone-florist-companion');
 		$this->del2 = __('delivery', 'bakkbone-florist-companion');
@@ -194,7 +195,7 @@ class BKF_Core{
 			'type'			=> 'tel',
 			'validate'		=> array( 'phone' ),
 			'autocomplete'	=> 'tel',
-			'priority'		=> 100
+			'priority'		=> 100,
 		 );
 		$fields['shipping_notes'] = array(
 			'label'			=> get_option('bkf_localisation_setting')['delivery_label_notes'],
@@ -203,7 +204,8 @@ class BKF_Core{
 			'clear'			=> true,
 			'type'			=> 'textarea',
 			'description'	=> get_option('bkf_localisation_setting')['delivery_description_notes'],
-			'priority'		=> 110
+			'priority'		=> 110,
+			'default'		=> stripslashes(stripslashes(WC()->session->get('shipping_notes')))
 		 );
 		 return $fields;
 	}
@@ -330,7 +332,7 @@ class BKF_Core{
 		$order->save();
 	}
 	
-	function bkf_override_checkout_fields( $fields ) {
+	function add_card_message_field( $fields ) {
 		$bkfoptions = get_option("bkf_options_setting");
 		$cardlength = $bkfoptions["card_length"];
 
@@ -343,7 +345,8 @@ class BKF_Core{
 				'type'			=> 'textarea',
 				'input_class'	=> array('card_message'),
 				'description'	=> sprintf( get_option('bkf_localisation_setting')['additional_description_cardmessage'], $cardlength ),
-				'maxlength'		=> $cardlength
+				'maxlength'		=> $cardlength,
+				'default'		=> stripslashes(stripslashes(WC()->session->get('card_message')))
 			);
 		}
 		return $fields;
@@ -462,6 +465,36 @@ class BKF_Core{
 		if( 'processing'== $order->get_status() ) {
 			$order->update_status( 'wc-processed' );
 		}
+	}
+	
+	function session_script() {
+		if ( is_checkout() && ! is_wc_endpoint_url() ) :
+		?>
+		<script type="text/javascript" id="sn_cm_ajax">
+		jQuery( function($){
+			jQuery('form.checkout').on('change', '#shipping_notes, #card_message', function(){
+				var sn = jQuery('#shipping_notes').val();
+				var cm = jQuery('#card_message').val();
+				jQuery.ajax({
+					type: 'POST',
+					url: wc_checkout_params.ajax_url,
+					data: {
+						'action': 'bkf_checkout_get_ajax_data',
+						'shipping_notes': sn,
+						'card_message': cm,
+					},
+					success: function (result) {
+						jQuery('body').trigger('update_checkout');
+					},
+					error: function(error){
+						console.log(error);
+					}
+				});
+			});
+		});
+		</script>
+		<?php
+		endif;
 	}
 	
 }

@@ -485,9 +485,19 @@ class BKF_Ajax{
 			$array[] = $date;
 		}
 		if ( isset($_POST['ship_type']) ){
-			$st = sanitize_key( $_POST['ship_type'] );
+			$st = sanitize_text_field( $_POST['ship_type'] );
 			WC()->session->set('ship_type', $st );
 			$array[] = $st;
+		}
+		if ( isset($_POST['shipping_notes']) ){
+			$sn = sanitize_textarea_field( $_POST['shipping_notes'] );
+			WC()->session->set('shipping_notes', $sn );
+			$array[] = $sn;
+		}
+		if ( isset($_POST['card_message']) ){
+			$cm = sanitize_textarea_field( $_POST['card_message'] );
+			WC()->session->set('card_message', $cm );
+			$array[] = $cm;
 		}
 		echo json_encode($array);
 		die();
