@@ -3,7 +3,7 @@
  * Plugin Name:			FloristPress
  * Plugin URI:			https://docs.floristpress.org/
  * Description:			Provides standardized features for floristry websites – built by florists, for florists.
- * Version:				5.0.3
+ * Version:				5.0.4
  * Requires at least:	6.0
  * Requires PHP:		7.4
  * Author:				BAKKBONE Australia
@@ -106,7 +106,7 @@ require __BKF_PATH_SRC__ . "/emails/override.php";
 require __BKF_PATH_SRC__ . "/suburbs/method.php";
 require __BKF_PATH_SRC__ . "/pos/phone.php";
 
-define('__BKF_ACF_PATH__', __BKF_PATH__ . '/lib/acf/');
+define('__BKF_ACF_PATH__', __BKF_PATH_LIB__ . 'acf/');
 define('__BKF_ACF_URL__', __BKF_URL__ . 'lib/acf/');
 include_once(__BKF_ACF_PATH__ . 'acf.php');
 add_filter('acf/settings/url', 'BKF_acf_settings_url');

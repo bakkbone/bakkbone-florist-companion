@@ -5,7 +5,7 @@ Tags: woocommerce,florist,ecommerce
 Requires at least: 6.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 5.0.3
+Stable tag: 5.0.4
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -171,8 +171,11 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 13. Order Notifier Toggle
 
 == Changelog ==
+### 5.0.4
+* UPDATE: Update Dompdf to v2.0.4
 ### 5.0.3
 * DEV: Patch issue with checkout js
+* TEST: Tested Woo 8.4.0
 ### 5.0.2
 * TWEAK: Add redundancy in checkout js for no shipping method yet selected
 ### 5.0.1
