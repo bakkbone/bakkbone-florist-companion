@@ -105,7 +105,7 @@ class Options
      *
      * @var string|float[]
      */
-    private $defaultPaperSize = "a4";
+    private $defaultPaperSize = "letter";
 
     /**
      * The default paper orientation.
@@ -123,7 +123,7 @@ class Options
      *
      * @var string
      */
-    private $defaultFont = "DejaVu Sans";
+    private $defaultFont = "serif";
 
     /**
      * Image DPI setting
