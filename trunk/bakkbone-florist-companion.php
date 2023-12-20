@@ -3,7 +3,7 @@
  * Plugin Name:			FloristPress
  * Plugin URI:			https://docs.floristpress.org/
  * Description:			Provides standardized features for floristry websites – built by florists, for florists.
- * Version:				5.0.5
+ * Version:				5.0.5.1
  * Requires at least:	6.0
  * Requires PHP:		7.4
  * Author:				BAKKBONE Australia
