@@ -1,0 +1,76 @@
+%%SELECTOR%% {
+  {{ macros.size(design.element.size) }}
+  {{ macros.spacing_all(design.element.spacing) }}
+}
+%%SELECTOR%% .bkf-bd-suburb-search-input {
+  width: 100%;
+  {{ macros.backgroundColor(design.input_styles.background) }}
+  {{ macros.borders(design.input_styles.borders) }}
+  {{ macros.spacing_all(design.input_styles.spacing) }}
+  {{ macros.typography(design.input_typography.typography, globalSettings) }}
+}
+%%SELECTOR%%:hover .bkf-bd-suburb-search-input {
+  {{ macros.backgroundColor(design.input_styles.background_hover) }};
+}
+%%SELECTOR%% .bkf-bd-suburb-search-input::placeholder {
+  color: {{ design.input_typography.placeholder }};
+}
+%%SELECTOR%% .bkf-bd-suburb-search-input:hover::placeholder {
+  color: {{ design.input_typography.placeholder_hover }};
+}
+%%SELECTOR%% #bkfbdlivesearch {
+  {{ macros.size(design.result_box_styles.size) }}
+  {{ macros.backgroundColor(design.result_box_styles.background) }}
+  {{ macros.borders(design.result_box_styles.borders) }}
+  {{ macros.spacing_all(design.result_box_styles.spacing) }}
+  position: absolute;
+  bottom: auto;
+  left: 0;
+  z-index: 500;
+}
+
+%%SELECTOR%% #bkfbdlivesearch:hover {
+  {{ macros.backgroundColor(design.result_box_styles.background_hover) }}
+}
+
+%%SELECTOR%% .bkf-bd-suburb-search {
+  position: relative;
+}
+
+%%SELECTOR%% .bkf-suburb-search-results-header {
+  {{ macros.typography(design.result_typography.heading, globalSettings) }}
+  margin: 0;
+  pointer-events: none;
+}
+
+%%SELECTOR%% .bkf-suburb-search-results-item {
+  background-color: {{ design.result_item_styles.background|default('#FFFFFF') }};
+  {{ macros.spacing_all(design.result_item_styles.spacing_all) }}
+  {{ macros.borders(design.result_item_styles.borders) }}
+}
+
+%%SELECTOR%% .bkf-suburb-search-results-item:hover {
+  background-color: {{ design.result_item_styles.background_hover|default('#EEEEEE') }};
+}
+
+%%SELECTOR%% .bkf-suburb-search-results-item h3 {
+  {{ macros.typography(design.result_typography.result_title, globalSettings) }}
+  margin: 0;
+}
+
+%%SELECTOR%% .bkf-suburb-search-results-item ul {
+  margin: 0;
+}
+
+%%SELECTOR%% .bkf-suburb-search-results-item li {
+  {{ macros.typography(design.result_typography.result_details, globalSettings) }}
+}
+
+%%SELECTOR%% .bkf-suburb-search-results-noresults {
+  {{ macros.spacing_all(design.no_results_message.spacing) }}
+}
+
+%%SELECTOR%% .bkf-suburb-search-results-noresults p {
+  {{ macros.typography(design.no_results_message.typography, globalSettings) }}
+  margin: 0;
+}
