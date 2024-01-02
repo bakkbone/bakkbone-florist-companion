@@ -91,6 +91,10 @@ Why? You can view/print your orders all in one place, and in one consistent form
 * Provides compatibility in PDF invoices/worksheets for Product Add-Ons from [Booster for WooCommerce](https://booster.io/buy-booster?campaign=bkf&btr=bakkbone) _(affiliate link)_
 * Acknowledges duplicated functionality with [Breakdance](https://breakdance.com/ref/357/) Page Builder when clashing features enabled, via persistent admin notice _(affiliate link)_
 
+### Page Builder Integrations
+
+* [Breakdance](https://breakdance.com/ref/357/) _(affiliate link)_ – ajax delivery suburb search element
+
 ### Localization
 
 * Rename fields on frontend to match local address standards (eg. "Suburb" instead of "City", "Postcode" instead of "Zip")
@@ -107,10 +111,6 @@ Why? You can view/print your orders all in one place, and in one consistent form
 * `[bkf_site_title]` – your site's title
 * `[bkf_page_title]` – current post/page's title
 * `[bkf_suburb_search]` – ajax search of delivery suburbs with rates
-
-### Page Builder Integrations
-
-* [Breakdance](https://breakdance.com/ref/357/) _(affiliate link)_ – ajax delivery suburb search element
 
 ### Tweaks
 
