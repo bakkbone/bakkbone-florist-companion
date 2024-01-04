@@ -196,8 +196,7 @@ jQuery(document).on( 'change', 'input.shipping_method, input.delivery_date', fun
 jQuery(document).ready( function($) {
 	const select = document.querySelector('#delivery_timeslot');
 	jQuery(select).empty($);
-	
-    if(bkf_dd_options_ts === 0) {
+    if(bkf_dd_options_ts.length === 0) {
         const wrapper = document.querySelector('#delivery_timeslot_field');
         jQuery(wrapper).addClass('bkf-hidden');
         document.querySelector('#delivery_timeslot').removeAttribute('required');
