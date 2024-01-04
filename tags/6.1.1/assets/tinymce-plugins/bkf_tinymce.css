@@ -1,0 +1,18 @@
+i.bkf-mce-icon {
+	font: normal 20px/1 "dashicons";
+	padding: 0;
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin-left: -2px;
+	padding-right: 2px;
+}
+ i.bkf_site_title, i.bkf_page_title, i.bkf_suburb_search {
+	color:#000099 !important;
+}
+.mce-selectbox{
+	padding: 0 !important;
+}
+.mce-label{
+	top: 0 !important;
+}
