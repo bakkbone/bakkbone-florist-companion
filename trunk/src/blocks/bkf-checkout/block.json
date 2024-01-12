@@ -1,0 +1,13 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "floristpress/floristpress",
+	"version": "1.0.0",
+	"title": "FloristPress Fields",
+	"category": "widgets",
+	"icon": "palmtree",
+	"textdomain": "bakkbone-florist-companion",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}

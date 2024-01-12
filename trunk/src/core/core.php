@@ -207,7 +207,7 @@ class BKF_Core{
 			'type'			=> 'textarea',
 			'description'	=> get_option('bkf_localisation_setting')['delivery_description_notes'],
 			'priority'		=> 110,
-			'default'		=> stripslashes(stripslashes(WC()->session->get('shipping_notes')))
+			'default'		=> WC()->session->get('shipping_notes') !== null ? stripslashes(stripslashes(WC()->session->get('shipping_notes'))) : '',
 		 );
 		 return $fields;
 	}
@@ -348,7 +348,7 @@ class BKF_Core{
 				'input_class'	=> array('card_message'),
 				'description'	=> sprintf( get_option('bkf_localisation_setting')['additional_description_cardmessage'], $cardlength ),
 				'maxlength'		=> $cardlength,
-				'default'		=> stripslashes(stripslashes(WC()->session->get('card_message')))
+				'default'		=> WC()->session->get('card_message') !== null ? stripslashes(stripslashes(WC()->session->get('card_message'))) : '',
 			);
 		}
 		return $fields;

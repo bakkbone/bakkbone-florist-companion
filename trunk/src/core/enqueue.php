@@ -16,11 +16,16 @@ class BKF_Enqueue{
 		add_action("admin_enqueue_scripts", [$this, 'backend']);
 		add_action("admin_head", [$this, 'fonts'], 1);
 	}
+	
+	function has_block_checkout() {
+		$checkout = wc_get_page_id('checkout');
+		return has_block('woocommerce/checkout', $checkout);
+	}
 
 	function global(){
 		$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-		wp_register_style( 'jquery-ui-overcast', '//code.jquery.com/ui/1.13.2/themes/overcast/jquery-ui.css' );
-		wp_register_style( 'jquery-ui-dark-hive', '//code.jquery.com/ui/1.13.2/themes/dark-hive/jquery-ui.css' );
+		wp_register_style('jquery-ui-overcast', '//code.jquery.com/ui/1.13.2/themes/overcast/jquery-ui.css');
+		wp_register_style('jquery-ui-dark-hive', '//code.jquery.com/ui/1.13.2/themes/dark-hive/jquery-ui.css');
 		wp_register_style('select2css', __BKF_URL__ . "lib/select2/css/select2{$min}.css");
 		wp_enqueue_style("bkf_bkf", __BKF_URL__ . "assets/css/bkf{$min}.css", [],"1","all" );
 		wp_enqueue_style("bkf_calendar", __BKF_URL__ . "assets/css/calendar{$min}.css", [],"1","all" );
@@ -32,7 +37,7 @@ class BKF_Enqueue{
 
 	function frontend(){
 		$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-		if (is_checkout()) {
+		if (is_checkout() && !$this->has_block_checkout()) {
 		    
 		    $cart = WC()->cart->get_cart();
 	        $dateslist = bkf_get_checkout_datepicker_dates($cart);

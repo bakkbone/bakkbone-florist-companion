@@ -1,0 +1,26 @@
+{
+	"apiVersion": 2,
+	"name": "floristpress/floristpress-block",
+	"version": "2.0.0",
+	"title": "FloristPress Fields",
+	"category": "woocommerce",
+	"description": "Adds required functionality.",
+	"supports": {
+		"html": false,
+		"align": false,
+		"multiple": false,
+		"reusable": false
+	},
+	"parent": ["woocommerce/checkout-shipping-address-block"],
+	"attributes": {
+		"lock": {
+			"type": "object",
+			"default": {
+				"remove": true,
+				"move": true
+			}
+		}
+	},
+	"textdomain": "bakkbone-florist-companion",
+	"editorStyle": "file:../../../build/style-floristpress-block.css"
+}

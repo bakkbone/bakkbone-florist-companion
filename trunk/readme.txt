@@ -5,7 +5,7 @@ Tags: woocommerce,florist,ecommerce
 Requires at least: 6.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 6.2.0
+Stable tag: 7.0.0
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -175,6 +175,9 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 13. Order Notifier Toggle
 
 == Changelog ==
+### 7.0.0
+* ADD: FloristPress checkout fields to WooCommerce Orders REST API
+* ADD: FloristPress delivery suburbs to WooCommerce Shipping Zone Methods REST API
 ### 6.2.0
 * DEV: Fix erroneous delivery date validation after checkout
 ### 6.1.1

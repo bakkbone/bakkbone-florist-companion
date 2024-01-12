@@ -3,7 +3,7 @@
  * Plugin Name:			FloristPress
  * Plugin URI:			https://docs.floristpress.org/
  * Description:			Provides standardized features for floristry websites – built by florists, for florists.
- * Version:				6.2.0
+ * Version:				7.0.0
  * Requires at least:	6.0
  * Requires PHP:		7.4
  * Author:				BAKKBONE Australia
@@ -80,6 +80,7 @@ require __BKF_PATH_CORE__ . "/svg.php";
 require __BKF_PATH_CORE__ . "/pickup.php";
 require __BKF_PATH_CORE__ . "/ajax.php";
 require __BKF_PATH_CORE__ . "/tools.php";
+require __BKF_PATH_CORE__ . "/api.php";
 
 add_filter('woocommerce_get_settings_pages', function($settings){
 	$settings[] = include __BKF_PATH_CORE__ . "/settings.php";
@@ -106,6 +107,7 @@ require __BKF_PATH_SRC__ . "/emails/status-email.php";
 require __BKF_PATH_SRC__ . "/emails/override.php";
 require __BKF_PATH_SRC__ . "/suburbs/method.php";
 require __BKF_PATH_SRC__ . "/pos/phone.php";
+require __BKF_PATH_SRC__ . "/blocks/init.php";
 
 if (bkf_is_breakdance_active()) {
 	require __BKF_PATH_BD__ . "/inc.php";
@@ -125,6 +127,7 @@ if(!bkf_is_acf_active()){
 
 function run_bkf(){
 	if (bkf_is_woocommerce_active()) {
+		new BKF_API();
 		new BKF_CPT_Delivery_Suburb();
 		new BKF_Enqueue();
 		new BKF_Options();
