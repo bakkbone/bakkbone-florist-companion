@@ -132,89 +132,13 @@ jQuery(document.body).on( 'change', 'input.shipping_method', function($) {
 // Timeslot
 
 jQuery(document).on( 'change', 'input.shipping_method, input.delivery_date', function($) {
-		const select = document.querySelector('#delivery_timeslot');
-		jQuery(select).empty($);
-		if(bkf_dd_options_ts.length === 0) {
-			const wrapper = document.querySelector('#delivery_timeslot_field');
-			jQuery(wrapper).addClass('bkf-hidden');
-			document.querySelector('#delivery_timeslot').removeAttribute('required');
-		} else {
-			bkf_dd_options_ts.forEach(newOption);
-		}
-	  
-	  function newOption(value)
-		{
-			const wrapper = document.querySelector('#delivery_timeslot_field');
-			var ele = document.getElementsByName('shipping_method[0]');
-			for(i = 0; i < ele.length; i++) {
-				if(ele[i].checked)
-					var currentShippingMethod = ele[i].value;
-			}
-			if (currentShippingMethod === null && typeof ele[0] !== 'undefined') {
-				currentShippingMethod = ele[0].value;
-			} else if (currentShippingMethod === null) {
-				currentShippingMethod = '';
-			}
-			jQuery.ajax(bkf_dd_options.ajax_url, {
-				async: false,
-				data: {
-					action: 'bkf_retrieve_session_ts',
-				},
-				method: 'POST',
-				success: function(result){
-					currentTs = JSON.parse(result);
-				}
-			});
-			var days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-			var aDate = document.querySelector('#delivery_date').value;
-			var theDate = Date.parse(aDate);
-			var theDateObject = new Date(theDate);
-			var delDay = days[theDateObject.getDay()];
-			if( value.day == delDay && value.method == currentShippingMethod ){
-				if(currentTs == value.slot){
-					const select = document.querySelector('#delivery_timeslot');
-					let newOption = new Option(value.text, value.slot, true, true);
-					select.add(newOption, undefined);
-				} else {
-					const select = document.querySelector('#delivery_timeslot');
-					let newOption = new Option(value.text, value.slot, false);
-					select.add(newOption, undefined);
-				}
-			}
-
-			if(document.querySelector('#delivery_timeslot').options.length) {
-				const wrapper = document.querySelector('#delivery_timeslot_field');
-				jQuery(wrapper).removeClass('bkf-hidden');
-				document.querySelector('#delivery_timeslot').setAttribute('required', '');
-			} else {
-				jQuery(wrapper).addClass('bkf-hidden');
-				document.querySelector('#delivery_timeslot').removeAttribute('required');
-			}
-		}
-});
-
-jQuery(document).ready( function($) {
 	const select = document.querySelector('#delivery_timeslot');
+	const datefield = document.querySelector('#delivery_date').value;
+	
 	jQuery(select).empty($);
-    if(bkf_dd_options_ts.length === 0) {
-        const wrapper = document.querySelector('#delivery_timeslot_field');
-        jQuery(wrapper).addClass('bkf-hidden');
-        document.querySelector('#delivery_timeslot').removeAttribute('required');
-    } else {
-        bkf_dd_options_ts.forEach(newOption);
-    }
-    
-    function newOption(value) {
-		const wrapper = document.querySelector('#delivery_timeslot_field');
-		var ele = document.getElementsByName('shipping_method[0]');
-		for(i = 0; i < ele.length; i++) {
-			if(ele[i].checked)
-				var currentShippingMethod = ele[i].value;
-		}
-		if (currentShippingMethod === null && typeof ele[0] !== 'undefined') {
-			currentShippingMethod = ele[0].value;
-		} else if (currentShippingMethod === null) {
-			currentShippingMethod = '';
+	if (datefield.length && bkf_dd_options_ts.length) {
+		if (bkf_dd_options.debug) {
+			console.debug('change input: datefield.length && bkf_dd_options_ts.length');
 		}
 		jQuery.ajax(bkf_dd_options.ajax_url, {
 			async: false,
@@ -226,18 +150,49 @@ jQuery(document).ready( function($) {
 				currentTs = JSON.parse(result);
 			}
 		});
+		bkf_dd_options_ts.forEach(newOption);
+	} else {
+		if (bkf_dd_options.debug) {
+			console.debug('change input: !datefield.length || !bkf_dd_options_ts.length');
+		}
+		const wrapper = document.querySelector('#delivery_timeslot_field');
+		jQuery(wrapper).addClass('bkf-hidden');
+		document.querySelector('#delivery_timeslot').removeAttribute('required');
+	}
+	    
+	function newOption(value) {
+		const wrapper = document.querySelector('#delivery_timeslot_field');
+		const select = document.querySelector('#delivery_timeslot');
+		var currentShippingMethod;
+		var ele = document.getElementsByName('shipping_method[0]');
+		if (bkf_dd_options.debug) {
+			console.debug(ele);
+			console.debug(ele[0]);
+			console.debug(ele[0].value);
+		}
+		for(i = 0; i < ele.length; i++) {
+			if(ele[i].checked) {
+				currentShippingMethod = ele[i].value;
+			}
+		}
+		if (typeof currentShippingMethod == 'undefined' && typeof ele[0] !== 'undefined') {
+			currentShippingMethod = ele[0].value;
+		} else if (typeof currentShippingMethod == 'undefined' && typeof ele !== 'undefined') {
+			currentShippingMethod = ele.value;
+		} else if (typeof currentShippingMethod == 'undefined') {
+			currentShippingMethod = '';
+		}
 		var days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 		var aDate = document.querySelector('#delivery_date').value;
 		var theDate = Date.parse(aDate);
 		var theDateObject = new Date(theDate);
 		var delDay = days[theDateObject.getDay()];
+		
 		if( value.day == delDay && value.method == currentShippingMethod ){
 			if(currentTs == value.slot){
-				const select = document.querySelector('#delivery_timeslot');
 				let newOption = new Option(value.text, value.slot, true, true);
 				select.add(newOption, undefined);
 			} else {
-				const select = document.querySelector('#delivery_timeslot');
 				let newOption = new Option(value.text, value.slot, false);
 				select.add(newOption, undefined);
 			}
@@ -251,5 +206,129 @@ jQuery(document).ready( function($) {
 			jQuery(wrapper).addClass('bkf-hidden');
 			document.querySelector('#delivery_timeslot').removeAttribute('required');
 		}
+	
 	}
 });
+
+jQuery(document).ready( function($) {
+	const select = document.querySelector('#delivery_timeslot');
+	const datefield = document.querySelector('#delivery_date').value;
+	
+	jQuery(select).empty($);
+    if (datefield.length && bkf_dd_options_ts.length) {
+		if (bkf_dd_options.debug) {
+			console.debug('document ready: datefield.length && bkf_dd_options_ts.length');
+		}
+		jQuery.ajax(bkf_dd_options.ajax_url, {
+			async: false,
+			data: {
+				action: 'bkf_retrieve_session_ts',
+			},
+			method: 'POST',
+			success: function(result){
+				currentTs = JSON.parse(result);
+			}
+		});
+		bkf_dd_options_ts.forEach(newOption);
+    } else {
+		if (bkf_dd_options.debug) {
+			console.debug('document ready: !datefield.length || !bkf_dd_options_ts.length');
+		}
+        const wrapper = document.querySelector('#delivery_timeslot_field');
+        jQuery(wrapper).addClass('bkf-hidden');
+        document.querySelector('#delivery_timeslot').removeAttribute('required');
+    }
+    
+    function newOption(value) {
+		const wrapper = document.querySelector('#delivery_timeslot_field');
+		const select = document.querySelector('#delivery_timeslot');
+		var currentShippingMethod;
+		var ele = document.getElementsByName('shipping_method[0]');
+		if (bkf_dd_options.debug) {
+			console.debug(ele);
+			console.debug(ele[0]);
+			console.debug(ele[0].value);
+		}
+		for(i = 0; i < ele.length; i++) {
+			if(ele[i].checked) {
+				currentShippingMethod = ele[i].value;
+			}
+		}
+		if (typeof currentShippingMethod == 'undefined' && typeof ele[0] !== 'undefined') {
+			currentShippingMethod = ele[0].value;
+		} else if (typeof currentShippingMethod == 'undefined' && typeof ele !== 'undefined') {
+			currentShippingMethod = ele.value;
+		} else if (typeof currentShippingMethod == 'undefined') {
+			currentShippingMethod = '';
+		}
+		var days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+		var aDate = document.querySelector('#delivery_date').value;
+		var theDate = Date.parse(aDate);
+		var theDateObject = new Date(theDate);
+		var delDay = days[theDateObject.getDay()];
+		
+		if( value.day == delDay && value.method == currentShippingMethod ){
+			if(currentTs == value.slot){
+				let newOption = new Option(value.text, value.slot, true, true);
+				select.add(newOption, undefined);
+			} else {
+				let newOption = new Option(value.text, value.slot, false);
+				select.add(newOption, undefined);
+			}
+		}
+
+		if(document.querySelector('#delivery_timeslot').options.length) {
+			const wrapper = document.querySelector('#delivery_timeslot_field');
+			jQuery(wrapper).removeClass('bkf-hidden');
+			document.querySelector('#delivery_timeslot').setAttribute('required', '');
+		} else {
+			jQuery(wrapper).addClass('bkf-hidden');
+			document.querySelector('#delivery_timeslot').removeAttribute('required');
+		}
+		
+	}
+});
+
+if (bkf_dd_options.pickup) {
+	jQuery( document ).ready(function( $ ) {
+
+		jQuery("input[name=\'ship_type\']").change(function($){
+
+			jQuery("body").trigger("update_checkout");
+			
+			var ship_type;
+			var ele = document.getElementsByName("ship_type");
+			for(i = 0; i < ele.length; i++) {
+
+				if(ele[i].checked)
+				var ship_type = ele[i].value;
+
+			}
+			if (bkf_dd_options.debug) {
+				console.debug('ship_type changed to: ' + ship_type);
+			}
+			
+			jQuery.ajax({
+				type: 'POST',
+				url: bkf_dd_options.ajax_url,
+				data: {
+					'action': 'bkf_checkout_get_ajax_data',
+					'ship_type': ship_type,
+				},
+				success: function (result) {
+					jQuery('body').trigger('update_checkout');
+				},
+				error: function(error){
+					console.error(error);
+				}
+			});
+			if (ship_type == "delivery") {
+				jQuery("#customer_details .woocommerce-shipping-fields").fadeIn();
+			} else if (ship_type == "pickup") {
+				jQuery("#customer_details .woocommerce-shipping-fields").fadeOut();
+			}
+		}
+		);
+	}
+	);
+}

@@ -8,6 +8,31 @@
 defined("__BKF_EXEC__") or die("Ah, sweet silence.");
 
 function BKF_Suburbs_filter_shipping_methods($rates, $package){
+	WC()->session->init();
+	if (bkf_debug()) {
+		$shiptype = WC()->session->get('ship_type', __('Not set', 'bakkbone-florist-companion'));
+		bkf_debug_log(sprintf(__('%s() fired. Ship type: ', 'bakkbone-florist-companion'), __FUNCTION__).$shiptype, 'debug');
+	}
+	
+	$ship_type = WC()->session->get("ship_type", 'delivery');
+	if($ship_type == 'delivery'){
+		foreach ( $rates as $rate_key => $rate ) {
+			if($rate->get_method_id() !== 'local_pickup'){
+				continue;
+			} else {
+				unset($rates[$rate_key]);
+			}
+		}
+	} elseif($ship_type == 'pickup'){
+		foreach ( $rates as $rate_key => $rate ) {
+			if($rate->get_method_id() == 'local_pickup'){
+				continue;
+			} else {
+				unset($rates[$rate_key]);
+			}
+		}
+	}
+	
 	$sm = bkf_get_shipping_rates();	
 	$customer_sub = strtoupper( isset( $_REQUEST['s_city'] ) ? $_REQUEST['s_city'] : ( isset ( $_REQUEST['calc_shipping_city'] ) ? $_REQUEST['calc_shipping_city'] : ( ! empty( $user_city = WC()->customer->get_shipping_city() ) ? $user_city : WC()->countries->get_base_city() ) ) );
 	
@@ -25,7 +50,7 @@ function BKF_Suburbs_filter_shipping_methods($rates, $package){
 	return $rates;
 }
 
-add_filter('woocommerce_package_rates', 'BKF_Suburbs_filter_shipping_methods', PHP_INT_MAX - 1, 2);
+add_filter('woocommerce_package_rates', 'BKF_Suburbs_filter_shipping_methods', 999, 2);
 
 function BKF_Suburbs_add_shipping_method( $methods ) {
 	$methods['floristpress'] = 'BKF_Shipping_Method';

@@ -1,5 +1,32 @@
 # Changelog
 
+### [Unreleased]
+
+#### Changed
+- Planned: Add debug logging for multiple functions across FloristPress when `bkf_debug()` is true
+- Planned: Sort orders on calendar PDF export by date
+
+### [6.4.0] - 2024-02-12
+
+#### Added
+- `bkf_debug` filter (boolean)
+- `bkf_debug()` (returns boolean affected by above filter - default is value of `WP_DEBUG`)
+- `bkf_debug_log($message, $level = 'debug')` (adds to FloristPress log in WC_Logger)
+
+#### Changed
+- Tidied code in Petals outbound order Ajax processing plus improve handling of improper messages received
+
+#### Fixed
+- Rectified timeslot field not appearing as intended at checkout
+- Rectified order type field not functioning as intended at checkout
+- Delivery Dates fees settings not saving correctly
+- Added check to force appearance in db of fees settings due to error in some previous release
+- Delivery calendar PDF meta query error resolved
+- Strip slashes in more meta fields in PDFs
+- `Processed` status added to paid statuses filter
+- `Invoiced` status added to pending statuses filter
+- Add slashes as required in category blocks settings
+
 ### [6.3.1] - 2024-01-20
 
 #### Fixed

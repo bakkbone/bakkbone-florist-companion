@@ -593,7 +593,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 			foreach($cb as $thiscb){
 				$time = strtotime($thiscb['date']);
 				$string = wp_date("Y-m-d",$time);
-				echo '{ title: \''.get_term( $thiscb['category'] )->name.'\', start: \'' . $string . '\', className: \'uabg\', function: \'bkf_cb_del\', blockId: \''.$thiscb['id'].'\' }, ';
+				echo '{ title: \''.wp_specialchars_decode(addslashes(get_term( $thiscb['category'] )->name)).'\', start: \'' . $string . '\', className: \'uabg\', function: \'bkf_cb_del\', blockId: \''.$thiscb['id'].'\' }, ';
 
 			}
 

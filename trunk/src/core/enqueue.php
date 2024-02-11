@@ -23,7 +23,7 @@ class BKF_Enqueue{
 	}
 
 	function global(){
-		$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+		$min = (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) || bkf_debug() ? '' : '.min';
 		wp_register_style('jquery-ui-overcast', '//code.jquery.com/ui/1.13.2/themes/overcast/jquery-ui.css');
 		wp_register_style('jquery-ui-dark-hive', '//code.jquery.com/ui/1.13.2/themes/dark-hive/jquery-ui.css');
 		wp_register_style('select2css', __BKF_URL__ . "lib/select2/css/select2{$min}.css");
@@ -36,13 +36,14 @@ class BKF_Enqueue{
 	}
 
 	function frontend(){
-		$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+		$min = (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) || bkf_debug() ? '' : '.min';
 		if (is_checkout() && !$this->has_block_checkout()) {
 		    
 		    $cart = WC()->cart->get_cart();
 	        $dateslist = bkf_get_checkout_datepicker_dates($cart);
 		    
 			wp_enqueue_script("bkf_dd", __BKF_URL__ . "assets/js/dd{$min}.js", ['jquery']);
+			wp_enqueue_script("bkf_pickup", __BKF_URL__ . "assets/js/pickup{$min}.js", ['jquery']);
 
 			$ts = bkf_get_timeslots();
 			$all_options = '[';
@@ -56,11 +57,12 @@ class BKF_Enqueue{
 		    	'ajax_url'		=> $url,
 		    	'maxDate'		=> '+'.get_option('bkf_ddi_setting')['ddi'].'w',
 		    	'mrText'		=> __('Your selected delivery method is not available on this day', 'bakkbone-florist-companion'),
-		    	'sdcMethod'		=> __('Order Cutoff has passed for your selected delivery method on this day', 'bakkbone-florist-companion')
-		    	
+		    	'sdcMethod'		=> __('Order Cutoff has passed for your selected delivery method on this day', 'bakkbone-florist-companion'),
+		    	'debug'			=> (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) || bkf_debug() ? true : false,
+		    	'pickup'		=> bkf_shop_has_pickup() ? true : false,
 		    ];
-		    $inline_script = 'const bkf_dd_options = '.json_encode($vars).'; const bkf_dd_options_ts = '.$all_options.';';
-		    wp_add_inline_script( 'bkf_dd', $inline_script, 'before' );
+		    $dd_inline_script = 'const bkf_dd_options = '.json_encode($vars).'; const bkf_dd_options_ts = '.$all_options.';';
+		    wp_add_inline_script( 'bkf_dd', $dd_inline_script, 'before' );
 		}
 		wp_enqueue_script( 'jquery-ui-datepicker' );
 		wp_enqueue_style( 'jquery-ui-overcast' );
@@ -78,7 +80,7 @@ class BKF_Enqueue{
 	}
 	
 	function backend(){
-		$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+		$min = (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) || bkf_debug() ? '' : '.min';
 		wp_enqueue_script('select2', __BKF_URL__ . "lib/select2/js/select2.full{$min}.js", 'jquery');
 		wp_enqueue_style('select2css');
 		wp_enqueue_style('dashicons');

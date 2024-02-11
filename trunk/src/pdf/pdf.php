@@ -131,9 +131,9 @@ class BKF_PDF_Core{
 		$recph = $order->get_shipping_phone();
 		$cusph = $order->get_billing_phone();
 		$cuseml = $order->get_billing_email();
-		$recnotesraw = $order->get_meta('_shipping_notes', true);
+		$recnotesraw = stripslashes($order->get_meta('_shipping_notes', true));
 		$recnotes = $recnotesraw !== '' ? '<br><em>'.$recnotesraw.'</em>' : '';
-		$comm = $order->get_customer_note();
+		$comm = stripslashes($order->get_customer_note());
 		
 		$ts = bkf_get_timeslots_associative();
 		$tsraw = '';
@@ -291,9 +291,9 @@ class BKF_PDF_Core{
 			$cs = bkf_currency_symbol();
 			$orderlist[] = array(
 				'id' => $o->get_id(),
-				'dd' => $order->get_meta( '_delivery_date', true ),
-				'ts' => $order->get_meta( '_delivery_timeslot', true ) == '' ? '' : '<br>'.$order->get_meta( '_delivery_timeslot', true ),
-				'dn' => $order->get_meta( '_shipping_notes', true ),
+				'dd' => $o->get_meta( '_delivery_date', true ),
+				'ts' => $o->get_meta( '_delivery_timeslot', true ) == '' ? '' : '<br>'.$o->get_meta( '_delivery_timeslot', true ),
+				'dn' => stripslashes($o->get_meta( '_shipping_notes', true )),
 				'items' => implode("<br>",$list),
 				'total' => $cs.$o->get_total(),
 				'rec' => $o->get_formatted_shipping_full_name(),

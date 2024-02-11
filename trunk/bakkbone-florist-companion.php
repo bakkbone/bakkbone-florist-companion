@@ -3,7 +3,7 @@
  * Plugin Name:			FloristPress
  * Plugin URI:			https://docs.floristpress.org/
  * Description:			Provides standardized features for floristry websites – built by florists, for florists.
- * Version:				6.3.1
+ * Version:				6.4.0
  * Requires at least:	6.0
  * Requires PHP:		7.4
  * Author:				BAKKBONE Australia
@@ -49,6 +49,17 @@ function bkf_is_acf_active(){
 }
 function bkf_is_gravityforms_active(){
 	return in_array("gravityforms/gravityforms.php", apply_filters("active_plugins", get_option("active_plugins")));
+}
+
+function bkf_debug(){
+	$default = defined(WP_DEBUG) ? WP_DEBUG : false;
+	return apply_filters('bkf_debug', $default);
+}
+
+if (bkf_is_woocommerce_active()) {
+	function bkf_debug_log($message, $level = WC_Log_Levels::NOTICE){
+		wc_get_logger()->log($level, $message, ['source' => 'FloristPress']);
+	}
 }
 
 function bkf_enable_bkf_plugin_headers($headers){

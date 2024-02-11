@@ -193,6 +193,14 @@ class BKF_Data_Hygiene{
 			}
 		}
 		update_option('bkf_dd_setting', $bkf_dd_setting);
+		
+		if (! get_option('bkf_ddf_setting')) {
+			update_option('bkf_ddf_setting', array(
+				'ddtst'	=> false,
+				'ddwft'	=> false,
+				'dddft'	=> false
+			));
+		}
 
 		global $bkf_dd_ts_db_version;
 		if ( get_site_option( 'bkf_dd_ts_db_version' ) != $bkf_dd_ts_db_version ) {

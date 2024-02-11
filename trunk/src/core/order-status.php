@@ -15,6 +15,7 @@ class BKF_Order_Status{
 		add_filter( 'wc_order_statuses', [$this, 'bkf_add_status'] );
 		add_filter( 'woocommerce_reports_order_statuses', [$this, 'bkf_include_status_to_reports'], 10 );
 		add_filter( 'woocommerce_order_is_paid_statuses', [$this, 'bkf_status_paid'], 10 );
+		add_filter( 'woocommerce_order_is_pending_statuses', [$this, 'bkf_status_pending'], 10 );
 		add_filter( 'bulk_actions-edit-shop_order', [$this, 'bkf_status_bulk_actions'], PHP_INT_MAX );
 		add_filter( 'bulk_actions-woocommerce_page_wc-orders', [$this, 'bkf_status_bulk_actions'], PHP_INT_MAX );
 		add_action( 'admin_head', [$this, 'bkf_status_css'], 10 );
@@ -178,10 +179,14 @@ class BKF_Order_Status{
 	public function bkf_status_paid($statuses){
 		$bkfoptions = get_option("bkf_features_setting");
 		if($bkfoptions["petals_on"]) {
-				return array_merge( $statuses, array_keys( array('made', 'collect', 'out', 'relay', 'scheduled', 'new', 'accept', 'reject') ) );
+				return array_merge( $statuses, array_keys( array('processed', 'made', 'collect', 'out', 'relay', 'scheduled', 'new', 'accept', 'reject') ) );
 		} else {
-				return array_merge( $statuses, array_keys( array('made', 'collect', 'out', 'relay', 'scheduled') ) );
+				return array_merge( $statuses, array_keys( array('processed', 'made', 'collect', 'out', 'relay', 'scheduled') ) );
 		}
+	}
+	
+	public function bkf_status_pending($statuses){
+		return array_merge($statuses, array_keys(['invoiced']));
 	}
    
 	function bkf_status_bulk_actions($actions){

@@ -468,12 +468,13 @@ class BKF_Ajax{
 	}
 
 	function bkf_checkout_get_ajax_data() {
+		WC()->session->init();
 		$array = [];
 		if ( isset($_POST['delivery_timeslot']) ){
 			WC()->session->__unset('delivery_timeslot');
 			$ts = sanitize_text_field( $_POST['delivery_timeslot'] );
-			WC()->session->set('delivery_timeslot', $ts );
-			$array[] = $ts;
+			WC()->session->set('delivery_timeslot', $ts);
+			$array['delivery_timeslot'] = WC()->session->get('delivery_timeslot');
 		}
 		if ( isset($_POST['delivery_date']) ){
 			WC()->session->__unset('delivery_date');
@@ -482,32 +483,40 @@ class BKF_Ajax{
 			$date = sanitize_text_field( $_POST['delivery_date'] );
 			$timestamp = strtotime($date);
 			$weekday = strtolower(wp_date("l",$timestamp));
-			WC()->session->set('delivery_date', $date );
-			WC()->session->set('delivery_timestamp', $timestamp );
-			WC()->session->set('delivery_weekday', $weekday );
-			$array[] = $date;
+			WC()->session->set('delivery_date', $date);
+			WC()->session->set('delivery_timestamp', $timestamp);
+			WC()->session->set('delivery_weekday', $weekday);
+			$array['delivery_date'] = WC()->session->get('delivery_date');
+			$array['delivery_timestamp'] = WC()->session->get('delivery_timestamp');
+			$array['delivery_weekday'] = WC()->session->get('delivery_weekday');
 		}
 		if ( isset($_POST['ship_type']) ){
+			WC()->session->__unset('ship_type');
 			$st = sanitize_text_field( $_POST['ship_type'] );
-			WC()->session->set('ship_type', $st );
-			$array[] = $st;
+			WC()->session->set('ship_type', $st);
+			$array['ship_type'] = WC()->session->get('ship_type');
 		}
 		if ( isset($_POST['shipping_notes']) ){
+			WC()->session->__unset('shipping_notes');
 			$sn = sanitize_textarea_field( $_POST['shipping_notes'] );
-			WC()->session->set('shipping_notes', $sn );
-			$array[] = $sn;
+			WC()->session->set('shipping_notes', $sn);
+			$array['shipping_notes'] = WC()->session->get('shipping_notes');
 		}
 		if ( isset($_POST['card_message']) ){
+			WC()->session->__unset('card_message');
 			$cm = sanitize_textarea_field( $_POST['card_message'] );
-			WC()->session->set('card_message', $cm );
-			$array[] = $cm;
+			WC()->session->set('card_message', $cm);
+			$array['card_message'] = WC()->session->get('card_message');
 		}
-		echo json_encode($array);
+		if (bkf_debug()) {
+			bkf_debug_log(sprintf(__('Result of %s(): ', 'bakkbone-florist-companion'), __FUNCTION__).wp_json_encode($array), 'debug');
+		}
+		echo wp_json_encode($array);
 		die();
 	}
 	
 	function bkf_retrieve_session_ts(){
-		echo json_encode(WC()->session->get('delivery_timeslot'));
+		echo json_encode(WC()->session->get('delivery_timeslot', 'null'));
 		die();
 	}
 	
@@ -785,21 +794,35 @@ class BKF_Ajax{
 		$rawxml = file_get_contents('php://input');
 		$xml = simplexml_load_string($rawxml);
 		$symbol = '</strong>: ';
+		$plainsymbol = ': ';
 		$xmlarray = json_decode(json_encode((array)$xml), TRUE);
 		unset($xmlarray['password']);
+		
 		$crtyname = implode($xmlarray['crtyname']);
 		$deltime = implode($xmlarray['deltime']);
 		$xmlarray['crtyname'] = $crtyname;
 		$xmlarray['deltime'] = $deltime;
 		$implosion = implode('<br><strong>', array_map(
-					function($k, $v) use($symbol) { 
-						return $k . $symbol . $v;
-					}, 
-					array_keys($xmlarray), 
-					array_values($xmlarray)
-					)
-				);
-				
+			function($k, $v) use($symbol) { 
+				return $k . $symbol . $v;
+			}, 
+			array_keys($xmlarray), 
+			array_values($xmlarray)
+			)
+		);
+		$plainimplosion = implode("\n", array_map(
+			function($k, $v) use($plainsymbol) { 
+				return $k . $plainsymbol . $v;
+			}, 
+			array_keys($xmlarray), 
+			array_values($xmlarray)
+			)
+		);
+		
+		if(bkf_debug()){
+			bkf_debug_log(__('Petals request received.', 'bakkbone-florist-companion') . "\n" . $plainimplosion, 'debug');
+		}
+		
 		if($xml->recordtype == 1){
 			$product = get_option('bkf_petals_product_setting')['product'];
 			$tax = new WC_Tax();
@@ -857,6 +880,9 @@ class BKF_Ajax{
 			$order->save();
 			$note = __('<strong>Full transmission from Petals: </strong><br>', 'bakkbone-florist-companion') . '<strong>' . $implosion;
 			$order->add_order_note( $note );
+			if( ob_get_length() ) {
+				ob_clean();
+			}
 			echo '<?xml version="1.0" encoding="UTF-8"?>
 					<message>
 					<recordtype>02</recordtype>
@@ -865,9 +891,7 @@ class BKF_Ajax{
 					<notes>Order passed to florist via FloristPress</notes>
 					<type>100</type>
 					</message>';
-		}
-			
-		if($xml->recordtype == 3){
+		} elseif($xml->recordtype == 3){
 			$on = (string)$xml->petalsid;
 			$order_id = wc_get_orders( array('_petals_on' => $on) );
 
@@ -883,7 +907,7 @@ class BKF_Ajax{
 			$fullnote = __('<strong>Full transmission from Petals: </strong><br>', 'bakkbone-florist-companion') . '<strong>' . $implosion;
 			$note = '<strong>'.esc_html__('Message received from Petals:', 'bakkbone-florist-companion') . ' </strong><br>' . (string)$xml->notes;
 			
-			if(!empty($inboundorder)){
+			if (!empty($inboundorder)) {
 				$comment_author_email  = 'bkf@';
 				$comment_author_email .= isset( $_SERVER['HTTP_HOST'] ) ? str_replace( 'www.', '', sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) ) : 'noreply.com';
 				$comment_author_email  = sanitize_email( $comment_author_email );
@@ -901,13 +925,15 @@ class BKF_Ajax{
 				$comment = wp_insert_comment($commentargs, true);
 				$wc_emails = WC()->mailer()->get_emails();
 				$wc_emails['WC_Email_Petals_Message']->trigger( $inboundorder_id, $comment );
-			}
-			if(!empty($order_id)){
+			} elseif (!empty($order_id)) {
 				$order = new WC_Order( $order_id[0] );
 							$note = $order->add_order_note( $note );
 							$wc_emails = WC()->mailer()->get_emails();
 							$wc_emails['WC_Email_Petals_Note']->trigger( $order_id[0], $note );
 							$order->add_order_note( $fullnote );
+			}
+			if( ob_get_length() ) {
+				ob_clean();
 			}
 			echo '<?xml version="1.0" encoding="UTF-8"?>
 					<message>
@@ -917,6 +943,19 @@ class BKF_Ajax{
 					<notes>Message passed to florist via FloristPress</notes>
 					<type>100</type>
 					</message>';
+		} else {
+			bkf_debug_log(__('Invalid request received from Petals. Transmission details included below.', 'bakkbone-florist-companion') . "\n" . $plainimplosion, 'warning');
+			if( ob_get_length() ) {
+				ob_clean();
+			}
+			echo '<?xml version "1.0" encoding="UTF-8"?>
+				<message>
+				<recordtype>02</recordtype>
+				<member>'.$mn.'</member>
+				<password>'.$pw.'</password>
+				<notes>Invalid message received via FloristPress - no action has been taken.</notes>
+				<type>500</type>
+				</message>';
 		}
 		die();
 	}
@@ -924,15 +963,15 @@ class BKF_Ajax{
 	function bkf_cpp(){
 		$cat = get_option('bkf_petals_product_setting')['cat'];
 		$cpp = new WC_Product_Simple();
-		$cpp->set_name( __('Petals Network Order', 'bakkbone-florist-companion'));
-		$cpp->set_slug( _x('petals-network-order', 'Product Slug', 'bakkbone-florist-companion'));
+		$cpp->set_name( __('Petals Network Order', 'bakkbone-florist-companion') );
+		$cpp->set_slug( 'petals-network-order' );
 		$cpp->set_regular_price( '1.00' );
-		$cpp->set_category_ids( array( $cat ) );
+		$cpp->set_category_ids( [$cat] );
 		$cpp->set_catalog_visibility('hidden');
 		$cpp->set_status('publish');
 		$cpp->save();
 		$pid = $cpp->get_id();
-		update_option('bkf_petals_product_setting', array_merge(get_option('bkf_petals_product_setting'), array('product' => $pid)));
+		update_option('bkf_petals_product_setting', array_merge(get_option('bkf_petals_product_setting'), ['product' => $pid]));
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
 		die();
 	}
@@ -943,7 +982,7 @@ class BKF_Ajax{
 		$price = $product->get_price();
 		$virtual = $product->is_virtual() ? '1' : '0';
 		$priceresult = $price !== null && $price !== '' ? number_format($price,2,'.','') : '';
-		$array = array($priceresult,$virtual);
+		$array = [$priceresult, $virtual];
 		echo json_encode($array);
 		die();
 	}

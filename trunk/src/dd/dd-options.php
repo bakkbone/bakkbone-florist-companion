@@ -54,7 +54,7 @@ class BKF_Delivery_Date_Options{
 			$bkf_ddf_setting = [];
 			$bkf_ddf_setting['ddtst'] = isset($newdd['ddtst']) && $newdd['ddtst'] ? true : false;
 			$bkf_ddf_setting['ddwft'] = isset($newdd['ddwft']) && $newdd['ddwft'] ? true : false;
-			$bkf_ddf_setting['dddft'] = isset($dddft['ddtst']) && $dddft['ddtst'] ? true : false;
+			$bkf_ddf_setting['dddft'] = isset($newdd['dddft']) && $newdd['dddft'] ? true : false;
 			update_option('bkf_ddf_setting', $bkf_ddf_setting);
 		}
 	}
