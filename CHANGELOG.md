@@ -6,6 +6,11 @@
 - Planned: Add debug logging for multiple functions across FloristPress when `bkf_debug()` is true
 - Planned: Sort orders on calendar PDF export by date
 
+### [6.4.1] - 2024-02-14
+
+#### Fixed
+- Delivery cost calculations causing error in suburb search
+
 ### [6.4.0] - 2024-02-12
 
 #### Added
