@@ -1,5 +1,7 @@
 # Changelog
 
+Also maintained at [floristpress.org](https://www.floristpress.org/changelog/)
+
 ### [Unreleased]
 
 #### Changed

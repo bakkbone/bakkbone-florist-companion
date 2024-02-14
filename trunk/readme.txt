@@ -156,7 +156,9 @@ If there's a feature missing, please let us know on [Canny](https://floristpress
 
 = How do I get support? =
 
-If the plugin isn't functioning as it should or you'd like to suggest a feature, please use the support forum here on the WordPress Plugin Repository. If you require assistance setting up the plugin and/or your website, please contact us [via our website](https://www.floristwebsites.com.au/).
+If the plugin isn't functioning as it should, please use the [support forum here on the WordPress.org Plugin Repository](https://wordpress.org/support/plugin/bakkbone-florist-companion/).
+
+If you require assistance setting up the plugin and/or your website, please contact us [via our website](https://www.floristwebsites.com.au/) for paid support.
 
 == Screenshots ==
 
@@ -176,56 +178,6 @@ If the plugin isn't functioning as it should or you'd like to suggest a feature,
 
 == Changelog ==
 
-We maintain the changelog here from no more than one previous minor release (x.X.x - middle digit changes) until present, in line with the versions we host in the repository. The full changelog is hosted on [Github](https://github.com/bakkbone/bakkbone-florist-companion/blob/main/CHANGELOG.md), as are earlier releases of the plugin.
-
-### [Unreleased]
-
-#### Changed
-- Planned: Add debug logging for multiple functions across FloristPress when `bkf_debug()` is true
-- Planned: Sort orders on calendar PDF export by date
-
-### [6.4.1] - 2024-02-14
-
-#### Fixed
-- Delivery cost calculations causing error in suburb search
-
-### [6.4.0] - 2024-02-12
-
-#### Added
-- `bkf_debug` filter (boolean)
-- `bkf_debug()` (returns boolean affected by above filter - default is value of `WP_DEBUG`)
-- `bkf_debug_log($message, $level = 'debug')` (adds to FloristPress log in WC_Logger)
-
-#### Changed
-- Tidied code in Petals outbound order Ajax processing plus improve handling of improper messages received
-
-#### Fixed
-- Rectified timeslot field not appearing as intended at checkout
-- Rectified order type field not functioning as intended at checkout
-- Delivery Dates fees settings not saving correctly
-- Added check to force appearance in db of fees settings due to error in some previous release
-- Delivery calendar PDF meta query error resolved
-- Strip slashes in more meta fields in PDFs
-- `Processed` status added to paid statuses filter
-- `Invoiced` status added to pending statuses filter
-- Add slashes as required in category blocks settings
-
-### [6.3.1] - 2024-01-20
-
-#### Fixed
-- Prevent fatal error if Woo not enabled
-
-### [6.3.0] - 2024-01-20
-
-#### Added
-- Customization of delivery date field label
-- FloristPress checkout fields to WooCommerce Orders REST API
-- FloristPress delivery suburbs to WooCommerce Shipping Zone Methods REST API
-
-#### Changed
-- Incompatibility declared for WooCommerce Block Checkout
-
-#### Fixed
-- Fix plugin compatibility notices
+Changelog is kept at [floristpress.org](https://www.floristpress.org/changelog/)
 
 == Upgrade Notice ==
