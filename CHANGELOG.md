@@ -92,7 +92,7 @@
 ### [5.0.6] - 2023-12-23
 
 #### Fixed
-- Dompdf v2.0.4 compatibility – make DejaVu Sans default font
+- Dompdf v2.0.4 compatibility â€“ make DejaVu Sans default font
 
 ### [5.0.5.1] - 2023-12-19
 
@@ -242,7 +242,7 @@
 ### [3.4.1] - 2023-10-31
 
 #### Added
-- `bkf_is_woocommerce_active()` – returns bool
+- `bkf_is_woocommerce_active()` â€“ returns bool
 
 #### Fixed
 - Patch PHP error if Woo not active
@@ -319,7 +319,7 @@
 #### Changed
 - New Delivery Suburbs management interface
 - Removed superfluous code from `src/suburbs/suburbs.php`
-- General tidying – we like clean code
+- General tidying â€“ we like clean code
 - Renamed all classes for clarity
 - Delivery date field moved to above payment
 
@@ -702,7 +702,7 @@
 - Fix PHP error presenting when delivery weekday validated
 
 #### Security
-- DEV: Upgrade minimum PHP to 7.4
+- Upgrade minimum PHP to 7.4
 
 ### [2.3.5] - 2023-02-25
 
