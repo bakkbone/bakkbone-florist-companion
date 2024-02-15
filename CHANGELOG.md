@@ -8,6 +8,14 @@ Also maintained at [floristpress.org](https://www.floristpress.org/changelog/)
 - Planned: Add debug logging for multiple functions across FloristPress when `bkf_debug()` is true
 - Planned: Sort orders on calendar PDF export by date
 
+### [6.4.2] - 2024-02-15
+
+#### Fixed
+- Allow past dates in DD metabox
+
+#### Security
+- Tested Woo 8.5.2
+
 ### [6.4.1] - 2024-02-14
 
 #### Fixed
