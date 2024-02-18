@@ -1,0 +1,6 @@
+<div class="bkf-bd-suburb-search">
+  <form>
+    <input type="text" class="bkf-bd-suburb-search-input" placeholder="{{ content.text.placeholder|default('Start typing a suburb to check the delivery cost...') }}" onkeyup="bkfBreakdanceSuburbSearchShowResult(this.value)">
+    <div id="bkfbdlivesearch" style="display: none;" data-noresults="{{ content.text.no_results|default('No suburbs matched your search.') }}" data-header="{{ content.text.results_header|default('We deliver to these suburbs matching your search:') }}"></div>
+  </form>
+</div>

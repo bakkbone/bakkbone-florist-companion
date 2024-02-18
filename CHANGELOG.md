@@ -2,11 +2,17 @@
 
 Also maintained at [floristpress.org](https://www.floristpress.org/changelog/)
 
-### [Unreleased]
+### [7.0.0] - 2024-02-18
+
+#### Added
+- Use shipping classes to exclude products from FloristPress features if only non-floral items in cart
 
 #### Changed
-- Planned: Add debug logging for multiple functions across FloristPress when `bkf_debug()` is true
-- Planned: Sort orders on calendar PDF export by date
+- `bkf_debug()` now accepts boolean - if arg is true, default is value of `WP_DEBUG` and/or `SCRIPT_DEBUG` (ie. true if either is true)
+
+#### Fixed
+- Non-existent JS file attempting to load on frontend
+- Re-fixed ship type bug previously fixed in 6.4.2, for additional scenarios
 
 ### [6.4.2] - 2024-02-15
 
