@@ -14,6 +14,9 @@ Also maintained at [floristpress.org](https://www.floristpress.org/changelog/)
 - Non-existent JS file attempting to load on frontend
 - Re-fixed ship type bug previously fixed in 6.4.2, for additional scenarios
 
+#### Security
+- Tested Woo 8.6.0
+
 ### [6.4.2] - 2024-02-15
 
 #### Fixed

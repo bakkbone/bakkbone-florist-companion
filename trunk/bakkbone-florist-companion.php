@@ -11,7 +11,7 @@
  * License:				GNU General Public License (GPL) 3.0 or later
  * License URI:			https://www.gnu.org/licenses/gpl.html
  * Tested up to:		6.4
- * WC tested up to:		8.5.2
+ * WC tested up to:		8.6.0
  * Text Domain:			bakkbone-florist-companion
  * Domain Path:			/lang/
 **/
