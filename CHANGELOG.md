@@ -2,6 +2,21 @@
 
 Also maintained at [floristpress.org](https://www.floristpress.org/changelog/)
 
+### [7.1.0] - 2024-02-23
+
+#### Added
+- Order Search feature on dashboard
+
+#### Changed
+- Tidy admin notices class
+- Tidy Ajax class
+- Display some FloristPress admin bar items in responsive mode
+
+#### Fixed
+- Correct URL in Breakdance compatibility notice
+- Remove excess console logging in order notifier
+- Fix TinyMCE assets URL
+
 ### [7.0.0] - 2024-02-18
 
 #### Added
