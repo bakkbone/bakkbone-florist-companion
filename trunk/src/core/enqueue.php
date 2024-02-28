@@ -10,10 +10,15 @@ defined("__BKF_EXEC__") or die("Ah, sweet silence.");
 class BKF_Scripts {
 
 	function __construct(){
-		add_action("wp_enqueue_scripts", [$this, 'global']);
-		add_action("wp_enqueue_scripts", [$this, 'frontend']);
-		add_action("admin_enqueue_scripts", [$this, 'global']);
-		add_action("admin_enqueue_scripts", [$this, 'backend']);
+		$frontend = ['global', 'frontend'];
+		$backend = ['global', 'backend'];
+		
+		foreach ($frontend as $function) {
+			add_action('wp_enqueue_scripts', [$this, $function]);
+		}
+		foreach ($backend as $function) {
+			add_action('admin_enqueue_scripts', [$this, $function]);
+		}
 		add_action("admin_head", [$this, 'fonts'], 1);
 	}
 	
@@ -23,15 +28,16 @@ class BKF_Scripts {
 	}
 
 	function global(){
+		wp_register_script('jqueryblockui', __BKF_URL__ . 'lib/blockui/jquery.blockUI.js', ['jquery'], __BKF_VERSION__);
 		$min = bkf_debug(true) ? '' : '.min';
 		wp_register_style('jquery-ui-overcast', '//code.jquery.com/ui/1.13.2/themes/overcast/jquery-ui.css');
 		wp_register_style('jquery-ui-dark-hive', '//code.jquery.com/ui/1.13.2/themes/dark-hive/jquery-ui.css');
 		wp_register_style('select2css', __BKF_URL__ . "lib/select2/css/select2{$min}.css");
-		wp_enqueue_style("bkf_bkf", __BKF_URL__ . "assets/css/bkf{$min}.css", [],"1","all" );
-		wp_enqueue_style("bkf_calendar", __BKF_URL__ . "assets/css/calendar{$min}.css", [],"1","all" );
+		wp_enqueue_style("bkf_bkf", __BKF_URL__ . "assets/css/bkf{$min}.css", [], __BKF_VERSION__, "all" );
+		wp_enqueue_style("bkf_calendar", __BKF_URL__ . "assets/css/calendar{$min}.css", [], __BKF_VERSION__, "all");
 		global $post_type;
 		if ( 'bkf_petals_order' === $post_type ) {
-			wp_enqueue_style("bkf_petals", __BKF_URL__ . "assets/css/petals{$min}.css", [],"1","all" );
+			wp_enqueue_style("bkf_petals", __BKF_URL__ . "assets/css/petals{$min}.css", [], __BKF_VERSION__, "all");
 		}
 	}
 
@@ -42,7 +48,7 @@ class BKF_Scripts {
 		    $cart = WC()->cart->get_cart();
 	        $dateslist = bkf_get_checkout_datepicker_dates($cart);
 		    
-			wp_enqueue_script("bkf_dd", __BKF_URL__ . "assets/js/dd{$min}.js", ['jquery']);
+			wp_enqueue_script("bkf_dd", __BKF_URL__ . "assets/js/dd{$min}.js", ['jquery'], __BKF_VERSION__);
 
 			$ts = bkf_get_timeslots();
 			$all_options = '[';
@@ -57,7 +63,7 @@ class BKF_Scripts {
 		    	'maxDate'		=> '+'.get_option('bkf_ddi_setting')['ddi'].'w',
 		    	'mrText'		=> __('Your selected delivery method is not available on this day', 'bakkbone-florist-companion'),
 		    	'sdcMethod'		=> __('Order Cutoff has passed for your selected delivery method on this day', 'bakkbone-florist-companion'),
-		    	'debug'			=> (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) || bkf_debug() ? true : false,
+		    	'debug'			=> bkf_debug(true),
 		    	'pickup'		=> bkf_shop_has_pickup() ? true : false,
 		    ];
 		    $dd_inline_script = 'const bkf_dd_options = '.json_encode($vars).'; const bkf_dd_options_ts = '.$all_options.';';
@@ -67,10 +73,10 @@ class BKF_Scripts {
 		wp_enqueue_style( 'jquery-ui-overcast' );
 		global $post_type;
 		if ( 'bkf_petals_order' === $post_type ) {
-			wp_enqueue_script('select2', __BKF_URL__ . "lib/select2/js/select2.full{$min}.js", 'jquery');
-			wp_enqueue_style('select2css');
+			wp_enqueue_script('select2', __BKF_URL__ . "lib/select2/js/select2.full{$min}.js", ['jquery'], __BKF_VERSION__);
+			wp_enqueue_style('select2css', '', __BKF_VERSION__);
 		}
-		wp_enqueue_script( 'bkf_suburb_search', __BKF_URL__ . "assets/js/suburb_search{$min}.js" );
+		wp_enqueue_script( 'bkf_suburb_search', __BKF_URL__ . "assets/js/suburb_search{$min}.js", [], __BKF_VERSION__ );
 
 	    $url_ss = admin_url('admin-ajax.php?action=bkf_search_suburbs_frontend&query=');
 	    $inline_script_ss = 'var thisAjaxUrl = "' . $url_ss . '";';
@@ -80,10 +86,10 @@ class BKF_Scripts {
 	
 	function backend(){
 		$min = bkf_debug(true) ? '' : '.min';
-		wp_enqueue_script('select2', __BKF_URL__ . "lib/select2/js/select2.full{$min}.js", 'jquery');
-		wp_enqueue_style('select2css');
+		wp_enqueue_script('select2', __BKF_URL__ . "lib/select2/js/select2.full{$min}.js", ['jquery'], __BKF_VERSION__);
+		wp_enqueue_style('select2css', '', [], __BKF_VERSION__);
 		wp_enqueue_style('dashicons');
-		wp_enqueue_script("bkf_copy", __BKF_URL__ . "assets/js/copy{$min}.js",'jquery','','all' );
+		wp_enqueue_script("bkf_copy", __BKF_URL__ . "assets/js/copy{$min}.js", ['jquery', 'jqueryblockui'], __BKF_VERSION__, 'all');
 		
 		$debug = bkf_debug(true) ? 'true' : 'false';
 		$copyvars = [
@@ -95,28 +101,29 @@ class BKF_Scripts {
 			'subText'		=> '<strong>' . get_option('bkf_localisation_setting', ['global_label_suburb' => __('Suburb', 'bakkbone-florist-companion')])['global_label_suburb'] . ':</strong> %s',
 			'cusText'		=> wp_kses_post(__('<strong>Customer:</strong> %s', 'bakkbone-florist-companion')),
 			'wsText'		=> get_option('bkf_pdf_setting', ['ws_title' => __('Worksheet', 'bakkbone-florist-companion')])['ws_title'],
-			'editText'		=> esc_html__('View/Edit Order', 'bakkbone-florist-companion')
+			'editText'		=> esc_html__('View/Edit Order', 'bakkbone-florist-companion'),
+			'processingText'=> esc_html__('Processing...', 'bakkbone-florist-companion')
 		];
 		$inline_script_copy = 'var copyVars = ' . wp_json_encode($copyvars) . '; var bkfDebug = ' . $debug . '; var toCopy = "' . esc_html__('Click to copy to clipboard', 'bakkbone-florist-companion') . '"; var copied = "' . esc_html__('Copied to clipboard!', 'bakkbone-florist-companion') . '";';
 		wp_add_inline_script( 'bkf_copy', $inline_script_copy );
 		
 		wp_enqueue_script("fullcalendar", __BKF_URL__ . "lib/fullcalendar/dist/index.global{$min}.js",'','','all' );
 		if(!strpos(get_current_screen()->id,'page_gf_')){
-			wp_enqueue_script( 'jquery-ui-datepicker' );
+			wp_enqueue_script( 'jquery-ui-datepicker', '', ['jquery'] );
 			wp_enqueue_style( 'jquery-ui-dark-hive' );
 		}
 		if(get_post_type() == 'bkf_petals_order'){
-			wp_dequeue_script( 'autosave' );
-			wp_enqueue_script("bkf_petals", __BKF_URL__ . "assets/js/petals{$min}.js",'','','all' );
+			wp_dequeue_script('autosave');
+			wp_enqueue_script("bkf_petals", __BKF_URL__ . "assets/js/petals{$min}.js", [], __BKF_VERSION__, 'all' );
 		}
 		if(get_current_screen()->id == 'toplevel_page_bkf_dc'){
-			wp_enqueue_script('jquery-ui-core', 'jquery');
-			wp_enqueue_script('jquery-ui-button', 'jquery');
-			wp_enqueue_script('jquery-ui-dialog', 'jquery');
+			wp_enqueue_script('jquery-ui-core', '', ['jquery']);
+			wp_enqueue_script('jquery-ui-button', '', ['jquery']);
+			wp_enqueue_script('jquery-ui-dialog', '', ['jquery']);
 			wp_enqueue_style( 'jquery-ui-dark-hive' );
 		}
-		wp_register_style("bkf_tinymce", __BKF_URL__ . "assets/tinymce-plugins/bkf_tinymce.css");
-		wp_enqueue_style("bkf_tinymce");
+		wp_register_style("bkf_tinymce", __BKF_URL__ . "assets/tinymce-plugins/bkf_tinymce.css", [], __BKF_VERSION__);
+		wp_enqueue_style("bkf_tinymce", '', [], __BKF_VERSION__);
 	}
 
 	function fonts() {

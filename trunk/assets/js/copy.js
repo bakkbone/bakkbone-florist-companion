@@ -24,10 +24,24 @@ window.addEventListener(
 	}
 );
 
-jQuery('#bkf_adminbar_ordersearch').on('input click focus change', function(event) {
-	const ele = jQuery('#bkf_ordersearch_results')[0];
-	const searchString = this.value;
+let bkfTimeoutId = 0;
+
+function bkfOrderSearch(event, id) {
+	const ele = jQuery('#bkf_ordersearch_results');
+	const wrap = jQuery('#wpwrap');
+	searchString = jQuery('#bkf_adminbar_ordersearch').val();
+	const currentProcess = id;
 	if (searchString.length) {
+		jQuery(ele).hide();
+		jQuery(ele).empty();
+		jQuery(wrap).block({
+			css: {
+				top: '20vh',
+				padding: '20px'
+			},
+			message: copyVars.processingText,
+			centerY: false
+		});
 		jQuery.ajax({
 			url: ajaxurl,
 			data: {
@@ -35,10 +49,9 @@ jQuery('#bkf_adminbar_ordersearch').on('input click focus change', function(even
 				input: searchString
 			},
 			success: function(result){
-				if (bkfDebug) {
-					console.debug(result);
+				if ( bkfTimeoutId > currentProcess) {
+					return;
 				}
-				jQuery(ele).empty();
 				var item = JSON.parse(result);
 				var results = Object.entries(item);
 				results.sort(function(a, b){
@@ -66,26 +79,35 @@ jQuery('#bkf_adminbar_ordersearch').on('input click focus change', function(even
 						var editlink = value.editlink;
 						var wslink = value.wslink;
 						
-						var resultHtml = '<div class="bkf_ordersearch_result" id="bkf_ordersearch_result_' + id + '"><a href="' + editlink + '"><h2>' + copyVars.orderTitle.replace('%s', id) + '</h2></a>';
+						var resultHtml = '<div class="bkf_ordersearch_result" id="bkf_ordersearch_result_' + id + '"><h2>' + copyVars.orderTitle.replace('%s', id) + '</h2>';
 						if (physical && pickup) {
 							resultHtml += '<p>' + copyVars.pickupText.replace('%s', dd) + '</p><p class="bkf_links"><a href="' + wslink + '">' + copyVars.wsText + '</a>&nbsp;|&nbsp;<a href="' + editlink + '">' + copyVars.editText + '</a></p>';
 						} else if (physical) {
 							resultHtml += '<p>' + copyVars.delText.replace('%s', dd) + '<br>' + copyVars.recText.replace('%s', recipient) + '<br>' + copyVars.subText.replace('%s', delsuburb) + '</p><p class="bkf_links"><a href="' + wslink + '">' + copyVars.wsText + '</a>&nbsp;|&nbsp;<a href="' + editlink + '">' + copyVars.editText + '</a></p>';
 						} else {
-							resultHtml += '<p>' + copyVars.cusText.replace('%s', sender) + '</p>';
+							resultHtml += '<p>' + copyVars.cusText.replace('%s', sender) + '</p><p class="bkf_links"><a href="' + editlink + '">' + copyVars.editText + '</a></p>';
 						}
 						resultHtml += '</div>';
 						jQuery(ele).append(resultHtml);
 					}
+					jQuery(ele).show();
+					jQuery(wrap).unblock();
 				} else {
 					var noResultsHtml = '<div id="bkf_ordersearch_noresults"><p>' + copyVars.noResults.replace('%s', searchString) + '</p></div>';
 					jQuery(ele).append(noResultsHtml);
+					jQuery(ele).show();
+					jQuery(wrap).unblock();
 				}
-				jQuery(ele).show();
 			}
 		});
 	} else {
 		jQuery(ele).empty();
 		jQuery(ele).hide();
+		jQuery(wrap).unblock();
 	}
+}
+
+jQuery('#bkf_adminbar_ordersearch').on('input click focus change', function(event) {
+	bkfTimeoutId++;
+	currentId = setTimeout(bkfOrderSearch, 0, event, bkfTimeoutId);
 });
