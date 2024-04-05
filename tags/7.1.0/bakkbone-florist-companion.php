@@ -10,8 +10,8 @@
  * Author URI:			https://www.floristpress.org/
  * License:				GNU General Public License (GPL) 3.0 or later
  * License URI:			https://www.gnu.org/licenses/gpl.html
- * Tested up to:		6.4
- * WC tested up to:		8.6.0
+ * Tested up to:		6.5
+ * WC tested up to:		8.7.0
  * Text Domain:			bakkbone-florist-companion
  * Domain Path:			/lang/
 **/
