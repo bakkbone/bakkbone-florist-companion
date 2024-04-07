@@ -6,6 +6,7 @@
  * Version:				7.1.0
  * Requires at least:	6.0
  * Requires PHP:		7.4
+ * Requires Plugins:	woocommerce
  * Author:				BAKKBONE Australia
  * Author URI:			https://www.floristpress.org/
  * License:				GNU General Public License (GPL) 3.0 or later
