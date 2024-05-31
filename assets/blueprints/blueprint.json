@@ -25,7 +25,7 @@
             "step": "installPlugin",
             "pluginZipFile": {
                 "resource": "url",
-                "url": "https:\/\/downloads.wordpress.org\/plugin\/bakkbone-florist-companion.7.1.0.zip"
+                "url": "https:\/\/downloads.wordpress.org\/plugin\/bakkbone-florist-companion.7.2.0.zip"
             },
             "options": {
                 "activate": true
