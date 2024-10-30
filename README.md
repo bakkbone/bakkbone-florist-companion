@@ -91,3 +91,7 @@ Why? You can view/print your orders all in one place, and in one consistent form
 * Rename "shipping" to "delivery"
 * Automatically assign guest orders placed by registered customer to the matching user (so it appears in their order history when logged in)
 * Option to display product "short description" in archive listings
+
+How can I report security bugs?
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/bakkbone-florist-companion)
