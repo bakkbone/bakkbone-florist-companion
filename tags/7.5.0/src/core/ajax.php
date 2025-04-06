@@ -13,12 +13,15 @@ class BKF_Ajax{
 		
 		$ajax = [
 			'dd_add_closed',
+			'dd_add_closed_range',
 			'dd_remove_closed',
 			'dd_add_full',
+			'dd_add_full_range',
 			'dd_remove_full',
 			'cal_pdf',
 			'cal_csv',
 			'cb_add',
+			'cb_add_range',
 			'cb_del',
 			'sd_add',
 			'sd_del',
@@ -145,6 +148,49 @@ class BKF_Ajax{
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
 		die();		
 	}
+	
+	function dd_add_closed_range(){
+        if ( !current_user_can('manage_woocommerce') ) {
+            exit(__('You do not have permission to do this..', 'bakkbone-florist-companion'));
+        }
+		if ( !wp_verify_nonce( $_REQUEST['nonce'], "bkf")) {
+			exit(__('Your request is invalid or the page has been open too long. Please go back and try again.', 'bakkbone-florist-companion'));
+		}
+		
+		if(null !== get_option('bkf_dd_closed') && !empty(get_option('bkf_dd_closed'))){
+			$option = get_option('bkf_dd_closed');
+		} else {
+			$option = [];
+		}
+		
+		$date1 = $_REQUEST['date1'];
+		$date2 = $_REQUEST['date2'];
+		
+		if ($date1 && $date2) {
+  		$ts1 = (string)strtotime($date1);
+  		$ts2 = (string)strtotime($date2);
+  		
+  		if ($ts1 >= $ts2) {
+	      header("Location: ".$_SERVER["HTTP_REFERER"]);
+  		  die();
+  		}
+  		
+  		$period = new DatePeriod(
+  		  new DateTime($date1),
+  		  new DateInterval('P1D'),
+  		  new DateTime($date2)
+  		);
+  		
+  		foreach ($period as $k => $v) {
+  		  $option[(string)strtotime($v->format('l, j F Y'))] = $v->format('l, j F Y');
+  		}
+  		$option[(string)strtotime($period->getEndDate()->format('l, j F Y'))] = $period->getEndDate()->format('l, j F Y');
+  		update_option('bkf_dd_closed', $option);
+		}
+		
+		header("Location: ".$_SERVER["HTTP_REFERER"]);
+		die();		
+	}
 
 	function dd_remove_closed(){
         if ( !current_user_can('manage_woocommerce') ) {
@@ -181,6 +227,44 @@ class BKF_Ajax{
 			update_option('bkf_dd_full', $option);
 		}
 			
+		header("Location: ".$_SERVER["HTTP_REFERER"]);
+		die();		
+	}
+
+	function dd_add_full_range(){
+        if ( !current_user_can('manage_woocommerce') ) {
+            exit(__('You do not have permission to do this..', 'bakkbone-florist-companion'));
+        }
+		if ( !wp_verify_nonce( $_REQUEST['nonce'], "bkf")) {
+			exit(__('Your request is invalid or the page has been open too long. Please go back and try again.', 'bakkbone-florist-companion'));
+		}
+		
+		if(null !== get_option('bkf_dd_full') && !empty(get_option('bkf_dd_full'))){
+			$option = get_option('bkf_dd_full');
+		} else {
+			$option = [];
+		}
+		
+		$date1 = $_REQUEST['date1'];
+		$date2 = $_REQUEST['date2'];
+		
+		if ($date1 && $date2) {
+  		$ts1 = (string)strtotime($date1);
+  		$ts2 = (string)strtotime($date2);
+  		
+  		$period = new DatePeriod(
+  		  new DateTime($date1),
+  		  new DateInterval('P1D'),
+  		  new DateTime($date2)
+  		);
+  		
+  		foreach ($period as $k => $v) {
+  		  $option[(string)strtotime($v->format('l, j F Y'))] = $v->format('l, j F Y');
+  		}
+  		$option[(string)strtotime($period->getEndDate()->format('l, j F Y'))] = $period->getEndDate()->format('l, j F Y');
+  		update_option('bkf_dd_full', $option);
+		}
+		
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
 		die();		
 	}
@@ -292,12 +376,57 @@ class BKF_Ajax{
 		
 		global $wpdb;
 		$wpdb->insert(
-		$wpdb->prefix.'bkf_dd_catblocks',
-			array(
-				'date'	=>	$date,
-				'category'=>$category
-			)
+  		$wpdb->prefix.'bkf_dd_catblocks',
+  			array(
+  				'date'	=>	$date,
+  				'category'=>$category
+  			)
 		);
+			
+		header("Location: ".$_SERVER["HTTP_REFERER"]);
+		die();		
+	}
+
+	function cb_add_range(){
+        if ( !current_user_can('manage_woocommerce') ) {
+            exit(__('You do not have permission to do this..', 'bakkbone-florist-companion'));
+        }
+		if ( !wp_verify_nonce( $_REQUEST['nonce'], "bkf")) {
+			exit(__('Your request is invalid or the page has been open too long. Please go back and try again.', 'bakkbone-florist-companion'));
+		}
+		$date1 = $_REQUEST['date1'];
+		$date2 = $_REQUEST['date2'];
+		$category = $_REQUEST['category'];
+		
+		if ($date1 && $date2) {
+  		$ts1 = (string)strtotime($date1);
+  		$ts2 = (string)strtotime($date2);
+  		
+  		$period = new DatePeriod(
+  		  new DateTime($date1),
+  		  new DateInterval('P1D'),
+  		  new DateTime($date2)
+  		);
+  		
+  		$option = [];
+  		
+  		foreach ($period as $k => $v) {
+  		  $option[(string)strtotime($v->format('l, j F Y'))] = $v->format('l, j F Y');
+  		}
+  		$option[(string)strtotime($period->getEndDate()->format('l, j F Y'))] = $period->getEndDate()->format('l, j F Y');
+  		
+  		global $wpdb;
+  		
+  		foreach ($option as $k => $v) {
+    		$wpdb->insert(
+      		$wpdb->prefix.'bkf_dd_catblocks',
+      			array(
+      				'date'	=>	$v,
+      				'category'=>$category
+      			)
+    		);
+  		}
+		}
 			
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
 		die();		
