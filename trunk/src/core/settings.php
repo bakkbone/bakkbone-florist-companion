@@ -20,12 +20,86 @@ class BKF_Settings extends WC_Settings_Page {
 		add_action('woocommerce_admin_field_petals_url', [$this, 'woocommerce_admin_field_petals_url']);
 		add_action('woocommerce_admin_field_petals_category', [$this, 'woocommerce_admin_field_petals_category']);
 		add_action('woocommerce_admin_field_petals_product', [$this, 'woocommerce_admin_field_petals_product']);
+		
+		add_filter('woocommerce_get_settings_point-of-sale', [$this, 'pos_settings'], 10, 2);
+	}
+	
+	function pos_settings($settings, $current_section){
+	    error_log($current_section);
+	    if ( $current_section == '' ) {
+	        error_log(wp_json_encode($settings));
+    		$settings[] = [
+    			'title' => __('PDF Defaults', 'bakkbone-florist-companion'),
+    			'type'  => 'title',
+    			'desc'  => __('These settings apply to FloristPress-generated PDFs', 'bakkbone-florist-companion'),
+    			'id'    => 'bkf_pdf_settings'
+    		];
+    		$settings[] = [
+    			'title'		=> __('Page Size', 'bakkbone-florist-companion'),
+    			'type'		=> 'select',
+    			'options'   => [
+    				'a4'    	=> __('A4 (210mm x 297mm)', 'bakkbone-florist-companion'),
+    				'legal'		=> __('Legal (8.5" x 14")', 'bakkbone-florist-companion'),
+    				'letter'	=> __('Letter (8.5" x 11")', 'bakkbone-florist-companion'),
+    				'tabloid'	=> __('Tabloid (11" x 17")', 'bakkbone-florist-companion')
+    			],
+    			'id'		=> 'bkf_pdf_setting[page_size]',
+    		];
+    		$settings[] = [
+    			'title'		=> __('Invoice Title', 'bakkbone-florist-companion'),
+    			'type'		=> 'text',
+    			'desc'		=> __('Title for Invoice', 'bakkbone-florist-companion'),
+    			'desc_tip'	=> true,
+    			'id'		=> 'bkf_pdf_setting[inv_title]',
+    		];
+    		$settings[] = [
+    			'title'		=> __('Invoice Text', 'bakkbone-florist-companion'),
+    			'type'		=> 'text',
+    			'desc'		=> __('Additional text for bottom of invoice', 'bakkbone-florist-companion'),
+    			'desc_tip'	=> true,
+    			'id'		=> 'bkf_pdf_setting[inv_text]',
+    		];
+    		$settings[] = [
+    			'title'		=> __('Worksheet Title', 'bakkbone-florist-companion'),
+    			'type'		=> 'text',
+    			'desc'		=> __('Title for Worksheet', 'bakkbone-florist-companion'),
+    			'desc_tip'	=> true,
+    			'id'		=> 'bkf_pdf_setting[ws_title]',
+    		];
+    		$settings[] = [
+    			'title'		=> __('Website Address', 'bakkbone-florist-companion'),
+    			'type'		=> 'url',
+    			'desc'		=> __('Website as it appears on invoices', 'bakkbone-florist-companion'),
+    			'desc_tip'	=> true,
+    			'id'		=> 'bkf_pdf_setting[inv_web]',
+    		];
+    		$settings[] = [
+    			'title'		=> __('Tax ID Label', 'bakkbone-florist-companion'),
+    			'type'		=> 'text',
+    			'desc'		=> __('Label for Tax ID – eg. "ABN"', 'bakkbone-florist-companion'),
+    			'desc_tip'	=> true,
+    			'id'		=> 'bkf_pdf_setting[inv_tax_label]',
+    		];
+    		$settings[] = [
+    			'title'		=> __('Tax ID', 'bakkbone-florist-companion'),
+    			'type'		=> 'text',
+    			'desc'		=> __("Your business' Tax ID as it appears on invoices", 'bakkbone-florist-companion'),
+    			'desc_tip'	=> true,
+    			'id'		=> 'bkf_pdf_setting[inv_tax_value]',
+    		];
+    		$settings[] = [
+    			'type'	=> 'sectionend',
+    			'id'	=> 'bkf_pdf_settings'
+    		];
+    		return $settings;
+	    } else {
+	        return $settings;
+	    }
 	}
 
 	function get_own_sections()	{
 		$sections = [
 			''				=> __('General', 'bakkbone-florist-companion'),
-			'pdf'			=> __('PDFs', 'bakkbone-florist-companion'),
 			'localisation'	=> __('Localization', 'bakkbone-florist-companion')
 		];
 		if (get_option('bkf_features_setting')['petals_on']) {

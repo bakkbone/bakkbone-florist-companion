@@ -15,9 +15,9 @@ class BKF_Petals_Core{
 		  add_action('manage_shop_order_posts_custom_column', [$this, 'bkf_petals_actions'], 12, 2 );
 		  add_action('woocommerce_shop_order_list_table_custom_column', [$this, 'bkf_petals_actions'], 12, 2 );
 		  add_filter('woocommerce_admin_order_data_after_order_details', [$this, 'bkf_order_meta_petals']);
-	  };
+      };
 	}
-
+	
 	function bkf_petals_actions( $column, $post_id ) {
 		$bkfoptions = get_option("bkf_petals_setting");
 			if ( $column == 'wc_actions' ) {

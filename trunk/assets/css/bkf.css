@@ -1,3 +1,7 @@
+.bkf_settings_wrapper {
+  padding: 0 30px 20px;
+}
+
 #wpadminbar #bkf_ordersearch_results {
 	background-color: #eeeeee;
 	color: black;

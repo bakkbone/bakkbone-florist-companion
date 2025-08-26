@@ -133,20 +133,15 @@ class BKF_Ajax{
 		if ( !wp_verify_nonce( $_REQUEST['nonce'], "bkf")) {
 			exit(__('Your request is invalid or the page has been open too long. Please go back and try again.', 'bakkbone-florist-companion'));
 		}
-		if(null !== get_option('bkf_dd_closed') && !empty(get_option('bkf_dd_closed'))){
-			$option = get_option('bkf_dd_closed');
-		} else {
-			$option = [];
-		}
+		
 		$date = $_REQUEST['date'];
 		if ($date) {
 			$ts = (string)strtotime($date);
-			$option[$ts] = $date;
-			update_option('bkf_dd_closed', $option);
+			bkf_dd_block($ts, $date, 'closed');
 		}
-			
+		
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
-		die();		
+		die();
 	}
 	
 	function dd_add_closed_range(){
@@ -157,39 +152,34 @@ class BKF_Ajax{
 			exit(__('Your request is invalid or the page has been open too long. Please go back and try again.', 'bakkbone-florist-companion'));
 		}
 		
-		if(null !== get_option('bkf_dd_closed') && !empty(get_option('bkf_dd_closed'))){
-			$option = get_option('bkf_dd_closed');
-		} else {
-			$option = [];
-		}
-		
 		$date1 = $_REQUEST['date1'];
 		$date2 = $_REQUEST['date2'];
 		
 		if ($date1 && $date2) {
-  		$ts1 = (string)strtotime($date1);
-  		$ts2 = (string)strtotime($date2);
-  		
-  		if ($ts1 >= $ts2) {
-	      header("Location: ".$_SERVER["HTTP_REFERER"]);
-  		  die();
-  		}
-  		
-  		$period = new DatePeriod(
-  		  new DateTime($date1),
-  		  new DateInterval('P1D'),
-  		  new DateTime($date2)
-  		);
-  		
-  		foreach ($period as $k => $v) {
-  		  $option[(string)strtotime($v->format('l, j F Y'))] = $v->format('l, j F Y');
-  		}
-  		$option[(string)strtotime($period->getEndDate()->format('l, j F Y'))] = $period->getEndDate()->format('l, j F Y');
-  		update_option('bkf_dd_closed', $option);
+      		$ts1 = (string)strtotime($date1);
+      		$ts2 = (string)strtotime($date2);
+      		
+      		if ($ts1 >= $ts2) {
+    	        header("Location: ".$_SERVER["HTTP_REFERER"]);
+      		    die();
+      		}
+      		
+      		$period = new DatePeriod(
+      		    new DateTime($date1),
+      		    new DateInterval('P1D'),
+      		    new DateTime($date2)
+      		);
+      		
+      		$output = [];
+      		foreach ($period as $k => $v) {
+      		    $output[(string)strtotime($v->format('l, j F Y'))] = $v->format('l, j F Y');
+      		}
+    	    $output[(string)strtotime($period->getEndDate()->format('l, j F Y'))] = $period->getEndDate()->format('l, j F Y');
+    	    bkf_dd_block_bulk($output, 'closed');
 		}
 		
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
-		die();		
+		die();
 	}
 
 	function dd_remove_closed(){
@@ -199,13 +189,11 @@ class BKF_Ajax{
 		if ( !wp_verify_nonce( $_REQUEST['nonce'], "bkf")) {
 			exit(__('Your request is invalid or the page has been open too long. Please go back and try again.', 'bakkbone-florist-companion'));
 		}
-		$option = get_option('bkf_dd_closed');
-		$date = $_REQUEST['ts'];
-		unset($option[$date]);
-		update_option('bkf_dd_closed', $option);
+		
+		bkf_dd_unblock($_REQUEST['ts'], 'closed');
 			
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
-		die();		
+		die();
 	}
 	
 	function dd_add_full(){
@@ -215,20 +203,15 @@ class BKF_Ajax{
 		if ( !wp_verify_nonce( $_REQUEST['nonce'], "bkf")) {
 			exit(__('Your request is invalid or the page has been open too long. Please go back and try again.', 'bakkbone-florist-companion'));
 		}
-		if(null !== get_option('bkf_dd_full') && !empty(get_option('bkf_dd_full'))){
-			$option = get_option('bkf_dd_full');
-		} else {
-			$option = [];
-		}
+		
 		$date = $_REQUEST['date'];
 		if ($date) {
 			$ts = (string)strtotime($date);
-			$option[$ts] = $date;
-			update_option('bkf_dd_full', $option);
+			bkf_dd_block($ts, $date, 'full');
 		}
-			
+		
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
-		die();		
+		die();
 	}
 
 	function dd_add_full_range(){
@@ -239,34 +222,34 @@ class BKF_Ajax{
 			exit(__('Your request is invalid or the page has been open too long. Please go back and try again.', 'bakkbone-florist-companion'));
 		}
 		
-		if(null !== get_option('bkf_dd_full') && !empty(get_option('bkf_dd_full'))){
-			$option = get_option('bkf_dd_full');
-		} else {
-			$option = [];
-		}
-		
 		$date1 = $_REQUEST['date1'];
 		$date2 = $_REQUEST['date2'];
 		
 		if ($date1 && $date2) {
-  		$ts1 = (string)strtotime($date1);
-  		$ts2 = (string)strtotime($date2);
-  		
-  		$period = new DatePeriod(
-  		  new DateTime($date1),
-  		  new DateInterval('P1D'),
-  		  new DateTime($date2)
-  		);
-  		
-  		foreach ($period as $k => $v) {
-  		  $option[(string)strtotime($v->format('l, j F Y'))] = $v->format('l, j F Y');
-  		}
-  		$option[(string)strtotime($period->getEndDate()->format('l, j F Y'))] = $period->getEndDate()->format('l, j F Y');
-  		update_option('bkf_dd_full', $option);
+      		$ts1 = (string)strtotime($date1);
+      		$ts2 = (string)strtotime($date2);
+      		
+      		if ($ts1 >= $ts2) {
+    	        header("Location: ".$_SERVER["HTTP_REFERER"]);
+      		    die();
+      		}
+      		
+      		$period = new DatePeriod(
+      		    new DateTime($date1),
+      		    new DateInterval('P1D'),
+      		    new DateTime($date2)
+      		);
+      		
+      		$output = [];
+      		foreach ($period as $k => $v) {
+      		    $output[(string)strtotime($v->format('l, j F Y'))] = $v->format('l, j F Y');
+      		}
+    	    $output[(string)strtotime($period->getEndDate()->format('l, j F Y'))] = $period->getEndDate()->format('l, j F Y');
+    	    bkf_dd_block_bulk($output, 'full');
 		}
 		
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
-		die();		
+		die();
 	}
 
 	function dd_remove_full(){
@@ -276,14 +259,11 @@ class BKF_Ajax{
 		if ( !wp_verify_nonce( $_REQUEST['nonce'], "bkf")) {
 			exit(__('Your request is invalid or the page has been open too long. Please go back and try again.', 'bakkbone-florist-companion'));
 		}
-		$option = [];
-		$option = get_option('bkf_dd_full');
-		$date = $_REQUEST['ts'];
-		unset($option[$date]);
-		update_option('bkf_dd_full', $option);
+		
+		bkf_dd_unblock($_REQUEST['ts'], 'full');
 			
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
-		die();		
+		die();
 	}
 	
 	function cal_pdf(){
@@ -384,7 +364,7 @@ class BKF_Ajax{
 		);
 			
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
-		die();		
+		die();
 	}
 
 	function cb_add_range(){
@@ -429,7 +409,7 @@ class BKF_Ajax{
 		}
 			
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
-		die();		
+		die();
 	}
 
 	function cb_del(){
@@ -450,7 +430,7 @@ class BKF_Ajax{
 		);
 			
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
-		die();		
+		die();
 	}
 
 	function sd_add(){
@@ -478,7 +458,7 @@ class BKF_Ajax{
 			
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
 		
-		die();		
+		die();
 	}
 
 	function sd_del(){
@@ -499,7 +479,7 @@ class BKF_Ajax{
 		);
 			
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
-		die();		
+		die();
 	}
 	
 	function ts_add(){
@@ -524,7 +504,7 @@ class BKF_Ajax{
 			'fee'	=>	$fee
 		));
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
-		die();		
+		die();
 	}
 
 	function ts_del(){
@@ -540,7 +520,7 @@ class BKF_Ajax{
 		$wpdb->delete($wpdb->prefix.'bkf_dd_timeslots', array('id'	=>	$id));
 			
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
-		die();		
+		die();
 	}
 	
 	function dd_add_fee(){

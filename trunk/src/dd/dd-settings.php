@@ -145,6 +145,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 			$wds = get_option('bkf_dd_setting');
 			$dms = get_option('bkf_dm_setting');
 			?>
+			<div id="bkf_dd_mlt_wrapper" class="bkf_settings_wrapper">
 			<h2><?php esc_html_e("Method-Specific Lead Times","bakkbone-florist-companion") ?></h2>
 			<div id="bkf_dd_mlt_settings-description"><p><?php esc_html_e('Here you can add lead times per weekday for specific delivery methods. If no lead time is specified below for a specific day/method, your global defaults will apply.','bakkbone-florist-companion'); ?></p></div>
 			<div style="display:grid;grid-template-columns:auto auto;width:100%;">
@@ -177,7 +178,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 				}
 					?></div></div><?php
 				}
-				?></div><?php
+				?></div></div><?php
 		} elseif (isset($_GET['section']) && $_GET['section'] == 'ddb') {
 			$bkf_dd_closed = get_option("bkf_dd_closed");
 			$closedsort = $bkf_dd_closed;
@@ -192,7 +193,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 			$phetext = __("End Date", "bakkbone-florist-companion");
 			$ubtext = __("Unblock Date", "bakkbone-florist-companion");
 			?>
-
+			<div id="bkf_dd_ddb_wrapper" class="bkf_settings_wrapper">
 			<h2><?php esc_html_e("Delivery Date Blocks","bakkbone-florist-companion") ?></h2>
 			<div id="bkf_dd_ddb_settings-description"><p><?php esc_html_e("Click a block on the calendar to delete it.", "bakkbone-florist-companion"); ?></p></div>
 			<div style="display:flex;">
@@ -409,6 +410,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 	 }
 		 } );
 		</script>
+		</div>
 		<?php
 		} elseif (isset($_GET['section']) && $_GET['section'] == 'cb') {
 			$nonce = wp_create_nonce("bkf");
@@ -420,6 +422,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 			$cb = bkf_get_catblocks();
 			uasort($cb, function($a,$b){return strcmp(strtotime($a['date']),strtotime($b['date']));} );
 		?>
+			<div id="bkf_dd_cb_wrapper" class="bkf_settings_wrapper">
 			<h2><?php esc_html_e("Product Category Blocks","bakkbone-florist-companion") ?></h2>
 			<div id="bkf_dd_cb_settings-description"><p><?php esc_html_e('Dates entered below will be unavailable for the relevant product category. Click a block on the calendar to delete it.','bakkbone-florist-companion') ?></p></div>
 			<div><form class="bkf-form" id="addform" action="<?php echo admin_url('admin-ajax.php') ?>">
@@ -652,6 +655,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 
 		</script>
 		  <div id="calendar"></div>
+		</div>
 		<?php
 		} elseif (isset($_GET['section']) && $_GET['section'] == 'ts') {
 			$nonce = wp_create_nonce("bkf");
@@ -714,6 +718,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 			}
 
 		?>
+			<div id="bkf_dd_ts_wrapper" class="bkf_settings_wrapper">
 			<h2><?php esc_html_e("Delivery Timeslots","bakkbone-florist-companion") ?></h2>
 			<div id="bkf_dd_cb_settings-description"><p><?php esc_html_e('Only weekdays enabled on the Delivery Dates page will be displayed below. Any method within a day with no timeslots added will not require timeslots at checkout.','bakkbone-florist-companion') ?><br><em><?php esc_html_e('Fees are optional - leave fee blank if not required for a timeslot.','bakkbone-florist-companion'); ?></em></p></div>
 
@@ -841,6 +846,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 						</div><?php
 					}
 			}
+			?></div><?php
 		} elseif (isset($_GET['section']) && $_GET['section'] == 'ds') {
 			$bkf_dd_ds_fees = get_option("bkf_dd_ds_fees");
 			$feesort = $bkf_dd_ds_fees;
@@ -857,7 +863,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 			$gt = __("Closed (Global)", "bakkbone-florist-companion");
 			$ft = __("Fully Booked", "bakkbone-florist-companion");
 			?>
-
+			<div id="bkf_dd_ds_wrapper" class="bkf_settings_wrapper">
 			<h2><?php esc_html_e("Date-Specific Fees","bakkbone-florist-companion") ?></h2>
 			<div id="bkf_dd_ds_settings-description"><p><?php esc_html_e("Click a fee on the calendar to delete it.", "bakkbone-florist-companion"); ?></p></div>
 				<div class="inside">
@@ -1066,6 +1072,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 	 }
 		 } );
 		</script>
+		</div>
 		<?php
 
 			}

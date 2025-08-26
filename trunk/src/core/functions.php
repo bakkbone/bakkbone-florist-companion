@@ -1004,3 +1004,48 @@ function bkf_fire_floristpress_methods(){
 		return true;
 	}
 }
+
+function bkf_ajax($action, $args = [], $echo = false){
+    
+    $result = admin_url('admin-ajax.php?action='.$action);
+    if (!empty($args)) {
+        foreach ($args as $arg => $value) {
+            $result .= '&'.$arg.'='.$value;
+        } 
+    }
+    
+    if ($echo) {
+        echo $result;
+    } else {
+        return $result;
+    }
+    
+}
+
+function bkf_dd_block($unix, $date, $type = 'full'){
+	if(null !== get_option('bkf_dd_'.$type) && !empty(get_option('bkf_dd_'.$type))){
+		$option = get_option('bkf_dd_'.$type);
+	} else {
+		$option = [];
+	}
+	$option[$unix] = $date;
+	update_option('bkf_dd_'.$type, $option);
+}
+
+function bkf_dd_block_bulk($input, $type = 'full'){
+	if(null !== get_option('bkf_dd_'.$type) && !empty(get_option('bkf_dd_'.$type))){
+		$option = get_option('bkf_dd_'.$type);
+	} else {
+		$option = [];
+	}
+	foreach($input as $unix => $date){
+	    $option[$unix] = $date;
+	}
+	update_option('bkf_dd_'.$type, $option);
+}
+
+function bkf_dd_unblock($date, $type){
+	$option = get_option('bkf_dd_full', []);
+	unset($option[$date]);
+	update_option('bkf_dd_'.$type, $option);
+}

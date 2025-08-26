@@ -12,9 +12,7 @@ class BKF_Admin_Notices{
 	function __construct(){
 		add_action('admin_notices', [$this, 'notices']);
 		add_action('wp_dashboard_setup', [$this, 'dashwidgets']);
-		if (bkf_is_woocommerce_active()) {
-			add_action('admin_bar_menu', [$this, 'admin_bar_item'], 500);
-		}
+		add_action('admin_bar_menu', [$this, 'admin_bar_item'], 500);
 	}
 
 	function admin_bar_item($admin_bar){
@@ -48,12 +46,6 @@ class BKF_Admin_Notices{
 			'href'  => bkf_wc_admin_link('bkf'),
 		) );
 		$admin_bar->add_menu( array(
-			'id'    => 'floristpress-options-pdf',
-			'parent'=> 'floristpress-options',
-			'title' => __('PDF Options', 'bakkbone-florist-companion'),
-			'href'  => bkf_wc_admin_link('bkf', 'pdf'),
-		) );
-		$admin_bar->add_menu( array(
 			'id'    => 'floristpress-options-localisation',
 			'parent'=> 'floristpress-options',
 			'title' => __('Localization', 'bakkbone-florist-companion'),
@@ -67,6 +59,13 @@ class BKF_Admin_Notices{
 				'href'	=> bkf_wc_admin_link('bkf', 'petals'),
 			) );
 		}
+
+		$admin_bar->add_menu( array(
+			'id'    => 'floristpress-options-pdf',
+			'parent'=> 'floristpress',
+			'title' => __('PDF Options', 'bakkbone-florist-companion'),
+			'href'  => bkf_wc_admin_link('point-of-sale'),
+		) );
 
 		$admin_bar->add_menu( array(
 			'id'    => 'floristpress-tools',
@@ -240,50 +239,50 @@ class BKF_Admin_Notices{
 				'id'	=> 'bkfwoo-general',
 				'parent'=> 'bkfwoo',
 				'title'	=> __( 'General', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=general'),
+				'href'	=> bkf_wc_admin_link('general'),
 			) );
 			$admin_bar->add_menu( array(
 				'id'	=> 'bkfwoo-products',
 				'parent'=> 'bkfwoo',
 				'title'	=> __( 'Products', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=products'),
+				'href'	=> bkf_wc_admin_link('products'),
 			) );
 			$admin_bar->add_menu( array(
 				'id'	=> 'bkfwoo-products-general',
 				'parent'=> 'bkfwoo-products',
 				'title'	=> __( 'General', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=products&section='),
+				'href'	=> bkf_wc_admin_link('products'),
 			) );
 			$admin_bar->add_menu( array(
 				'id'	=> 'bkfwoo-products-inventory',
 				'parent'=> 'bkfwoo-products',
 				'title'	=> __( 'Inventory', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=products&section=inventory'),
+				'href'	=> bkf_wc_admin_link('products', 'inventory'),
 			) );
 			$admin_bar->add_menu( array(
 				'id'	=> 'bkfwoo-products-downloadable',
 				'parent'=> 'bkfwoo-products',
 				'title'	=> __( 'Downloadable products', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=products&section=downloadable'),
+				'href'	=> bkf_wc_admin_link('products', 'downloadable'),
 			) );
 			$admin_bar->add_menu( array(
 				'id'	=> 'bkfwoo-products-download_urls',
 				'parent'=> 'bkfwoo-products',
 				'title'	=> __( 'Approved download directories', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=products&section=download_urls'),
+				'href'	=> bkf_wc_admin_link('products', 'download_urls'),
 			) );
 			$admin_bar->add_menu( array(
 				'id'	=> 'bkfwoo-products-advanced',
 				'parent'=> 'bkfwoo-products',
 				'title'	=> __( 'Advanced', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=products&section=advanced'),
+				'href'	=> bkf_wc_admin_link('products', 'advanced'),
 			) );
 			if (wc_tax_enabled()) {
 				$admin_bar->add_menu( array(
 					'id'	=> 'bkfwoo-tax',
 					'parent'=> 'bkfwoo',
 					'title'	=> __( 'Tax', 'woocommerce' ),
-					'href'	=> admin_url('admin.php?page=wc-settings&tab=tax'),
+				'href'	=> bkf_wc_admin_link('tax'),
 				) );
 				$sections = array(
 					''         => __( 'Tax options', 'woocommerce' ),
@@ -303,7 +302,7 @@ class BKF_Admin_Notices{
 						'id'	=> 'bkfwoo-tax-'.$key,
 						'parent'=> 'bkfwoo-tax',
 						'title'	=> $value,
-						'href'	=> admin_url('admin.php?page=wc-settings&tab=tax&section='.$key),
+						'href'	=> bkf_wc_admin_link('tax', $key),
 					) );
 				}
 			}
@@ -311,13 +310,13 @@ class BKF_Admin_Notices{
 				'id'	=> 'bkfwoo-shipping',
 				'parent'=> 'bkfwoo',
 				'title'	=> __( 'Delivery', 'bakkbone-florist-companion' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=shipping'),
+				'href'	=> bkf_wc_admin_link('shipping'),
 			) );
 			$admin_bar->add_menu( array(
 				'id'	=> 'bkfwoo-shipping-zones',
 				'parent'=> 'bkfwoo-shipping',
 				'title'	=> __( 'Delivery zones', 'bakkbone-florist-companion' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=shipping&section='),
+				'href'	=> bkf_wc_admin_link('shipping'),
 			) );
 
 			$zones = bkf_get_shipping_zones();
@@ -343,19 +342,19 @@ class BKF_Admin_Notices{
 				'id'	=> 'bkfwoo-shipping-options',
 				'parent'=> 'bkfwoo-shipping',
 				'title'	=> __( 'Delivery options', 'bakkbone-florist-companion' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=shipping&section=options'),
+				'href'	=> bkf_wc_admin_link('shipping', 'options'),
 			) );
 			$admin_bar->add_menu( array(
 				'id'	=> 'bkfwoo-shipping-classes',
 				'parent'=> 'bkfwoo-shipping',
 				'title'	=> __( 'Delivery classes', 'bakkbone-florist-companion' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=shipping&section=classes'),
+				'href'	=> bkf_wc_admin_link('shipping', 'classes'),
 			) );
 			$admin_bar->add_menu( array(
 				'id'	=> 'bkfwoo-checkout',
 				'parent'=> 'bkfwoo',
 				'title'	=> __( 'Payments', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=checkout'),
+				'href'	=> bkf_wc_admin_link('checkout'),
 			) );
 
 			$gateways = WC()->payment_gateways->payment_gateways();
@@ -365,7 +364,7 @@ class BKF_Admin_Notices{
 					'id'	=> 'bkfwoo-checkout-'.$key,
 					'parent'=> 'bkfwoo-checkout',
 					'title'	=> $status.' '.$value->get_method_title(),
-					'href'	=> admin_url('admin.php?page=wc-settings&tab=checkout&section='.$key),
+					'href'	=> bkf_wc_admin_link('checkout', $key),
 				) );
 			}
 
@@ -373,62 +372,33 @@ class BKF_Admin_Notices{
 				'id'	=> 'bkfwoo-account',
 				'parent'=> 'bkfwoo',
 				'title'	=> __( 'Accounts & Privacy', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=account'),
+				'href'	=> bkf_wc_admin_link('account'),
 			) );
 			$admin_bar->add_menu( array(
 				'id'	=> 'bkfwoo-email',
 				'parent'=> 'bkfwoo',
 				'title'	=> __( 'Emails', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=email'),
+				'href'	=> bkf_wc_admin_link('email'),
 			) );
 			$admin_bar->add_menu( array(
 				'id'	=> 'bkfwoo-integration',
 				'parent'=> 'bkfwoo',
 				'title'	=> __( 'Integration', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=integration'),
+				'href'	=> bkf_wc_admin_link('integration'),
 			) );
 			$admin_bar->add_menu( array(
-				'id'	=> 'bkfwoo-advanced',
+				'id'	=> 'bkfwoo-site-visibility',
 				'parent'=> 'bkfwoo',
-				'title'	=> __( 'Advanced', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=advanced'),
+				'title'	=> __( 'Site Visibility', 'woocommerce' ),
+				'href'	=> bkf_wc_admin_link('site-visibility'),
 			) );
 			$admin_bar->add_menu( array(
-				'id'	=> 'bkfwoo-advanced-setup',
-				'parent'=> 'bkfwoo-advanced',
-				'title'	=> __( 'Page setup', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=advanced&section='),
+				'id'	=> 'bkfwoo-point-of-sale',
+				'parent'=> 'bkfwoo',
+				'title'	=> __( 'Point of Sale', 'woocommerce' ),
+				'href'	=> bkf_wc_admin_link('point-of-sale'),
 			) );
-			$admin_bar->add_menu( array(
-				'id'	=> 'bkfwoo-advanced-keys',
-				'parent'=> 'bkfwoo-advanced',
-				'title'	=> __( 'REST API', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=advanced&section=keys'),
-			) );
-			$admin_bar->add_menu( array(
-				'id'	=> 'bkfwoo-advanced-webhooks',
-				'parent'=> 'bkfwoo-advanced',
-				'title'	=> __( 'Webhooks', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=advanced&section=webhooks'),
-			) );
-			$admin_bar->add_menu( array(
-				'id'	=> 'bkfwoo-advanced-legacy_api',
-				'parent'=> 'bkfwoo-advanced',
-				'title'	=> __( 'Legacy API', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=advanced&section=legacy_api'),
-			) );
-			$admin_bar->add_menu( array(
-				'id'	=> 'bkfwoo-advanced-woocommerce_com',
-				'parent'=> 'bkfwoo-advanced',
-				'title'	=> __( 'WooCommerce.com', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=advanced&section=woocommerce_com'),
-			) );
-			$admin_bar->add_menu( array(
-				'id'	=> 'bkfwoo-advanced-features',
-				'parent'=> 'bkfwoo-advanced',
-				'title'	=> __( 'Features', 'woocommerce' ),
-				'href'	=> admin_url('admin.php?page=wc-settings&tab=advanced&section=features'),
-			) );
+			
 			$admin_bar->add_menu( array(
 				'id'	=> 'bkfwoo-bkf',
 				'parent'=> 'bkfwoo',
@@ -437,7 +407,6 @@ class BKF_Admin_Notices{
 			) );
 			$bkf_sections = [
 				''				=> __('General', 'bakkbone-florist-companion'),
-				'pdf'			=> __('PDFs', 'bakkbone-florist-companion'),
 				'localisation'	=> __('Localization', 'bakkbone-florist-companion')
 			];
 			foreach ($bkf_sections as $key => $title) {
@@ -473,6 +442,56 @@ class BKF_Admin_Notices{
 					'href'	=> bkf_wc_admin_link('bkf_dd', $key),
 				) );
 			}
+			
+			$admin_bar->add_menu( array(
+				'id'	=> 'bkfwoo-advanced',
+				'parent'=> 'bkfwoo',
+				'title'	=> __( 'Advanced', 'woocommerce' ),
+				'href'	=> bkf_wc_admin_link('advanced'),
+			) );
+			$admin_bar->add_menu( array(
+				'id'	=> 'bkfwoo-advanced-setup',
+				'parent'=> 'bkfwoo-advanced',
+				'title'	=> __( 'Page setup', 'woocommerce' ),
+				'href'	=> bkf_wc_admin_link('advanced'),
+			) );
+			$admin_bar->add_menu( array(
+				'id'	=> 'bkfwoo-advanced-keys',
+				'parent'=> 'bkfwoo-advanced',
+				'title'	=> __( 'REST API', 'woocommerce' ),
+				'href'	=> bkf_wc_admin_link('advanced', 'keys'),
+			) );
+			$admin_bar->add_menu( array(
+				'id'	=> 'bkfwoo-advanced-webhooks',
+				'parent'=> 'bkfwoo-advanced',
+				'title'	=> __( 'Webhooks', 'woocommerce' ),
+				'href'	=> bkf_wc_admin_link('advanced', 'webhooks'),
+			) );
+			$admin_bar->add_menu( array(
+				'id'	=> 'bkfwoo-advanced-legacy_api',
+				'parent'=> 'bkfwoo-advanced',
+				'title'	=> __( 'Legacy API', 'woocommerce' ),
+				'href'	=> bkf_wc_admin_link('advanced', 'legacy_api'),
+			) );
+			$admin_bar->add_menu( array(
+				'id'	=> 'bkfwoo-advanced-woocommerce_com',
+				'parent'=> 'bkfwoo-advanced',
+				'title'	=> __( 'WooCommerce.com', 'woocommerce' ),
+				'href'	=> bkf_wc_admin_link('advanced', 'woocommerce_com'),
+			) );
+			$admin_bar->add_menu( array(
+				'id'	=> 'bkfwoo-advanced-blueprint',
+				'parent'=> 'bkfwoo-advanced',
+				'title'	=> __( 'Blueprint', 'woocommerce' ),
+				'href'	=> bkf_wc_admin_link('advanced', 'blueprint'),
+			) );
+			$admin_bar->add_menu( array(
+				'id'	=> 'bkfwoo-advanced-features',
+				'parent'=> 'bkfwoo-advanced',
+				'title'	=> __( 'Features', 'woocommerce' ),
+				'href'	=> bkf_wc_admin_link('advanced', 'features'),
+			) );
+
 		}
 		
 		$admin_bar->add_node([
@@ -529,8 +548,6 @@ class BKF_Admin_Notices{
 				/* translators: %1$s: this plugin name. %2$s: Opening link tag. %3s: Closing link tag. */
 				echo '<div class="notice-error notice"><p>'. sprintf(__('<strong>%1$s</strong> does not yet support block-based checkout - see why, %2$shere%3$s. Please revert to Classic Checkout by adding the <code>[woocommerce_checkout]</code> Shortcode instead of the block, or add checkout via your Page Builder if one is installed.','bakkbone-florist-companion'), $bkftitle, '<a href="https://floristpress.canny.io/features/p/integration-with-block-cartcheckout" target="_blank">', '</a>').'</p></div>';
 			}
-		} else {
-			echo '<div class="notice-error notice"><p>'. sprintf(__('<strong>%s</strong> requires WooCommerce to be installed and activated on your site.','bakkbone-florist-companion'), $plugin_data["Name"]).'</p></div>';
 		}
 		
 		$features = get_option('bkf_features_setting', ['excerpt_pa' => false]);
@@ -544,12 +561,10 @@ class BKF_Admin_Notices{
 	}
 
 	function dashwidgets() {
-		if (bkf_is_woocommerce_active()) {
-			wp_add_dashboard_widget('bkf_today', __("Today's Deliveries", "bakkbone-florist-companion"), [$this, 'dashtoday']);
-			wp_add_dashboard_widget('bkf_recent', __("Recent Orders", "bakkbone-florist-companion"), [$this, 'dashrecent']);
-			wp_add_dashboard_widget('bkf_shipping', __("Delivery Methods", 'bakkbone-florist-companion'), [$this, 'dashshipping']);
-			wp_add_dashboard_widget('bkf_blocks', __("Blocked Delivery Dates", 'bakkbone-florist-companion'), [$this, 'dashblocks']);
-		}
+		wp_add_dashboard_widget('bkf_today', __("Today's Deliveries", "bakkbone-florist-companion"), [$this, 'dashtoday']);
+		wp_add_dashboard_widget('bkf_recent', __("Recent Orders", "bakkbone-florist-companion"), [$this, 'dashrecent']);
+		wp_add_dashboard_widget('bkf_shipping', __("Delivery Methods", 'bakkbone-florist-companion'), [$this, 'dashshipping']);
+		wp_add_dashboard_widget('bkf_blocks', __("Blocked Delivery Dates", 'bakkbone-florist-companion'), [$this, 'dashblocks']);
 		wp_add_dashboard_widget('bkf_news', __("FloristPress", 'bakkbone-florist-companion'), [$this, 'dashnews']);
 	}
 
@@ -624,7 +639,7 @@ class BKF_Admin_Notices{
 				$shipping = $wcorder->needs_shipping_address();
 				$pickup = bkf_order_has_physical($on) && !$shipping ? 1 : 0;
 				$wsnonce = wp_create_nonce("bkf");
-				$wsurl = admin_url( 'admin-ajax.php?action=bkf_dw&order_id=' . $on . '&nonce=' . $wsnonce );
+				$wsurl = bkf_ajax('bkf_dw', ['order_id'=>$on,'nonce'=>$wsnonce]);
 
 				if ($shipping) {
 					$text = '<li><h3><a href="'.$url.'" target="_blank"><strong>#'.$on." - ".$suburb.', '.$value.'</strong></a></h3><p>'.$dd.'</p><p><strong><a href="'.$wsurl.'">'.get_option('bkf_pdf_setting')['ws_title'].'</a></strong></p></li>';

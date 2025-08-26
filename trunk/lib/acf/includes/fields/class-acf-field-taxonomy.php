@@ -48,31 +48,34 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 			add_action( 'acf/save_post', array( $this, 'save_post' ), 15, 1 );
 		}
 
-
 		/**
-		 * description
+		 * Returns AJAX results for the Taxonomy field.
 		 *
-		 * @type    function
-		 * @date    24/10/13
-		 * @since   5.0.0
+		 * @since 5.0.0
 		 *
-		 * @param   $post_id (int)
-		 * @return  $post_id (int)
+		 * @return void
 		 */
-		function ajax_query() {
+		public function ajax_query() {
+			$nonce             = acf_request_arg( 'nonce', '' );
+			$key               = acf_request_arg( 'field_key', '' );
+			$conditional_logic = (bool) acf_request_arg( 'conditional_logic', false );
 
-			// validate
-			if ( ! acf_verify_ajax() ) {
+			if ( $conditional_logic ) {
+				if ( ! acf_current_user_can_admin() ) {
+					die();
+				}
+
+				// Use the standard ACF admin nonce.
+				$nonce = '';
+				$key   = '';
+			}
+
+			if ( ! acf_verify_ajax( $nonce, $key, ! $conditional_logic ) ) {
 				die();
 			}
 
-			// get choices
-			$response = $this->get_ajax_query( $_POST );
-
-			// return
-			acf_send_ajax_results( $response );
+			acf_send_ajax_results( $this->get_ajax_query( $_POST ) );
 		}
-
 
 		/**
 		 * This function will return an array of data formatted for use in a select2 AJAX response
@@ -180,7 +183,7 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 				// Add to json.
 				$results[] = array(
 					'id'   => $term->term_id,
-					'text' => $this->get_term_title( $term, $field, $options['post_id'] ),
+					'text' => $this->get_term_title( $term, $field, $options['post_id'], true ),
 				);
 			}
 
@@ -195,19 +198,24 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 		/**
 		 * Returns the Term's title displayed in the field UI.
 		 *
-		 * @date    1/11/2013
 		 * @since   5.0.0
 		 *
-		 * @param   WP_Term $term    The term object.
-		 * @param   array   $field   The field settings.
-		 * @param   mixed   $post_id The post_id being edited.
+		 * @param   WP_Term $term     The term object.
+		 * @param   array   $field    The field settings.
+		 * @param   mixed   $post_id  The post_id being edited.
+		 * @param   boolean $unescape Should we return an unescaped post title.
 		 * @return  string
 		 */
-		function get_term_title( $term, $field, $post_id = 0 ) {
+		function get_term_title( $term, $field, $post_id = 0, $unescape = false ) {
 			$title = acf_get_term_title( $term );
 
 			// Default $post_id to current post being edited.
 			$post_id = $post_id ? $post_id : acf_get_form_data( 'post_id' );
+
+			// unescape for select2 output which handles the escaping.
+			if ( $unescape ) {
+				$title = html_entity_decode( $title );
+			}
 
 			/**
 			 * Filters the term title.
@@ -450,20 +458,19 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 			return $value;
 		}
 
-
 		/**
-		 * Create the HTML interface for your field
+		 * Renders the Taxonomy field.
 		 *
-		 * @type    action
-		 * @since   3.6
-		 * @date    23/01/13
+		 * @since 3.6
 		 *
-		 * @param   $field - an array holding all the field's data
+		 * @param array $field The field settings array.
+		 * @return void
 		 */
-		function render_field( $field ) {
-
+		public function render_field( $field ) {
 			// force value to array
 			$field['value'] = acf_get_array( $field['value'] );
+
+			$nonce = wp_create_nonce( 'acf_field_' . $this->name . '_' . $field['key'] );
 
 			// vars
 			$div = array(
@@ -472,6 +479,7 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 				'data-ftype'      => $field['field_type'],
 				'data-taxonomy'   => $field['taxonomy'],
 				'data-allow_null' => $field['allow_null'],
+				'data-nonce'      => $nonce,
 			);
 			// get taxonomy
 			$taxonomy = get_taxonomy( $field['taxonomy'] );
@@ -493,11 +501,11 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 			if ( $field['field_type'] == 'select' ) {
 				$field['multiple'] = 0;
 
-				$this->render_field_select( $field );
+				$this->render_field_select( $field, $nonce );
 			} elseif ( $field['field_type'] == 'multi_select' ) {
 				$field['multiple'] = 1;
 
-				$this->render_field_select( $field );
+				$this->render_field_select( $field, $nonce );
 			} elseif ( $field['field_type'] == 'radio' ) {
 				$this->render_field_checkbox( $field );
 			} elseif ( $field['field_type'] == 'checkbox' ) {
@@ -509,7 +517,6 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 			<?php
 		}
 
-
 		/**
 		 * Create the HTML interface for your field
 		 *
@@ -519,12 +526,13 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 		 *
 		 * @param   $field - an array holding all the field's data
 		 */
-		function render_field_select( $field ) {
+		function render_field_select( $field, $nonce ) {
 
 			// Change Field into a select
 			$field['type']    = 'select';
 			$field['ui']      = 1;
 			$field['ajax']    = 1;
+			$field['nonce']   = $nonce;
 			$field['choices'] = array();
 
 			// value
@@ -745,25 +753,14 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 
 
 		/**
-		 * ajax_add_term
+		 * AJAX handler for adding Taxonomy field terms.
 		 *
-		 * @since  5.2.3
-		 *
-		 * @type   function
-		 * @date   17/04/2015
+		 * @since 5.2.3
 		 *
 		 * @return void
 		 */
-		function ajax_add_term() {
-
-			// verify nonce
-			if ( ! acf_verify_ajax() ) {
-				die();
-			}
-
-			// vars
-			$args = wp_parse_args(
-				$_POST,
+		public function ajax_add_term() {
+			$args = acf_request_args(
 				array(
 					'nonce'       => '',
 					'field_key'   => '',
@@ -771,6 +768,10 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 					'term_parent' => '',
 				)
 			);
+
+			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true ) ) {
+				die();
+			}
 
 			// load field
 			$field = acf_get_field( $args['field_key'] );

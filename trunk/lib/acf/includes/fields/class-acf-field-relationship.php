@@ -51,7 +51,7 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 				return $choices;
 			}
 			if ( ! empty( $rule_value ) ) {
-				$post_title = get_the_title( $rule_value );
+				$post_title = esc_html( get_the_title( $rule_value ) );
 				$choices    = array( $rule_value => $post_title );
 			}
 			return $choices;
@@ -80,44 +80,44 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 			);
 		}
 
-
 		/**
-		 * description
+		 * Returns AJAX results for the Relationship field.
 		 *
-		 * @type    function
-		 * @date    24/10/13
-		 * @since   5.0.0
+		 * @since 5.0.0
 		 *
-		 * @param   $post_id (int)
-		 * @return  $post_id (int)
+		 * @return void
 		 */
-		function ajax_query() {
+		public function ajax_query() {
+			$nonce             = acf_request_arg( 'nonce', '' );
+			$key               = acf_request_arg( 'field_key', '' );
+			$conditional_logic = (bool) acf_request_arg( 'conditional_logic', false );
 
-			// validate
-			if ( ! acf_verify_ajax() ) {
+			if ( $conditional_logic ) {
+				if ( ! acf_current_user_can_admin() ) {
+					die();
+				}
+
+				// Use the standard ACF admin nonce.
+				$nonce = '';
+				$key   = '';
+			}
+
+			if ( ! acf_verify_ajax( $nonce, $key, ! $conditional_logic ) ) {
 				die();
 			}
 
-			// get choices
-			$response = $this->get_ajax_query( $_POST );
-
-			// return
-			acf_send_ajax_results( $response );
+			acf_send_ajax_results( $this->get_ajax_query( $_POST ) );
 		}
-
 
 		/**
 		 * This function will return an array of data formatted for use in a select2 AJAX response
 		 *
-		 * @type    function
-		 * @date    15/10/2014
 		 * @since   5.0.9
 		 *
-		 * @param   $options (array)
-		 * @return  (array)
+		 * @param array $options An array of options for the query.
+		 * @return array
 		 */
-		function get_ajax_query( $options = array() ) {
-
+		public function get_ajax_query( $options = array() ) {
 			// defaults
 			$options = wp_parse_args(
 				$options,
@@ -273,7 +273,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 			return $response;
 		}
 
-
 		/**
 		 * This function will return an array containing id, text and maybe description data
 		 *
@@ -318,7 +317,7 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 			}
 
 			// vars
-			$title = acf_get_post_title( $post, $is_search );
+			$title = esc_html( acf_get_post_title( $post, $is_search ) );
 
 			// featured_image
 			if ( acf_in_array( 'featured_image', $field['elements'] ) ) {
@@ -418,6 +417,7 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 				'data-paged'     => 1,
 				'data-post_type' => '',
 				'data-taxonomy'  => '',
+				'data-nonce'     => wp_create_nonce( 'acf_field_' . $this->name . '_' . $field['key'] ),
 			);
 
 			?>

@@ -16,7 +16,7 @@ itself a port of [Google's libphonenumber](https://github.com/googlei18n/libphon
 It provides an equivalent functionality, with the following implementation differences:
 
 - `PhoneNumber` is an immutable class; it can be safely passed around without having to worry about the risk for it to be changed;
-- `PhoneNumber` is not just a mere data container, but provides all the methods to parse, format and validate phone numbers; it transparently encapsulates `PhoneNumberUtil`.
+- `PhoneNumber` is not just a mere data container, but provides all the methods to parse, format and validate phone numbers; it transparently encapsulates services such as `PhoneNumberUtil`;
 
 ## Installation
 
@@ -28,17 +28,22 @@ composer require brick/phonenumber
 
 ## Requirements
 
-This library requires PHP 7.1 or later. for PHP 5.6 and PHP 7.0 support, use version `0.1`.
+This library requires PHP 8.1 or later.
+
+For PHP 7.4 and PHP 8.0 support, use version `0.5`.
+For PHP 7.1 support, use version `0.4`.
+For PHP 5.6 and PHP 7.0 support, use version `0.1`.
+Note that [these PHP versions are EOL](http://php.net/supported-versions.php) and not supported anymore. If you're still using one of these PHP versions, you should consider upgrading as soon as possible.
 
 ## Project status & release process
 
-While this library is still under development, it is well tested and should be stable enough to use in production environments.
+While this library is still under development, it is well tested and is considered stable enough to use in production environments.
 
 The current releases are numbered `0.x.y`. When a non-breaking change is introduced (adding new methods, optimizing existing code, etc.), `y` is incremented.
 
 **When a breaking change is introduced, a new `0.x` version cycle is always started.**
 
-It is therefore safe to lock your project to a given release cycle, such as `0.4.*`.
+It is therefore safe to lock your project to a given release cycle, such as `0.7.*`.
 
 If you need to upgrade to a newer release cycle, check the [release history](https://github.com/brick/phonenumber/releases) for a list of changes introduced by each further `0.x.0` version.
 
@@ -74,14 +79,15 @@ catch (PhoneNumberParseException $e) {
 In most cases, it is recommended to perform an extra step of validation with `isValidNumber()` or `isPossibleNumber()`:
 
 ```php
-if (! $number->isPossibleNumber()) {
-    // a more lenient and faster check than `isValidNumber()`
-}
-
-if (! $number->isValidNumber()) {
+if ($number->isValidNumber()) {
     // strict check relying on up-to-date metadata library
 }
 
+// or
+
+if ($number->isPossibleNumber()) {
+    // a more lenient and faster check than `isValidNumber()`
+}
 ```
 
 As a rule of thumb, do the following:
@@ -93,7 +99,7 @@ As a rule of thumb, do the following:
 
 #### Basic formatting
 
-You can use `format()` with constants from the [PhoneNumberFormat](https://github.com/brick/phonenumber/blob/master/src/PhoneNumberFormat.php) class:
+You can use `format()` with a [PhoneNumberFormat](https://github.com/brick/phonenumber/blob/master/src/PhoneNumberFormat.php) enum value:
 
 ```php
 $number = PhoneNumber::parse('+41446681800');
@@ -103,7 +109,7 @@ $number->format(PhoneNumberFormat::NATIONAL); // 044 668 18 00
 $number->format(PhoneNumberFormat::RFC3966); // tel:+41-44-668-18-00
 ```
 
-#### Formatting to call from another country
+#### Formatting to call from a given country
 
 You may want to present a phone number to an audience in a specific country, with the correct international 
 prefix when required. This is what `formatForCallingFrom()` does:
@@ -115,10 +121,36 @@ $number->formatForCallingFrom('FR'); // 00 44 7123 456789
 $number->formatForCallingFrom('US'); // 011 44 7123 456789
 ```
 
-### Number types
+#### Formatting to call from a mobile phone in a given country
+
+If you want to present a number to dial from a mobile phone, you can use `formatForMobileDialing()`:
+
+```php
+$number = PhoneNumber::parse('+447123456789');
+
+$number->formatForMobileDialing('GB', withFormatting: false); // 07123456789
+$number->formatForMobileDialing('GB', withFormatting: true); // 07123 456789
+
+$number->formatForMobileDialing('FR', withFormatting: false); // +447123456789
+$number->formatForMobileDialing('FR', withFormatting: true); // +44 7123 456789
+```
+
+### Getting number information
+
+You can extract basic information from a phone number:
+
+```php
+$number = PhoneNumber::parse('+447123456789');
+
+$number->getRegionCode(); // GB
+$number->getCountryCode(); // 44
+$number->getNationalNumber(); // 7123456789
+```
+
+#### Number type
 
 In certain cases, it is possible to know the type of a phone number (fixed line, mobile phone, etc.), using
-the `getNumberType()` method, which returns a constant from the [PhoneNumberType](https://github.com/brick/phonenumber/blob/master/src/PhoneNumberType.php) class:
+the `getNumberType()` method, which returns a [PhoneNumberType](https://github.com/brick/phonenumber/blob/master/src/PhoneNumberType.php) enum value:
 
 ```php
 PhoneNumber::parse('+336123456789')->getNumberType(); // PhoneNumberType::MOBILE
@@ -126,17 +158,42 @@ PhoneNumber::parse('+33123456789')->getNumberType(); // PhoneNumberType::FIXED_L
 ```
 
 If the type is unknown, the `PhoneNumberType::UNKNOWN` value is returned.
-Check the `PhoneNumberType` class for all possible values.
+Check the `PhoneNumberType` enum for all possible values.
 
-### Number information
+#### Description
 
-You can extract the following information from a phone number:
+You can get a human-readable description of a phone number:
 
 ```php
-$number = PhoneNumber::parse('+447123456789');
-echo $number->getRegionCode(); // GB
-echo $number->getCountryCode(); // 44
-echo $number->getNationalNumber(); // 7123456789
+PhoneNumber::parse('+33123456789')->getDescription(locale: 'en'); // France
+PhoneNumber::parse('+16509030000')->getDescription(locale: 'en'); // Mountain View, CA
+```
+
+#### Carrier name
+
+For some phone numbers, it is possible to get the carrier name:
+
+```php
+$number = PhoneNumber::parse('+336789012345');
+$number->getCarrierName(languageCode: 'en'); // Orange France
+```
+
+Note that in countries that support mobile number portability, the carrier name for a phone number may no longer be
+correct. You can control whether the carrier name should be returned in this case, by passing a
+[CarrierNameMode](https://github.com/brick/phonenumber/blob/master/src/CarrierNameMode.php) enum:
+
+```php
+// null, because France supports mobile number portability
+$number->getCarrierName(languageCode: 'en', mode: CarrierNameMode::MOBILE_NO_PORTABILITY_ONLY);
+```
+
+#### Time zones
+
+You can get the time zones that typically match a phone number:
+
+```php
+$number = PhoneNumber::parse('+14155552671');
+$number->getTimeZones(); // ['America/Los_Angeles']
 ```
 
 ### Example numbers

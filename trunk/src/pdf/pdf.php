@@ -14,17 +14,18 @@ class BKF_PDF_Core {
 		$this->store['invtitle'] = get_option('bkf_pdf_setting')['inv_title'];
 		$this->store['invtext'] = get_option('bkf_pdf_setting')['inv_text'];
 		$this->store['wstitle'] = get_option('bkf_pdf_setting')['ws_title'];
-		$this->store['name'] = get_option('bkf_pdf_setting')['inv_sn'];
 		$this->store['a1'] = get_option('bkf_pdf_setting')['inv_a1'];
 		$this->store['a2'] = get_option('bkf_pdf_setting')['inv_a2'];
 		$this->store['sub'] = get_option('bkf_pdf_setting')['inv_sub'];
 		$this->store['state'] = get_option('bkf_pdf_setting')['inv_state'];
 		$this->store['pc'] = get_option('bkf_pdf_setting')['inv_pc'];
-		$this->store['phone'] = get_option('bkf_pdf_setting')['inv_phone'];
-		$this->store['email'] = get_option('bkf_pdf_setting')['inv_eml'];
 		$this->store['website'] = get_option('bkf_pdf_setting')['inv_web'];
 		$this->store['taxlabel'] = get_option('bkf_pdf_setting')['inv_tax_label'];
 		$this->store['taxvalue'] = get_option('bkf_pdf_setting')['inv_tax_value'];
+		$this->store['name'] = get_option('woocommerce_pos_store_name', get_option('bkf_pdf_setting')['inv_sn']);
+		$this->store['address'] = get_option('woocommerce_pos_store_address', false);
+		$this->store['phone'] = get_option('woocommerce_pos_store_phone', get_option('bkf_pdf_setting')['inv_phone']);
+		$this->store['email'] = get_option('woocommerce_pos_store_email', get_option('bkf_pdf_setting')['inv_eml']);
 	}
 	
 	function invoice($orderid){
@@ -41,11 +42,17 @@ class BKF_PDF_Core {
 		$currency = $order->get_currency();
 		$currencycode = get_woocommerce_currency_symbol($currency);
 		
-		$storea2raw = $this->store['a2'];
-		if($storea2raw !== ''){
-			$storea2 = '<br>'.$storea2raw;
+		$addressraw = $this->store['address'];
+		if($addressraw !== ''){
+			$address = '<br>'.nl2br($addressraw);
 		} else {
-			$storea2 = '';
+			$address = '';
+		}
+		
+		if($this->store['taxlabel'] !== '' && $this->store['taxvalue'] !== ''){
+		  $taxstring = '<p><strong>'.$this->store['taxlabel'].': </strong>'.$this->store['taxvalue'].'</p>';
+		} else {
+		  $taxstring = '';
 		}
 		
 		$storephoneraw = $this->store['phone'];
@@ -112,7 +119,7 @@ class BKF_PDF_Core {
 		$subtotal = $order->get_subtotal_to_display();
 		$total = $order->get_formatted_order_total();
 		
-		$template = '<html><head><title>'.$this->store['invtitle'].' #'.$orderid.'</title><style>body { font-family: DejaVu Sans; }.nomargin {margin: 0;}table.bordered, table.bordered th, table.bordered td {border: 1px solid black;border-collapse: collapse;}.width-20 {width: 20%;}.width-100 {width: 100%;}.height-100 {height: 100%;}.top-align {vertical-align: top;}.bottom-align {vertical-align: bottom;}.middle-align {vertical-align: middle;}.right-align {text-align: right;}.left-align {text-align: left;}.center-align {text-align: center;}.bottom-sticky {position: absolute;bottom: 0;}.unpadded th p, .unpadded td p {margin: 0;}.padded th p, .padded td p {margin: 5px;}</style></head><body><div class="height-100"><h1 class="nomargin">'.$this->store['invtitle'].' #'.$orderid.'</h1><hr><table class="width-100 unpadded"><thead><tr><th class="left-align"><p>'.esc_html__('Invoice From', 'bakkbone-florist-companion').'</p></th><th class="right-align"><p>'.esc_html__('Invoice To', 'bakkbone-florist-companion').'</p></th></tr></thead><tbody><tr><td class="top-align left-align"><p>'.$this->store['name'].'<br>'.$this->store['a1'].$storea2.'<br>'.$this->store['sub'].'&nbsp;'.$this->store['state'].'&nbsp;'.$this->store['pc'].'</p><p>'.$storephone.'<strong>'.esc_html__('Email: ', 'bakkbone-florist-companion').'</strong>'.$this->store['email'].'<br><strong>'.esc_html__('Website: ', 'bakkbone-florist-companion').'</strong>'.$this->store['website'].'</p><p><strong>'.$this->store['taxlabel'].': </strong>'.$this->store['taxvalue'].'</p></td><td class="top-align right-align"><p>'.$cusadd.'</p></td></tr></tbody></table><br><table class="width-100 bordered padded"><thead><tr><th class="center-align width-20"><p>'.esc_html__('Qty', 'bakkbone-florist-companion').'</p></th><th class="center-align"><p>'.esc_html__('Item', 'bakkbone-florist-companion').'</p></th><th class="center-align"><p>'.esc_html__('Value', 'bakkbone-florist-companion').'</p></th></tr></thead><tbody>'.$itemtable.'<tr><td colspan="2" class="right-align"><p>'.esc_html__('Subtotal', 'bakkbone-florist-companion').'</p></td><td class="right-align"><p>'.$subtotal.'</p></td></tr>'.$feestable.$shippingtable.$discounttable.$taxtable.'<tr><td colspan="2" class="right-align"><p>'.esc_html__('Total', 'bakkbone-florist-companion').'</p></td><td class="right-align"><p>'.$total.'</p></td></tr></tbody></table><div class="bottom-sticky"><p>'.$this->store['invtext'].'</p></div></div></body>';
+		$template = '<html><head><title>'.$this->store['invtitle'].' #'.$orderid.'</title><style>body { font-family: DejaVu Sans; }.nomargin {margin: 0;}table.bordered, table.bordered th, table.bordered td {border: 1px solid black;border-collapse: collapse;}.width-20 {width: 20%;}.width-100 {width: 100%;}.height-100 {height: 100%;}.top-align {vertical-align: top;}.bottom-align {vertical-align: bottom;}.middle-align {vertical-align: middle;}.right-align {text-align: right;}.left-align {text-align: left;}.center-align {text-align: center;}.bottom-sticky {position: absolute;bottom: 0;}.unpadded th p, .unpadded td p {margin: 0;}.padded th p, .padded td p {margin: 5px;}</style></head><body><div class="height-100"><h1 class="nomargin">'.$this->store['invtitle'].' #'.$orderid.'</h1><hr><table class="width-100 unpadded"><thead><tr><th class="left-align"><p>'.esc_html__('Invoice From', 'bakkbone-florist-companion').'</p></th><th class="right-align"><p>'.esc_html__('Invoice To', 'bakkbone-florist-companion').'</p></th></tr></thead><tbody><tr><td class="top-align left-align"><p>'.$this->store['name'].$address.'</p><p>'.$storephone.'<strong>'.esc_html__('Email: ', 'bakkbone-florist-companion').'</strong>'.$this->store['email'].'<br><strong>'.esc_html__('Website: ', 'bakkbone-florist-companion').'</strong>'.$this->store['website'].'</p>'.$taxstring.'</td><td class="top-align right-align"><p>'.$cusadd.'</p></td></tr></tbody></table><br><table class="width-100 bordered padded"><thead><tr><th class="center-align width-20"><p>'.esc_html__('Qty', 'bakkbone-florist-companion').'</p></th><th class="center-align"><p>'.esc_html__('Item', 'bakkbone-florist-companion').'</p></th><th class="center-align"><p>'.esc_html__('Value', 'bakkbone-florist-companion').'</p></th></tr></thead><tbody>'.$itemtable.'<tr><td colspan="2" class="right-align"><p>'.esc_html__('Subtotal', 'bakkbone-florist-companion').'</p></td><td class="right-align"><p>'.$subtotal.'</p></td></tr>'.$feestable.$shippingtable.$discounttable.$taxtable.'<tr><td colspan="2" class="right-align"><p>'.esc_html__('Total', 'bakkbone-florist-companion').'</p></td><td class="right-align"><p>'.$total.'</p></td></tr></tbody></table><div class="bottom-sticky"><p>'.$this->store['invtext'].'</p></div></div></body>';
 		
 		$dompdf = new Dompdf();
 		$dompdf->loadHtml($template);

@@ -1,18 +1,22 @@
+MIT License
 
-For complete licensing information, visit:
-https://fullcalendar.io/license
+Copyright (c) 2021 Adam Shaw
 
-FullCalendar Premium is tri-licensed, meaning you must choose
-one of three licenses to use. Here is a summary of those licenses:
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
 
-- Commercial License
-  (a paid license, intended for commercial use)
-  https://fullcalendar.io/commercial-license
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
 
-- Creative Commons Non-Commercial No-Derivatives
-  (intended for trial and non-commercial use)
-  https://creativecommons.org/licenses/by-nc-nd/4.0/
-
-- GPLv3 License
-  (intended for open-source projects)
-  http://www.gnu.org/licenses/gpl-3.0.en.html
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

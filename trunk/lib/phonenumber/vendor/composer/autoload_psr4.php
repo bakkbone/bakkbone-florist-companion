@@ -9,5 +9,5 @@ return array(
     'libphonenumber\\' => array($vendorDir . '/giggsey/libphonenumber-for-php/src'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Giggsey\\Locale\\' => array($vendorDir . '/giggsey/locale/src'),
-    'Brick\\PhoneNumber\\' => array($baseDir . '/src', $vendorDir . '/brick/phonenumber/src'),
+    'Brick\\PhoneNumber\\' => array($vendorDir . '/brick/phonenumber/src'),
 );

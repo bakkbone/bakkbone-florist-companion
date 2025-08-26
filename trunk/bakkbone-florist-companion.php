@@ -3,24 +3,24 @@
  * Plugin Name:			FloristPress
  * Plugin URI:			https://docs.floristpress.org/
  * Description:			Provides standardized features for floristry websites – built by florists, for florists.
- * Version:				7.5.1
+ * Version:				7.6.0
  * Requires at least:	6.0
- * Requires PHP:		8.0
+ * Requires PHP:		8.1
  * Requires Plugins:	woocommerce
  * Author:				BAKKBONE Australia
  * Author URI:			https://www.floristpress.org/
  * License:				GNU General Public License (GPL) 3.0 or later
  * License URI:			https://www.gnu.org/licenses/gpl.html
  * Tested up to:		6.8
- * WC tested up to:		9.8.5
+ * WC tested up to:		10.1.0
  * Text Domain:			bakkbone-florist-companion
  * Domain Path:			/lang/
 **/
 
-# Dompdf version 3.0.0
-# PhoneNumber version 0.5.0 - updating beyond this requires lifting min PHP to 8.1
-# ACF version 6.3.0
-# FullCalendar version 6.1.13
+# Dompdf version 3.1.0
+# PhoneNumber version 0.8.0
+# ACF version 6.5.0.1
+# FullCalendar version 6.1.19
 # Select2 version 4.0.13
 # blockUI version 2.70.0-2014.11.23
 
@@ -131,6 +131,7 @@ require __BKF_PATH_SRC__ . "/emails/status-email.php";
 require __BKF_PATH_SRC__ . "/emails/override.php";
 require __BKF_PATH_SRC__ . "/suburbs/method.php";
 require __BKF_PATH_SRC__ . "/pos/phone.php";
+require __BKF_PATH_SRC__ . "/awp/awp.php";
 
 if (bkf_is_breakdance_active()) {
 	require __BKF_PATH_BD__ . "/inc.php";
@@ -149,37 +150,35 @@ if(!bkf_is_acf_active()){
 }
 
 function run_bkf(){
-	if (bkf_is_woocommerce_active()) {
-		new BKF_API();
-		new BKF_Ajax();
-		new BKF_Classes();
-		new BKF_Core();
-		new BKF_CPT_Delivery_Suburb();
-		new BKF_Data_Hygiene();
-		new BKF_Delivery_Date_Calendar();
-        new BKF_Delivery_Date_Core();
-        new BKF_Delivery_Date_Fees_Core();
-        new BKF_Delivery_Date_Filter();
-        new BKF_Delivery_Date_Options();
-        new BKF_Email_Override();
-        new BKF_Email_Status();
-		new BKF_Local_Pickup();
-		new BKF_Localisation();
-		new BKF_Notifier();
-		new BKF_Options();
-		new BKF_Order_Status();
-		new BKF_PDF_Actions();
-		new BKF_PDF_Options();
-		new BKF_Petals_Core();
-		new BKF_Petals_CPT();
-		new BKF_Petals_Email();
-		new BKF_Petals_Messaging();
-		new BKF_Petals_Outbound();
-		new BKF_Phone_Order();
-		new BKF_Scripts();
-		new BKF_Shortcodes();
-		new BKF_Tools();
-	}
+	new BKF_API();
+	new BKF_Ajax();
+	new BKF_Classes();
+	new BKF_Core();
+	new BKF_CPT_Delivery_Suburb();
+	new BKF_Data_Hygiene();
+	new BKF_Delivery_Date_Calendar();
+	new BKF_Delivery_Date_Core();
+	new BKF_Delivery_Date_Fees_Core();
+	new BKF_Delivery_Date_Filter();
+	new BKF_Delivery_Date_Options();
+	new BKF_Email_Override();
+	new BKF_Email_Status();
+	new BKF_Local_Pickup();
+	new BKF_Localisation();
+	new BKF_Notifier();
+	new BKF_Options();
+	new BKF_Order_Status();
+	new BKF_PDF_Actions();
+	new BKF_PDF_Options();
+	new BKF_Petals_Core();
+	new BKF_Petals_CPT();
+	new BKF_Petals_Email();
+	new BKF_Petals_Messaging();
+	new BKF_Petals_Outbound();
+	new BKF_Phone_Order();
+	new BKF_Scripts();
+	new BKF_Shortcodes();
+	new BKF_Tools();
 	new BKF_Admin_Notices();
 }
 

@@ -1,7 +1,6 @@
 <?php
 
 if ( ! class_exists( 'acf_field_oembed' ) ) :
-	#[AllowDynamicProperties]
 	class acf_field_oembed extends acf_field {
 
 
@@ -96,29 +95,26 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		}
 
 		/**
-		 * description
+		 * Returns AJAX results for the oEmbed field.
 		 *
-		 * @type    function
-		 * @date    24/10/13
-		 * @since   5.0.0
+		 * @since 5.0.0
 		 *
-		 * @param   $post_id (int)
-		 * @return  $post_id (int)
+		 * @return void
 		 */
-		function ajax_query() {
+		public function ajax_query() {
+			$args = acf_request_args(
+				array(
+					'nonce'     => '',
+					'field_key' => '',
+				)
+			);
 
-			// validate
-			if ( ! acf_verify_ajax() ) {
+			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true ) ) {
 				die();
 			}
 
-			// get choices
-			$response = $this->get_ajax_query( $_POST );
-
-			// return
-			wp_send_json( $response );
+			wp_send_json( $this->get_ajax_query( $_POST ) );
 		}
-
 
 		/**
 		 * This function will return an array of data formatted for use in a select2 AJAX response
@@ -162,32 +158,26 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 
 
 		/**
-		 * render_field()
+		 * Renders the oEmbed field.
 		 *
-		 * Create the HTML interface for your field
+		 * @since 3.6
 		 *
-		 * @param   $field - an array holding all the field's data
-		 *
-		 * @type    action
-		 * @since   3.6
-		 * @date    23/01/13
+		 * @param array $field The field settings array.
+		 * @return void
 		 */
-		function render_field( $field ) {
-
-			// atts
+		public function render_field( $field ) {
 			$atts = array(
-				'class' => 'acf-oembed',
+				'class'      => 'acf-oembed',
+				'data-nonce' => wp_create_nonce( 'acf_field_' . $this->name . '_' . $field['key'] ),
 			);
 
-			// <strong><?php _e("Error.", 'acf'); </strong> _e("No embed found for the given URL.", 'acf');
-			// value
 			if ( $field['value'] ) {
 				$atts['class'] .= ' has-value';
 			}
 
 			?>
 <div <?php echo acf_esc_attrs( $atts ); ?>>
-	
+
 			<?php
 			acf_hidden_input(
 				array(
@@ -197,7 +187,7 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 				)
 			);
 			?>
-	
+
 	<div class="title">
 			<?php
 			acf_text_input(
@@ -213,7 +203,7 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			<a data-name="clear-button" href="#" class="acf-icon -cancel grey"></a>
 		</div>
 	</div>
-	
+
 	<div class="canvas">
 		<div class="canvas-media">
 			<?php
@@ -224,7 +214,7 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		</div>
 		<i class="acf-icon -picture hide-if-value"></i>
 	</div>
-	
+
 </div>
 			<?php
 		}

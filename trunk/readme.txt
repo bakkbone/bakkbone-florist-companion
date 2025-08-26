@@ -1,11 +1,11 @@
-=== FloristPress – Customize your Woo store for your Florist ===
+=== FloristPress for Woo – Customize your eCommerce store for your Florist ===
 Contributors: bakkbone
 Donate link: https://ko-fi.com/bakkbone_scott
 Tags: woocommerce,florist,ecommerce
 Requires at least: 6.0
-Tested up to: 6.7
-Requires PHP: 7.4
-Stable tag: 7.5.1
+Tested up to: 6.8
+Requires PHP: 8.1
+Stable tag: 7.6.0
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -182,6 +182,8 @@ Changelog is kept at [floristpress.org](https://www.floristpress.org/changelog/)
 
 == Upgrade Notice ==
 
+= 7.6.0
+Minimum PHP version bumped to 8.1 - consult your web host if they are still using below this version ASAP!
 = 7.5.1
 Minimum PHP version bumped to 8.0 - consult your web host if they are still using below this version ASAP!
 = 7.3.0

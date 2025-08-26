@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace Brick\PhoneNumber\Tests;
 
+use Brick\PhoneNumber\CarrierNameMode;
 use Brick\PhoneNumber\PhoneNumber;
 use Brick\PhoneNumber\PhoneNumberException;
+use Brick\PhoneNumber\PhoneNumberFormat;
+use Brick\PhoneNumber\PhoneNumberParseErrorType;
 use Brick\PhoneNumber\PhoneNumberParseException;
 use Brick\PhoneNumber\PhoneNumberType;
-use Brick\PhoneNumber\PhoneNumberFormat;
-
+use Composer\InstalledVersions;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,8 +20,6 @@ use PHPUnit\Framework\TestCase;
  */
 class PhoneNumberTest extends TestCase
 {
-    private const ALPHA_NUMERIC_NUMBER = '+180074935247';
-    private const AE_UAN = '+971600123456';
     private const AR_MOBILE = '+5491187654321';
     private const AR_NUMBER = '+541187654321';
     private const AU_NUMBER = '+61236618300';
@@ -26,26 +27,20 @@ class PhoneNumberTest extends TestCase
     private const BS_NUMBER = '+12423651234';
     // Note that this is the same as the example number for DE in the metadata.
     private const DE_NUMBER = '+4930123456';
-    private const DE_SHORT_NUMBER = '+491234';
     private const GB_MOBILE = '+447912345678';
     private const GB_NUMBER = '+442070313000';
     private const IT_MOBILE = '+39345678901';
     private const IT_NUMBER = '+390236618300';
-    private const JP_STAR_NUMBER = '+812345';
     // Numbers to test the formatting rules from Mexico.
     private const MX_MOBILE1 = '+5212345678900';
     private const MX_MOBILE2 = '+5215512345678';
     private const MX_NUMBER1 = '+523312345678';
     private const MX_NUMBER2 = '+528211234567';
     private const NZ_NUMBER = '+6433316005';
-    private const SG_NUMBER = '+6565218000';
-    // A too-long and hence invalid US number.
-    private const US_LONG_NUMBER = '+165025300001';
     private const US_NUMBER = '+16502530000';
     private const US_PREMIUM = '+19002530000';
     // Too short, but still possible US numbers.
     private const US_LOCAL_NUMBER = '+12530000';
-    private const US_SHORT_BY_ONE_NUMBER = '+1650253000';
     private const US_TOLLFREE = '+18002530000';
     private const INTERNATIONAL_TOLL_FREE = '+80012345678';
     // We set this to be the same length as numbers for the other non-geographical country prefix that
@@ -53,16 +48,9 @@ class PhoneNumberTest extends TestCase
     // their country calling code.
     private const INTERNATIONAL_TOLL_FREE_TOO_LONG = '+800123456789';
     private const UNIVERSAL_PREMIUM_RATE = '+979123456789';
-    private const UNKNOWN_COUNTRY_CODE_NO_RAW_INPUT = '+212345';
 
-    /**
-     * @dataProvider providerGetExampleNumber
-     *
-     * @param string   $regionCode
-     * @param string   $callingCode
-     * @param int|null $numberType
-     */
-    public function testGetExampleNumber(string $regionCode, string $callingCode, ?int $numberType = null) : void
+    #[DataProvider('providerGetExampleNumber')]
+    public function testGetExampleNumber(string $regionCode, string $callingCode, ?PhoneNumberType $numberType = null) : void
     {
         if ($numberType === null) {
             $phoneNumber = PhoneNumber::getExampleNumber($regionCode);
@@ -81,10 +69,7 @@ class PhoneNumberTest extends TestCase
         self::assertSame($regionCode, $phoneNumber->getRegionCode());
     }
 
-    /**
-     * @return array
-     */
-    public function providerGetExampleNumber() : array
+    public static function providerGetExampleNumber() : array
     {
         return [
             ['US', '1'],
@@ -101,21 +86,13 @@ class PhoneNumberTest extends TestCase
         PhoneNumber::getExampleNumber('ZZ');
     }
 
-    /**
-     * @dataProvider providerGetNationalNumber
-     *
-     * @param string $expectedNationalNumber
-     * @param string $phoneNumber
-     */
+    #[DataProvider('providerGetNationalNumber')]
     public function testGetNationalNumber(string $expectedNationalNumber, string $phoneNumber) : void
     {
         self::assertSame($expectedNationalNumber, PhoneNumber::parse($phoneNumber)->getNationalNumber());
     }
 
-    /**
-     * @return array
-     */
-    public function providerGetNationalNumber() : array
+    public static function providerGetNationalNumber() : array
     {
         return [
             ['6502530000', self::US_NUMBER],
@@ -125,22 +102,21 @@ class PhoneNumberTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerParseNationalNumber
-     *
-     * @param string $expectedNumber
-     * @param string $numberToParse
-     * @param string $regionCode
-     */
-    public function testParseNationalNumber(string $expectedNumber, string $numberToParse, string $regionCode) : void
-    {
+    #[DataProvider('providerParseNationalNumber')]
+    public function testParseNationalNumber(
+        string $expectedNumber,
+        string $numberToParse,
+        string $regionCode,
+        ?string $minimumUpstreamVersion = null,
+    ) : void {
+        if ($minimumUpstreamVersion !== null) {
+            self::requireUpstreamVersion($minimumUpstreamVersion);
+        }
+
         self::assertSame($expectedNumber, (string) PhoneNumber::parse($numberToParse, $regionCode));
     }
 
-    /**
-     * @return array
-     */
-    public function providerParseNationalNumber() : array
+    public static function providerParseNationalNumber() : array
     {
         return [
             // National prefix attached.
@@ -160,34 +136,24 @@ class PhoneNumberTest extends TestCase
             [self::NZ_NUMBER, '01164 3 331 6005', 'US'],
             [self::NZ_NUMBER, '+64 3 331 6005', 'US'],
 
-// @todo
-//            ['+6464123456', '64(0)64123456', 'NZ'],
+            ['+6464123456', '64(0)64123456', 'NZ', '8.5.2'],
 
             // Check that using a '/' is fine in a phone number.
             [self::DE_NUMBER, '301/23456', 'DE'],
 
             // Check it doesn't use the '1' as a country calling code
             // when parsing if the phone number was already possible
-// @todo
-//            ['+11234567890', '123-456-7890', 'US']
+            ['+11234567890', '123-456-7890', 'US', '8.0.0']
         ];
     }
 
-    /**
-     * @dataProvider providerGetRegionCode
-     *
-     * @param string|null $expectedRegion
-     * @param string      $phoneNumber
-     */
+    #[DataProvider('providerGetRegionCode')]
     public function testGetRegionCode(?string $expectedRegion, string $phoneNumber) : void
     {
         self::assertSame($expectedRegion, PhoneNumber::parse($phoneNumber)->getRegionCode());
     }
 
-    /**
-     * @return array
-     */
-    public function providerGetRegionCode() : array
+    public static function providerGetRegionCode() : array
     {
         return [
             ['BS', self::BS_NUMBER],
@@ -197,21 +163,20 @@ class PhoneNumberTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerGetNumberType
-     *
-     * @param int    $numberType
-     * @param string $phoneNumber
-     */
-    public function testGetNumberType(int $numberType, string $phoneNumber) : void
-    {
+    #[DataProvider('providerGetNumberType')]
+    public function testGetNumberType(
+        PhoneNumberType $numberType,
+        string $phoneNumber,
+        ?string $minimumUpstreamVersion = null,
+    ) : void {
+        if ($minimumUpstreamVersion !== null) {
+            self::requireUpstreamVersion($minimumUpstreamVersion);
+        }
+
         self::assertSame($numberType, PhoneNumber::parse($phoneNumber)->getNumberType());
     }
 
-    /**
-     * @return array
-     */
-    public function providerGetNumberType() : array
+    public static function providerGetNumberType() : array
     {
         return [
             [PhoneNumberType::PREMIUM_RATE, self::US_PREMIUM],
@@ -220,25 +185,15 @@ class PhoneNumberTest extends TestCase
             [PhoneNumberType::PREMIUM_RATE, '+499001654321'],
             [PhoneNumberType::PREMIUM_RATE, '+4990091234567'],
             [PhoneNumberType::PREMIUM_RATE, self::UNIVERSAL_PREMIUM_RATE],
-// @todo doesn't work in online r557 either
-//            [PhoneNumberType::TOLL_FREE, '+18881234567'],
             [PhoneNumberType::TOLL_FREE, '+39803123'],
-// @todo doesn't work in online r557 either
-//            [PhoneNumberType::TOLL_FREE, '+448012345678'],
             [PhoneNumberType::TOLL_FREE, '+498001234567'],
             [PhoneNumberType::TOLL_FREE, self::INTERNATIONAL_TOLL_FREE],
 
             [PhoneNumberType::MOBILE, self::BS_MOBILE],
             [PhoneNumberType::MOBILE, self::GB_MOBILE],
-// @todo doesn't work in online r557 either
-//            [PhoneNumberType::MOBILE, self::IT_MOBILE],
-//            [PhoneNumberType::MOBILE, self::AR_MOBILE],
-// @todo this matches both fixedLine & mobile, but is still reported as MOBILE in the java version
-//            [PhoneNumberType::MOBILE, '+4915123456789'],
-// @todo doesn't work in online r557 either
-//            [PhoneNumberType::MOBILE, self::MX_MOBILE1],
-// @todo changed from MOBILE to FIXED_LINE_OR_MOBILE in 8.10.17
-//            [PhoneNumberType::MOBILE, self::MX_MOBILE2],
+            [PhoneNumberType::MOBILE, self::IT_MOBILE, '8.9.11'],
+            [PhoneNumberType::MOBILE, self::AR_MOBILE],
+            [PhoneNumberType::MOBILE, '+4915123456789'],
 
             [PhoneNumberType::FIXED_LINE, self::BS_NUMBER],
             [PhoneNumberType::FIXED_LINE, self::IT_NUMBER],
@@ -246,10 +201,6 @@ class PhoneNumberTest extends TestCase
             [PhoneNumberType::FIXED_LINE, self::DE_NUMBER],
 
             [PhoneNumberType::FIXED_LINE_OR_MOBILE, self::US_NUMBER],
-// @todo doesn't work in online r557 either
-//            [PhoneNumberType::FIXED_LINE_OR_MOBILE, '+541987654321'],
-// @todo not a good example, changed from SHARED_COST (v7) to PREMIUM_RATE (v8)
-//            [PhoneNumberType::SHARED_COST, '+448431231234'],
 
             [PhoneNumberType::VOIP, '+445631231234'],
 
@@ -259,52 +210,33 @@ class PhoneNumberTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerValidNumbers
-     * @dataProvider providerPossibleButNotValidNumbers
-     *
-     * @param string $phoneNumber
-     */
+    #[DataProvider('providerValidNumbers')]
+    #[DataProvider('providerPossibleButNotValidNumbers')]
     public function testIsPossibleNumber(string $phoneNumber) : void
     {
         self::assertTrue(PhoneNumber::parse($phoneNumber)->isPossibleNumber());
     }
 
-    /**
-     * @dataProvider providerNotPossibleNumbers
-     *
-     * @param string $phoneNumber
-     */
+    #[DataProvider('providerNotPossibleNumbers')]
     public function testIsNotPossibleNumber(string $phoneNumber) : void
     {
         self::assertFalse(PhoneNumber::parse($phoneNumber)->isPossibleNumber());
     }
 
-    /**
-     * @dataProvider providerValidNumbers
-     *
-     * @param string $phoneNumber
-     */
+    #[DataProvider('providerValidNumbers')]
     public function testIsValidNumber(string $phoneNumber) : void
     {
         self::assertTrue(PhoneNumber::parse($phoneNumber)->isValidNumber());
     }
 
-    /**
-     * @dataProvider providerNotPossibleNumbers
-     * @dataProvider providerPossibleButNotValidNumbers
-     *
-     * @param string $phoneNumber
-     */
+    #[DataProvider('providerNotPossibleNumbers')]
+    #[DataProvider('providerPossibleButNotValidNumbers')]
     public function testIsNotValidNumber(string $phoneNumber) : void
     {
         self::assertFalse(PhoneNumber::parse($phoneNumber)->isValidNumber());
     }
 
-    /**
-     * @return array
-     */
-    public function providerValidNumbers() : array
+    public static function providerValidNumbers() : array
     {
         return [
             [self::US_NUMBER],
@@ -316,10 +248,7 @@ class PhoneNumberTest extends TestCase
         ];
     }
 
-    /**
-     * @return array
-     */
-    public function providerPossibleButNotValidNumbers() : array
+    public static function providerPossibleButNotValidNumbers() : array
     {
         return [
             [self::US_LOCAL_NUMBER],
@@ -331,10 +260,7 @@ class PhoneNumberTest extends TestCase
         ];
     }
 
-    /**
-     * @return array
-     */
-    public function providerNotPossibleNumbers() : array
+    public static function providerNotPossibleNumbers() : array
     {
         return [
             [self::INTERNATIONAL_TOLL_FREE_TOO_LONG],
@@ -342,79 +268,81 @@ class PhoneNumberTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerParseException
-     *
-     * @param string $phoneNumber
-     * @param string|null $regionCode
-     */
-    public function testParseException(string $phoneNumber, ?string $regionCode = null) : void
-    {
-        $this->expectException(PhoneNumberParseException::class);
-        PhoneNumber::parse($phoneNumber, $regionCode);
+    #[DataProvider('providerParseException')]
+    public function testParseException(
+        string $phoneNumber,
+        ?string $regionCode,
+        PhoneNumberParseErrorType $errorType,
+    ) : void {
+        try {
+            PhoneNumber::parse($phoneNumber, $regionCode);
+        } catch (PhoneNumberParseException $e) {
+            self::assertSame($errorType, $e->errorType);
+            self::assertSame($errorType->value, $e->getCode());
+
+            return;
+        }
+
+        self::fail('Expected PhoneNumberParseException was not thrown.');
     }
 
-    /**
-     * @return array
-     */
-    public function providerParseException() : array
+    public static function providerParseException() : array
     {
         return [
             // Empty string.
-            [''],
-            ['', 'US'],
+            ['', null, PhoneNumberParseErrorType::NOT_A_NUMBER],
+            ['', 'US', PhoneNumberParseErrorType::NOT_A_NUMBER],
 
-            ['This is not a phone number', 'NZ'],
-            ['1 Still not a number', 'NZ'],
-            ['1 MICROSOFT', 'NZ'],
-            ['12 MICROSOFT', 'NZ'],
-            ['01495 72553301873 810104', 'GB'],
-            ['+---', 'DE'],
-            ['+***', 'DE'],
-            ['+*******91', 'DE'],
-            ['+ 00 210 3 331 6005', 'NZ'],
+            ['This is not a phone number', 'NZ', PhoneNumberParseErrorType::NOT_A_NUMBER],
+            ['1 Still not a number', 'NZ', PhoneNumberParseErrorType::NOT_A_NUMBER],
+            ['1 MICROSOFT', 'NZ', PhoneNumberParseErrorType::NOT_A_NUMBER],
+            ['12 MICROSOFT', 'NZ', PhoneNumberParseErrorType::NOT_A_NUMBER],
+            ['01495 72553301873 810104', 'GB', PhoneNumberParseErrorType::TOO_LONG],
+            ['+---', 'DE', PhoneNumberParseErrorType::NOT_A_NUMBER],
+            ['+***', 'DE', PhoneNumberParseErrorType::NOT_A_NUMBER],
+            ['+*******91', 'DE', PhoneNumberParseErrorType::NOT_A_NUMBER],
+            ['+ 00 210 3 331 6005', 'NZ', PhoneNumberParseErrorType::INVALID_COUNTRY_CODE],
 
             // Too short.
-            ['+49 0', 'DE'],
+            ['+49 0', 'DE', PhoneNumberParseErrorType::TOO_SHORT_NSN],
 
             // Does not match a country code.
-            ['+02366'],
-            ['+210 3456 56789', 'NZ'],
+            ['+02366', null, PhoneNumberParseErrorType::INVALID_COUNTRY_CODE],
+            ['+210 3456 56789', 'NZ', PhoneNumberParseErrorType::INVALID_COUNTRY_CODE],
 
             // A region code must be given if not in international format.
-            ['123 456 7890'],
+            ['123 456 7890', null, PhoneNumberParseErrorType::INVALID_COUNTRY_CODE],
 
             // Unknown region code (deprecated and removed from ISO 3166-2).
-            ['123 456 7890', 'CS'],
+            ['123 456 7890', 'CS', PhoneNumberParseErrorType::INVALID_COUNTRY_CODE],
 
             // No number, only region code.
-            ['0044', 'GB'],
-            ['0044------', 'GB'],
+            ['0044', 'GB', PhoneNumberParseErrorType::TOO_SHORT_AFTER_IDD],
+            ['0044------', 'GB', PhoneNumberParseErrorType::TOO_SHORT_AFTER_IDD],
 
             // Only IDD provided.
-            ['011', 'US'],
+            ['011', 'US', PhoneNumberParseErrorType::TOO_SHORT_AFTER_IDD],
 
             // Only IDD and then 9.
-            ['0119', 'US']
+            ['0119', 'US', PhoneNumberParseErrorType::TOO_SHORT_AFTER_IDD]
         ];
     }
 
-    /**
-     * @dataProvider providerFormatNumber
-     *
-     * @param string $expected
-     * @param string $phoneNumber
-     * @param int    $numberFormat
-     */
-    public function testFormatNumber(string $expected, string $phoneNumber, int $numberFormat) : void
-    {
+    #[DataProvider('providerFormat')]
+    public function testFormat(
+        string $expected,
+        string $phoneNumber,
+        PhoneNumberFormat $numberFormat,
+        ?string $minimumUpstreamVersion = null,
+    ) : void {
+        if ($minimumUpstreamVersion !== null) {
+            self::requireUpstreamVersion($minimumUpstreamVersion);
+        }
+
         self::assertSame($expected, PhoneNumber::parse($phoneNumber)->format($numberFormat));
     }
 
-    /**
-     * @return array
-     */
-    public function providerFormatNumber() : array
+    public static function providerFormat() : array
     {
         return [
             // US
@@ -489,41 +417,31 @@ class PhoneNumberTest extends TestCase
             ['+5491187654321', self::AR_MOBILE, PhoneNumberFormat::E164],
 
             // MX
-// @todo bad tests, MX rules changed in upstream 8.10.17
-//            ['044 234 567 8900', self::MX_MOBILE1, PhoneNumberFormat::NATIONAL],
-//            ['+52 1 234 567 8900', self::MX_MOBILE1, PhoneNumberFormat::INTERNATIONAL],
-//            ['+5212345678900', self::MX_MOBILE1, PhoneNumberFormat::E164],
-//
-//            ['044 55 1234 5678', self::MX_MOBILE2, PhoneNumberFormat::NATIONAL],
-//            ['+52 1 55 1234 5678', self::MX_MOBILE2, PhoneNumberFormat::INTERNATIONAL],
-//            ['+5215512345678', self::MX_MOBILE2, PhoneNumberFormat::E164],
-//
-//            ['01 33 1234 5678', self::MX_NUMBER1, PhoneNumberFormat::NATIONAL],
-//            ['+52 33 1234 5678', self::MX_NUMBER1, PhoneNumberFormat::INTERNATIONAL],
-//            ['+523312345678', self::MX_NUMBER1, PhoneNumberFormat::E164],
-//
-//            ['01 821 123 4567', self::MX_NUMBER2, PhoneNumberFormat::NATIONAL],
-//            ['+52 821 123 4567', self::MX_NUMBER2, PhoneNumberFormat::INTERNATIONAL],
-//            ['+528211234567', self::MX_NUMBER2, PhoneNumberFormat::E164]
+            ['12345678900', self::MX_MOBILE1, PhoneNumberFormat::NATIONAL, '8.13.38'],
+            ['+52 12345678900', self::MX_MOBILE1, PhoneNumberFormat::INTERNATIONAL, '8.13.38'],
+            ['+5212345678900', self::MX_MOBILE1, PhoneNumberFormat::E164, '8.13.38'],
+
+            ['15512345678', self::MX_MOBILE2, PhoneNumberFormat::NATIONAL, '8.13.38'],
+            ['+52 15512345678', self::MX_MOBILE2, PhoneNumberFormat::INTERNATIONAL, '8.13.38'],
+            ['+5215512345678', self::MX_MOBILE2, PhoneNumberFormat::E164, '8.13.38'],
+
+            ['33 1234 5678', self::MX_NUMBER1, PhoneNumberFormat::NATIONAL, '8.10.23'],
+            ['+52 33 1234 5678', self::MX_NUMBER1, PhoneNumberFormat::INTERNATIONAL],
+            ['+523312345678', self::MX_NUMBER1, PhoneNumberFormat::E164],
+
+            ['821 123 4567', self::MX_NUMBER2, PhoneNumberFormat::NATIONAL, '8.10.23'],
+            ['+52 821 123 4567', self::MX_NUMBER2, PhoneNumberFormat::INTERNATIONAL],
+            ['+528211234567', self::MX_NUMBER2, PhoneNumberFormat::E164]
         ];
     }
 
-    /**
-     * @dataProvider providerFormatForCallingFrom
-     *
-     * @param string $phoneNumber
-     * @param string $countryCode
-     * @param string $expected
-     */
+    #[DataProvider('providerFormatForCallingFrom')]
     public function testFormatForCallingFrom(string $phoneNumber, string $countryCode, string $expected) : void
     {
         self::assertSame($expected, PhoneNumber::parse($phoneNumber)->formatForCallingFrom($countryCode));
     }
 
-    /**
-     * @return array
-     */
-    public function providerFormatForCallingFrom() : array
+    public static function providerFormatForCallingFrom() : array
     {
         return [
             ['+33123456789', 'FR', '01 23 45 67 89'],
@@ -543,15 +461,45 @@ class PhoneNumberTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerGetGeographicalAreaCode
-     */
+    #[DataProvider('providerFormatForMobileDialing')]
+    public function testFormatForMobileDialing(
+        string $phoneNumber,
+        string $regionCallingFrom,
+        bool $withFormatting,
+        ?string $expected,
+        ?string $minimumUpstreamVersion = null,
+    ) : void {
+        if ($minimumUpstreamVersion !== null) {
+            self::requireUpstreamVersion($minimumUpstreamVersion);
+        }
+
+        $actual = PhoneNumber::parse($phoneNumber)->formatForMobileDialing($regionCallingFrom, $withFormatting);
+        self::assertSame($expected, $actual);
+    }
+
+    public static function providerFormatForMobileDialing() : array
+    {
+        return [
+            ['+33123456789', 'FR', false, '0123456789'],
+            ['+33123456789', 'FR', true, '01 23 45 67 89'],
+            ['+33123456789', 'BE', false, '+33123456789'],
+            ['+33123456789', 'BE', true, '+33 1 23 45 67 89'],
+            ['+33123456789', 'US', false, '+33123456789'],
+            ['+33123456789', 'US', true, '+33 1 23 45 67 89'],
+            ['+33123456789', 'CA', false, '+33123456789'],
+            ['+33123456789', 'CA', true, '+33 1 23 45 67 89'],
+            ['+558001234567', 'CN', false, null, '8.12.51'],
+            ['+558001234567', 'CN', true, null, '8.12.51'],
+        ];
+    }
+
+    #[DataProvider('providerGetGeographicalAreaCode')]
     public function testGetGeographicalAreaCode(string $phoneNumber, string $areaCode) : void
     {
         self::assertSame($areaCode, PhoneNumber::parse($phoneNumber)->getGeographicalAreaCode());
     }
 
-    public function providerGetGeographicalAreaCode() : array
+    public static function providerGetGeographicalAreaCode() : array
     {
         return [
             ['+442079460585', '20'],
@@ -565,9 +513,7 @@ class PhoneNumberTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider providerIsEqualTo
-     */
+    #[DataProvider('providerIsEqualTo')]
     public function testIsEqualTo(string $phoneNumber1, string $phoneNumber2, bool $isEqual): void
     {
         $phoneNumber1 = PhoneNumber::parse($phoneNumber1);
@@ -576,7 +522,7 @@ class PhoneNumberTest extends TestCase
         self::assertSame($isEqual, $phoneNumber1->isEqualTo($phoneNumber2));
     }
 
-    public function providerIsEqualTo(): array
+    public static function providerIsEqualTo(): array
     {
         return [
             ['+442079460585', '+442079460585', true],
@@ -594,49 +540,127 @@ class PhoneNumberTest extends TestCase
     }
 
     /**
-     * @dataProvider providerGetDescription
+     * The data provider may provide several possible results, as the results differ depending on the version of the
+     * underlying phonenumber library.
+     *
+     * @param (string|null)[] $expected
      */
-    public function testGetDescription(string $phoneNumber, string $locale, ?string $userRegion, ?string $expected) : void
+    #[DataProvider('providerGetDescription')]
+    public function testGetDescription(string $phoneNumber, string $locale, ?string $userRegion, array $expected) : void
     {
-        self::assertSame($expected, PhoneNumber::parse($phoneNumber)->getDescription($locale, $userRegion));
+        self::assertContains(PhoneNumber::parse($phoneNumber)->getDescription($locale, $userRegion), $expected);
     }
 
-    public function providerGetDescription() : array
+    public static function providerGetDescription() : array
     {
         return [
-            ['+16509036313', 'EN', null, 'Mountain View, CA'],
-            ['+16509036313', 'EN', 'US', 'Mountain View, CA'],
-            ['+16509036313', 'EN', 'GB', 'United States'],
-            ['+16509036313', 'EN', 'FR', 'United States'],
-            ['+16509036313', 'EN', 'XX', 'United States'],
-            ['+16509036313', 'FR', null, 'Mountain View, CA'],
-            ['+16509036313', 'FR', 'US', 'Mountain View, CA'],
-            ['+16509036313', 'FR', 'GB', 'États-Unis'],
-            ['+16509036313', 'FR', 'FR', 'États-Unis'],
-            ['+16509036313', 'FR', 'XX', 'États-Unis'],
+            ['+16509036313', 'EN', null, ['Mountain View, CA']],
+            ['+16509036313', 'EN', 'US', ['Mountain View, CA']],
+            ['+16509036313', 'EN', 'GB', ['United States']],
+            ['+16509036313', 'EN', 'FR', ['United States']],
+            ['+16509036313', 'EN', 'XX', ['United States']],
+            ['+16509036313', 'FR', null, ['Mountain View, CA']],
+            ['+16509036313', 'FR', 'US', ['Mountain View, CA']],
+            ['+16509036313', 'FR', 'GB', ['États-Unis']],
+            ['+16509036313', 'FR', 'FR', ['États-Unis']],
+            ['+16509036313', 'FR', 'XX', ['États-Unis']],
 
-            ['+33381251234', 'FR', null, 'Besançon'],
-            ['+33381251234', 'FR', 'FR', 'Besançon'],
-            ['+33381251234', 'FR', 'US', 'France'],
-            ['+33381251234', 'FR', 'XX', 'France'],
-            ['+33381251234', 'EN', null, 'Besançon'],
-            ['+33381251234', 'EN', 'FR', 'Besançon'],
-            ['+33381251234', 'EN', 'US', 'France'],
-            ['+33381251234', 'EN', 'XX', 'France'],
+            ['+33381251234', 'FR', null, ['France', 'Besançon']],
+            ['+33381251234', 'FR', 'FR', ['France', 'Besançon']],
+            ['+33381251234', 'FR', 'US', ['France']],
+            ['+33381251234', 'FR', 'XX', ['France']],
+            ['+33381251234', 'EN', null, ['France', 'Besançon']],
+            ['+33381251234', 'EN', 'FR', ['France', 'Besançon']],
+            ['+33381251234', 'EN', 'US', ['France']],
+            ['+33381251234', 'EN', 'XX', ['France']],
 
-            ['+33328201234', 'FR', null, 'Dunkerque'],
-            ['+33328201234', 'FR', 'FR', 'Dunkerque'],
-            ['+33328201234', 'FR', 'US', 'France'],
-            ['+33328201234', 'FR', 'XX', 'France'],
-            ['+33328201234', 'GB', null, 'Dunkirk'],
-            ['+33328201234', 'XX', null, 'Dunkirk'],
+            ['+33328201234', 'FR', null, ['France', 'Dunkerque']],
+            ['+33328201234', 'FR', 'FR', ['France', 'Dunkerque']],
+            ['+33328201234', 'FR', 'US', ['France']],
+            ['+33328201234', 'FR', 'XX', ['France']],
+            ['+33328201234', 'GB', null, ['Dunkirk', null]],
+            ['+33328201234', 'XX', null, ['Dunkirk', null]],
 
-            ['+41229097000', 'FR', null, 'Genève'],
-            ['+41229097000', 'FR', 'CH', 'Genève'],
-            ['+41229097000', 'FR', 'US', 'Suisse'],
-            ['+41229097000', 'XX', null, 'Geneva'],
+            ['+41229097000', 'FR', null, ['Genève']],
+            ['+41229097000', 'FR', 'CH', ['Genève']],
+            ['+41229097000', 'FR', 'US', ['Suisse']],
+            ['+41229097000', 'XX', null, ['Geneva']],
 
-            ['+37328000000', 'XX', null, null],
+            ['+37328000000', 'XX', null, [null]],
         ];
+    }
+
+    #[DataProvider('providerGetCarrierName')]
+    public function testGetCarrierName(
+        string $phoneNumber,
+        string $languageCode,
+        CarrierNameMode $mode,
+        ?string $expectedCarrierName,
+        ?string $minimumUpstreamVersion = null,
+    ): void {
+        if ($minimumUpstreamVersion !== null) {
+            self::requireUpstreamVersion($minimumUpstreamVersion);
+        }
+
+        $carrierName = PhoneNumber::parse($phoneNumber)->getCarrierName($languageCode, $mode);
+        self::assertSame($expectedCarrierName, $carrierName);
+    }
+
+    public static function providerGetCarrierName(): array
+    {
+        return [
+            ['+33600012345', 'en', CarrierNameMode::ALWAYS, 'Free Mobile', '8.11.1'],
+            ['+33600012345', 'fr', CarrierNameMode::ALWAYS, 'Free Mobile', '8.11.1'],
+            ['+33600012345', 'fr', CarrierNameMode::MOBILE_ONLY, 'Free Mobile', '8.11.1'],
+            ['+33600012345', 'fr', CarrierNameMode::MOBILE_NO_PORTABILITY_ONLY, null], // France supports portability
+            ['+33900000000', 'fr', CarrierNameMode::ALWAYS, null],
+            ['+447305123456', 'en', CarrierNameMode::ALWAYS, 'Virgin Mobile', '8.0.1'],
+            ['+447305123456', 'fr', CarrierNameMode::ALWAYS, 'Virgin Mobile', '8.0.1'],
+            ['+821001234567', 'en', CarrierNameMode::ALWAYS, 'LG U+', '8.13.17'],
+            ['+821001234567', 'fr', CarrierNameMode::ALWAYS, 'LG U+', '8.13.17'],
+            ['+821001234567', 'ko', CarrierNameMode::ALWAYS, '데이콤', '8.13.17'],
+        ];
+    }
+
+    /**
+     * @param string[] $expectedTimeZones
+     */
+    #[DataProvider('providerGetTimeZones')]
+    public function testGetTimeZones(
+        string $phoneNumber,
+        array $expectedTimeZones,
+        ?string $minimumUpstreamVersion = null,
+    ): void {
+        if ($minimumUpstreamVersion !== null) {
+            self::requireUpstreamVersion($minimumUpstreamVersion);
+        }
+
+        $timeZones = PhoneNumber::parse($phoneNumber)->getTimeZones();
+        self::assertSame($expectedTimeZones, $timeZones);
+    }
+
+    public static function providerGetTimeZones(): array
+    {
+        return [
+            ['+33600012345', ['Europe/Paris']],
+            ['+441614960000', ['Europe/London']],
+            ['+4412', []],
+            ['+447123456789', [
+                'Europe/Guernsey',
+                'Europe/Isle_of_Man',
+                'Europe/Jersey',
+                'Europe/London',
+            ], '8.10.23'],
+        ];
+    }
+
+    public static function requireUpstreamVersion(string $version): void
+    {
+        $packageName = 'giggsey/libphonenumber-for-php';
+        $installedVersion = InstalledVersions::getVersion($packageName);
+
+        if (version_compare($installedVersion, $version, '<')) {
+            self::markTestSkipped(sprintf('This test requires %s version %s or later.', $packageName, $version));
+        }
     }
 }

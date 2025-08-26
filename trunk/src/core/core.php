@@ -63,7 +63,7 @@ class BKF_Core {
 		$this->del1 = __('Delivery', 'bakkbone-florist-companion');
 		$this->del2 = __('delivery', 'bakkbone-florist-companion');
 	}
-	
+
 	function bkf_replace_wordpress_howdy( $wp_admin_bar ) {
 		$user_id = get_current_user_id();
 		$current_user = wp_get_current_user();

@@ -4,20 +4,25 @@ declare(strict_types=1);
 
 namespace Brick\PhoneNumber;
 
+use libphonenumber\NumberParseException;
+
 /**
  * Exception thrown when a phone number cannot be parsed.
  */
 final class PhoneNumberParseException extends PhoneNumberException
 {
+    public readonly PhoneNumberParseErrorType $errorType;
+
     /**
      * @internal
-     *
-     * @param \Exception $e
-     *
-     * @return PhoneNumberParseException
      */
-    public static function wrap(\Exception $e) : PhoneNumberParseException
+    public function __construct(NumberParseException $exception)
     {
-        return new PhoneNumberParseException($e->getMessage(), $e->getCode(), $e);
+        /** @var int $errorType */
+        $errorType = $exception->getErrorType();
+
+        parent::__construct($exception->getMessage(), $errorType, $exception);
+
+        $this->errorType = PhoneNumberParseErrorType::from($errorType);
     }
 }
