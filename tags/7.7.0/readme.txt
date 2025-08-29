@@ -132,7 +132,7 @@ Why? You can view/print your orders all in one place, and in one consistent form
 == Frequently Asked Questions ==
 = Is the plugin documented? =
 
-As bets we can! Check it out [here](https://docs.floristpress.org/).
+As best we can! Check it out [here](https://docs.floristpress.org/).
 
 = What plugins do I need? =
 
