@@ -15,7 +15,7 @@ class AutomatorWP_BKF_DD_Closed extends AutomatorWP_Integration_Trigger {
             'select_option'     => __( 'Delivery Date marked as <strong>Closed</strong>', 'bakkbone-florist-companion' ),
             'edit_label'        => __( 'Delivery Date marked as Closed', 'bakkbone-florist-companion' ),
             'log_label'         => __( 'Delivery Date marked as Closed', 'bakkbone-florist-companion' ),
-            'action'            => 'updated_option',
+            'action'            => 'bkf_date_blocked',
             'function'          => array( $this, 'listener' ),
             'priority'          => 10,
             'accepted_args'     => 3,
@@ -41,26 +41,10 @@ class AutomatorWP_BKF_DD_Closed extends AutomatorWP_Integration_Trigger {
         
     }
     
-    public function listener( $option, $old_value, $value ) {
-        
-        if ($option == 'bkf_dd_closed') {
-            $new_options = [];
-            $new_options = array_diff($value, $old_value);
-            if (!empty($new_options)) {
-                foreach ( $new_options as $unix => $date ){
-                    automatorwp_trigger_event( array(
-                        'trigger'       => $this->trigger,
-                        'deliverydate'  => $date,
-                        'unix'          => $unix,
-                    ) );
-                }
-            }
+    public function listener( $unix, $date, $type ) {
+        if($type == 'closed'){
+            automatorwp_trigger_event( ['trigger' => $this->trigger, 'deliverydate' => $date, 'unix' => $unix] );
         }
-        
-    }
-    
-    public function pass_scheduled_trigger( $input ) {
-        automatorwp_trigger_event($input);
     }
     
     public function hooks() {
@@ -118,7 +102,6 @@ class AutomatorWP_BKF_DD_Closed extends AutomatorWP_Integration_Trigger {
         global $automatorwp_event;
         
         if( $trigger->type === $this->trigger ) {
-            wc_get_logger()->info(wp_json_encode($log));
             if( is_array($automatorwp_event) && isset($automatorwp_event['deliverydate']) && isset($automatorwp_event['unix']) ) {
                 $replacements['deliverydate'] = $automatorwp_event['deliverydate'];
                 $replacements['unix'] = $automatorwp_event['unix'];

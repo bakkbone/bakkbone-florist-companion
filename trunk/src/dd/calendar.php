@@ -169,8 +169,8 @@ class BKF_Delivery_Date_Calendar{
 		        unset($orders[$k]);
 		    }
 		}
-		$closed = get_option('bkf_dd_closed');
-		$full = get_option('bkf_dd_full');
+		$closed = bkf_get_blocks_closed();
+		$full = bkf_get_blocks_full();
 		$ct = __("Closed", "bakkbone-florist-companion");
 		$gt = __("Closed (Global)", "bakkbone-florist-companion");
 		$ft = __("Fully Booked", "bakkbone-florist-companion");
@@ -239,17 +239,13 @@ class BKF_Delivery_Date_Calendar{
 				
 			}
 		}
-		if(null !== $closed){
-			foreach($closed as $ts => $date){
-				$string = wp_date("Y-m-d",$ts);
-				echo '{ title: \''.$ct.'\', start: \'' . $string . '\', display: \'background\', className: \'closedbg\' }, ';
-			}
+		foreach($closed as $unix => $data){
+			$string = wp_date("Y-m-d", $unix);
+			echo '{ title: \''.$ct.'\', start: \'' . $string . '\', display: \'background\', className: \'closedbg\' }, ';
 		}
-		if(null !== $full){
-			foreach($full as $ts => $date){
-				$string = wp_date("Y-m-d",$ts);
-				echo '{ title: \''.$ft.'\', start: \''.$string.'\', display: \'background\', className: \'fullbg\' }, ';
-			}
+		foreach($full as $unix => $data){
+			$string = wp_date("Y-m-d", $unix);
+			echo '{ title: \''.$ft.'\', start: \''.$string.'\', display: \'background\', className: \'fullbg\' }, ';
 		}
 		if(get_option('bkf_dd_setting')['monday'] == false){
 			echo '{ title: \''.$gt.'\', startRecur: "'.bkf_get_monday().'", daysOfWeek: \'1\', display: \'background\', className: \'closedbg\' }, ';

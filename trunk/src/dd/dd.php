@@ -197,7 +197,7 @@ class BKF_Delivery_Date_Core {
 	}
 
 	function dd_col_init( $columns ) {
-			$columns['bkf_dd'] = __('Delivery Date', 'bakkbone-florist-companion');
+			$columns['bkf_dd'] = get_option('bkf_ddi_setting')['ddt'] !== '' ? get_option('bkf_ddi_setting')['ddt'] : __('Delivery Date', 'bakkbone-florist-companion');
 			$columns['billing_address'] = __('Customer', 'bakkbone-florist-companion');
 			$columns['shipping_address'] = __('Recipient', 'bakkbone-florist-companion');
 			return $columns;

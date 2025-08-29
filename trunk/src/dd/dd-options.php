@@ -133,13 +133,12 @@ class BKF_Delivery_Date_Options{
 					changeYear: true,
 				} );
   			 var closedDatesList = [<?php
-		 		$closeddates = get_option('bkf_dd_closed');
+		 		$closeddates = bkf_get_blocks_closed();
 				if( !empty($closeddates)){
 				 $i = 0;
 				 $len = count($closeddates);
-				 foreach($closeddates as $date){
-					 $ts = strtotime($date);
-					 $jsdate = wp_date('n,j,Y',$ts);
+				 foreach($closeddates as $unix => $data){
+					 $jsdate = wp_date('n,j,Y', $unix);
 					 if ($i == $len - 1) {
 					 echo '['.$jsdate.']';
 			 } else {
@@ -148,13 +147,12 @@ class BKF_Delivery_Date_Options{
 					 $i++;
 			 };}; ?>];
    			 var fullDatesList = [<?php
-		 		$fulldates = get_option('bkf_dd_full');
+		 		$fulldates = bkf_get_blocks_full();
 				if( !empty($fulldates)){
 				 $i = 0;
 				 $len = count($fulldates);
-				 foreach($fulldates as $date){
-					 $ts = strtotime($date);
-					 $jsdate = wp_date('n,j,Y',$ts);
+				 foreach($fulldates as $unix => $data){
+					 $jsdate = wp_date('n,j,Y', $unix);
 					 if ($i == $len - 1) {
 					 echo '['.$jsdate.']';
 				 } else {

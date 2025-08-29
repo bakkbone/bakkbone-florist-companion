@@ -28,9 +28,9 @@ final class AutomatorWP_Integration_BKF {
     private function includes() {
 
         if( $this->meets_requirements() ) {
-
             require_once AUTOMATORWP_BKF_DIR . 'triggers/dd_full.php';
             require_once AUTOMATORWP_BKF_DIR . 'triggers/dd_closed.php';
+            require_once AUTOMATORWP_BKF_DIR . 'actions/block_date.php';
         }
     }
 

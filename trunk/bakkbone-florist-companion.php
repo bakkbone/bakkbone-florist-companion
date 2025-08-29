@@ -3,7 +3,7 @@
  * Plugin Name:			FloristPress
  * Plugin URI:			https://docs.floristpress.org/
  * Description:			Provides standardized features for floristry websites – built by florists, for florists.
- * Version:				7.6.0
+ * Version:				7.7.0
  * Requires at least:	6.0
  * Requires PHP:		8.1
  * Requires Plugins:	woocommerce
@@ -12,7 +12,7 @@
  * License:				GNU General Public License (GPL) 3.0 or later
  * License URI:			https://www.gnu.org/licenses/gpl.html
  * Tested up to:		6.8
- * WC tested up to:		10.1.1
+ * WC tested up to:		10.1.2
  * Text Domain:			bakkbone-florist-companion
  * Domain Path:			/lang/
 **/
@@ -188,8 +188,6 @@ register_deactivation_hook(__BKF_FILE__, 'bkf_inactive');
 function bkf_active(){
 	$options = '';
 	$features = '';
-	$closed = '';
-	$full = '';
 	$ddi = '';
 	$dd = '';
 	$ddf = '';
@@ -203,8 +201,6 @@ function bkf_active(){
 
 	$options = get_option('bkf_options_setting');
 	$features = get_option('bkf_features_setting');
-	$closed = get_option('bkf_dd_closed');
-	$full = get_option('bkf_dd_full');
 	$ddi = get_option('bkf_ddi_setting');
 	$dd = get_option('bkf_dd_setting');
 	$ddf = get_option('bkf_ddf_setting');
@@ -233,12 +229,6 @@ function bkf_active(){
 			'autoprocess'				=> false,
 			'settingsbar'				=> false
 		));
-	}
-	if($closed == ''){
-		update_option('bkf_dd_closed', []);
-	}
-	if($full == ''){
-		update_option('bkf_dd_full', []);
 	}
 	if($ddi == ''){
 		update_option('bkf_ddi_setting', array(
@@ -361,6 +351,7 @@ function bkf_inactive(){
 		}
 		global $wpdb;
 		$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}bkf_dd_timeslots" );
+		$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}bkf_dd_blocks" );
 		$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}bkf_dd_catblocks" );
 		$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}bkf_dd_sameday_methods" );
 		$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}bkf_suburbs" );

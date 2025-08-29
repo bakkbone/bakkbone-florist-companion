@@ -109,7 +109,6 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 		if (isset($_GET['section']) && $_GET['section'] == 'mlt') {
 			$nonce = wp_create_nonce("bkf");
 			$wd = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
-			global $wpdb;
 			$co = bkf_get_method_specific_leadtimes();
 			$sm = [];
 			$allzones = WC_Data_Store::load('shipping-zone');
@@ -179,13 +178,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 					?></div></div><?php
 				}
 				?></div></div><?php
-		} elseif (isset($_GET['section']) && $_GET['section'] == 'ddb') {
-			$bkf_dd_closed = get_option("bkf_dd_closed");
-			$closedsort = $bkf_dd_closed;
-			ksort($closedsort);
-			$bkf_dd_full = get_option("bkf_dd_full");
-			$fullsort = $bkf_dd_full;
-			ksort($fullsort);
+		} else if (isset($_GET['section']) && $_GET['section'] == 'ddb') {
 			$nonce = wp_create_nonce("bkf");
 			$ajaxurl = admin_url('admin-ajax.php');
 			$phtext = __("Date", "bakkbone-florist-companion");
@@ -268,26 +261,26 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 					firstDay: 1,
 					height: '60vh',
 					events:[
-						<?php
-				$closed = get_option('bkf_dd_closed');
-				$full = get_option('bkf_dd_full');
+				<?php
+				$blocks = bkf_get_blocks_all();
 				$ct = __('Closed','bakkbone-florist-companion');
 				$gt = __('Closed (Global)','bakkbone-florist-companion');
 				$ft = __('Fully Booked','bakkbone-florist-companion');
-				if(null !== $closed){
-					foreach($closed as $ts => $date){
-						$string = wp_date("Y-m-d",$ts);
-						echo '{ title: \''.$ct.'\', start: \'' . $string . '\', className: \'closedbg\', function: \'bkf_dd_remove_closed\', ts: \''.$ts.'\' }, ';
-					}
+				
+				if(null !== $blocks){
+				    foreach($blocks as $unix => $data){
+				        $string = wp_date('Y-m-d', $unix);
+				        if($data['type'] == 'full'){
+				            $title = __('Fully Booked', 'bakkbone-florist-companion');
+				        } else if($data['type'] == 'closed'){
+				            $title = __('Closed', 'bakkbone-florist-companion');
+				        } else {
+				            $title = __('Unavailable', 'bakkbone-florist-companion');
+				        }
+						echo '{ title: \''.$title.'\', start: \''.$string.'\', className: \''.$data['type'].'bg\', function: \'bkf_dd_remove\', ts: \''.$unix.'\' }, ';
+				    }
 				}
-
-				if(null !== $full){
-					foreach($full as $ts => $date){
-						$string = wp_date("Y-m-d",$ts);
-						echo '{ title: \''.$ft.'\', start: \''.$string.'\', className: \'fullbg\', function: \'bkf_dd_remove_full\', ts: \''.$ts.'\' }, ';
-					}
-				}
-
+				
 				if(get_option('bkf_dd_setting')['monday'] == false){
 					echo '{ title: \''.$gt.'\', startRecur: "'.bkf_get_monday().'", daysOfWeek: \'1\', className: \'closedbg\', function: null }, ';
 				}
@@ -329,13 +322,12 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 					beforeShowDay: blockedDates
 				} );
   			 var closedDatesList = [<?php
-		 		$closeddates = get_option('bkf_dd_closed');
+		 		$closeddates = bkf_get_blocks_closed();
 				if( !empty($closeddates)){
 				 $i = 0;
 				 $len = count($closeddates);
-				 foreach($closeddates as $date){
-					 $ts = strtotime($date);
-					 $jsdate = wp_date('n,j,Y',$ts);
+				 foreach($closeddates as $unix => $data){
+					 $jsdate = wp_date('n,j,Y', $unix);
 					 if ($i == $len - 1) {
 					 echo '['.$jsdate.']';
 			 } else {
@@ -344,20 +336,19 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 					 $i++;
 			 };}; ?>];
    			 var fullDatesList = [<?php
-		 		$fulldates = get_option('bkf_dd_full');
+		 		$fulldates = bkf_get_blocks_full();
 				if( !empty($fulldates)){
 				 $i = 0;
 				 $len = count($fulldates);
-				 foreach($fulldates as $date){
-					 $ts = strtotime($date);
-					 $jsdate = wp_date('n,j,Y',$ts);
+				 foreach($fulldates as $unix => $data){
+					 $jsdate = wp_date('n,j,Y', $unix);
 					 if ($i == $len - 1) {
 					 echo '['.$jsdate.']';
-				 } else {
+    			 } else {
 					 echo '['.$jsdate.'],';
 					 }
 					 $i++;
-				 };}; ?>];
+    			 };}; ?>];
 
 		 function blockedDates(date) {
 			 var w = date.getDay();
@@ -407,12 +398,12 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 		   }
 		 }
 		 return [true];
-	 }
+	     }
 		 } );
 		</script>
 		</div>
 		<?php
-		} elseif (isset($_GET['section']) && $_GET['section'] == 'cb') {
+		} else if (isset($_GET['section']) && $_GET['section'] == 'cb') {
 			$nonce = wp_create_nonce("bkf");
 
 			$product_categories = get_terms(array('taxonomy'=>'product_cat','hide_empty' => false));
@@ -484,13 +475,12 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 					beforeShowDay: blockedDates
 				} );
   			 var closedDatesList = [<?php
-		 		$closeddates = get_option('bkf_dd_closed');
+		 		$closeddates = bkf_get_blocks_closed();
 				if( !empty($closeddates)){
 				 $i = 0;
 				 $len = count($closeddates);
-				 foreach($closeddates as $date){
-					 $ts = strtotime($date);
-					 $jsdate = wp_date('n,j,Y',$ts);
+				 foreach($closeddates as $unix => $data){
+					 $jsdate = wp_date('n,j,Y', $unix);
 					 if ($i == $len - 1) {
 					 echo '['.$jsdate.']';
 			 } else {
@@ -499,20 +489,19 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 					 $i++;
 			 };}; ?>];
    			 var fullDatesList = [<?php
-		 		$fulldates = get_option('bkf_dd_full');
+		 		$fulldates = bkf_get_blocks_full();
 				if( !empty($fulldates)){
 				 $i = 0;
 				 $len = count($fulldates);
-				 foreach($fulldates as $date){
-					 $ts = strtotime($date);
-					 $jsdate = wp_date('n,j,Y',$ts);
+				 foreach($fulldates as $unix => $data){
+					 $jsdate = wp_date('n,j,Y', $unix);
 					 if ($i == $len - 1) {
 					 echo '['.$jsdate.']';
-				 } else {
+    			 } else {
 					 echo '['.$jsdate.'],';
 					 }
 					 $i++;
-				 };}; ?>];
+    			 };}; ?>];
 
 		 function blockedDates(date) {
 			 var w = date.getDay();
@@ -599,23 +588,24 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 				height: '60vh',
 				events:[
 					<?php
-					$closed = get_option('bkf_dd_closed');
-					$full = get_option('bkf_dd_full');
-					$ct = __('Closed','bakkbone-florist-companion');
-					$gt = __('Closed (Global)','bakkbone-florist-companion');
-					$ft = __('Fully Booked','bakkbone-florist-companion');
-					if(null !== $closed){
-						foreach($closed as $ts => $date){
-							$string = wp_date("Y-m-d",$ts);
-							echo '{ title: \''.$ct.'\', start: \'' . $string . '\', className: \'closedbg\', function: null }, ';
-						}
-					}
-
-					if(null !== $full){
-						foreach($full as $ts => $date){
-							$string = wp_date("Y-m-d",$ts);
-							echo '{ title: \''.$ft.'\', start: \''.$string.'\', className: \'fullbg\', function: null }, ';
-						}
+        				$blocks = bkf_get_blocks_all();
+        				$ct = __('Closed','bakkbone-florist-companion');
+        				$gt = __('Closed (Global)','bakkbone-florist-companion');
+        				$ft = __('Fully Booked','bakkbone-florist-companion');
+        				
+        				if(null !== $blocks){
+        				    foreach($blocks as $unix => $data){
+        				        $string = wp_date('Y-m-d', $unix);
+        				        if($data['type'] == 'full'){
+        				            $title = __('Fully Booked', 'bakkbone-florist-companion');
+        				        } else if($data['type'] == 'closed'){
+        				            $title = __('Closed', 'bakkbone-florist-companion');
+        				        } else {
+        				            $title = __('Unavailable', 'bakkbone-florist-companion');
+        				        }
+        						echo '{ title: \''.$title.'\', start: \''.$string.'\', className: \''.$data['type'].'bg\', function: \'bkf_dd_remove\', ts: \''.$unix.'\' }, ';
+        				    }
+        				}
 
 						if(get_option('bkf_dd_setting')['monday'] == false){
 							echo '{ title: \''.$gt.'\', startRecur: "'.bkf_get_monday().'", daysOfWeek: \'1\', className: \'closedbg\', function: null }, ';
@@ -638,7 +628,6 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 						if(get_option('bkf_dd_setting')['sunday'] == false){
 							echo '{ title: \''.$gt.'\', startRecur: "'.bkf_get_monday().'", daysOfWeek: \'0\', className: \'closedbg\', function: null }, ';
 						}
-					}
 
 			foreach($cb as $thiscb){
 				$time = strtotime($thiscb['date']);
@@ -657,7 +646,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 		  <div id="calendar"></div>
 		</div>
 		<?php
-		} elseif (isset($_GET['section']) && $_GET['section'] == 'ts') {
+		} else if (isset($_GET['section']) && $_GET['section'] == 'ts') {
 			$nonce = wp_create_nonce("bkf");
 			$allzones = WC_Data_Store::load('shipping-zone');
 			$rawzones = $allzones->get_zones();
@@ -847,16 +836,7 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 					}
 			}
 			?></div><?php
-		} elseif (isset($_GET['section']) && $_GET['section'] == 'ds') {
-			$bkf_dd_ds_fees = get_option("bkf_dd_ds_fees");
-			$feesort = $bkf_dd_ds_fees;
-			ksort($feesort);
-			$bkf_dd_closed = get_option("bkf_dd_closed");
-			$closedsort = $bkf_dd_closed;
-			ksort($closedsort);
-			$bkf_dd_full = get_option("bkf_dd_full");
-			$fullsort = $bkf_dd_full;
-			ksort($fullsort);
+		} else if (isset($_GET['section']) && $_GET['section'] == 'ds') {
 			$nonce = wp_create_nonce("bkf");
 			$ajaxurl = admin_url('admin-ajax.php');
 			$ct = __("Closed", "bakkbone-florist-companion");
@@ -912,22 +892,23 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 					height: '60vh',
 					events:[
 						<?php
-				$fees = get_option('bkf_dd_ds_fees');
+				$fees = get_option('bkf_dd_ds_fees', []);
 				if(null !== $fees){
 					foreach($fees as $ts => $array){
 						$string = wp_date("Y-m-d",$ts);
 						echo '{ title: \''.$array['title'].': '.bkf_currency_symbol().$array['fee'].'\', start: \'' . $string . '\', className: \'closedbg\', function: \'bkf_dd_remove_fee\', ts: \''.$ts.'\' }, ';
 					}
 				}
-				if(null !== $bkf_dd_closed){
-					foreach($bkf_dd_closed as $ts => $date){
-						$string = wp_date("Y-m-d",$ts);
+				
+				if(null !== bkf_get_blocks_closed()){
+					foreach(bkf_get_blocks_closed() as $unix => $data){
+						$string = wp_date("Y-m-d", $unix);
 						echo '{ title: \''.$ct.'\', start: \'' . $string . '\', display: \'background\', className: \'closedbg\', function: null }, ';
 					}
 				}
-				if(null !== $bkf_dd_full){
-					foreach($bkf_dd_full as $ts => $date){
-						$string = wp_date("Y-m-d",$ts);
+				if(null !== bkf_get_blocks_full()){
+					foreach(bkf_get_blocks_full() as $unix => $data){
+						$string = wp_date("Y-m-d", $unix);
 						echo '{ title: \''.$ft.'\', start: \''.$string.'\', display: \'background\', className: \'fullbg\', function: null }, ';
 					}
 				}
@@ -971,13 +952,12 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 					beforeShowDay: blockedDates
 				} );
   			 var closedDatesList = [<?php
-		 		$closeddates = get_option('bkf_dd_closed');
+		 		$closeddates = bkf_get_blocks_closed();
 				if( !empty($closeddates)){
 				 $i = 0;
 				 $len = count($closeddates);
-				 foreach($closeddates as $date){
-					 $ts = strtotime($date);
-					 $jsdate = wp_date('n,j,Y',$ts);
+				 foreach($closeddates as $unix => $data){
+					 $jsdate = wp_date('n,j,Y', $unix);
 					 if ($i == $len - 1) {
 					 echo '['.$jsdate.']';
 			 } else {
@@ -986,20 +966,19 @@ class BKF_Delivery_Date_Settings extends WC_Settings_Page {
 					 $i++;
 			 };}; ?>];
    			 var fullDatesList = [<?php
-		 		$fulldates = get_option('bkf_dd_full');
+		 		$fulldates = bkf_get_blocks_full();
 				if( !empty($fulldates)){
 				 $i = 0;
 				 $len = count($fulldates);
-				 foreach($fulldates as $date){
-					 $ts = strtotime($date);
-					 $jsdate = wp_date('n,j,Y',$ts);
+				 foreach($fulldates as $unix => $data){
+					 $jsdate = wp_date('n,j,Y', $unix);
 					 if ($i == $len - 1) {
 					 echo '['.$jsdate.']';
-				 } else {
+    			 } else {
 					 echo '['.$jsdate.'],';
 					 }
 					 $i++;
-				 };}; ?>];
+    			 };}; ?>];
    			 var feeDatesList = [<?php
 		 		$feedates = get_option('bkf_dd_ds_fees');
 				if( !empty($feedates)){

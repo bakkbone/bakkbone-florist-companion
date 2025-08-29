@@ -242,8 +242,6 @@ class BKF_Phone_Order{
 										<th scope="row"><?php echo get_option('bkf_ddi_setting')['ddt']; ?> <abbr class="required" title="required">*</abbr></label></th>
 										<td>
 											<?php
-			$closeddates = get_option('bkf_dd_closed');
-			$fulldates = get_option('bkf_dd_full');
 			$maxdate = get_option('bkf_ddi_setting')['ddi'];
 			$ddtitle = get_option('bkf_ddi_setting')['ddt'];
 

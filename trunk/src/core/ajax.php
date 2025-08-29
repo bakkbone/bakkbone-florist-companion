@@ -14,10 +14,9 @@ class BKF_Ajax{
 		$ajax = [
 			'dd_add_closed',
 			'dd_add_closed_range',
-			'dd_remove_closed',
 			'dd_add_full',
 			'dd_add_full_range',
-			'dd_remove_full',
+			'dd_remove',
 			'cal_pdf',
 			'cal_csv',
 			'cb_add',
@@ -181,7 +180,21 @@ class BKF_Ajax{
 		header("Location: ".$_SERVER["HTTP_REFERER"]);
 		die();
 	}
-
+	
+	function dd_remove() {
+        if ( !current_user_can('manage_woocommerce') ) {
+            exit(__('You do not have permission to do this..', 'bakkbone-florist-companion'));
+        }
+		if ( !wp_verify_nonce( $_REQUEST['nonce'], "bkf")) {
+			exit(__('Your request is invalid or the page has been open too long. Please go back and try again.', 'bakkbone-florist-companion'));
+		}
+		
+		bkf_dd_unblock($_REQUEST['ts']);
+		
+		header("Location: ".$_SERVER["HTTP_REFERER"]);
+		die();
+    }
+	
 	function dd_remove_closed(){
         if ( !current_user_can('manage_woocommerce') ) {
             exit(__('You do not have permission to do this..', 'bakkbone-florist-companion'));

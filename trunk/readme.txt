@@ -5,7 +5,7 @@ Tags: woocommerce,florist,ecommerce
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.1
-Stable tag: 7.6.0
+Stable tag: 7.7.0
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -85,6 +85,8 @@ Why? You can view/print your orders all in one place, and in one consistent form
 
 ### Plugin Compatibility
 
+* Creates triggers for [AutomatorWP](https://wordpress.org/plugins/automatorwp) when delivery dates are marked as blocked (more items for this integration are planned)
+* Creates an action for [AutomatorWP](https://wordpress.org/plugins/automatorwp) to mark a delivery date as blocked (more items for this integration are planned)
 * Creates input masks for the [Gravity Forms](https://rocketgenius.pxf.io/bakkbone) "Telephone" field for Australian phone number formats _(affiliate link)_
 * Creates an Australian address format for the [Gravity Forms](https://rocketgenius.pxf.io/bakkbone) Address field _(affiliate link)_
 * Re-words the descriptions of fields on [WooCommerce Address Book](https://wordpress.org/plugins/woo-address-book/) features
@@ -128,9 +130,9 @@ Why? You can view/print your orders all in one place, and in one consistent form
 3. Activate the plugin through the `Plugins` menu in WordPress
 
 == Frequently Asked Questions ==
-= Is the plugin well-documented? =
+= Is the plugin documented? =
 
-We believe so! Check it out [here](https://docs.floristpress.org/).
+As bets we can! Check it out [here](https://docs.floristpress.org/).
 
 = What plugins do I need? =
 

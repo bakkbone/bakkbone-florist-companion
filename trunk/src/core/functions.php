@@ -691,6 +691,67 @@ function bkf_get_catblocks(){
 	return $cb;
 }
 
+function bkf_get_blocks_all(){
+	global $wpdb;
+	$b = [];
+	$blocks = $wpdb->get_results(
+		"
+			SELECT unix, type, date
+			FROM {$wpdb->prefix}bkf_dd_blocks
+		"
+	);
+	foreach($blocks as $block){
+		$b[$block->unix] = array(
+			'unix'	=>	$block->unix,
+			'type'  =>	$block->type,
+			'date'	=>	$block->date
+		);
+	}
+	return $b;
+}
+
+function bkf_get_blocks_closed(){
+	global $wpdb;
+	$b = [];
+	$blocks = $wpdb->get_results(
+		"
+			SELECT unix, type, date
+			FROM {$wpdb->prefix}bkf_dd_blocks
+		"
+	);
+	foreach($blocks as $block){
+	    if($block->type == 'closed') {
+    		$b[$block->unix] = array(
+    			'unix'	=>	$block->unix,
+    			'type'  =>	$block->type,
+    			'date'	=>	$block->date
+    		);
+	    }
+	}
+	return $b;
+}
+
+function bkf_get_blocks_full(){
+	global $wpdb;
+	$b = [];
+	$blocks = $wpdb->get_results(
+		"
+			SELECT unix, type, date
+			FROM {$wpdb->prefix}bkf_dd_blocks
+		"
+	);
+	foreach($blocks as $block){
+	    if($block->type == 'full') {
+    		$b[$block->unix] = array(
+    			'unix'	=>	$block->unix,
+    			'type'  =>	$block->type,
+    			'date'	=>	$block->date
+    		);
+	    }
+	}
+	return $b;
+}
+
 function bkf_get_method_specific_leadtimes(){
 	global $wpdb;
 	$co = [];
@@ -852,9 +913,10 @@ function bkf_check_dd_availability($then, $cart){
 			$result['mr'] = get_option('bkf_dm_setting')[$weekday];
 		}
 
-		$closed = get_option('bkf_dd_closed') ? get_option('bkf_dd_closed') : [];
+		$closed = bkf_get_blocks_closed();
 		if ($result['pass']) {
-			foreach ($closed as $key => $value) {
+			foreach ($closed as $key => $data) {
+			    $value = $data['date'];
 				$closedtime = new DateTimeImmutable($value, $tz);
 				if ($result && $closedtime == $then) {
 					$result = ['pass' => false, 'outcome' => [false, 'closed', __('Closed', 'bakkbone-florist-companion')]];
@@ -862,9 +924,10 @@ function bkf_check_dd_availability($then, $cart){
 			}
 		}
 
-		$full = get_option('bkf_dd_full') ? get_option('bkf_dd_full') : [];
+		$full = bkf_get_blocks_full();
 		if ($result['pass']) {
-			foreach ($full as $key => $value) {
+			foreach ($full as $key => $data) {
+			    $value = $data['date'];
 				$fulltime = new DateTimeImmutable($value, $tz);
 				if ($result && $fulltime == $then) {
 					$result = ['pass' => false, 'outcome' => [false, 'booked', __('Fully Booked', 'bakkbone-florist-companion')]];
@@ -1023,29 +1086,34 @@ function bkf_ajax($action, $args = [], $echo = false){
 }
 
 function bkf_dd_block($unix, $date, $type = 'full'){
-	if(null !== get_option('bkf_dd_'.$type) && !empty(get_option('bkf_dd_'.$type))){
-		$option = get_option('bkf_dd_'.$type);
-	} else {
-		$option = [];
-	}
-	$option[$unix] = $date;
-	update_option('bkf_dd_'.$type, $option);
+    global $wpdb;
+	$wpdb->insert( $wpdb->prefix.'bkf_dd_blocks',
+		array(
+			'unix'	=>	$unix,
+			'type'  =>  $type,
+			'date'  =>  $date
+		)
+	);
+	do_action('bkf_date_blocked', $unix, $date, $type);
 }
 
 function bkf_dd_block_bulk($input, $type = 'full'){
-	if(null !== get_option('bkf_dd_'.$type) && !empty(get_option('bkf_dd_'.$type))){
-		$option = get_option('bkf_dd_'.$type);
-	} else {
-		$option = [];
-	}
 	foreach($input as $unix => $date){
-	    $option[$unix] = $date;
+	    global $wpdb;
+		$wpdb->insert( $wpdb->prefix.'bkf_dd_blocks',
+  			array(
+  				'unix'	=>	$unix,
+  				'type'  =>  $type,
+  				'date'  =>  $date
+  			)
+		);
+		do_action('bkf_date_blocked', $unix, $date, $type);
 	}
-	update_option('bkf_dd_'.$type, $option);
 }
 
-function bkf_dd_unblock($date, $type){
-	$option = get_option('bkf_dd_full', []);
-	unset($option[$date]);
-	update_option('bkf_dd_'.$type, $option);
+function bkf_dd_unblock($unix){
+    $date = date('l, j F Y', $unix);
+	global $wpdb;
+	$wpdb->delete( $wpdb->prefix.'bkf_dd_blocks', ['unix' => $unix], '%d' );
+	do_action('bkf_date_unblocked', $unix, $date);
 }

@@ -738,10 +738,9 @@ class BKF_Admin_Notices{
 	}
 
 	function dashblocks(){
-		$bkf_dd_closed = get_option("bkf_dd_closed");
-		$closedsort = $bkf_dd_closed;
+		$closedsort = bkf_get_blocks_closed();
 		ksort($closedsort);
-		$bkf_dd_full = get_option("bkf_dd_full");
+		$bkf_dd_full = bkf_get_blocks_full();
 		$fullsort = $bkf_dd_full;
 		ksort($fullsort);
 		$nonce = wp_create_nonce("bkf");
@@ -764,7 +763,7 @@ class BKF_Admin_Notices{
 					<?php if (count($closedsort) > 0){
 						echo '<hr><ul style="list-style:inside disc;text-align:left;">';
 						foreach ($closedsort as $key => $value) {
-							echo '<li>'.esc_html($value).'</li>';
+							echo '<li>'.esc_html($value['date']).'</li>';
 						}
 						echo '</ul>';
 					} ?>
@@ -780,7 +779,7 @@ class BKF_Admin_Notices{
 					<?php if (count($fullsort) > 0){
 						echo '<hr><ul style="list-style:inside disc;text-align:left;">';
 						foreach ($fullsort as $key => $value) {
-							echo '<li>'.esc_html($value).'</li>';
+							echo '<li>'.esc_html($value['date']).'</li>';
 						}
 						echo '</ul>';
 					} ?>
@@ -798,13 +797,12 @@ class BKF_Admin_Notices{
    					beforeShowDay: blockedDates
    				} );
      			 var closedDatesList = [<?php
-   		 		$closeddates = get_option('bkf_dd_closed');
+   		 		$closeddates = bkf_get_blocks_closed();
    				if( !empty($closeddates)){
    				 $i = 0;
    				 $len = count($closeddates);
-   				 foreach($closeddates as $date){
-   					 $ts = strtotime($date);
-   					 $jsdate = wp_date('n,j,Y',$ts);
+   				 foreach($closeddates as $unix => $data){
+   					 $jsdate = wp_date('n,j,Y', $unix);
    					 if ($i == $len - 1) {
    					 echo '['.$jsdate.']';
    			 } else {
@@ -813,13 +811,12 @@ class BKF_Admin_Notices{
    					 $i++;
    			 };}; ?>];
       			 var fullDatesList = [<?php
-   		 		$fulldates = get_option('bkf_dd_full');
+   		 		$fulldates = bkf_get_blocks_full();
    				if( !empty($fulldates)){
    				 $i = 0;
    				 $len = count($fulldates);
-   				 foreach($fulldates as $date){
-   					 $ts = strtotime($date);
-   					 $jsdate = wp_date('n,j,Y',$ts);
+   				 foreach($fulldates as $unix => $data){
+   					 $jsdate = wp_date('n,j,Y', $unix);
    					 if ($i == $len - 1) {
    					 echo '['.$jsdate.']';
    				 } else {

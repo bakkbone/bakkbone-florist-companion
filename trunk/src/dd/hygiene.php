@@ -13,10 +13,12 @@ class BKF_Data_Hygiene{
 		global $bkf_dd_cb_db_version;
 		global $bkf_dd_sd_ms_db_version;
 		global $bkf_dd_ts_db_version;
-
+		global $bkf_dd_db_version;
+		
 		$bkf_dd_cb_db_version = '1.0';
 		$bkf_dd_sd_ms_db_version = '2';
 		$bkf_dd_ts_db_version = '1.3';
+		$bkf_dd_db_version = '1.0';
 
 		add_action("init", [$this, 'schedule_purges']);
 		add_action("bkf_dd_purge", [$this, 'bkfDdPurge']);
@@ -89,45 +91,47 @@ class BKF_Data_Hygiene{
 
 	function db_init(){
 		global $wpdb;
-		global $bkf_dd_cb_db_version;
 		$charset_collate = $wpdb->get_charset_collate();
+		
+		global $bkf_dd_db_version;
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-
+		$table_name_dd = $wpdb->prefix . 'bkf_dd_blocks';
+		$sql_cb = "CREATE TABLE $table_name_dd (
+			unix int(9) NOT NULL AUTO_INCREMENT,
+			date text NOT NULL,
+			type text NOT NULL,
+			PRIMARY KEY  (unix)
+		) $charset_collate;";
+		dbDelta( $sql_cb );
+		add_option( 'bkf_dd_db_version', $bkf_dd_db_version );
+		
+		global $bkf_dd_cb_db_version;
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 		$table_name_cb = $wpdb->prefix . 'bkf_dd_catblocks';
-
 		$sql_cb = "CREATE TABLE $table_name_cb (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
 			category mediumint(9) NOT NULL,
 			date text NOT NULL,
 			PRIMARY KEY  (id)
 		) $charset_collate;";
-
 		dbDelta( $sql_cb );
-
 		add_option( 'bkf_dd_cb_db_version', $bkf_dd_cb_db_version );
-
 		$installed_ver_cb = get_option( "bkf_dd_cb_db_version" );
-
 		if ( $installed_ver_cb != $bkf_dd_cb_db_version ) {
-
 			$table_name_cb = $wpdb->prefix . 'bkf_dd_catblocks';
-
 			$sql_cb = "CREATE TABLE $table_name_cb (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
 			category mediumint(9) NOT NULL,
 			date text NOT NULL,
 				PRIMARY KEY  (id)
 			) $charset_collate;";
-
 			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 			dbDelta( $sql_cb );
-
 			update_option( 'bkf_dd_cb_db_version', $bkf_dd_cb_db_version );
 		}
+		
 		global $bkf_dd_sd_ms_db_version;
-
 		$table_name_sd = $wpdb->prefix . 'bkf_dd_sameday_methods';
-
 		$sql_sd = "CREATE TABLE $table_name_sd (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
 			method tinytext NOT NULL,
@@ -136,14 +140,11 @@ class BKF_Data_Hygiene{
 			`leadtime` smallint NOT NULL,
 			PRIMARY KEY  (id)
 		) $charset_collate;";
-
 		dbDelta( $sql_sd );
-
 		update_option( 'bkf_dd_sd_ms_db_version', $bkf_dd_sd_ms_db_version );
+		
 		global $bkf_dd_ts_db_version;
-
 		$table_name_ts = $wpdb->prefix . 'bkf_dd_timeslots';
-
 		$sql_ts = "CREATE TABLE $table_name_ts (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
 			method tinytext NOT NULL,
@@ -153,17 +154,11 @@ class BKF_Data_Hygiene{
 			fee tinytext,
 			PRIMARY KEY  (id)
 		) $charset_collate;";
-
 		dbDelta( $sql_ts );
-
 		add_option( 'bkf_dd_ts_db_version', $bkf_dd_ts_db_version );
-
 		$installed_ver_ts = get_option( "bkf_dd_ts_db_version" );
-
 		if ( $installed_ver_ts != $bkf_dd_ts_db_version ) {
-
 			$table_name_ts = $wpdb->prefix . 'bkf_dd_timeslots';
-
 			$sql_ts = "CREATE TABLE $table_name_ts (
 				id mediumint(9) NOT NULL AUTO_INCREMENT,
 				method tinytext NOT NULL,
@@ -173,14 +168,12 @@ class BKF_Data_Hygiene{
 				fee tinytext,
 				PRIMARY KEY  (id)
 			) $charset_collate;";
-
 			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 			dbDelta( $sql_ts );
-
 			update_option( 'bkf_dd_ts_db_version', $bkf_dd_ts_db_version );
 		}
 	}
-
+	
 	function db_checks() {
 		$weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 		$bkf_dd_setting = get_option('bkf_dd_setting');
@@ -201,16 +194,63 @@ class BKF_Data_Hygiene{
 				'dddft'	=> false
 			));
 		}
-
+		
+		global $bkf_dd_db_version;
+		if ( get_site_option( 'bkf_dd_db_version' ) != $bkf_dd_db_version ) {
+        	if ( get_site_option( 'bkf_dd_db_version', 0 ) < 1 ) {
+        	    $closed = get_option('bkf_dd_closed', []);
+        	    $full = get_option('bkf_dd_full', []);
+        	    
+        	    foreach ( $closed as $unix => $date ) {
+        	        global $wpdb;
+            		$wpdb->insert(
+            			$wpdb->prefix.'bkf_dd_blocks',
+            			array(
+            				'unix'	    =>	$unix,
+            				'date'		=>	$date,
+            				'type'	    =>	'closed',
+            			)
+            		);
+        	    }
+        	    foreach ( $full as $unix => $date ) {
+        	        global $wpdb;
+            		$wpdb->insert(
+            			$wpdb->prefix.'bkf_dd_blocks',
+            			array(
+            				'unix'	    =>	$unix,
+            				'date'		=>	$date,
+            				'type'	    =>	'full',
+            			)
+            		);
+        	    }
+        	    delete_option('bkf_dd_closed');
+        	    delete_option('bkf_dd_full');
+        	} else {
+        		global $wpdb;
+        		$charset_collate = $wpdb->get_charset_collate();
+        		
+        		global $bkf_dd_db_version;
+        		$table_name_dd = $wpdb->prefix . 'bkf_dd_blocks';
+        		$sql_cb = "CREATE TABLE $table_name_dd (
+        			unix int(9) NOT NULL AUTO_INCREMENT,
+        			date text NOT NULL,
+        			type text NOT NULL,
+        			PRIMARY KEY  (unix)
+        		) $charset_collate;";
+        		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        		dbDelta( $sql_cb );
+        		add_option( 'bkf_dd_db_version', $bkf_dd_db_version );
+        	}
+    	}
+    	
+		
 		global $bkf_dd_ts_db_version;
 		if ( get_site_option( 'bkf_dd_ts_db_version' ) != $bkf_dd_ts_db_version ) {
 			global $wpdb;
-			global $bkf_dd_ts_db_version;
-
-			$table_name_ts = $wpdb->prefix . 'bkf_dd_timeslots';
-
 			$charset_collate = $wpdb->get_charset_collate();
-
+			
+			global $bkf_dd_ts_db_version;
+			$table_name_ts = $wpdb->prefix . 'bkf_dd_timeslots';
 			$sql_ts = "CREATE TABLE $table_name_ts (
 				id mediumint(9) NOT NULL AUTO_INCREMENT,
 				method tinytext NOT NULL,
@@ -220,18 +260,12 @@ class BKF_Data_Hygiene{
 				fee tinytext,
 				PRIMARY KEY  (id)
 			) $charset_collate;";
-
 			require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 			dbDelta( $sql_ts );
-
 			add_option( 'bkf_dd_ts_db_version', $bkf_dd_ts_db_version );
-
 			$installed_ver_ts = get_option( "bkf_dd_ts_db_version" );
-
 			if ( $installed_ver_ts != $bkf_dd_ts_db_version ) {
-
 				$table_name_ts = $wpdb->prefix . 'bkf_dd_timeslots';
-
 				$sql_ts = "CREATE TABLE $table_name_ts (
 					id mediumint(9) NOT NULL AUTO_INCREMENT,
 					method tinytext NOT NULL,
@@ -241,59 +275,48 @@ class BKF_Data_Hygiene{
 					fee tinytext,
 					PRIMARY KEY  (id)
 				) $charset_collate;";
-
 				require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 				dbDelta( $sql_ts );
-
 				update_option( 'bkf_dd_ts_db_version', $bkf_dd_ts_db_version );
 			}
 		}
+		
 		global $bkf_dd_cb_db_version;
 		if ( get_site_option( 'bkf_dd_cb_db_version' ) != $bkf_dd_cb_db_version ) {
 			global $wpdb;
-			global $bkf_dd_cb_db_version;
-
-			$table_name_cb = $wpdb->prefix . 'bkf_dd_catblocks';
-
 			$charset_collate = $wpdb->get_charset_collate();
-
+			
+			global $bkf_dd_cb_db_version;
+			$table_name_cb = $wpdb->prefix . 'bkf_dd_catblocks';
 			$sql_cb = "CREATE TABLE $table_name_cb (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
 			category mediumint(9) NOT NULL,
 			date text NOT NULL,
 				PRIMARY KEY  (id)
 			) $charset_collate;";
-
 			require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 			dbDelta( $sql_cb );
-
 			add_option( 'bkf_dd_cb_db_version', $bkf_dd_cb_db_version );
-
 			$installed_ver_cb = get_option( "bkf_dd_cb_db_version" );
-
 			if ( $installed_ver_cb != $bkf_dd_cb_db_version ) {
-
 				$table_name_cb = $wpdb->prefix . 'bkf_dd_catblocks';
-
 				$sql_cb = "CREATE TABLE $table_name_cb (
 				id mediumint(9) NOT NULL AUTO_INCREMENT,
 				category mediumint(9) NOT NULL,
 				date text NOT NULL,
 					PRIMARY KEY  (id)
 				) $charset_collate;";
-
 				require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 				dbDelta( $sql_cb );
-
 				update_option( 'bkf_dd_cb_db_version', $bkf_dd_cb_db_version );
 			}
 		}
+		
 		if ( get_option( 'bkf_dd_sd_ms_db_version', 0 ) < 1 ) {
 			global $wpdb;
 			global $bkf_dd_sd_ms_db_version;
 			$table_name_sd = $wpdb->prefix . 'bkf_dd_sameday_methods';
 			$charset_collate = $wpdb->get_charset_collate();
-
 			$sql_sd = "CREATE TABLE $table_name_sd (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
 			method tinytext NOT NULL,
@@ -301,24 +324,19 @@ class BKF_Data_Hygiene{
 			cutoff text NOT NULL,
 			PRIMARY KEY  (id)
 			) $charset_collate;";
-
 			require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 			dbDelta( $sql_sd );
-
 			update_option( 'bkf_dd_sd_ms_db_version', 1 );
 		}
-
+		
 		if ( get_option( 'bkf_dd_sd_ms_db_version' ) < 2 ) {
 			global $wpdb;
 			global $bkf_dd_sd_ms_db_version;
 			$table_name_sdl = $wpdb->prefix . 'bkf_dd_sameday_methods';
-
 			$sql_sdl = "ALTER TABLE $table_name_sdl
 			ADD COLUMN `leadtime` SMALLINT NOT NULL;
 			";
-
 			$wpdb->query( $sql_sdl );
-
 			update_option( 'bkf_dd_sd_ms_db_version', 2 );
 		}
 	}
