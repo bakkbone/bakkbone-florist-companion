@@ -103,7 +103,7 @@ class BKF_Delivery_Date_Fees_Core{
 
 		$tax = wc_tax_enabled() && get_option('bkf_ddf_setting')['dddft'] ? true : false;
 
-		$setting = get_option('bkf_dd_ds_fees');
+		$setting = get_option('bkf_dd_ds_fees', []);
 		$ts = (string)WC()->session->get( 'delivery_timestamp' );
 		
 		if ( !isset($ts) || $ts == '' || $ts == null )
