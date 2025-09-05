@@ -1087,33 +1087,63 @@ function bkf_ajax($action, $args = [], $echo = false){
 
 function bkf_dd_block($unix, $date, $type = 'full'){
     global $wpdb;
-	$wpdb->insert( $wpdb->prefix.'bkf_dd_blocks',
+	$unix = (int) $unix;
+	$result = $wpdb->insert( $wpdb->prefix.'bkf_dd_blocks',
 		array(
 			'unix'	=>	$unix,
 			'type'  =>  $type,
 			'date'  =>  $date
 		)
 	);
-	do_action('bkf_date_blocked', $unix, $date, $type);
+	if($result !== false) {
+	    if(bkf_debug()){
+	       bkf_debug_log('bkf_dd_block() SUCCESS, input - Unix: '.$unix.', Date: '.$date.', Type: '.$type, 'info');
+	    }
+    	do_action('bkf_date_blocked', $unix, $date, $type);
+	} else {
+	    if(bkf_debug()){
+	        bkf_debug_log('bkf_dd_block() FAIL, input - Unix: '.$unix.', Date: '.$date.', Type: '.$type, 'warning');
+	    }
+	}
 }
 
 function bkf_dd_block_bulk($input, $type = 'full'){
 	foreach($input as $unix => $date){
+		$unix = (int) $unix;
 	    global $wpdb;
-		$wpdb->insert( $wpdb->prefix.'bkf_dd_blocks',
+		$result = $wpdb->insert( $wpdb->prefix.'bkf_dd_blocks',
   			array(
   				'unix'	=>	$unix,
   				'type'  =>  $type,
   				'date'  =>  $date
   			)
 		);
-		do_action('bkf_date_blocked', $unix, $date, $type);
+		if($result !== false){
+			if(bkf_debug()){
+				bkf_debug_log('bkf_dd_block_bulk() SUCCESS, input - Unix: '.$unix.', Date: '.$date.', Type: '.$type, 'info');
+			}
+			do_action('bkf_date_blocked', $unix, $date, $type);
+		} else {
+			bkf_debug_log('bkf_dd_block_bulk() FAIL, input - Unix: '.$unix.', Date: '.$date.', Type: '.$type, 'warning');
+		}
+		
 	}
 }
 
 function bkf_dd_unblock($unix){
+	$unix = (int) $unix;
     $date = date('l, j F Y', $unix);
 	global $wpdb;
-	$wpdb->delete( $wpdb->prefix.'bkf_dd_blocks', ['unix' => $unix], '%d' );
-	do_action('bkf_date_unblocked', $unix, $date);
+	$result = $wpdb->delete( $wpdb->prefix.'bkf_dd_blocks', ['unix' => $unix], '%d' );
+	if($result !== false){
+	    if(bkf_debug()){
+	       bkf_debug_log('bkf_dd_unblock() SUCCESS, input - Unix: '.$unix);
+	       do_action('bkf_date_unblocked', $unix, $date);
+	} else {
+	    if(bkf_debug()){
+	        bkf_debug_log('bkf_dd_unblock() FAIL, input - Unix: '.$unix);
+	    }
+	}
+	}
+	
 }
