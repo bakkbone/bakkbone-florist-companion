@@ -18,7 +18,7 @@ class BKF_Data_Hygiene{
 		$bkf_dd_cb_db_version = '1.0';
 		$bkf_dd_sd_ms_db_version = '2';
 		$bkf_dd_ts_db_version = '1.3';
-		$bkf_dd_db_version = '1.0';
+		$bkf_dd_db_version = '2.0';
 
 		add_action("init", [$this, 'schedule_purges']);
 		add_action("bkf_dd_purge", [$this, 'bkfDdPurge']);
@@ -197,7 +197,18 @@ class BKF_Data_Hygiene{
 		
 		global $bkf_dd_db_version;
 		if ( get_site_option( 'bkf_dd_db_version' ) != $bkf_dd_db_version ) {
-        	if ( get_site_option( 'bkf_dd_db_version', 0 ) < 1 ) {
+        	if ( get_site_option( 'bkf_dd_db_version', 0 ) < 2 ) {
+        	    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        		$table_name_dd = $wpdb->prefix . 'bkf_dd_blocks';
+        		$sql_cb = "CREATE TABLE $table_name_dd (
+        			unix int(9) NOT NULL AUTO_INCREMENT,
+        			date text NOT NULL,
+        			type text NOT NULL,
+        			PRIMARY KEY  (unix)
+        		) $charset_collate;";
+        		dbDelta( $sql_cb );
+        		add_option( 'bkf_dd_db_version', $bkf_dd_db_version );
+
         	    $closed = get_option('bkf_dd_closed', []);
         	    $full = get_option('bkf_dd_full', []);
         	    
@@ -225,21 +236,6 @@ class BKF_Data_Hygiene{
         	    }
         	    delete_option('bkf_dd_closed');
         	    delete_option('bkf_dd_full');
-        	} else {
-        		global $wpdb;
-        		$charset_collate = $wpdb->get_charset_collate();
-        		
-        		global $bkf_dd_db_version;
-        		$table_name_dd = $wpdb->prefix . 'bkf_dd_blocks';
-        		$sql_cb = "CREATE TABLE $table_name_dd (
-        			unix int(9) NOT NULL AUTO_INCREMENT,
-        			date text NOT NULL,
-        			type text NOT NULL,
-        			PRIMARY KEY  (unix)
-        		) $charset_collate;";
-        		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-        		dbDelta( $sql_cb );
-        		add_option( 'bkf_dd_db_version', $bkf_dd_db_version );
         	}
     	}
     	
