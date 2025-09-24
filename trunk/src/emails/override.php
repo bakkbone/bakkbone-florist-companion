@@ -164,8 +164,12 @@ class BKF_Email_Override{
 		$heading = sprintf($email['subject'], $blogname);
 		$mailer = WC()->mailer();
 		$wrapped_message = $mailer->wrap_message($heading, $email['body']);
-		$wc_email = new WC_Email;
-		$email['body'] = $wc_email->style_inline($wrapped_message);
+		if (defined('BKF_BETA_BRANCH')) {
+			$email['body'] = BKF_BETA_BRANCH ? $wrapped_message : $email['body'];
+		} else {
+			$wc_email = new WC_Email;
+			$email['body'] = $wc_email->style_inline($wrapped_message);
+		}
 		
 		return $email;
 	}
