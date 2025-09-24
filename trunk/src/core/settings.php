@@ -25,9 +25,7 @@ class BKF_Settings extends WC_Settings_Page {
 	}
 	
 	function pos_settings($settings, $current_section){
-	    error_log($current_section);
 	    if ( $current_section == '' ) {
-	        error_log(wp_json_encode($settings));
     		$settings[] = [
     			'title' => __('PDF Defaults', 'bakkbone-florist-companion'),
     			'type'  => 'title',
