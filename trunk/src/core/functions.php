@@ -573,8 +573,10 @@ function bkf_all_count(){
 
 function bkf_cart_has_physical(){
 	$has_physical = false;
-
-	foreach ( WC()->cart->get_cart() as $cart_item ) {
+	
+	$cart = WC()->cart !== null ? WC()->cart->get_cart() : [];
+	
+	foreach ( $cart as $cart_item ) {
 		if ( ! $cart_item['data']->is_virtual() ) {
 			$has_physical = true;
 			break;

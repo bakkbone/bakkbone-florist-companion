@@ -206,7 +206,7 @@ class BKF_Core {
 			'type'			=> 'textarea',
 			'description'	=> get_option('bkf_localisation_setting')['delivery_description_notes'],
 			'priority'		=> 110,
-			'default'		=> WC()->session->get('shipping_notes') !== null ? stripslashes(stripslashes(WC()->session->get('shipping_notes'))) : '',
+			'default'		=> WC()->session !== null ? WC()->session->get('shipping_notes') !== null ? stripslashes(stripslashes(WC()->session->get('shipping_notes'))) : '' : '',
 		 );
 		 return $fields;
 	}

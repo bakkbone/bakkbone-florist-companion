@@ -27,7 +27,7 @@ class BKF_Local_Pickup {
 	function bkf_disable_shipping_local_pickup() {
 		
 		if(bkf_not_nonfloral()){
-		$chosen_methods = WC()->session->get( 'chosen_shipping_methods' ) !== null ? WC()->session->get( 'chosen_shipping_methods' ) : [];
+		$chosen_methods = WC()->session !== null ? WC()->session->get( 'chosen_shipping_methods' ) !== null ? WC()->session->get( 'chosen_shipping_methods' ) : [] : [];
 		$chosen_shipping = $chosen_methods[0];
 		if ( 0 === strpos( $chosen_shipping, 'local_pickup' ) ) {
 			?>
@@ -69,7 +69,7 @@ class BKF_Local_Pickup {
 	function modify_checkout_fields($fields) {
 		if(bkf_not_nonfloral()){
 			global $woocommerce;
-			$chosen_methods = WC()->session->get( 'chosen_shipping_methods' );
+			$chosen_methods = WC()->session !== null ? WC()->session->get( 'chosen_shipping_methods' ) !== null ? WC()->session->get( 'chosen_shipping_methods' ) : [] : [];
 			$chosen_shipping = $chosen_methods[0];
 			if(bkf_shop_has_pickup() && WC()->cart->needs_shipping_address()){
 				$st = WC()->session->get('ship_type', 'delivery');
