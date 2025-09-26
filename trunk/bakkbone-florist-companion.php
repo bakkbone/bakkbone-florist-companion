@@ -3,7 +3,7 @@
  * Plugin Name:			FloristPress
  * Plugin URI:			https://docs.floristpress.org/
  * Description:			Provides standardized features for floristry websites – built by florists, for florists.
- * Version:				7.7.1
+ * Version:				7.8.0
  * Requires at least:	6.0
  * Requires PHP:		8.1
  * Requires Plugins:	woocommerce
@@ -12,7 +12,7 @@
  * License:				GNU General Public License (GPL) 3.0 or later
  * License URI:			https://www.gnu.org/licenses/gpl.html
  * Tested up to:		6.8
- * WC tested up to:		10.1.2
+ * WC tested up to:		10.2.1
  * Text Domain:			bakkbone-florist-companion
  * Domain Path:			/lang/
 **/
