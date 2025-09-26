@@ -1,0 +1,5 @@
+{
+    "require": {
+        "brick/phonenumber": "^0.8.0"
+    }
+}
