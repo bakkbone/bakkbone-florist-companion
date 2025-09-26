@@ -3,3 +3,6 @@
 **/composer.phar
 .idea/sshConfigs.xml
 .idea/deployment.xml
+*.pui
+*.prj
+*.bak

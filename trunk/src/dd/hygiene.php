@@ -37,26 +37,18 @@ class BKF_Data_Hygiene{
 	}
 
 	function bkfDdPurge() {
-		$closed = get_option('bkf_dd_closed');
-		$full = get_option('bkf_dd_full');
+		$blocks = bkf_get_blocks_all();
 		$datefees = get_option('bkf_dd_ds_fees');
-		foreach($closed as $ts => $date){
-			if($ts < (string)strtotime(wp_date("Y-m-d"))){
-				unset($closed[$ts]);
+		foreach($blocks as $unix => $data){
+			if($unix < (string)strtotime(wp_date("Y-m-d"))){
+				bkf_dd_unblock($unix);
 			}
 		}
-		foreach($full as $ts => $date){
-			if($ts < (string)strtotime(wp_date("Y-m-d"))){
-				unset($full[$ts]);
+		foreach($datefees as $unix => $fee){
+			if($unix < (string)strtotime(wp_date("Y-m-d"))){
+				unset($datefees[$unix]);
 			}
 		}
-		foreach($datefees as $ts => $fee){
-			if($ts < (string)strtotime(wp_date("Y-m-d"))){
-				unset($datefees[$ts]);
-			}
-		}
-		update_option('bkf_dd_closed', $closed);
-		update_option('bkf_dd_full', $full);
 		update_option('bkf_dd_ds_fees', $datefees);
 	}
 
