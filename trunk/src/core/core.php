@@ -119,7 +119,7 @@ class BKF_Core {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		}
 		$plugin_data = get_plugin_data(__BKF_FILE__);
-		echo '<meta name="generator" content="'.$plugin_data["Name"].'">';
+		echo '<meta name="generator" content="'.$plugin_data["Name"].' v'.$plugin_data["Version"].'">';
 	}
 	
 	function sig_shutdown() {
