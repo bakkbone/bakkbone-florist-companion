@@ -252,6 +252,7 @@ class BKF_PDF_Core {
 		$endtimeadjusted = $endtime - 86400;
 		
 		$orders = wc_get_orders(array(
+		    'type' => 'shop_order',
 			'post_status' => array('wc-new','wc-accept','wc-processing','wc-completed','wc-scheduled','wc-prepared','wc-collect','wc-out','wc-relayed','wc-invoiced','wc-processed','wc-collected'),
 			'limit' => '-1',
 			'meta_query' => array(

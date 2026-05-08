@@ -297,13 +297,28 @@ class BKF_Ajax{
             exit(__('You do not have permission to do this..', 'bakkbone-florist-companion'));
         }
 		$start = $_REQUEST['starty'] . '-' . $_REQUEST['startm'] . '-' . $_REQUEST['startd'];
-		$end = $_REQUEST['endy'] = dirname($filename);
-		if (!is_dir($pdfdir))
-		{
-			mkdir($pdfdir, 0755, true);
-		}
+		$end = $_REQUEST['endy'] . '-' . $_REQUEST['endm'] . '-' . $_REQUEST['endd'];
+		$starttime = strtotime($start);
+		$endtime = strtotime($end);
+		
+		$orders = wc_get_orders(array(
+		    'type' => 'shop_order',
+			'post_status' => array('wc-new','wc-accept','wc-processing','wc-completed','wc-scheduled','wc-prepared','wc-collect','wc-out','wc-relayed','wc-invoiced','wc-processed','wc-collected'),
+			'limit' => '-1',
+			'meta_query' => array(
+				array('key' => '_delivery_timestamp', 'value' => $starttime, 'compare' => '>='),
+				array('key' => '_delivery_timestamp', 'value' => $endtime, 'compare' => '<')
+			)
+		));
+		
+        $upload_dir = wp_upload_dir();
+		$filename = $upload_dir['basedir'].'/bkfcsv/'.__('orders','bakkbone-florist-companion').'-'.$start.'-'.__('to','bakkbone-florist-companion').'-'.$end.'.csv';		$filename = $upload_dir['basedir'].'/bkfcsv/'.__('orders','bakkbone-florist-companion').'-'.$start.'-'.__('to','bakkbone-florist-companion').'-'.$end.'.csv';
+		$pdfdir = dirname($filename);		$pdfdir = dirname($filename);
+		if (!is_dir($pdfdir)) {
+		    mkdir($pdfdir, 0755, true);
+		    }
 		if(file_exists($filename)){
-			unlink($filename);
+		    unlink($filename);
 		}
 		$afile = fopen($filename, "x+");
 		$ddtitle = get_option('bkf_ddi_setting')['ddt'];
