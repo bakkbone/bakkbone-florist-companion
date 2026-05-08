@@ -301,9 +301,16 @@ class BKF_Ajax{
 		$starttime = strtotime($start);
 		$endtime = strtotime($end);
 		
+		$bkfoptions = get_option("bkf_features_setting");
+		if($bkfoptions["petals_on"] == 1) {
+		    $statuses = ['wc-new','wc-accept','wc-processing','wc-completed','wc-scheduled','wc-prepared','wc-collect','wc-out','wc-relayed','wc-invoiced','wc-processed','wc-collected'];
+		} else {
+		    $statuses = ['wc-processing','wc-completed','wc-scheduled','wc-prepared','wc-collect','wc-out','wc-relayed','wc-invoiced','wc-processed','wc-collected'];
+		}
+		
 		$orders = wc_get_orders(array(
 		    'type' => 'shop_order',
-			'post_status' => array('wc-new','wc-accept','wc-processing','wc-completed','wc-scheduled','wc-prepared','wc-collect','wc-out','wc-relayed','wc-invoiced','wc-processed','wc-collected'),
+			'post_status' => $statuses,
 			'limit' => '-1',
 			'meta_query' => array(
 				array('key' => '_delivery_timestamp', 'value' => $starttime, 'compare' => '>='),
