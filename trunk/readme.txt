@@ -5,7 +5,7 @@ Tags: woocommerce,florist,ecommerce
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 8.1
-Stable tag: 7.8.3
+Stable tag: 7.8.4
 License: GPL-3.0-or-later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -184,6 +184,8 @@ Changelog is kept at [floristpress.org](https://www.floristpress.org/changelog/)
 
 == Upgrade Notice ==
 
+= 7.8.4
+Patches a fatal error caused by v7.8.3
 = 7.8.3
 Patches an XSS vulnerability with the frontend suburb search feature
 = 7.6.0
