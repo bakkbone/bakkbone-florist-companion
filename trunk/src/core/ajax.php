@@ -1571,7 +1571,7 @@ class BKF_Ajax{
 			}
 		}
 		if (count($result)) {
-			$resulthtml = '<h2 class="bkf-suburb-search-results-header">'.stripslashes(wp_kses($_REQUEST['header'])).'</h2>';
+			$resulthtml = '<h2 class="bkf-suburb-search-results-header">'.stripslashes(wp_kses_post($_REQUEST['header'])).'</h2>';
 			foreach ($result as $suburb => $methods) {
 				$resulthtml .= '<div class="bkf-suburb-search-results-item"><h3><strong>'.$suburb.'</strong></h3><ul>';
 				foreach ($methods as $method) {
@@ -1580,7 +1580,7 @@ class BKF_Ajax{
 				$resulthtml .= '</ul></div>';
 			}
 		} else {
-			$resulthtml = '<div class="bkf-suburb-search-results-noresults"><p>'.stripslashes(wp_kses($_REQUEST['noresults'])).'</p></div>';
+			$resulthtml = '<div class="bkf-suburb-search-results-noresults"><p>'.stripslashes(wp_kses_post($_REQUEST['noresults'])).'</p></div>';
 		}
 		echo $resulthtml;
 		die();
